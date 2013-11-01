@@ -1,4 +1,4 @@
-Ejemplo
+Chequeando renovacion de datos atraves de este archivito de texto
 ==========
 
-Este proyecto es un simple ejemplo que muestra un proyecto base en Java para la material Algo3.
+Es esperado que se renovara este archivo en el servidor de google.
