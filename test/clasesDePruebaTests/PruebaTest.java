@@ -1,12 +1,12 @@
-package clasePruebaTests;
+package clasesDePruebaTests;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import fiuba.algo3.ejemplo1.Prueba;
+import clasesDePrueba.Prueba;
 
-public class clasePruebaTest {
+public class PruebaTest {
 	
 	@Test
 	public void testDeberiaDevolverAtributo(){
