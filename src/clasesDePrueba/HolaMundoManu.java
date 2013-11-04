@@ -1,6 +1,6 @@
-package fiuba.algo3.ejemplo1;
+package clasesDePrueba;
 
-public class holaMundoManu {
+public class HolaMundoManu {
 
 	public static void main(String[] args) {
 		System.out.println("Hola mundo Manuel");
