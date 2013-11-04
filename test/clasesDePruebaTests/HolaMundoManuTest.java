@@ -1,14 +1,16 @@
-package fiuba.algo3.ejemplo1;
+package clasesDePruebaTests;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class holaMundoManuTest {
+import clasesDePrueba.HolaMundoManu;
+
+public class HolaMundoManuTest {
 
 	@Test
 	public void testSaludaCorrectamente() {
-		holaMundoManu saludo = new holaMundoManu();
+		HolaMundoManu saludo = new HolaMundoManu();
 		assertEquals("Buenas", saludo.saludar());
 	}
 }
