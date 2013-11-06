@@ -17,4 +17,10 @@ public class Tablero {
 			this.bocacalles.add(unArray);
 		}
 	}
+
+	public Calle calleATransitar(Posicion posicion, char direccion) {
+		int fila = posicion.getFila();
+		int columna = posicion.getColumna();
+		return bocacalles.get(fila).get(columna).obtenerCalleEnDireccion(direccion);
+	}
 }
