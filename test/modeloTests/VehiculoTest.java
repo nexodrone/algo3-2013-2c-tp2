@@ -1,6 +1,6 @@
 package modeloTests;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 import modelo.Vehiculo;
 import org.junit.Test;
 
