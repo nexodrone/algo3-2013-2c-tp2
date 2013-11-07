@@ -15,4 +15,8 @@ public class Vehiculo {
 	public void moverPorCalle(Calle calleATransitar) {
 		
 	}
+
+	public void actualizarPosicion(char direccion) {
+		posicion.actualizar(direccion);
+	}
 }
