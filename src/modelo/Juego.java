@@ -21,21 +21,13 @@ public class Juego {
 	}
 
 	public void realizarJugadaEnDireccion(char direccion) {
-		Calle calleATransitar;
-		calleATransitar = this.tablero.calleATransitar(this.vehiculo.getPosicion(),direccion);
+		Calle calleATransitar = this.tablero.calleATransitar(this.vehiculo.getPosicion(),direccion);
 		this.vehiculo.moverPorCalle(calleATransitar);
-		this.movimientos = this.movimientos + 1;
+		this.movimientos++;
 		Posicion pos = this.vehiculo.getPosicion();
-		switch (direccion) {
-        	case 'N': pos.setFila(pos.getFila() - 1);
-                 break;
-        	case 'S': pos.setFila(pos.getFila() + 1);
-                 break;
-        	case 'E': pos.setColumna(pos.getColumna() + 1);
-                 break;
-        	case 'O': pos.setColumna(pos.getColumna() - 1);
-                 break;	
-            }
+		this.vehiculo.actualizarPosicion(direccion);
+		// Antes de actualizar la posicion, se debe verificar que ningun obstaculo
+		// impida el movimiento.
 	}
 
 	/*public boolean direccionInvalida(char direccion){

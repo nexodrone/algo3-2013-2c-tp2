@@ -24,7 +24,18 @@ public class Posicion {
 	public int getColumna(){
 		return columna;
 	}
-
+	
+	public boolean actualizar(char direccion) {
+		switch(direccion) {
+		case 'N': fila--; break;
+		case 'S': fila++; break;
+		case 'E': columna++; break;
+		case 'O': columna--; break;
+		default: return false;
+		}
+		return true;
+	}
+	
 	public String asString(){
 		String stringFila, stringColumna;
 		stringFila = String.valueOf(this.fila);
