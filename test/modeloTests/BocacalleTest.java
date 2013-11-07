@@ -14,9 +14,20 @@ public class BocacalleTest {
 	}
 
 	@Test
-	public void testDeberiaDevloverCalle(){
+	public void testObtenerCalleEnLasDireccionesPosiblesDeberiaDevolverLaCalle(){
 		Bocacalle unaBocacalle = new Bocacalle();
 		Calle unaCalle = unaBocacalle.obtenerCalleEnDireccion('N');
+		Calle otraCalle = unaBocacalle.obtenerCalleEnDireccion('S');
+		Calle algunaCalle = unaBocacalle.obtenerCalleEnDireccion('E');
+		Calle unaCalleMas = unaBocacalle.obtenerCalleEnDireccion('O');		
 		assertNotNull(unaCalle);
+		assertNotNull(otraCalle);
+		assertNotNull(algunaCalle);
+		assertNotNull(unaCalleMas);
+	}
+	
+	@Test
+	public void testObtenerCalleEnDireccionEquivocada(){
+		
 	}
 }
