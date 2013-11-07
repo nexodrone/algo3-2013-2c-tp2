@@ -26,7 +26,8 @@ public class Bocacalle {
         case 'E': calleDevolver = this.calleEste;
                  break;
         case 'O': calleDevolver = this.calleOeste;
-                 break;	}
+                 break;	
+         }
 		return calleDevolver;
 	}
 }

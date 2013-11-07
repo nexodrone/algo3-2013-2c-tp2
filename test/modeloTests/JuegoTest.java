@@ -20,7 +20,7 @@ public class JuegoTest {
 	}
 
 	@Test
-	public void testDeberiaMverElVehiculoEnDireccionIndicada() {
+	public void testDeberiaMoverElVehiculoEnDireccionIndicada() {
 		Juego unJuego = new Juego(10,10,'A');
 		unJuego.realizarJugadaEnDireccion('S');
 		unJuego.realizarJugadaEnDireccion('S');
@@ -28,4 +28,24 @@ public class JuegoTest {
 		assertEquals(unJuego.posicionDelVehiculo(),"2,1");
 		assertEquals(unJuego.movimientos(),3);
 	}
+	
+	@Test
+	public void testRealizarJugadaEnTodasDireccionesPosibles(){
+		Juego unJuego = new Juego(5,5,'M');
+		unJuego.realizarJugadaEnDireccion('S');
+		unJuego.realizarJugadaEnDireccion('S');
+		unJuego.realizarJugadaEnDireccion('E');
+		unJuego.realizarJugadaEnDireccion('E');
+		unJuego.realizarJugadaEnDireccion('N');
+		unJuego.realizarJugadaEnDireccion('O');
+		assertEquals(unJuego.movimientos(),6);
+		assertEquals(unJuego.posicionDelVehiculo(),"1,1");
+	}
+	
+	/*@Test
+	public void testDireccionInvalidaDeberiaIndicarCuandoLaDireccionIndicadaEsInvalida(){
+		Juego unJuego = new Juego(5,5,'M');
+		boolean direccionInvalida = true;
+		assertEquals(unJuego.direccionInvalida('N'),direccionInvalida);		
+	}*/
 }

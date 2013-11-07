@@ -27,16 +27,26 @@ public class Juego {
 		this.movimientos = this.movimientos + 1;
 		Posicion pos = this.vehiculo.getPosicion();
 		switch (direccion) {
-        case 'N': pos.setFila(pos.getFila() - 1);
+        	case 'N': pos.setFila(pos.getFila() - 1);
                  break;
-        case 'S': pos.setFila(pos.getFila() + 1);
+        	case 'S': pos.setFila(pos.getFila() + 1);
                  break;
-        case 'E': pos.setColumna(pos.getColumna() + 1);
+        	case 'E': pos.setColumna(pos.getColumna() + 1);
                  break;
-        case 'O': pos.setColumna(pos.getColumna() - 1);
-                 break;	}
+        	case 'O': pos.setColumna(pos.getColumna() - 1);
+                 break;	
+            }
 	}
 
+	/*public boolean direccionInvalida(char direccion){
+		boolean direccionInvalida = true;
+		if(this.vehiculo.getPosicion().asString()== "0,0" && direccion == 'N')
+			return direccionInvalida;
+		else
+			return false;
+	}*/
+	
+		
 	public int movimientos() {
 		return this.movimientos;
 	}
