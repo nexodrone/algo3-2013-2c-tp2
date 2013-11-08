@@ -7,13 +7,21 @@ public class Juego {
 
 	private Tablero tablero;
 	private Vehiculo vehiculo;
-	private int movimientos;
+	private int cantidadDeMovimientos;
+	
+	/*public void realizarJugadaEnDireccionNorte() {
+	
+	Solo usar la clases DireccionDeMovimiento.NORTE
+	Y refactorizar el anterior
+	
+	}*/
+
 
 	public Juego(int filasTablero, int columnasTablero, char tipoAuto) {
 		tablero = new Tablero(filasTablero,columnasTablero);
-		vehiculo = new Vehiculo();
+		vehiculo = new Vehiculo(new Posicion(0,0));
 		vehiculo.setPosicion(new Posicion(0,0));
-		movimientos = 0;
+		cantidadDeMovimientos = 0;
 	}
 
 	public String posicionDelVehiculo() {
@@ -23,24 +31,16 @@ public class Juego {
 	public void realizarJugadaEnDireccion(char direccion) {
 		Calle calleATransitar = this.tablero.calleATransitar(this.vehiculo.getPosicion(),direccion);
 		this.vehiculo.moverPorCalle(calleATransitar);
-		this.movimientos++;
-		Posicion pos = this.vehiculo.getPosicion();
+		this.cantidadDeMovimientos++;
+		/*Posicion pos = this.vehiculo.getPosicion();*/
 		this.vehiculo.actualizarPosicion(direccion);
 		// Antes de actualizar la posicion, se debe verificar que ningun obstaculo
 		// impida el movimiento.
 	}
 
-	/*public boolean direccionInvalida(char direccion){
-		boolean direccionInvalida = true;
-		if(this.vehiculo.getPosicion().asString()== "0,0" && direccion == 'N')
-			return direccionInvalida;
-		else
-			return false;
-	}*/
-	
-		
+			
 	public int movimientos() {
-		return this.movimientos;
+		return this.cantidadDeMovimientos;
 	}
 
 }
