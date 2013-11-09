@@ -30,7 +30,7 @@ public class JuegoTest {
 	}
 	
 	@Test
-	public void testRealizarJugadaEnTodasDireccionesPosibles(){
+	public void testRealizarJugadaEnTodasDireccionesPosibles() {
 		Juego unJuego = new Juego(5,5,'M');
 		unJuego.realizarJugadaEnDireccion('S');
 		unJuego.realizarJugadaEnDireccion('S');
@@ -40,6 +40,20 @@ public class JuegoTest {
 		unJuego.realizarJugadaEnDireccion('O');
 		assertEquals(unJuego.movimientos(),6);
 		assertEquals(unJuego.posicionDelVehiculo(),"1,1");
+	}
+	
+	@Test
+	public void testDeberiaMoversePorLimites() {
+		Juego unJuego = new Juego(5,5,'M');
+		unJuego.realizarJugadaEnDireccion('E');
+		unJuego.realizarJugadaEnDireccion('E');
+		unJuego.realizarJugadaEnDireccion('E');
+		unJuego.realizarJugadaEnDireccion('E');
+		unJuego.realizarJugadaEnDireccion('S');
+		unJuego.realizarJugadaEnDireccion('S');
+		unJuego.realizarJugadaEnDireccion('S');
+		unJuego.realizarJugadaEnDireccion('S');
+		assertEquals(unJuego.posicionDelVehiculo(),"4,4");
 	}
 	
 	/*@Test
