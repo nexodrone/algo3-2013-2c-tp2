@@ -2,8 +2,6 @@ package modeloTests;
 
 import static org.junit.Assert.*;
 import modelo.Jugador;
-import modelo.Vehiculo;
-import modelo.Posicion;
 import org.junit.Test;
 
 public class JugadorTest {
@@ -34,19 +32,5 @@ public class JugadorTest {
 			assertEquals(unJugador.getCantidadDeMovimientos(),8);
 		}
 		
-		//ESTOS TEST REFIEREN AL VEHICULO
-		@Test
-		public void testJugadorNuevoDeberiaPosicionarElVehiculoEnUnaEsquina(){
-			Jugador unJugador = new Jugador("Jorge");
-			assertEquals(unJugador.getPosicionDeVehiculoComoString(),"0,0");
-		}
-
-		@Test
-		public void testJugadorDeberiaPoderCambiarDeVehiculo(){
-			Jugador unJugador = new Jugador("Jorge");
-			Vehiculo unVehiculo = unJugador.getVehiculo();
-			unJugador.cambiarDeVehiculo(new Vehiculo(new Posicion(0,0)));
-			assertNotSame(unJugador.getVehiculo(),unVehiculo);	
-		}
 				
 }
