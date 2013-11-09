@@ -16,6 +16,14 @@ public class Bocacalle {
 		this.calleOeste = new Calle();
 	}
 
+	void setCalleNorte(Calle calleNorte) {	// visibilidad en paquete
+		this.calleNorte = calleNorte;
+	}
+	
+	void setCalleOeste(Calle calleOeste) {	// visibilidad en paquete
+		this.calleOeste = calleOeste;
+	}
+
 	public Calle obtenerCalleEnDireccion(char direccion) {
 		Calle calleDevolver = new Calle();
 		switch (direccion) {
