@@ -1,27 +1,49 @@
 package modelo;
 
 public class Vector {
-    private int dirX; // representa la longitud en X del vector
-    private int dirY; // representa la longitud en Y del vector
+    protected int x, y;
 
-    public Vector(int direccionX, int direccionY) {
-        dirX = direccionX;
-        dirY = direccionY;
+    public Vector(Vector vector) {
+        this.asignar(vector);
     }
 
-    public void setX(int direccionX) {
-        dirX = direccionX;
+    public Vector(int enX, int enY) {
+        x = enX;
+        y = enY;
     }
 
-    public void setY(int direccionY) {
-        dirY = direccionY;
+    public int x() {
+        return x;
     }
 
-    public int X() {
-        return dirX;
+    public int y() {
+        return y;
     }
 
-    public int Y() {
-        return dirY;
+    public void setX(int a) {
+        x = a;
+    }
+
+    public void setY(int a) {
+        y = a;
+    }
+
+    public boolean sonIguales(Vector vector) {
+        boolean igualX = ((this.x()) == (vector.x()));
+        boolean igualY = ((this.y()) == (vector.y()));
+        return (igualX && igualY);
+    }
+
+    public void asignar(Vector vector) {
+        x = vector.x();
+        y = vector.y();
+    }
+
+    public Vector sumar(Vector vector) {
+        return new Vector(vector.x() + x, vector.y() + y);
+    }
+
+    public Vector porEscalar(int escalar) {
+        return new Vector(x * escalar, y * escalar);
     }
 }
