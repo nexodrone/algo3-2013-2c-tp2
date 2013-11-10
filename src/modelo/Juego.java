@@ -27,15 +27,46 @@ public class Juego {
 	public String posicionDelVehiculo() {
 		return this.vehiculo.getPosicion().asString();
 	}
+	
+	public boolean jugadaValida(char direccion){
+		Posicion nuevaPosicion = this.calcularSiguientePosicion(direccion);
+		if(	(nuevaPosicion.getColumna()<0) ||
+			(nuevaPosicion.getColumna()> this.tablero.getCantidadDeColumnas()) ||
+			(nuevaPosicion.getFila()<0)||
+			(nuevaPosicion.getFila()>this.tablero.getCantidadDeFilas())
+			) return false;
+		else return true;
+	}
+	
+	public Posicion calcularSiguientePosicion(char direccion){
+		int fila = this.vehiculo.getPosicion().getFila();
+		int columna = this.vehiculo.getPosicion().getColumna();
+		Posicion nuevaPosicion = new Posicion(fila,columna);
+		switch (direccion){
+			case 'N': 
+					nuevaPosicion.setFila(fila-1);
+					break;
+			case 'S':
+					nuevaPosicion.setFila(fila+1);
+					break;
+			case 'O': 
+					nuevaPosicion.setColumna(columna-1);
+					break;
+			case 'E': 
+					nuevaPosicion.setColumna(columna+1);
+					break;
+			}
+			
+		return nuevaPosicion;
+	}
 
 	public void realizarJugadaEnDireccion(char direccion) {
-		Calle calleATransitar = this.tablero.calleATransitar(this.vehiculo.getPosicion(),direccion);
-		this.vehiculo.moverPorCalle(calleATransitar);
-		this.cantidadDeMovimientos++;
-		/*Posicion pos = this.vehiculo.getPosicion();*/
-		this.vehiculo.actualizarPosicion(direccion);
-		// Antes de actualizar la posicion, se debe verificar que ningun obstaculo
-		// impida el movimiento.
+		if (jugadaValida(direccion)){
+			Posicion nuevaPosicion = this.calcularSiguientePosicion(direccion);
+			this.vehiculo.moverEnDireccion(direccion);
+			this.vehiculo.setPosicion(nuevaPosicion);
+			this.vehiculo.setBocacalle(this.tablero.bocacalleDeReferencia(nuevaPosicion));
+		} //se lanza una excepcion 
 	}
 
 			

@@ -25,7 +25,8 @@ public class Posicion {
 		return columna;
 	}
 	
-	public boolean actualizar(char direccion) {
+	/*ESTE METODO TAMPOCO HACE FALTA AHORA EL JUEGO CALCULA CUAL SERÁ LA PROXIMA POSICION SEGUN LA DIRECCION QUE SE LE PASE
+	 * public boolean actualizar(char direccion) {
 		switch(direccion) {
 		case 'N': fila--; break;
 		case 'S': fila++; break;
@@ -34,7 +35,7 @@ public class Posicion {
 		default: return false;
 		}
 		return true;
-	}
+	}*/
 	
 	public String asString(){
 		String stringFila, stringColumna;
