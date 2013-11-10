@@ -31,7 +31,7 @@ public class Jugador {
 	}
 
 	public void realizarJugadaEnDireccion(char direccion) throws MovimientoInvalidoExcepcion {
-		this.cantidadDeMovimientos = this.cantidadDeMovimientos + this.vehiculo.moverEnDireccion(direccion);
+		sumarMovimientos(this.vehiculo.moverEnDireccion(direccion));
 	}
-	
+
 }

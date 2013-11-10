@@ -8,7 +8,7 @@ public class Juego {
 		partida = new Partida(nombre,10,10);
 	}
 
-	public Partida obtenerPartidaActual() {
+	public Partida getPartidaActual() {
 		return this.partida;
 	}
 
