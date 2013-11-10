@@ -20,13 +20,19 @@ public class JuegoTest {
 	}
 
 	@Test
+	public void testDeberiaPoderCalcularseLaSiguientePosicionAlMover(){
+		Juego unJuego = new Juego(5,5,'A');
+		assertEquals(unJuego.calcularSiguientePosicion('S').asString(),"1,0");
+		
+	}
+	
+	@Test
 	public void testDeberiaMoverElVehiculoEnDireccionIndicada() {
 		Juego unJuego = new Juego(10,10,'A');
 		unJuego.realizarJugadaEnDireccion('S');
 		unJuego.realizarJugadaEnDireccion('S');
 		unJuego.realizarJugadaEnDireccion('E');
 		assertEquals(unJuego.posicionDelVehiculo(),"2,1");
-		assertEquals(unJuego.movimientos(),3);
 	}
 	
 	@Test
@@ -38,11 +44,18 @@ public class JuegoTest {
 		unJuego.realizarJugadaEnDireccion('E');
 		unJuego.realizarJugadaEnDireccion('N');
 		unJuego.realizarJugadaEnDireccion('O');
-		assertEquals(unJuego.movimientos(),6);
 		assertEquals(unJuego.posicionDelVehiculo(),"1,1");
 	}
 	
+
 	@Test
+	public void testDeberiaIndicarseSiSeQuiereJugarEnPosicionInvalida(){
+		Juego unJuego = new Juego(10,10,'A');
+		assertFalse(unJuego.jugadaValida('N'));
+		
+	}
+	
+	 @Test
 	public void testDeberiaMoversePorLimites() {
 		Juego unJuego = new Juego(5,5,'M');
 		unJuego.realizarJugadaEnDireccion('E');
@@ -56,10 +69,4 @@ public class JuegoTest {
 		assertEquals(unJuego.posicionDelVehiculo(),"4,4");
 	}
 	
-	/*@Test
-	public void testDireccionInvalidaDeberiaIndicarCuandoLaDireccionIndicadaEsInvalida(){
-		Juego unJuego = new Juego(5,5,'M');
-		boolean direccionInvalida = true;
-		assertEquals(unJuego.direccionInvalida('N'),direccionInvalida);		
-	}*/
 }

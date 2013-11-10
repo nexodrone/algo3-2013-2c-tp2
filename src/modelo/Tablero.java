@@ -6,8 +6,13 @@ import modelo.Bocacalle;
 public class Tablero {
 
 	private ArrayList<ArrayList<Bocacalle>> bocacalles;
+	private int cantidadDeFilas;
+	private int cantidadDeColumnas;
+	
 
 	public Tablero(int filas, int columnas) {
+		cantidadDeFilas = filas;
+		cantidadDeColumnas = columnas;
 		this.bocacalles = new ArrayList<ArrayList<Bocacalle>>();
 		for (int i=0; i<filas; i++) {
 			ArrayList<Bocacalle> unArray = new ArrayList<Bocacalle>();
@@ -38,9 +43,26 @@ public class Tablero {
 		return this.bocacalles.get(fila).get(columna);
 	}
 
+	/*ESTE METODO CREO QUE NO LO VAMOS A USAR MAS AHORA EL VEHICULO CONOCE LA BOCACALLE DONDE ESTA POR LO QUE NO VA A NECESITAR 
+	 * OBTENER DEL TABLERO LA CALLE A TRANSITAR, LO PUEDE HACER DIRECTAMENTE DESDE LA BOCACALLE.
 	public Calle calleATransitar(Posicion posicion, char direccion) {
 		int fila = posicion.getFila();
 		int columna = posicion.getColumna();
 		return bocacalles.get(fila).get(columna).obtenerCalleEnDireccion(direccion);
+	}*/
+	
+	public Bocacalle bocacalleDeReferencia(Posicion posicion){
+		int fila = posicion.getFila();
+		int columna = posicion.getColumna();
+		return bocacalles.get(fila).get(columna);
 	}
+	
+	public int getCantidadDeFilas(){
+		return cantidadDeFilas;
+	}
+	
+	public int getCantidadDeColumnas(){
+		return cantidadDeColumnas;
+	}
+	
 }
