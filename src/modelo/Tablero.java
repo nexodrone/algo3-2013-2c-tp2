@@ -36,15 +36,15 @@ public class Tablero {
 		}
 	}
 
-	public Bocacalle getBocacalleEnPosicion(Posicion posicion){
+	public Bocacalle getBocacalleEnPosicion(Posicion posicion) {
 		return bocacalles.get(posicion.getFila()).get(posicion.getColumna());
 	}
 
-	public int getCantidadDeFilas(){
+	public int getCantidadDeFilas() {
 		return cantidadDeFilas;
 	}
 
-	public int getCantidadDeColumnas(){
+	public int getCantidadDeColumnas() {
 		return cantidadDeColumnas;
 	}
 
