@@ -36,7 +36,7 @@ public class Tablero {
 		}
 	}
 
-	public Bocacalle bocacalleEnPosicion(Posicion posicion){
+	public Bocacalle getBocacalleEnPosicion(Posicion posicion){
 		return bocacalles.get(posicion.getFila()).get(posicion.getColumna());
 	}
 
