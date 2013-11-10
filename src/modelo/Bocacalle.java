@@ -3,41 +3,38 @@ package modelo;
 import modelo.Calle;
 
 public class Bocacalle {
-	
-	private Calle calleNorte;
-	private Calle calleSur;
-	private Calle calleEste;
-	private Calle calleOeste;
-	
-	public Bocacalle(){
+
+	private Calle calleNorte,calleSur,calleEste,calleOeste;
+
+	public Bocacalle() {
 		this.calleNorte = new Calle();
 		this.calleSur = new Calle();
 		this.calleEste = new Calle();
 		this.calleOeste = new Calle();
 	}
 
-	void setCalleNorte(Calle calleNorte) {	// visibilidad en paquete
+	void setCalleNorte(Calle calleNorte) {	/* visibilidad en paquete */
 		this.calleNorte = calleNorte;
 	}
-	
-	void setCalleOeste(Calle calleOeste) {	// visibilidad en paquete
+
+	void setCalleOeste(Calle calleOeste) {	/* visibilidad en paquete */
 		this.calleOeste = calleOeste;
 	}
 
-	public Calle obtenerCalleEnDireccion(char direccion) {
-		Calle calleDevolver = new Calle();
-		switch (direccion) {
-        case 'N': calleDevolver = this.calleNorte;
-                 break;
-        case 'S': calleDevolver = this.calleSur;
-                 break;
-        case 'E': calleDevolver = this.calleEste;
-                 break;
-        case 'O': calleDevolver = this.calleOeste;
-                 break;	
-         }
-		return calleDevolver;
+	public Calle obtenerCalleNorte() {
+		return this.calleNorte;
 	}
 
-	
+	public Calle obtenerCalleSur() {
+		return this.calleSur;
+	}
+
+	public Calle obtenerCalleEste() {
+		return this.calleEste;
+	}
+
+	public Calle obtenerCalleOeste() {
+		return this.calleOeste;
+	}
+
 }
