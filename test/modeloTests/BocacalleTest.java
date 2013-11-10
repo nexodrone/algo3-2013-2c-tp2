@@ -16,10 +16,10 @@ public class BocacalleTest {
 	@Test
 	public void testObtenerCalleEnLasDireccionesPosiblesDeberiaDevolverLaCalle(){
 		Bocacalle unaBocacalle = new Bocacalle();
-		Calle unaCalle = unaBocacalle.obtenerCalleEnDireccion('N');
-		Calle otraCalle = unaBocacalle.obtenerCalleEnDireccion('S');
-		Calle algunaCalle = unaBocacalle.obtenerCalleEnDireccion('E');
-		Calle unaCalleMas = unaBocacalle.obtenerCalleEnDireccion('O');		
+		Calle unaCalle = unaBocacalle.obtenerCalleNorte();
+		Calle otraCalle = unaBocacalle.obtenerCalleSur();
+		Calle algunaCalle = unaBocacalle.obtenerCalleEste();
+		Calle unaCalleMas = unaBocacalle.obtenerCalleOeste();		
 		assertNotNull(unaCalle);
 		assertNotNull(otraCalle);
 		assertNotNull(algunaCalle);

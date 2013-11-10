@@ -29,12 +29,5 @@ public class PartidaTest {
 		assertEquals(unaPartida.getCantidadDeMovimientosTotales(),8);		
 	}
 	
-	@Test
-	public void testPartidaDeberiaPoderAvanzarDeNivel(){
-		Partida unaPartida = new Partida("Jugador");
-		unaPartida.cambiarSiguienteNivel();
-		assertEquals(unaPartida.getNivelActual(),1);		
-	}
-	
 
 }

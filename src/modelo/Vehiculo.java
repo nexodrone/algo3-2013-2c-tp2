@@ -4,8 +4,8 @@ public class Vehiculo {
 
 	private Posicion posicion;
 	private Bocacalle bocacalle;
-	
-	public Vehiculo(Posicion posInicial){
+
+	public Vehiculo(Posicion posInicial) {
 		posicion = posInicial;
 	}
 
@@ -13,27 +13,21 @@ public class Vehiculo {
 		this.posicion = posNueva;
 	}
 
-	public void setBocacalle(Bocacalle bocacalleNueva){
+	public void setBocacalle(Bocacalle bocacalleNueva) {
 		this.bocacalle = bocacalleNueva;		
 	}
-	
-	public Bocacalle getBocacalle(){
+
+	public Bocacalle getBocacalle() {
 		return this.bocacalle;
 	}
-	
+
 	public Posicion getPosicion() {
 		return this.posicion;
 	}
-	
+
 	public void moverEnDireccion(char direccion){
 		//este método va a hacer el coche se vea afectado por las sorpresas o 
 		//obstaculos que haya en el sentido que se le indica que circule
 	}
-
-	/*ESTE METODO CREO QUE NO LO VAMOS A USAR MAS
-	 * public void actualizarPosicion(char direccion) {
-		posicion.actualizar(direccion);
-	}*/
-
 
 }

@@ -65,7 +65,7 @@ public class Juego {
 			Posicion nuevaPosicion = this.calcularSiguientePosicion(direccion);
 			this.vehiculo.moverEnDireccion(direccion);
 			this.vehiculo.setPosicion(nuevaPosicion);
-			this.vehiculo.setBocacalle(this.tablero.bocacalleDeReferencia(nuevaPosicion));
+			this.vehiculo.setBocacalle(this.tablero.bocacalleEnPosicion(nuevaPosicion));
 		} //se lanza una excepcion 
 	}
 
