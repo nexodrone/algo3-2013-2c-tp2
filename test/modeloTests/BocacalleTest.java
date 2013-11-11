@@ -1,33 +1,83 @@
 package modeloTests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import modelo.Bocacalle;
 import modelo.Calle;
+import modelo.Vector;
+
 import org.junit.Test;
 
 public class BocacalleTest {
 
-	@Test
-	public void testDeberiaCrearBocacalleNoVacia(){
-		Bocacalle unaBocacalle = new Bocacalle();
-		assertNotNull(unaBocacalle);
-	}
+    @Test
+    public void testDeberiaCrearBocacalleNoVacia() {
+        Bocacalle unaBocacalle = new Bocacalle();
+        assertNotNull(unaBocacalle);
+    }
 
-	@Test
-	public void testObtenerCalleEnLasDireccionesPosiblesDeberiaDevolverLaCalle(){
-		Bocacalle unaBocacalle = new Bocacalle();
-		Calle unaCalle = unaBocacalle.obtenerCalleNorte();
-		Calle otraCalle = unaBocacalle.obtenerCalleSur();
-		Calle algunaCalle = unaBocacalle.obtenerCalleEste();
-		Calle unaCalleMas = unaBocacalle.obtenerCalleOeste();		
-		assertNotNull(unaCalle);
-		assertNotNull(otraCalle);
-		assertNotNull(algunaCalle);
-		assertNotNull(unaCalleMas);
-	}
-	
-	@Test
-	public void testObtenerCalleEnDireccionEquivocada(){
-		
-	}
+    @Test
+    public void testParaComprobarQuelaCalleNorteNoEsNula() {
+        Vector norte = new Vector(0, 1);
+        Bocacalle unaBocaCalle = new Bocacalle();
+        Calle calleNorte = unaBocaCalle.obtenerCalleEnDireccion(norte);
+        assertNotNull(calleNorte);
+    }
+
+    @Test
+    public void testParaComprobarQuelaCalleSurNoEsNula() {
+        Vector sur = new Vector(0, -1);
+        Bocacalle unaBocaCalle = new Bocacalle();
+        Calle calleSur = unaBocaCalle.obtenerCalleEnDireccion(sur);
+        assertNotNull(calleSur);
+    }
+
+    @Test
+    public void testParaComprobarQueLaCalleEsteNoEsNula() {
+        Vector este = new Vector(1, 0);
+        Bocacalle unaBocaCalle = new Bocacalle();
+        Calle calleEste = unaBocaCalle.obtenerCalleEnDireccion(este);
+        assertNotNull(calleEste);
+
+    }
+
+    @Test
+    public void testParaComprobarQueLaCalleOesteNoEsNula() {
+        Vector oeste = new Vector(-1, 0);
+        Bocacalle unaBocaCalle = new Bocacalle();
+        Calle calleOeste = unaBocaCalle.obtenerCalleEnDireccion(oeste);
+        assertNotNull(calleOeste);
+    }
+
+    @Test
+    public void testParaComprobarQueDevuelveCorrectamenteLaCalleNorte() {
+        Vector norte = new Vector(0, 1);
+        Bocacalle unaBocaCalle = new Bocacalle();
+        Calle calleNorte = unaBocaCalle.obtenerCalleEnDireccion(norte);
+        assertEquals(calleNorte, unaBocaCalle.obtenerCalleNorte());
+    }
+
+    @Test
+    public void testParaComprobarQueDevuelveCorrectamenteLaCalleSur() {
+        Vector sur = new Vector(0, -1);
+        Bocacalle unaBocaCalle = new Bocacalle();
+        Calle calleSur = unaBocaCalle.obtenerCalleEnDireccion(sur);
+        assertEquals(calleSur, unaBocaCalle.obtenerCalleSur());
+    }
+
+    @Test
+    public void testParaComprobarQueDevuelveCorrectamenteLaCalleEste() {
+        Vector este = new Vector(1, 0);
+        Bocacalle unaBocaCalle = new Bocacalle();
+        Calle calleEste = unaBocaCalle.obtenerCalleEnDireccion(este);
+        assertEquals(calleEste, unaBocaCalle.obtenerCalleEste());
+    }
+
+    @Test
+    public void testParaComprobarQueDevuelveCorrectamenteLaCalleOeste() {
+        Vector oeste = new Vector(-1, 0);
+        Bocacalle unaBocaCalle = new Bocacalle();
+        Calle calleOeste = unaBocaCalle.obtenerCalleEnDireccion(oeste);
+        assertEquals(calleOeste, unaBocaCalle.obtenerCalleOeste());
+    }
 }
