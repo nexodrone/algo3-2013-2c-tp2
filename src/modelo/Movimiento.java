@@ -15,10 +15,6 @@ public class Movimiento {
         return direccion.y();
     }
 
-    public Vector moverseEnDireccion(Vector vectorDireccion) {
-        // La idea es que le pasan la direccion que manda el jugador, y que devuelva un vector con
-        // la direccion que se va a mover
-        // Pro:El vector es unitario con un solo componente
-
-    }
+    // public Vector moverseEnDireccion(Vector vectorDireccion) {
+    // }
 }

@@ -4,34 +4,34 @@ import modelo.excepciones.MovimientoInvalidoExcepcion;
 
 public class Jugador {
 
-	private String nickName;
-	private Vehiculo vehiculo;
-	private int cantidadDeMovimientos;
+    private String nickName;
+    private Vehiculo vehiculo;
+    private int cantidadDeMovimientos;
 
-	public Jugador(String nombre, Vehiculo vehiculo) {
-		this.vehiculo = vehiculo;
-		nickName = nombre;
-		cantidadDeMovimientos = 0;
-	}
+    public Jugador(String nombre, Vehiculo vehiculo) {
+        this.vehiculo = vehiculo;
+        nickName = nombre;
+        cantidadDeMovimientos = 0;
+    }
 
-	public String getNickName() {
-		return this.nickName;
-	}
+    public String getNickName() {
+        return this.nickName;
+    }
 
-	public Vehiculo getVehiculo() {
-		return this.vehiculo;
-	}
-	
-	public int getCantidadDeMovimientos() {
-		return this.cantidadDeMovimientos;
-	}
+    public Vehiculo getVehiculo() {
+        return this.vehiculo;
+    }
 
-	public void sumarMovimientos(int cantidad) {
-		this.cantidadDeMovimientos = this.cantidadDeMovimientos + cantidad;		
-	}
+    public int getCantidadDeMovimientos() {
+        return this.cantidadDeMovimientos;
+    }
 
-	public void realizarJugadaEnDireccion(char direccion) throws MovimientoInvalidoExcepcion {
-		sumarMovimientos(this.vehiculo.moverEnDireccion(direccion));
-	}
+    public void sumarMovimientos(int cantidad) {
+        this.cantidadDeMovimientos = this.cantidadDeMovimientos + cantidad;
+    }
+
+    public void realizarJugadaEnDireccion(Vector direccion) throws MovimientoInvalidoExcepcion {
+        sumarMovimientos(this.vehiculo.moverEnDireccion(direccion));
+    }
 
 }
