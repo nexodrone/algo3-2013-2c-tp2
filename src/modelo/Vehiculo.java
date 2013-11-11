@@ -4,79 +4,46 @@ import modelo.excepciones.MovimientoInvalidoExcepcion;
 
 public class Vehiculo {
 
-	private Posicion posicion;
-	private Tablero tablero;
+    private Posicion posicion;
+    private Tablero tablero;
 
+    public Vehiculo(Tablero tablero, Posicion posicion) {
+        this.posicion = posicion;
+        this.tablero = tablero;
+    }
 
-	public Vehiculo(Tablero tablero, Posicion posicion) {
-		this.posicion = posicion;
-		this.tablero = tablero;
-	}
+    public Posicion getPosicion() {
+        return this.posicion;
+    }
 
-	public Posicion getPosicion() {
-		return this.posicion;
-	}
+    public int moverEnDireccion(Vector direccion) throws MovimientoInvalidoExcepcion {
+        if (jugadaValida(direccion)) {
+            Posicion nuevaPosicion = calcularSiguientePosicion(direccion);
+            Bocacalle bocacalleActual = this.tablero.getBocacalleEnPosicion(posicion);
+            procesarCalle(bocacalleActual.obtenerCalleEnDireccion(direccion));
+            posicion = nuevaPosicion;
+            return 1;
 
-	public int moverEnDireccion (char direccion) throws MovimientoInvalidoExcepcion {
-		if (jugadaValida(direccion)) {
+        } else {
+            throw new MovimientoInvalidoExcepcion();
+        }
+    }
 
-			Bocacalle bocacalleActual = this.tablero.getBocacalleEnPosicion(posicion);
-			switch (direccion) {
-			case 'N':
-					procesarCalle(bocacalleActual.obtenerCalleNorte());
-					this.posicion.setFila(this.posicion.getFila()-1);
-					break;
-			case 'S':
-					procesarCalle(bocacalleActual.obtenerCalleSur());
-					this.posicion.setFila(this.posicion.getFila()+1);
-					break;
-			case 'E':
-					procesarCalle(bocacalleActual.obtenerCalleEste());
-					this.posicion.setColumna(this.posicion.getColumna()+1);
-					break;
-			case 'O':
-					procesarCalle(bocacalleActual.obtenerCalleOeste());
-					this.posicion.setColumna(this.posicion.getColumna()-1);
-					break;
-			}
-			return 1;
+    private boolean jugadaValida(Vector direccion) {
+        Posicion nuevaPosicion = this.calcularSiguientePosicion(direccion);
+        return tablero.posicionValida(nuevaPosicion);
+        // -----tablero tiene que validar que la posicion sea valida o no, no el vehiculo
+    }
 
-		} else { throw new MovimientoInvalidoExcepcion(); }
-	}
+    private Posicion calcularSiguientePosicion(Vector direccion) {
+        Posicion nuevaPosicion = posicion.copy();
+        nuevaPosicion.sumarFila(direccion.y());
+        nuevaPosicion.sumarColumna(direccion.x());
+        return nuevaPosicion;
+    }
 
-	private boolean jugadaValida(char direccion) {
-		Posicion nuevaPosicion = this.calcularSiguientePosicion(direccion);
-		if(	(nuevaPosicion.getColumna() < 0) ||
-			(nuevaPosicion.getColumna() > this.tablero.getCantidadDeColumnas()) ||
-			(nuevaPosicion.getFila() < 0)||
-			(nuevaPosicion.getFila() > this.tablero.getCantidadDeFilas())
-			) return false;
-		else return true;
-	}
+    private void procesarCalle(Calle calle) {
 
-	private Posicion calcularSiguientePosicion(char direccion){
-		int fila = this.posicion.getFila();
-		int columna = this.posicion.getColumna();
-		Posicion nuevaPosicion = new Posicion(fila, columna);
-		switch (direccion) {
-			case 'N':
-					nuevaPosicion.setFila(fila-1);
-					break;
-			case 'S':
-					nuevaPosicion.setFila(fila+1);
-					break;
-			case 'E':
-					nuevaPosicion.setColumna(columna+1);
-					break;
-			case 'O':
-					nuevaPosicion.setColumna(columna-1);
-					break;
-			}
-		return nuevaPosicion;
-	}
+    }
 
-	private void procesarCalle(Calle calle) {
-		
-	}
-	
 }
