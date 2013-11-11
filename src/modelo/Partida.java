@@ -10,7 +10,7 @@ public class Partida {
 
 	public Partida(String nombre, int filasTablero, int columnasTablero) {
 		this.tablero = new Tablero(filasTablero,columnasTablero);
-		this.jugador = new Jugador(nombre, new Vehiculo(this.tablero,0,0));
+		this.jugador = new Jugador(nombre, new Vehiculo(this.tablero,new Posicion(0,0)));
 		this.cantidadDeMovimientosTotales = 0;
 	}
 

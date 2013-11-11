@@ -7,13 +7,9 @@ public class Vehiculo {
 	private Posicion posicion;
 	private Tablero tablero;
 
-	public Vehiculo() {
-		this.posicion = new Posicion(0,0);
-		this.tablero = new Tablero(5,5);
-	}
 
-	public Vehiculo(Tablero tablero, int filaInicial, int columnaInicial) {
-		this.posicion = new Posicion(filaInicial,columnaInicial);
+	public Vehiculo(Tablero tablero, Posicion posicion) {
+		this.posicion = posicion;
 		this.tablero = tablero;
 	}
 
