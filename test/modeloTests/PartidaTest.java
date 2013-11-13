@@ -6,23 +6,16 @@ import modelo.Partida;
 import org.junit.Test;
 
 public class PartidaTest {
-	
+
 	@Test
-	public void testNuevaPartidaNoDeberiaSerNull() {
-		Partida unaPartida = new Partida("Pirulo",10,10);
+	public void testDeberiaCrearPartida() {
+		Partida unaPartida = new Partida();
 		assertNotNull(unaPartida);
 	}
 
 	@Test
-	public void testPartidaNuevaDeberiaCrearseSinMovimientosRealizados(){
-		Partida unaPartida = new Partida("Pirulo",10,10);
-		assertEquals(unaPartida.movimientosRealizadosEnTotal(),0);
+	public void testDeberiaDevolverMovimientosTotales() {
+		Partida unaPartida = new Partida();
+		assertEquals(unaPartida.getCantidadaDeMovimientosTotales(),0);
 	}
-
-	@Test
-	public void testDeberiaPonerVehiculoEnPosicionInicial() {
-		Partida unaPartida = new Partida("Pirulo",10,10);
-		assertEquals(unaPartida.posicionDelVehiculo(),"0,0");
-	}
-
 }

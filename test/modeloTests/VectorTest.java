@@ -18,14 +18,14 @@ public class VectorTest {
     public void testSonIguales() {
         Vector vector1 = new Vector(5, 5);
         Vector vector2 = new Vector(5, 5);
-        assertTrue(vector1.sonIguales(vector2));
+        assertTrue(vector1.equals(vector2));
     }
 
     @Test
     public void testNoSonIguales() {
         Vector vector1 = new Vector(5, 5);
         Vector vector2 = new Vector(5, 3);
-        assertFalse(vector1.sonIguales(vector2));
+        assertFalse(vector1.equals(vector2));
     }
 
     @Test
@@ -40,18 +40,18 @@ public class VectorTest {
     public void testSuma() {
         Vector vector1 = new Vector(1, 2);
         Vector vector2 = new Vector(5, 10);
-        assertTrue((vector1.sumar(vector2)).sonIguales(new Vector(6, 12)));
+        assertTrue((vector1.sumar(vector2)).equals(new Vector(6, 12)));
     }
 
     @Test
-    public void testporEscalar0() {
+    public void testPorEscalar0() {
         Vector vector = new Vector(5, 7);
-        assertTrue(vector.porEscalar(0).sonIguales(new Vector(0, 0)));
+        assertTrue(vector.porEscalar(0).equals(new Vector(0, 0)));
     }
 
     @Test
-    public void testporEscalar() {
+    public void testPorEscalar() {
         Vector vector = new Vector(5, 7);
-        assertTrue(vector.porEscalar(3).sonIguales(new Vector(15, 21)));
+        assertTrue(vector.porEscalar(3).equals(new Vector(15, 21)));
     }
 }

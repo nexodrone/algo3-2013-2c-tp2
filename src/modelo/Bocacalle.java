@@ -11,38 +11,22 @@ public class Bocacalle {
         this.calleOeste = new Calle();
     }
 
-    void setCalleNorte(Calle calleNorte) { /* visibilidad en paquete */
-        this.calleNorte = calleNorte;
+    void setCalleSur(Calle calleSur) { /* visibilidad en paquete */
+        this.calleSur = calleSur;
     }
 
     void setCalleOeste(Calle calleOeste) { /* visibilidad en paquete */
         this.calleOeste = calleOeste;
     }
 
-    public Calle obtenerCalleNorte() {
-        return this.calleNorte;
-    }
-
-    public Calle obtenerCalleSur() {
-        return this.calleSur;
-    }
-
-    public Calle obtenerCalleEste() {
-        return this.calleEste;
-    }
-
-    public Calle obtenerCalleOeste() {
-        return this.calleOeste;
-    }
-
     public Calle obtenerCalleEnDireccion(Vector direccion) {
-        // Creo que esto tendriamos que cambiarlo en un futuro
         if (direccion.x() == 1)
-            return obtenerCalleEste();
+            return calleEste;
         if (direccion.x() == -1)
-            return obtenerCalleOeste();
+            return calleOeste;
         if (direccion.y() == 1)
-            return obtenerCalleNorte();
-        return obtenerCalleSur();
+            return calleNorte;
+        return calleSur;
     }
+
 }

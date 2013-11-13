@@ -28,7 +28,7 @@ public class Vector {
         y = a;
     }
 
-    public boolean sonIguales(Vector vector) {
+    public boolean equals(Vector vector) {
         boolean igualX = ((this.x()) == (vector.x()));
         boolean igualY = ((this.y()) == (vector.y()));
         return (igualX && igualY);
@@ -38,6 +38,18 @@ public class Vector {
         x = vector.x();
         y = vector.y();
     }
+    public Vector copy() {
+        Vector nuevoVector = new Vector(x, y);
+        return nuevoVector;
+    }
+
+    public void incrementarX(int incremento) {
+    	x = x + incremento;
+    }
+
+    public void incrementarY(int incremento) {
+    	y = y + incremento;
+    }
 
     public Vector sumar(Vector vector) {
         return new Vector(vector.x() + x, vector.y() + y);
@@ -46,4 +58,12 @@ public class Vector {
     public Vector porEscalar(int escalar) {
         return new Vector(x * escalar, y * escalar);
     }
+
+    public String asString() {
+        String stringY, stringX;
+        stringX = String.valueOf(this.x);
+        stringY = String.valueOf(this.y);
+        return stringX + "," + stringY;
+    }
+
 }

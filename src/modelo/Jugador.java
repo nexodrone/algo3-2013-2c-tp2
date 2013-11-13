@@ -1,36 +1,29 @@
 package modelo;
 
-import modelo.excepciones.MovimientoInvalidoExcepcion;
+import excepciones.MovimientoInvalidoExcepcion;
 
 public class Jugador {
 
     private String nickName;
-    private Vehiculo vehiculo;
-    private int cantidadDeMovimientos;
-    //private Juego juegoActual;
+    private Juego juegoActual;
 
-    public Jugador(String nombre, Vehiculo vehiculo) {
-        this.vehiculo = vehiculo;
+    public Jugador(String nombre) {
         nickName = nombre;
-        cantidadDeMovimientos = 0;
+    }
+
+    public void asignarJuego(Juego juego) {
+    	juegoActual = juego;
     }
 
     public String getNickName() {
         return this.nickName;
     }
 
-    public Vehiculo getVehiculo() {
-        return this.vehiculo;
+    public Juego getJuegoActual() {
+    	return juegoActual;
     }
-
-    public int getCantidadDeMovimientos() {
-        return this.cantidadDeMovimientos;
+    
+    public void jugar(Vector direccion) throws MovimientoInvalidoExcepcion {
+    	this.juegoActual.realizarJugadaEnDireccion(direccion);
     }
-
-   
-    public void realizarJugadaEnDireccion(Vector direccion) throws MovimientoInvalidoExcepcion {
-    	//juegoActual.moverEncireccion(direccion);
-     	cantidadDeMovimientos += this.vehiculo.moverEnDireccion(direccion);
-    }
-
 }

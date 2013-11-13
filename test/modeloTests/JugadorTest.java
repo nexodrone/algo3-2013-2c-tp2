@@ -2,37 +2,36 @@ package modeloTests;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-//import static org.junit.Assert.fail;
+import modelo.Juego;
 import modelo.Jugador;
-import modelo.Posicion;
 import modelo.Tablero;
 import modelo.Vector;
 import modelo.Vehiculo;
-import modelo.excepciones.MovimientoInvalidoExcepcion;
 
 import org.junit.Test;
 
 public class JugadorTest {
 
+	@Test
+	public void testJugadorNuevoNoDebeSerNulo() {
+		Jugador unJugador = new Jugador("Pepe");
+		assertNotNull(unJugador);
+	}
+	
     @Test
-    public void testVehiculoNuevoNoDeberiaSerNulo() {
-        Jugador unJugador = new Jugador("Juansito", new Vehiculo(new Tablero(5, 5), new Posicion(0, 0)));
-        assertNotNull(unJugador);
+    public void testDeberiaDevolverNombre() {
+        Jugador unJugador = new Jugador("Juansito");
+        assertEquals(unJugador.getNickName(),"Juansito");
     }
 
     @Test
-    public void testJugadorDeberiaCrearseConNombreIndicado() {
-        Jugador unJugador = new Jugador("Juansito", new Vehiculo(new Tablero(5, 5), new Posicion(0, 0)));
-        assertEquals(unJugador.getNickName(), "Juansito");
+    public void testJugadorDebePoderEntrarEnJuego() {
+        Jugador unJugador = new Jugador("Juansito");
+        unJugador.asignarJuego(new Juego(new Tablero(5,5), new Vehiculo(new Vector(0,0), 0), new Vector(3,5)));
+        assertNotNull(unJugador.getJuegoActual());
     }
 
-    @Test
-    public void testJugadorNuevoDeberiaCrearseConNingunMovimiento() {
-        Jugador unJugador = new Jugador("Juansito", new Vehiculo(new Tablero(5, 5), new Posicion(0, 0)));
-        assertEquals(unJugador.getCantidadDeMovimientos(), 0);
-    }
-
-    @Test
+/*    @Test
     public void testFuncionamientoDeMovimientos() throws MovimientoInvalidoExcepcion {
         Vector este = new Vector(1, 0);
         Vector norte = new Vector(0, 1);
@@ -46,7 +45,7 @@ public class JugadorTest {
         unJugador.realizarJugadaEnDireccion(sur);
         assertEquals(vehiculo.getPosicion().asString(), "3,2"); // Para que?
         assertEquals(unJugador.getCantidadDeMovimientos(), 4);
-    }
+    } */
 
    // @Test
     //public void testFuncionamientoDeExcepcion() throws MovimientoInvalidoExcepcion {
