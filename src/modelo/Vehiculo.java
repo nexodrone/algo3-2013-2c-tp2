@@ -1,48 +1,42 @@
 package modelo;
 
-import modelo.excepciones.MovimientoInvalidoExcepcion;
+import modelo.Calle;
 
 public class Vehiculo {
 
-    private Posicion posicion;
-    private Tablero tablero;
+    private Vector posicion;
+    private int cantidadDeMovimientos;
 
-    public Vehiculo(Tablero tablero, Posicion posicion /** puntaje int*/) {
-        this.posicion = posicion;
-        this.tablero = tablero;
+    public Vehiculo(Vector posicionNueva, int puntaje) {
+        this.posicion = posicionNueva;
+        this.cantidadDeMovimientos = puntaje;
     }
 
-    public Posicion getPosicion() {
+    public Vector getPosicion() {
         return this.posicion;
     }
 
-    public int moverEnDireccion(Vector direccion) throws MovimientoInvalidoExcepcion {
-        if (jugadaValida(direccion)) {
-            	Posicion nuevaPosicion = calcularSiguientePosicion(direccion);
-            	Bocacalle bocacalleActual = this.tablero.getBocacalleEnPosicion(posicion);
-            	procesarCalle(bocacalleActual.obtenerCalleEnDireccion(direccion));
-            	posicion = nuevaPosicion;
-            return 1;
-
-        } else {
-            throw new MovimientoInvalidoExcepcion();
-        }
+    public int getCantidadDeMovimientos() {
+        return this.cantidadDeMovimientos;
     }
 
-    private boolean jugadaValida(Vector direccion) {
-        Posicion nuevaPosicion = this.calcularSiguientePosicion(direccion);
-        return tablero.posicionValida(nuevaPosicion);
-        // -----tablero tiene que validar que la posicion sea valida o no, no el vehiculo
+    public void moverEnDireccion(Vector direccion) {
+    	// Aca supuestamente pasa por calle (si puede),
+    	// pero necesita la bocacalle. Como ahora no conoce a tablero,
+    	// lo va a tener que pedir al juego
+    	pasarPorCalle(new Calle());
+    	cantidadDeMovimientos = cantidadDeMovimientos + 1;
+    	this.posicion = calcularSiguientePosicion(direccion);
     }
 
-    private Posicion calcularSiguientePosicion(Vector direccion) {
-        Posicion nuevaPosicion = posicion.copy();
-        nuevaPosicion.sumarFila(direccion.y());
-        nuevaPosicion.sumarColumna(direccion.x());
+    public Vector calcularSiguientePosicion(Vector direccion) {
+        Vector nuevaPosicion = this.posicion.copy();
+        nuevaPosicion.incrementarY(direccion.y());
+        nuevaPosicion.incrementarX(direccion.x());
         return nuevaPosicion;
     }
 
-    private void procesarCalle(Calle calle) {
+    private void pasarPorCalle(Calle calle) {
 
     }
 
