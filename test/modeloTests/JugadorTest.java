@@ -33,14 +33,6 @@ public class JugadorTest {
     }
 
     @Test
-    public void testSumarMovimientosAUnJugadorDeberiaAumentarCantidadDeMovimientos() {
-        Jugador unJugador = new Jugador("Juansito", new Vehiculo(new Tablero(5, 5), new Posicion(0, 0)));
-        unJugador.sumarMovimientos(5);
-        unJugador.sumarMovimientos(3);
-        assertEquals(unJugador.getCantidadDeMovimientos(), 8);
-    }
-
-    @Test
     public void testFuncionamientoDeMovimientos() throws MovimientoInvalidoExcepcion {
         Vector este = new Vector(1, 0);
         Vector norte = new Vector(0, 1);

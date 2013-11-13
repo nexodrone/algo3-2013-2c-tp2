@@ -7,6 +7,7 @@ public class Jugador {
     private String nickName;
     private Vehiculo vehiculo;
     private int cantidadDeMovimientos;
+    //private Juego juegoActual;
 
     public Jugador(String nombre, Vehiculo vehiculo) {
         this.vehiculo = vehiculo;
@@ -26,12 +27,10 @@ public class Jugador {
         return this.cantidadDeMovimientos;
     }
 
-    public void sumarMovimientos(int cantidad) {
-        this.cantidadDeMovimientos = this.cantidadDeMovimientos + cantidad;
-    }
-
+   
     public void realizarJugadaEnDireccion(Vector direccion) throws MovimientoInvalidoExcepcion {
-        sumarMovimientos(this.vehiculo.moverEnDireccion(direccion));
+    	//juegoActual.moverEncireccion(direccion);
+     	cantidadDeMovimientos += this.vehiculo.moverEnDireccion(direccion);
     }
 
 }

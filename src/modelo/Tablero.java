@@ -12,9 +12,9 @@ public class Tablero {
         this.cantidadDeFilas = filas;
         this.cantidadDeColumnas = columnas;
         this.bocacalles = new ArrayList<ArrayList<Bocacalle>>();
-        for (int i = 0; i < filas; i++) {
+        for (int i = 0; i < filas+1; i++) {
             ArrayList<Bocacalle> unArray = new ArrayList<Bocacalle>();
-            for (int j = 0; j < columnas; j++) {
+            for (int j = 0; j < columnas+1; j++) {
                 unArray.add(new Bocacalle());
             }
             this.bocacalles.add(unArray);
@@ -50,20 +50,20 @@ public class Tablero {
     }
 
     public boolean posicionValida(Posicion posicion) {
-        if (posicionValidaFila(posicion.getFila()) == false || posicionValidaColumna(posicion.getColumna()) == false) {
+        if (filaValida(posicion.getFila()) == false || columnaValida(posicion.getColumna()) == false) {
             return false;
         }
         return true;
     }
 
-    private boolean posicionValidaFila(int filaPosicion) {
-        if (filaPosicion < cantidadDeFilas || filaPosicion > cantidadDeFilas)
+    private boolean filaValida(int filaPosicion) {
+        if (filaPosicion < 0 || filaPosicion > cantidadDeFilas)
             return false;
         return true;
     }
 
-    private boolean posicionValidaColumna(int columnaPosicion) {
-        if (columnaPosicion < cantidadDeFilas || columnaPosicion > cantidadDeFilas)
+    private boolean columnaValida(int columnaPosicion) {
+    	if (columnaPosicion < 0 || columnaPosicion > cantidadDeColumnas)
             return false;
         return true;
     }

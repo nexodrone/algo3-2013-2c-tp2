@@ -11,7 +11,7 @@ public class Vector {
         x = enX;
         y = enY;
     }
-
+  
     public int x() {
         return x;
     }
