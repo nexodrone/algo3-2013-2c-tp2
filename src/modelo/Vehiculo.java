@@ -2,15 +2,10 @@ package modelo;
 
 import modelo.Calle;
 
-public class Vehiculo {
+public abstract class Vehiculo {
 
-    private Vector posicion;
-    private int cantidadDeMovimientos;
-
-    public Vehiculo(Vector posicionInicial, int puntajeInicial) {
-        this.posicion = posicionInicial;
-        this.cantidadDeMovimientos = puntajeInicial;
-    }
+    protected Vector posicion;
+    protected int cantidadDeMovimientos;
 
     public Vector getPosicion() {
         return this.posicion;
@@ -25,7 +20,7 @@ public class Vehiculo {
     	// pero necesita la bocacalle. Como ahora no conoce a tablero,
     	// lo va a tener que pedir al juego
     	pasarPorCalle(new Calle());
-    	cantidadDeMovimientos = cantidadDeMovimientos + 1;
+    	this.cantidadDeMovimientos = cantidadDeMovimientos + 1;
     	this.posicion = calcularSiguientePosicion(direccion);
     }
 
@@ -36,8 +31,6 @@ public class Vehiculo {
         return nuevaPosicion;
     }
 
-    private void pasarPorCalle(Calle calle) {
-
-    }
+    protected abstract void pasarPorCalle(Calle calle);
 
 }
