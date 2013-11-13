@@ -7,7 +7,7 @@ public class Vehiculo {
     private Posicion posicion;
     private Tablero tablero;
 
-    public Vehiculo(Tablero tablero, Posicion posicion) {
+    public Vehiculo(Tablero tablero, Posicion posicion /** puntaje int*/) {
         this.posicion = posicion;
         this.tablero = tablero;
     }
@@ -18,10 +18,10 @@ public class Vehiculo {
 
     public int moverEnDireccion(Vector direccion) throws MovimientoInvalidoExcepcion {
         if (jugadaValida(direccion)) {
-            Posicion nuevaPosicion = calcularSiguientePosicion(direccion);
-            Bocacalle bocacalleActual = this.tablero.getBocacalleEnPosicion(posicion);
-            procesarCalle(bocacalleActual.obtenerCalleEnDireccion(direccion));
-            posicion = nuevaPosicion;
+            	Posicion nuevaPosicion = calcularSiguientePosicion(direccion);
+            	Bocacalle bocacalleActual = this.tablero.getBocacalleEnPosicion(posicion);
+            	procesarCalle(bocacalleActual.obtenerCalleEnDireccion(direccion));
+            	posicion = nuevaPosicion;
             return 1;
 
         } else {

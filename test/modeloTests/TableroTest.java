@@ -33,44 +33,36 @@ public class TableroTest {
     }
 
     @Test
-    public void testParaComprobarQueValidaCorrectamenteLasFilasMenoresACero() {
+    public void testDePosicionConFilaFueraDeRangoDeberiaSerInavildaSinImportarLaColumna() {
         Tablero tablero = new Tablero(10, 10);
-        int filaInvalida = -1;
         for (int i = 0; i < 10; i++) {
-            Posicion unaPosicion = new Posicion(i, filaInvalida);
+            Posicion unaPosicion = new Posicion(-1,i);
             assertFalse(tablero.posicionValida(unaPosicion));
         }
     }
 
     @Test
-    public void testParaComprobarQueValidaCorrectamenteLasPosicionConFilaMayorACantidadDeFilas() {
-        int cantidadDeFilas = 10;
-        Tablero tablero = new Tablero(cantidadDeFilas, 10);
-        int filaInvalida = cantidadDeFilas;
-        for (int i = 1; i < 10; i++) {
-            Posicion unaPosicion = new Posicion(i, filaInvalida);
-            assertFalse(tablero.posicionValida(unaPosicion));
-        }
-    }
-
-    @Test
-    public void testParaComprobarQueValidaCorrectamenteLasColumnasMenoresACero() {
+    public void testPosicionDelVerticeDelTableroDeberiaSerValida() {
         Tablero tablero = new Tablero(10, 10);
-        int columnaInvalida = -1;
-        for (int i = 0; i < 10; i++) {
-            Posicion unaPosicion = new Posicion(columnaInvalida, i);
-            assertFalse(tablero.posicionValida(unaPosicion));
+        Posicion unaPosicion = new Posicion(10, 10);
+        assertEquals(tablero.posicionValida(unaPosicion),true);
         }
-    }
 
     @Test
-    public void testParaComprobarQueValidaCorrectamenteLasColumnasMayorACantidadDeFilas() {
-        int cantidadDeColumnas = 10;
-        Tablero tablero = new Tablero(10, cantidadDeColumnas);
-        int columnaInvalida = cantidadDeColumnas;
-        for (int i = 0; i < cantidadDeColumnas; i++) {
-            Posicion unaPosicion = new Posicion(columnaInvalida, i);
-            assertFalse(tablero.posicionValida(unaPosicion));
+    public void testPosicionConColumnaMayorACantidadDeColumnasDelTableroNoDeberiaSerValida() {
+        Tablero tablero = new Tablero(10, 10);
+        Posicion unaPosicion = new Posicion(0, 11);
+        assertFalse(tablero.posicionValida(unaPosicion));
+        }
+  
+    @Test
+    public void testTodasLasPosicionesContenidasEnElTableroDeberianSerValidas() {
+        Tablero tablero = new Tablero(10,10);
+        for (int i = 0; i < 10; i++) {
+        	for (int j=0; j <10;j++){
+            Posicion unaPosicion = new Posicion(i,j);
+            assertEquals(tablero.posicionValida(unaPosicion),true);
+        	}
         }
     }
 }

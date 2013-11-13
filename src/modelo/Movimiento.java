@@ -15,6 +15,11 @@ public class Movimiento {
         return direccion.y();
     }
 
+    public void moverEnDireccionNorte(int cantidad){
+    	direccion.setY(-cantidad);
+    	direccion.setX(0);
+    }
+    
     // public Vector moverseEnDireccion(Vector vectorDireccion) {
     // }
 }
