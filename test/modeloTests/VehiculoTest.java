@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import modelo.Vector;
 import modelo.Vehiculo;
+import modelo.VehiculoAuto;
 
 import org.junit.Test;
 
@@ -13,19 +14,19 @@ public class VehiculoTest {
 
     @Test
     public void testDeberiaCrearVehiculo() {
-        Vehiculo unVehiculo = new Vehiculo(new Vector(2,2), 0);
-        assertNotNull(unVehiculo);
+    	Vehiculo vehiculo = new VehiculoAuto(new Vector(2,2), 0);
+        assertNotNull(vehiculo);
     }
 
     @Test
     public void testVehiculoDeberiaQuedarseEnPosicionIndicada() {
-    	Vehiculo unVehiculo = new Vehiculo(new Vector(2,3), 0);
+    	Vehiculo unVehiculo = new VehiculoAuto(new Vector(2,3), 0);
         assertEquals(unVehiculo.getPosicion().asString(), "2,3");
     }
 
     @Test
     public void testPoderMoverseEnTodasDireccionesPosibles() throws MovimientoInvalidoExcepcion {
-    	Vehiculo unVehiculo = new Vehiculo(new Vector(2,3), 0);
+    	Vehiculo unVehiculo = new VehiculoAuto(new Vector(2,3), 0);
     	Vector norte = new Vector(0,1);
     	Vector sur = new Vector(0,-1);
     	Vector este = new Vector(1,0);
