@@ -7,9 +7,9 @@ public class Vehiculo {
     private Vector posicion;
     private int cantidadDeMovimientos;
 
-    public Vehiculo(Vector posicionNueva, int puntaje) {
-        this.posicion = posicionNueva;
-        this.cantidadDeMovimientos = puntaje;
+    public Vehiculo(Vector posicionInicial, int puntajeInicial) {
+        this.posicion = posicionInicial;
+        this.cantidadDeMovimientos = puntajeInicial;
     }
 
     public Vector getPosicion() {
