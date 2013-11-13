@@ -34,6 +34,11 @@ public abstract class Vehiculo {
 	public void sumarMovimientos(int movimientos) {
 		this.cantidadDeMovimientos = this.cantidadDeMovimientos + movimientos;
 	}
+	
+	public void aplicarPorcentajeAMovimientos(int porcentaje) {
+		float movimientosResultanres = this.cantidadDeMovimientos + this.cantidadDeMovimientos*porcentaje/100;
+		this.cantidadDeMovimientos = Math.round(movimientosResultanres);
+	}
 
     protected abstract void pasarPorCalle(Calle calle);
 
