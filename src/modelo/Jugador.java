@@ -4,11 +4,11 @@ import excepciones.MovimientoInvalidoExcepcion;
 
 public class Jugador {
 
-    private String nickName;
+    private String nombre;
     private Juego juegoActual;
 
     public Jugador(String nombre) {
-        nickName = nombre;
+        this.nombre = nombre;
     }
 
     public void asignarJuego(Juego juego) {
@@ -16,7 +16,7 @@ public class Jugador {
     }
 
     public String getNickName() {
-        return this.nickName;
+        return this.nombre;
     }
 
     public Juego getJuegoActual() {
