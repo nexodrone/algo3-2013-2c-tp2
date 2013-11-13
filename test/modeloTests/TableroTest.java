@@ -16,6 +16,18 @@ public class TableroTest {
     }
 
     @Test
+    public void testDeberiaDevolverCantidadDeColumnas() {
+        Tablero unTablero = new Tablero(4,6);
+        assertEquals(unTablero.getCantidadDeColumnas(),4);
+    }
+
+    @Test
+    public void testDeberiaDevolverCantidadDeFilas() {
+        Tablero unTablero = new Tablero(4,6);
+        assertEquals(unTablero.getCantidadDeFilas(),6);
+    }    
+    
+    @Test
     public void testObtenerBocacalleATransitarDeUnaPosicionValidaNoDeberiaSerNula() {
         Tablero unTablero = new Tablero(10, 10);
         Bocacalle unaBocacalle = unTablero.getBocacalleEnPosicion(new Vector(3, 4));

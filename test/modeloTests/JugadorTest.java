@@ -10,6 +10,8 @@ import modelo.Vehiculo;
 
 import org.junit.Test;
 
+import excepciones.MovimientoInvalidoExcepcion;
+
 public class JugadorTest {
 
 	@Test
@@ -30,38 +32,14 @@ public class JugadorTest {
         unJugador.asignarJuego(new Juego(new Tablero(5,5), new Vehiculo(new Vector(0,0), 0), new Vector(3,5)));
         assertNotNull(unJugador.getJuegoActual());
     }
-
-/*    @Test
-    public void testFuncionamientoDeMovimientos() throws MovimientoInvalidoExcepcion {
-        Vector este = new Vector(1, 0);
-        Vector norte = new Vector(0, 1);
-        Vector sur = new Vector(0, -1);
-        Tablero tablero = new Tablero(5, 5);
-        Vehiculo vehiculo = new Vehiculo(tablero, new Posicion(3, 0));
-        Jugador unJugador = new Jugador("Juansito", vehiculo);
-        unJugador.realizarJugadaEnDireccion(este);
-        unJugador.realizarJugadaEnDireccion(norte);
-        unJugador.realizarJugadaEnDireccion(este);
-        unJugador.realizarJugadaEnDireccion(sur);
-        assertEquals(vehiculo.getPosicion().asString(), "3,2"); // Para que?
-        assertEquals(unJugador.getCantidadDeMovimientos(), 4);
-    } */
-
-   // @Test
-    //public void testFuncionamientoDeExcepcion() throws MovimientoInvalidoExcepcion {
-      //  Vector oeste = new Vector(-1, 0);
-      //  Vector norte = new Vector(0, 1);
-      //  Tablero tablero = new Tablero(5, 5);
-      //  Vehiculo vehiculo = new Vehiculo(tablero, new Posicion(1, 2));
-      //  Jugador unJugador = new Jugador("Juansito", vehiculo);
-      //  unJugador.realizarJugadaEnDireccion(oeste);
-      //  unJugador.realizarJugadaEnDireccion(norte);
-      //  try {
-      //      unJugador.realizarJugadaEnDireccion(norte);
-      //      fail("Excepcion esperada");
-      //  } catch (MovimientoInvalidoExcepcion expect) {
-      //  };
-      //  assertEquals(unJugador.getCantidadDeMovimientos(), 2);
-   // }
-    // esta mal esta prueba, no tendria que haber un try, los test negativos se hacen de otra forma
+    
+    @Test
+    public void testJugadorDebePoderJugar() throws MovimientoInvalidoExcepcion {
+        Jugador unJugador = new Jugador("Juansito");
+        Vector norte = new Vector(0,1);
+        Vehiculo vehiculo = new Vehiculo(new Vector(0,1), 0);
+        unJugador.asignarJuego(new Juego(new Tablero(5,5), vehiculo, new Vector(3,5)));
+        unJugador.jugar(norte);
+        assertEquals(vehiculo.getPosicion().asString(),"0,2");
+    }
 }
