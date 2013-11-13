@@ -31,6 +31,10 @@ public abstract class Vehiculo {
         return nuevaPosicion;
     }
 
+	public void sumarMovimientos(int movimientos) {
+		this.cantidadDeMovimientos = this.cantidadDeMovimientos + movimientos;
+	}
+
     protected abstract void pasarPorCalle(Calle calle);
 
 }
