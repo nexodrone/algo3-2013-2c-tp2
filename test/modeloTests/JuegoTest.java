@@ -43,7 +43,8 @@ public class JuegoTest {
 		Juego unJuego = new Juego(tablero, vehiculo, new Vector(0,0));
     	Vector sur = new Vector(0,-1);
     	try {	unJuego.realizarJugadaEnDireccion(sur);
-    			fail("Excepcion esperada");		} catch (MovimientoInvalidoExcepcion esperada) {};
+    			fail("Excepcion esperada");		
+    		} catch (MovimientoInvalidoExcepcion esperada) {};
         assertEquals(unJuego.getVehiculo().getCantidadDeMovimientos(), 1);
 /* se comprueba que al intentar a mover en direccion invalida NO SE SUMAN MOVIMIENTOS */
     }

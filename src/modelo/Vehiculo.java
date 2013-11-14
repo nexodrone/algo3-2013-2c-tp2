@@ -1,5 +1,7 @@
 package modelo;
 
+import excepciones.PasajeBloqueadoPorPiqueteExcepcion;
+
 public abstract class Vehiculo {
 
     protected Vector posicion;
@@ -13,6 +15,14 @@ public abstract class Vehiculo {
         return this.cantidadDeMovimientos;
     }
 
+    
+    public void moverEnDireccion(Vector direccion, Calle calleACircular){
+    	pasarPorCalle(calleACircular);
+    	cantidadDeMovimientos= cantidadDeMovimientos +1;
+    	posicion = calcularSiguientePosicion(direccion);
+    	
+    }
+    
     public void moverEnDireccion(Vector direccion) {
         // Aca supuestamente pasa por calle (si puede),
         // pero necesita la bocacalle. Como ahora no conoce a tablero,
@@ -42,6 +52,9 @@ public abstract class Vehiculo {
         Juego.cambiarVehiculo(vehiculo);
     }
 
+    
+    //protected abstract void pasarPorCalle(Calle calle);
+    
     protected abstract void pasarPorCalle(Calle calle);
-
+    
 }
