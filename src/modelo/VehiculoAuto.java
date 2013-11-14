@@ -5,8 +5,8 @@ import excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
 public class VehiculoAuto extends Vehiculo {
 
-    public VehiculoAuto(Vector posicionInicial, int puntajeInicial) {
-        super(posicionInicial, puntajeInicial);
+    public VehiculoAuto(Vector posicionInicial) {
+        super(posicionInicial);
         // esta porcion de codigo esta tanto en vehiculo4x4 y vehiculoMoto
     }
 
@@ -27,7 +27,8 @@ public class VehiculoAuto extends Vehiculo {
     }
 
     public static Vehiculo nuevoVehiculo(Vehiculo vehiculo) {
-        Vehiculo nuevoAuto = new VehiculoAuto(vehiculo.getPosicion(), vehiculo.getCantidadDeMovimientos());
+        Vehiculo nuevoAuto = new VehiculoAuto(vehiculo.getPosicion());
+        nuevoAuto.setCantidadDeMovimientos(vehiculo.getCantidadDeMovimientos());
         return nuevoAuto;
     }
 

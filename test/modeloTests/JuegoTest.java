@@ -16,7 +16,7 @@ public class JuegoTest {
 	@Test
 	public void testDeberiaCrearJuego() {
 		Tablero tablero = new Tablero(10,10);
-		Vehiculo vehiculo = new VehiculoAuto(new Vector(0,0), 0);
+		Vehiculo vehiculo = new VehiculoAuto(new Vector(0,0));
 		Vector posicionGanadora = new Vector(6,10);
 		Juego unJuego = new Juego(tablero, vehiculo, posicionGanadora);
 		assertNotNull(unJuego);
@@ -24,7 +24,7 @@ public class JuegoTest {
     @Test
     public void testVehiculoDeberiaMoversePorLimitesDelTablero() throws MovimientoInvalidoExcepcion {
 		Tablero tablero = new Tablero(6,3);
-		Vehiculo vehiculo = new VehiculoAuto(new Vector(4,0), 0);
+		Vehiculo vehiculo = new VehiculoAuto(new Vector(4,0));
 		Juego unJuego = new Juego(tablero, vehiculo, new Vector(0,0));
     	Vector norte = new Vector(0,1);
     	Vector este = new Vector(1,0);
@@ -39,7 +39,8 @@ public class JuegoTest {
     @Test
     public void testDeberiaTirarExcepcionAlMoverseFueraDelTablero() throws MovimientoInvalidoExcepcion {
 		Tablero tablero = new Tablero(6,3);
-		Vehiculo vehiculo = new VehiculoAuto(new Vector(4,0), 1);
+		Vehiculo vehiculo = new VehiculoAuto(new Vector(4,0));
+		vehiculo.setCantidadDeMovimientos(1);
 		Juego unJuego = new Juego(tablero, vehiculo, new Vector(0,0));
     	Vector sur = new Vector(0,-1);
     	try {	unJuego.realizarJugadaEnDireccion(sur);
