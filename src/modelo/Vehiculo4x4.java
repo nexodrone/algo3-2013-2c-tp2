@@ -1,5 +1,7 @@
 package modelo;
 
+import excepciones.PasajeBloqueadoPorPiqueteExcepcion;
+
 public class Vehiculo4x4 extends Vehiculo {
 
     public Vehiculo4x4(Vector posicionInicial, int puntajeInicial) {
@@ -10,6 +12,10 @@ public class Vehiculo4x4 extends Vehiculo {
     }
 
     protected void pasarPorCalle(Calle calle) {
+    	Obstaculo obstaculoAAtravesar = calle.getObstaculo();
+    	try {
+    		obstaculoAAtravesar.interactuarCon(this);
+    	} catch (PasajeBloqueadoPorPiqueteExcepcion esperada) {};
     }
 
     public void aplicarEvento(Sorpresa sorpresa) {

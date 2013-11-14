@@ -24,9 +24,25 @@ public class Juego {
 
     public void realizarJugadaEnDireccion(Vector direccion) throws MovimientoInvalidoExcepcion {
     	Vector nuevaPosicion = vehiculo.calcularSiguientePosicion(direccion);
-    	boolean posicionValida = true;
-    	if (!posicionGanadora.equals(nuevaPosicion)) { posicionValida = this.tablero.posicionValida(nuevaPosicion); };
-    	if (posicionValida) { vehiculo.moverEnDireccion(direccion); } else throw new MovimientoInvalidoExcepcion();
+    	if (!posicionGanadora.equals(nuevaPosicion)) { 
+    		if (this.tablero.posicionValida(nuevaPosicion)){
+    			//LE TENEMOS QUE PASAR LA CALLE A CIRCULAR AL VEHICULO PORQUE PUEDE ESTAR QUERIENDO PASAR POR UNA CALLE CON PIQUETE!
+    			//Calle calleACircular = obtenerCalleACircular(vehiculo.getPosicion(),direccion);
+    			//vehiculo.moverEnDireccion(direccion,calleACircular);
+    			vehiculo.moverEnDireccion(direccion);
+    		} else throw new MovimientoInvalidoExcepcion();
+    	}else{
+    		//la posicion ganadora siempre es válida
+    		vehiculo.moverEnDireccion(direccion);
+    	}
     }
 
+    /*
+	private Calle obtenerCalleACircular(Vector posicion, Vector direccion) {
+		Bocacalle bocacalleACircular = tablero.getBocacalleEnPosicion(posicion);
+		Calle calleACircular = bocacalleACircular.obtenerCalleEnDireccion(direccion);
+		return calleAcircular;
+	}*/
+   
+    
 }
