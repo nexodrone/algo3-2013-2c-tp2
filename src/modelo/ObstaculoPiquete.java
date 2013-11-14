@@ -13,7 +13,7 @@ public class ObstaculoPiquete extends Obstaculo {
 	}
 
 	public void interactuarCon(VehiculoMoto moto) {
-		moto.sumarMovimientos(3);
+		moto.sumarMovimientos(2);
 	}
 
 }
