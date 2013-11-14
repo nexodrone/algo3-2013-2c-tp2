@@ -14,7 +14,8 @@ public class ObstaculoPiqueteTest {
 
 	@Test
 	public void testDeberiaTirarExcepcionSiPasa4x4() throws PasajeBloqueadoPorPiqueteExcepcion {
-		Vehiculo4x4 todoterreno = new Vehiculo4x4(new Vector(0,0), 5);
+		Vehiculo4x4 todoterreno = new Vehiculo4x4(new Vector(0,0));
+		todoterreno.setCantidadDeMovimientos(5);
 		ObstaculoPiquete piquete = new ObstaculoPiquete();
 		try { 	piquete.interactuarCon(todoterreno);
 				fail("Excepcion esperada");
@@ -25,7 +26,8 @@ public class ObstaculoPiqueteTest {
 
 	@Test
 	public void testDeberiaTirarExcepcionSiPasaAuto() throws PasajeBloqueadoPorPiqueteExcepcion {
-		VehiculoAuto auto = new VehiculoAuto(new Vector(0,0), 5);
+		VehiculoAuto auto = new VehiculoAuto(new Vector(0,0));
+		auto.setCantidadDeMovimientos(5);
 		ObstaculoPiquete piquete = new ObstaculoPiquete();
 		try { 	piquete.interactuarCon(auto);
 				fail("Excepcion esperada");
@@ -36,7 +38,8 @@ public class ObstaculoPiqueteTest {
 	
 	@Test
 	public void testDeberiaSumar2MovimientoAMoto() {
-		VehiculoMoto moto = new VehiculoMoto(new Vector(0,0), 5);
+		VehiculoMoto moto = new VehiculoMoto(new Vector(0,0));
+		moto.setCantidadDeMovimientos(5);
 		ObstaculoPiquete piquete = new ObstaculoPiquete();
 		piquete.interactuarCon(moto);
 		assertEquals(moto.getCantidadDeMovimientos(),7);

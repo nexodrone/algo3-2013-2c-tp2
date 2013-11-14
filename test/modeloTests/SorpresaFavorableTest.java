@@ -11,9 +11,10 @@ public class SorpresaFavorableTest {
 
     @Test
     public void testDeberiaRestarCorrectamentePuntaje() {
-        VehiculoAuto auto = new VehiculoAuto(new Vector(0, 0), 76);
-        SorpresaFavorable sf = new SorpresaFavorable();
-        sf.interactuarCon(auto);
+        VehiculoAuto auto = new VehiculoAuto(new Vector(0,0));
+        auto.setCantidadDeMovimientos(76);
+        SorpresaFavorable sorpresaFavorable = new SorpresaFavorable();
+        sorpresaFavorable.interactuarCon(auto);
         assertEquals(auto.getCantidadDeMovimientos(), 61);
     }
     // Aca faltaria agregar que se comporte de la misma manera con los demas vehiculos

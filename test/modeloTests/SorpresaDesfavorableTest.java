@@ -10,7 +10,8 @@ public class SorpresaDesfavorableTest {
 
 	@Test
 	public void testDeberiaSumarCorrectamentePuntaje() {
-		VehiculoAuto auto = new VehiculoAuto(new Vector(0,0), 77);
+		VehiculoAuto auto = new VehiculoAuto(new Vector(0,0));
+		auto.setCantidadDeMovimientos(77);
 		SorpresaDesfavorable sdf = new SorpresaDesfavorable();
 		sdf.interactuarCon(auto);
 		assertEquals(auto.getCantidadDeMovimientos(),96);

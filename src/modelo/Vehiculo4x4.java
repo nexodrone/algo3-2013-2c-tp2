@@ -5,8 +5,8 @@ import excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
 public class Vehiculo4x4 extends Vehiculo {
 
-    public Vehiculo4x4(Vector posicionInicial, int puntajeInicial) {
-        super(posicionInicial, puntajeInicial);
+    public Vehiculo4x4(Vector posicionInicial) {
+        super(posicionInicial);
         // esta porcion de codigo esta tanto en VehiculoMoto y VehiculoAuto
     }
 
@@ -15,8 +15,8 @@ public class Vehiculo4x4 extends Vehiculo {
     }
 
     public static Vehiculo nuevoVehiculo(VehiculoAuto vehiculo) {
-        Vehiculo nuevoVehiculo = new Vehiculo4x4(vehiculo.getPosicion(), vehiculo.getCantidadDeMovimientos());
-        return nuevoVehiculo;
+        Vehiculo nuevoVehiculo = new Vehiculo4x4(vehiculo.getPosicion());
+      return nuevoVehiculo;
     }
 
     public void pasarPorCalle(Calle calleAPasar) throws ImposiblePasarPorCalleException {
@@ -31,8 +31,9 @@ public class Vehiculo4x4 extends Vehiculo {
     }
 
     public static Vehiculo nuevoVehiculo(Vehiculo vehiculo) {
-        Vehiculo nuevoVehiculo = new Vehiculo4x4(vehiculo.getPosicion(), vehiculo.getCantidadDeMovimientos());
-        System.out.println("devolvio una 4x4");
+        Vehiculo nuevoVehiculo = new Vehiculo4x4(vehiculo.getPosicion());
+        nuevoVehiculo.setCantidadDeMovimientos(vehiculo.getCantidadDeMovimientos());
+        //System.out.println("devolvio una 4x4");
         return nuevoVehiculo;
     }
 }

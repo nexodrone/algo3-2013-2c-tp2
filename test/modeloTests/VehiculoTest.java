@@ -16,19 +16,22 @@ public class VehiculoTest {
 
     @Test
     public void testDeberiaCrearVehiculo() {
-        Vehiculo vehiculo = new VehiculoAuto(new Vector(2, 2), 0);
+        Vehiculo vehiculo = new VehiculoAuto(new Vector(2, 2));
+        //estaba en cero
         assertNotNull(vehiculo);
     }
 
     @Test
     public void testVehiculoDeberiaQuedarseEnPosicionIndicada() {
-        Vehiculo unVehiculo = new VehiculoAuto(new Vector(2, 3), 0);
+        Vehiculo unVehiculo = new VehiculoAuto(new Vector(2, 3));
+        //estaba en cero
         assertEquals(unVehiculo.getPosicion().asString(), "2,3");
     }
 
     @Test
     public void testPoderMoverseEnTodasDireccionesPosibles() throws MovimientoInvalidoExcepcion {
-        Vehiculo unVehiculo = new VehiculoAuto(new Vector(2, 3), 0);
+        Vehiculo unVehiculo = new VehiculoAuto(new Vector(2, 3));
+        unVehiculo.setCantidadDeMovimientos(0);
         Bocacalle bocacalleNeutral = new Bocacalle();
         Vector norte = new Vector(0, 1);
         Vector sur = new Vector(0, -1);

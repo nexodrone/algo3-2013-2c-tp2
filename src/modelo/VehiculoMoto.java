@@ -3,8 +3,8 @@ package modelo;
 
 public class VehiculoMoto extends Vehiculo {
 
-    public VehiculoMoto(Vector posicionInicial, int puntajeInicial) {
-        super(posicionInicial, puntajeInicial);
+    public VehiculoMoto(Vector posicionInicial) {
+        super(posicionInicial);
         // esta porcion de codigo esta tanto vehiculo4x4 y vehiculoAuto
     }
 
@@ -20,7 +20,8 @@ public class VehiculoMoto extends Vehiculo {
     }
 
     public static Vehiculo nuevoVehiculo(Vehiculo unVehiculo) {
-        Vehiculo nuevoAuto = new VehiculoMoto(unVehiculo.getPosicion(), unVehiculo.getCantidadDeMovimientos());
+        Vehiculo nuevoAuto = new VehiculoMoto(unVehiculo.getPosicion());
+        nuevoAuto.setCantidadDeMovimientos(unVehiculo.getCantidadDeMovimientos());
         return nuevoAuto;
     }
 

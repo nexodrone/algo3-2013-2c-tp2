@@ -9,10 +9,9 @@ public abstract class Vehiculo {
     protected int cantidadDeMovimientos;
     protected Juego juego;
 
-    public Vehiculo(Vector nuevaPosicion, int movimientos) {
+    public Vehiculo(Vector nuevaPosicion) {
         posicion = nuevaPosicion;
-        cantidadDeMovimientos = movimientos;
-    }
+     }
 
     public Vector getPosicion() {
         return this.posicion;
@@ -23,10 +22,7 @@ public abstract class Vehiculo {
     }
 
     public void moverEnDireccion(Vector direccion, Calle calleAPasar) throws MovimientoNoRealizadoException {
-        // Aca supuestamente pasa por calle (si puede),
-        // pero necesita la bocacalle. Como ahora no conoce a tablero,
-        // lo va a tener que pedir al juego
-        try {
+        try{
             pasarPorCalle(calleAPasar);
         } catch (ImposiblePasarPorCalleException e) {
             throw new MovimientoNoRealizadoException();
@@ -68,4 +64,8 @@ public abstract class Vehiculo {
         juego = juegoActual;
     }
 
+    public void setCantidadDeMovimientos(int cantidad){
+    	cantidadDeMovimientos = cantidad;
+    }
+    
 }
