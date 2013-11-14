@@ -27,8 +27,6 @@ public abstract class Vehiculo {
     	try { 
     		pasarPorCalle(calleAPasar);
     	}catch(ImposiblePasarPorCalleException e) {
-    		System.out.print("Vehiculo no movido.");
-    		this.cantidadDeMovimientos = cantidadDeMovimientos + 1;
     		throw new MovimientoNoRealizadoException();
     	}
     	this.cantidadDeMovimientos = cantidadDeMovimientos + 1;
