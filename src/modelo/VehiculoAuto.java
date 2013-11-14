@@ -16,4 +16,10 @@ public class VehiculoAuto extends Vehiculo {
         sorpresa.interactuarCon(this);
 
     }
+
+    public static Vehiculo nuevoVehiculo(Vehiculo vehiculo) {
+        Vehiculo nuevoAuto = new VehiculoAuto(vehiculo.getPosicion(), vehiculo.getCantidadDeMovimientos());
+        return nuevoAuto;
+    }
+
 }

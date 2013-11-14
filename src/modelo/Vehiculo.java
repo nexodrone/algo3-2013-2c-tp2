@@ -38,6 +38,10 @@ public abstract class Vehiculo {
         this.cantidadDeMovimientos = Math.round(movimientosResultantes);
     }
 
+    public void cambiarA(Vehiculo vehiculo) {
+        Juego.cambiarVehiculo(vehiculo);
+    }
+
     protected abstract void pasarPorCalle(Calle calle);
 
 }
