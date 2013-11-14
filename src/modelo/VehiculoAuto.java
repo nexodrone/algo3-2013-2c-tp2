@@ -1,5 +1,6 @@
 package modelo;
 
+import excepciones.ImposiblePasarPorCalleException;
 import excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
 public class VehiculoAuto extends Vehiculo {
@@ -11,13 +12,17 @@ public class VehiculoAuto extends Vehiculo {
         // esta porcion de codigo esta tanto en vehiculo4x4 y vehiculoMoto
     }
 
-    protected void pasarPorCalle(Calle calle) {
-    	Obstaculo obstaculoAAtravesar = calle.getObstaculo();
-    	try {
-    		obstaculoAAtravesar.interactuarCon(this);
-    	} catch (PasajeBloqueadoPorPiqueteExcepcion esperada) {};
-    }
-    
+    public void pasarPorCalle(Calle calleAPasar) throws ImposiblePasarPorCalleException  {
+    	Obstaculo obstaculo = calleAPasar.getObstaculo();
+    	if( obstaculo != null )
+    		try {
+    			obstaculo.interactuarCon(this);
+    		}catch(PasajeBloqueadoPorPiqueteExcepcion e){
+    			System.out.print("Calle bloqueada por el Frente Piqueteros Revolucionarios.\n");
+    			throw new ImposiblePasarPorCalleException();
+    		}
+    }    
+
     public void aplicarEvento(Sorpresa sorpresa) {
         sorpresa.interactuarCon(this);
 

@@ -20,5 +20,5 @@ public class SorpresaCambioDeVehiculo extends Sorpresa {
         Vehiculo nuevoVehiculo = Vehiculo4x4.nuevoVehiculo(vehiculo);
         vehiculo.cambiarA(nuevoVehiculo);
     }
-
+	
 }

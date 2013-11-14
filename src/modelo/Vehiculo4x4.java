@@ -1,6 +1,8 @@
 package modelo;
 
-import excepciones.PasajeBloqueadoPorPiqueteExcepcion;
+import excepciones.ImposiblePasarPorCalleException;
+import excepciones.PasajeBloqueadoPorPiqueteExcepcion;;
+
 
 public class Vehiculo4x4 extends Vehiculo {
 
@@ -11,16 +13,8 @@ public class Vehiculo4x4 extends Vehiculo {
         // esta porcion de codigo esta tanto en VehiculoMoto y VehiculoAuto
     }
 
-    protected void pasarPorCalle(Calle calle) {
-    	Obstaculo obstaculoAAtravesar = calle.getObstaculo();
-    	try {
-    		obstaculoAAtravesar.interactuarCon(this);
-    	} catch (PasajeBloqueadoPorPiqueteExcepcion esperada) {};
-    }
-
     public void aplicarEvento(Sorpresa sorpresa) {
         sorpresa.interactuarCon(this);
-
     }
 
     public static Vehiculo nuevoVehiculo(VehiculoAuto vehiculo) {
@@ -28,4 +22,16 @@ public class Vehiculo4x4 extends Vehiculo {
         return nuevoVehiculo;
     }
 
+    public void pasarPorCalle(Calle calleAPasar) throws ImposiblePasarPorCalleException
+    {
+    	Obstaculo obstaculo = calleAPasar.getObstaculo();
+    	if( obstaculo != null )
+    		try {
+    			obstaculo.interactuarCon(this);
+    		}catch(PasajeBloqueadoPorPiqueteExcepcion e){
+    			System.out.print("Calle bloqueada por Castells.\n");
+    			throw new ImposiblePasarPorCalleException();
+    		}
+    }
 }
+

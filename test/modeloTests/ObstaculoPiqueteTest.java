@@ -35,11 +35,11 @@ public class ObstaculoPiqueteTest {
 	}
 	
 	@Test
-	public void testDeberiaSumar3MovimientoAMoto() {
+	public void testDeberiaSumar2MovimientoAMoto() {
 		VehiculoMoto moto = new VehiculoMoto(new Vector(0,0), 5);
 		ObstaculoPiquete piquete = new ObstaculoPiquete();
 		piquete.interactuarCon(moto);
-		assertEquals(moto.getCantidadDeMovimientos(),8);
+		assertEquals(moto.getCantidadDeMovimientos(),7);
 	}
 
 }

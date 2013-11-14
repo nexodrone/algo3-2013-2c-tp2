@@ -1,6 +1,7 @@
 package modelo;
 
 import excepciones.MovimientoInvalidoExcepcion;
+import excepciones.MovimientoNoRealizadoException;
 
 public class Juego {
 
@@ -22,27 +23,25 @@ public class Juego {
 		return this.vehiculo;
 	}
 
-    public void realizarJugadaEnDireccion(Vector direccion) throws MovimientoInvalidoExcepcion {
+    public void realizarJugadaEnDireccion(Vector direccion)
+    		throws MovimientoInvalidoExcepcion
+    {
     	Vector nuevaPosicion = vehiculo.calcularSiguientePosicion(direccion);
-    	if (!posicionGanadora.equals(nuevaPosicion)) { 
-    		if (this.tablero.posicionValida(nuevaPosicion)){
-    			//LE TENEMOS QUE PASAR LA CALLE A CIRCULAR AL VEHICULO PORQUE PUEDE ESTAR QUERIENDO PASAR POR UNA CALLE CON PIQUETE!
-    			//Calle calleACircular = obtenerCalleACircular(vehiculo.getPosicion(),direccion);
-    			//vehiculo.moverEnDireccion(direccion,calleACircular);
-    			vehiculo.moverEnDireccion(direccion);
-    		} else throw new MovimientoInvalidoExcepcion();
-    	}else{
-    		//la posicion ganadora siempre es válida
-    		vehiculo.moverEnDireccion(direccion);
+    	Bocacalle bocacalleActual = tablero.getBocacalleEnPosicion(vehiculo.getPosicion());
+    	
+    	Calle calleATransitar = bocacalleActual.obtenerCalleEnDireccion(direccion);
+    	if (tablero.posicionValida(nuevaPosicion)) {
+    		try {
+    			vehiculo.moverEnDireccion(direccion, calleATransitar);
+    		}catch(MovimientoNoRealizadoException e) {
+    			System.out.print("Perdió 1 movimiento.");
+    		}
     	}
+    	else throw new MovimientoInvalidoExcepcion();
+    	
+    	// POR ULTIMO, VERIFICAMOS SI LA JUGADA HIZO QUE HAYA GANADO.
+    	if (posicionGanadora.equals(vehiculo.getPosicion())){
+    		// GANO. ACA TERMINA LA JUGADA.
+    	}   
     }
-
-    /*
-	private Calle obtenerCalleACircular(Vector posicion, Vector direccion) {
-		Bocacalle bocacalleACircular = tablero.getBocacalleEnPosicion(posicion);
-		Calle calleACircular = bocacalleACircular.obtenerCalleEnDireccion(direccion);
-		return calleAcircular;
-	}*/
-   
-    
 }
