@@ -11,7 +11,7 @@ public class Vector {
         x = enX;
         y = enY;
     }
-  
+
     public int x() {
         return x;
     }
@@ -28,7 +28,7 @@ public class Vector {
         y = a;
     }
 
-    public boolean equals(Vector vector) {
+    public boolean sonIguales(Vector vector) {
         boolean igualX = ((this.x()) == (vector.x()));
         boolean igualY = ((this.y()) == (vector.y()));
         return (igualX && igualY);
@@ -38,17 +38,18 @@ public class Vector {
         x = vector.x();
         y = vector.y();
     }
+
     public Vector copy() {
         Vector nuevoVector = new Vector(x, y);
         return nuevoVector;
     }
 
     public void incrementarX(int incremento) {
-    	x = x + incremento;
+        x = x + incremento;
     }
 
     public void incrementarY(int incremento) {
-    	y = y + incremento;
+        y = y + incremento;
     }
 
     public Vector sumar(Vector vector) {
