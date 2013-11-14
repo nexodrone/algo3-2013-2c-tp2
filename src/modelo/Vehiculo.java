@@ -1,7 +1,5 @@
 package modelo;
 
-import modelo.Calle;
-
 public abstract class Vehiculo {
 
     protected Vector posicion;
@@ -16,12 +14,12 @@ public abstract class Vehiculo {
     }
 
     public void moverEnDireccion(Vector direccion) {
-    	// Aca supuestamente pasa por calle (si puede),
-    	// pero necesita la bocacalle. Como ahora no conoce a tablero,
-    	// lo va a tener que pedir al juego
-    	pasarPorCalle(new Calle());
-    	this.cantidadDeMovimientos = cantidadDeMovimientos + 1;
-    	this.posicion = calcularSiguientePosicion(direccion);
+        // Aca supuestamente pasa por calle (si puede),
+        // pero necesita la bocacalle. Como ahora no conoce a tablero,
+        // lo va a tener que pedir al juego
+        pasarPorCalle(new Calle());
+        this.cantidadDeMovimientos = cantidadDeMovimientos + 1;
+        this.posicion = calcularSiguientePosicion(direccion);
     }
 
     public Vector calcularSiguientePosicion(Vector direccion) {
@@ -31,14 +29,14 @@ public abstract class Vehiculo {
         return nuevaPosicion;
     }
 
-	public void sumarMovimientos(int movimientos) {
-		this.cantidadDeMovimientos = this.cantidadDeMovimientos + movimientos;
-	}
-	
-	public void aplicarPorcentajeAMovimientos(int porcentaje) {
-		float movimientosResultanres = this.cantidadDeMovimientos + this.cantidadDeMovimientos*porcentaje/100;
-		this.cantidadDeMovimientos = Math.round(movimientosResultanres);
-	}
+    public void sumarMovimientos(int movimientos) {
+        this.cantidadDeMovimientos = this.cantidadDeMovimientos + movimientos;
+    }
+
+    public void aplicarPorcentajeAMovimientos(int porcentaje) {
+        float movimientosResultantes = this.cantidadDeMovimientos + this.cantidadDeMovimientos * porcentaje / 100;
+        this.cantidadDeMovimientos = Math.round(movimientosResultantes);
+    }
 
     protected abstract void pasarPorCalle(Calle calle);
 
