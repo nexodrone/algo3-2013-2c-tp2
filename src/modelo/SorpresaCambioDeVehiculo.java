@@ -9,7 +9,7 @@ public class SorpresaCambioDeVehiculo extends Sorpresa {
     }
 
     public void interactuarCon(Vehiculo4x4 vehiculo) {
-        // a moto
+        System.out.println("entro como para cambiar el vehiculo");
         Vehiculo nuevoVehiculo = VehiculoMoto.nuevoVehiculo(vehiculo);
         vehiculo.cambiarA(nuevoVehiculo);
 
@@ -20,5 +20,5 @@ public class SorpresaCambioDeVehiculo extends Sorpresa {
         Vehiculo nuevoVehiculo = Vehiculo4x4.nuevoVehiculo(vehiculo);
         vehiculo.cambiarA(nuevoVehiculo);
     }
-	
+
 }
