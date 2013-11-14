@@ -1,7 +1,7 @@
 package modelo;
 
 import excepciones.ImposiblePasarPorCalleException;
-import excepciones.PasajeBloqueadoPorPiqueteExcepcion;;
+import excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
 
 public class Vehiculo4x4 extends Vehiculo {

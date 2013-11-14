@@ -34,7 +34,7 @@ public class Juego {
     		try {
     			vehiculo.moverEnDireccion(direccion, calleATransitar);
     		}catch(MovimientoNoRealizadoException e) {
-    			System.out.print("Perdió 1 movimiento.");
+    			System.out.print("Imposible mover en esa dirección.");
     		}
     	}
     	else throw new MovimientoInvalidoExcepcion();

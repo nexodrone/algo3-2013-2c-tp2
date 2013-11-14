@@ -25,7 +25,7 @@ public class Vehiculo4x4Test {
 	}
 	
     @Test( expected = MovimientoNoRealizadoException.class)
-    public void testAtraparExcepcionYQuedarseEnElLugarYSumarUnMovimiento() 
+    public void testAtraparExcepcionYQuedarseEnElLugarYSinSumarUnMovimiento() 
     throws MovimientoNoRealizadoException
     {
     	Vector vectorInicial = new Vector(2,3);
@@ -36,7 +36,7 @@ public class Vehiculo4x4Test {
     	try {unVehiculo.moverEnDireccion(sur, calleSur);}
     	catch( MovimientoNoRealizadoException e){
     		Vector vectorFinal = unVehiculo.getPosicion();
-    		assertEquals(1, unVehiculo.getCantidadDeMovimientos());
+    		assertEquals(0, unVehiculo.getCantidadDeMovimientos());
     		assertEquals(vectorInicial.asString(), vectorFinal.asString());
     		throw new MovimientoNoRealizadoException();
     	}
