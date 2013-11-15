@@ -40,7 +40,7 @@ public class Juego {
                 	  System.out.print("Jugador gano el nivel");
         	} catch (MovimientoNoRealizadoException e) {
                   	System.out.print("Imposible mover en esa direccion.");
-             		}  	
+             }  	
         } else throw new MovimientoInvalidoExcepcion(); 
     }
     

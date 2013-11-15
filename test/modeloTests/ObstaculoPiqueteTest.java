@@ -24,7 +24,6 @@ public class ObstaculoPiqueteTest {
 				fail("Excepcion esperada");
 			}	catch (PasajeBloqueadoPorPiqueteExcepcion esperada) {};
 		assertEquals(todoterreno.getCantidadDeMovimientos(),5);
-		/* se comprueba que al intentar a mover por piquete NO SE SUMAN MOVIMIENTOS */
 	}
 
 	@Test
@@ -36,16 +35,16 @@ public class ObstaculoPiqueteTest {
 				fail("Excepcion esperada");
 			}	catch (PasajeBloqueadoPorPiqueteExcepcion esperada) {};
 		assertEquals(auto.getCantidadDeMovimientos(),5);
-		/* se comprueba que al intentar a mover por piquete NO SE SUMAN MOVIMIENTOS */
 	}
 	
+	//ESTE TEST VERIFICA SUPUESTO 2 PUES SE SUMAN x+1 MOVIMIENTOS
 	@Test
-	public void testDeberiaSumar2MovimientoAMoto() {
+	public void testDeberiaSumar2DePenalizacionMovimientoAMoto() {
 		VehiculoMoto moto = new VehiculoMoto(new Vector(0,0));
 		moto.setCantidadDeMovimientos(5);
 		ObstaculoPiquete piquete = new ObstaculoPiquete();
 		piquete.interactuarCon(moto);
-		assertEquals(moto.getCantidadDeMovimientos(),7);
+		assertEquals(moto.getCantidadDeMovimientos(),8);
 	}
 	
 	//ESTE TEST VERIFICA EL PRIMER SUPUESTO
