@@ -25,7 +25,7 @@ public class Jugador {
     	return juegoActual;
     }
     
-    public void jugar(Vector direccion) throws PasajeBloqueadoPorPiqueteExcepcion, MovimientoInvalidoExcepcion {
+    public void jugar(Direccion direccion) throws PasajeBloqueadoPorPiqueteExcepcion, MovimientoInvalidoExcepcion {
     	this.juegoActual.realizarJugadaEnDireccion(direccion);
     }
 }

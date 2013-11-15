@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import modelo.Calle;
+import modelo.Direccion;
 import modelo.Juego;
 import modelo.ObstaculoPiquete;
 import modelo.Sorpresa;
@@ -34,7 +35,7 @@ public class Vehiculo4x4Test {
         Vector vectorInicial = new Vector(2, 3);
         Vehiculo4x4 unVehiculo = new Vehiculo4x4(vectorInicial);
         Calle calleSur = new Calle(new ObstaculoPiquete(), null);
-        Vector sur = new Vector(0, -1);
+        Direccion sur = new Direccion(0, -1);
         try {
             unVehiculo.moverEnDireccion(sur, calleSur);
         } catch (PasajeBloqueadoPorPiqueteExcepcion e) {

@@ -2,6 +2,7 @@ package modeloTests;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import modelo.Direccion;
 import modelo.Juego;
 import modelo.Jugador;
 import modelo.Tablero;
@@ -37,7 +38,7 @@ public class JugadorTest {
     @Test
     public void testJugadorDebePoderJugar() throws MovimientoInvalidoExcepcion, PasajeBloqueadoPorPiqueteExcepcion {
         Jugador unJugador = new Jugador("Juansito");
-        Vector norte = new Vector(0,1);
+        Direccion norte = new Direccion(0,1);
         Vehiculo vehiculo = new VehiculoAuto(new Vector(0,1));
         unJugador.asignarJuego(new Juego(new Tablero(5,5), vehiculo, new Vector(3,5)));
         unJugador.jugar(norte);

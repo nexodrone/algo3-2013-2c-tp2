@@ -1,7 +1,7 @@
 package modelo;
 
 public class Vector {
-    protected int x, y;
+    private int x, y;
 
     public Vector(Vector vector) {
         this.asignar(vector);

@@ -23,8 +23,8 @@ public class Tablero {
     }
 
     private void unificarCalles() {
-        Vector este = new Vector(1,0);
-        Vector norte = new Vector(0,1);
+        Direccion este = new Direccion(1,0);
+        Direccion norte = new Direccion(0,1);
         for (int i=1; i<cantidadDeColumnas; i++) {
             for (int j=0; j<cantidadDeFilas; j++) { // unificar calles horizontales
                 this.bocacalles.get(i).get(j).setCalleOeste(this.bocacalles.get(i-1).get(j).obtenerCalleEnDireccion(este));

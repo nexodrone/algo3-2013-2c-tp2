@@ -2,6 +2,7 @@ package modeloTests;
 
 import static org.junit.Assert.*;
 import modelo.Bocacalle;
+import modelo.Direccion;
 import modelo.Tablero;
 import modelo.Vector;
 
@@ -36,10 +37,10 @@ public class TableroTest {
 
     @Test
     public void testCalleEntreDosBocacallesAdyacentesDeberiaSerMismoObjeto() {
-    	Vector norte = new Vector(0,1);
-    	Vector sur = new Vector(0,-1);
-    	Vector este = new Vector(1,0);
-    	Vector oeste = new Vector(-1,0);
+        Direccion norte = new Direccion(0,1);
+        Direccion sur = new Direccion(0,-1);
+        Direccion este = new Direccion(1,0);
+        Direccion oeste = new Direccion(-1,0);
         Tablero unTablero = new Tablero(5, 5);
         assertEquals(unTablero.getBocacalleEnPosicion(new Vector(0,0)).obtenerCalleEnDireccion(norte),
         				unTablero.getBocacalleEnPosicion(new Vector(0,1)).obtenerCalleEnDireccion(sur));

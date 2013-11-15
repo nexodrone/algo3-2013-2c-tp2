@@ -3,6 +3,7 @@ package modeloTests;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import modelo.Bocacalle;
+import modelo.Direccion;
 import modelo.Vector;
 import modelo.Vehiculo;
 import modelo.VehiculoAuto;
@@ -31,10 +32,10 @@ public class VehiculoTest {
         Vehiculo unVehiculo = new VehiculoAuto(new Vector(2, 3));
         unVehiculo.setCantidadDeMovimientos(0);
         Bocacalle bocacalleNeutral = new Bocacalle();
-        Vector norte = new Vector(0, 1);
-        Vector sur = new Vector(0, -1);
-        Vector este = new Vector(1, 0);
-        Vector oeste = new Vector(-1, 0);
+        Direccion norte = new Direccion(0, 1);
+        Direccion sur = new Direccion(0, -1);
+        Direccion este = new Direccion(1, 0);
+        Direccion oeste = new Direccion(-1, 0);
         try {
             unVehiculo.moverEnDireccion(sur, bocacalleNeutral.obtenerCalleEnDireccion(sur));
         } catch (PasajeBloqueadoPorPiqueteExcepcion e) {};
