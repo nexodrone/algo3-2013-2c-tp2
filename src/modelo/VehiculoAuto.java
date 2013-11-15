@@ -5,7 +5,7 @@ import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
 public class VehiculoAuto extends Vehiculo {
 
-    public VehiculoAuto(Vector posicionInicial) {
+    public VehiculoAuto(Posicion posicionInicial) {
         super(posicionInicial);
         // esta porcion de codigo esta tanto en vehiculo4x4 y vehiculoMoto
     }

@@ -10,7 +10,7 @@ import modelo.Sorpresa;
 import modelo.SorpresaCambioDeVehiculo;
 import modelo.SorpresaDesfavorable;
 import modelo.SorpresaFavorable;
-import modelo.Vector;
+import modelo.Posicion;
 import modelo.Vehiculo;
 import modelo.Vehiculo4x4;
 import modelo.VehiculoAuto;
@@ -22,7 +22,7 @@ public class VehiculoMotoTest {
 
     @Test
     public void testDeberiaPerderDosMovimientosPorPiquete() {
-        VehiculoMoto moto = new VehiculoMoto(new Vector(2, 2));
+        VehiculoMoto moto = new VehiculoMoto(new Posicion(2, 2));
         moto.setCantidadDeMovimientos(0);
         Calle calleATransitar = new Calle(new ObstaculoPiquete(), null);
         moto.pasarPorCalle(calleATransitar);
@@ -32,7 +32,7 @@ public class VehiculoMotoTest {
     // TESTS DE METODOS
     @Test
     public void testParaComprobarQueDosVehiculosTieneElMismoEstadoFuncionaCorrectamente() {
-        Vector posicion = new Vector(1, 2);
+        Posicion posicion = new Posicion(1, 2);
         int cantidad = 100;
         VehiculoMoto unVehiculo = new VehiculoMoto(posicion);
         unVehiculo.setCantidadDeMovimientos(cantidad);
@@ -43,7 +43,7 @@ public class VehiculoMotoTest {
 
     @Test
     public void testParaComprobarQueElMismoVehiculoTieneElMismoEstado() {
-        Vector posicion = new Vector(1, 2);
+        Posicion posicion = new Posicion(1, 2);
         int cantidad = 100;
         VehiculoMoto unVehiculo = new VehiculoMoto(posicion);
         unVehiculo.setCantidadDeMovimientos(cantidad);
@@ -53,7 +53,7 @@ public class VehiculoMotoTest {
     @Test
     public void testParaComprobarQueCuandoTieneDistintosEstados() {
         // Si tienen distintas cantidad de movimientos, son distintos estados
-        Vector posicion = new Vector(1, 2);
+        Posicion posicion = new Posicion(1, 2);
         int cantidad = 100;
         int otraCantidad = 120;
         VehiculoMoto unVehiculo = new VehiculoMoto(posicion);
@@ -65,7 +65,7 @@ public class VehiculoMotoTest {
 
     @Test
     public void testParaComprobarQueDevuelveUnaInstanciaConElMismoEstadoDeLaMoto() {
-        Vector posicion = new Vector(1, 2);
+        Posicion posicion = new Posicion(1, 2);
         int cantidad = 100;
         Vehiculo unVehiculo = new VehiculoMoto(posicion);
         unVehiculo.setCantidadDeMovimientos(cantidad);
@@ -75,7 +75,7 @@ public class VehiculoMotoTest {
 
     @Test
     public void testParaComprobarQueDevuelveUnaInstanciaConElMismoEstadoDelAuto() {
-        Vector posicion = new Vector(1, 2);
+        Posicion posicion = new Posicion(1, 2);
         int cantidad = 100;
         Vehiculo unVehiculo = new VehiculoAuto(posicion);
         unVehiculo.setCantidadDeMovimientos(cantidad);
@@ -85,7 +85,7 @@ public class VehiculoMotoTest {
 
     @Test
     public void testParaComprobarQueDevuelveUnaInstanciaConElMismoEstadoDel4x4() {
-        Vector posicion = new Vector(1, 2);
+        Posicion posicion = new Posicion(1, 2);
         int cantidad = 100;
         Vehiculo unVehiculo = new Vehiculo4x4(posicion);
         unVehiculo.setCantidadDeMovimientos(cantidad);
@@ -136,7 +136,7 @@ public class VehiculoMotoTest {
     @Test
     public void testParaComprobarQueCuandoDeVehiculoElMismoTieneElMismoEstadoQueElOtroVehiculo() {
         int cantidadDeMovimientos = 0;
-        Vector posicion = new Vector(1, 2);
+        Posicion posicion = new Posicion(1, 2);
         VehiculoMoto vehiculo = new VehiculoMoto(posicion);
         vehiculo.setCantidadDeMovimientos(cantidadDeMovimientos);
         Sorpresa sorpresa = new SorpresaCambioDeVehiculo();

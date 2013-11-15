@@ -6,7 +6,7 @@ import modelo.Direccion;
 import modelo.Juego;
 import modelo.Jugador;
 import modelo.Tablero;
-import modelo.Vector;
+import modelo.Posicion;
 import modelo.Vehiculo;
 import modelo.VehiculoAuto;
 import modelo.excepciones.MovimientoInvalidoExcepcion;
@@ -31,7 +31,7 @@ public class JugadorTest {
     @Test
     public void testJugadorDebePoderEntrarEnJuego() {
         Jugador unJugador = new Jugador("Juansito");
-        unJugador.asignarJuego(new Juego(new Tablero(5,5), new VehiculoAuto(new Vector(0,0)), new Vector(3,5)));
+        unJugador.asignarJuego(new Juego(new Tablero(5,5), new VehiculoAuto(new Posicion(0,0)), new Posicion(3,5)));
         assertNotNull(unJugador.getJuegoActual());
     }
     
@@ -39,8 +39,8 @@ public class JugadorTest {
     public void testJugadorDebePoderJugar() throws MovimientoInvalidoExcepcion, PasajeBloqueadoPorPiqueteExcepcion {
         Jugador unJugador = new Jugador("Juansito");
         Direccion norte = new Direccion(0,1);
-        Vehiculo vehiculo = new VehiculoAuto(new Vector(0,1));
-        unJugador.asignarJuego(new Juego(new Tablero(5,5), vehiculo, new Vector(3,5)));
+        Vehiculo vehiculo = new VehiculoAuto(new Posicion(0,1));
+        unJugador.asignarJuego(new Juego(new Tablero(5,5), vehiculo, new Posicion(3,5)));
         unJugador.jugar(norte);
         assertEquals(vehiculo.getPosicion().asString(),"0,2");
     }

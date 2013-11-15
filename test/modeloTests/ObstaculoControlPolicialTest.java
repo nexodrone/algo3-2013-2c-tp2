@@ -2,7 +2,7 @@ package modeloTests;
 
 import static org.junit.Assert.assertTrue;
 import modelo.ObstaculoControlPolicial;
-import modelo.Vector;
+import modelo.Posicion;
 import modelo.Vehiculo4x4;
 import modelo.VehiculoAuto;
 import modelo.VehiculoMoto;
@@ -12,7 +12,7 @@ public class ObstaculoControlPolicialTest {
 
 	@Test
 	public void testDeberiaSumar1o4MovimientoA4x4() {
-		Vehiculo4x4 todoterreno = new Vehiculo4x4(new Vector(0,0));
+		Vehiculo4x4 todoterreno = new Vehiculo4x4(new Posicion(0,0));
 		todoterreno.setCantidadDeMovimientos(5);
 		ObstaculoControlPolicial cp = new ObstaculoControlPolicial();
 		cp.interactuarCon(todoterreno);
@@ -22,7 +22,7 @@ public class ObstaculoControlPolicialTest {
 
 	@Test
 	public void testDeberiaSumar1o4MovimientosAAuto() {
-		VehiculoAuto auto = new VehiculoAuto(new Vector(0,0));
+		VehiculoAuto auto = new VehiculoAuto(new Posicion(0,0));
 		auto.setCantidadDeMovimientos(5);
 		ObstaculoControlPolicial cp = new ObstaculoControlPolicial();
 		cp.interactuarCon(auto);
@@ -32,7 +32,7 @@ public class ObstaculoControlPolicialTest {
 
 	@Test
 	public void testDeberiaSumar1o4MovimientoAMoto() {
-		VehiculoMoto moto = new VehiculoMoto(new Vector(0,0));
+		VehiculoMoto moto = new VehiculoMoto(new Posicion(0,0));
 		moto.setCantidadDeMovimientos(5);
 		ObstaculoControlPolicial cp = new ObstaculoControlPolicial();
 		cp.interactuarCon(moto);

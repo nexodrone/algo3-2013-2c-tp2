@@ -28,7 +28,7 @@ public class Vector {
         y = a;
     }
 
-    public boolean sonIguales(Vector vector) {
+    public boolean equals(Vector vector) {
         boolean igualX = ((this.x()) == (vector.x()));
         boolean igualY = ((this.y()) == (vector.y()));
         return (igualX && igualY);

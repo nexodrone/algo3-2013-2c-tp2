@@ -37,7 +37,7 @@ public class Tablero {
         }
     }
 
-    public Bocacalle getBocacalleEnPosicion(Vector posicion) {
+    public Bocacalle getBocacalleEnPosicion(Posicion posicion) {
         return bocacalles.get(posicion.x()).get(posicion.y());
     }
 
@@ -49,7 +49,7 @@ public class Tablero {
         return cantidadDeColumnas;
     }
 
-    public boolean posicionValida(Vector posicion) {
+    public boolean posicionValida(Posicion posicion) {
         if ( (posicion.x() < 0) ||
         	 (posicion.x() >= cantidadDeColumnas) ||
         	 (posicion.y() < 0) ||

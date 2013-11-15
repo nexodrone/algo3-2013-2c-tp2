@@ -5,15 +5,15 @@ import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
 public abstract class Vehiculo {
 
-    protected Vector posicion;
+    protected Posicion posicion;
     protected int cantidadDeMovimientos;
     protected Juego juego;
 
-    public Vehiculo(Vector nuevaPosicion) {
+    public Vehiculo(Posicion nuevaPosicion) {
         posicion = nuevaPosicion;
      }
 
-    public Vector getPosicion() {
+    public Posicion getPosicion() {
         return this.posicion;
     }
 
@@ -30,8 +30,8 @@ public abstract class Vehiculo {
       this.posicion = calcularSiguientePosicion(direccion);
     }
 
-    public Vector calcularSiguientePosicion(Direccion direccion) {
-        Vector nuevaPosicion = this.posicion.copy();
+    public Posicion calcularSiguientePosicion(Direccion direccion) {
+        Posicion nuevaPosicion = this.posicion.copy();
         nuevaPosicion.incrementarY(direccion.y());
         nuevaPosicion.incrementarX(direccion.x());
         return nuevaPosicion;
@@ -54,7 +54,7 @@ public abstract class Vehiculo {
 
     public boolean tienenElMismoEstado(Vehiculo vehiculo) {
         boolean cantidad = (cantidadDeMovimientos == vehiculo.getCantidadDeMovimientos());
-        boolean posicionesIguales = posicion.sonIguales(vehiculo.getPosicion());
+        boolean posicionesIguales = posicion.equals(vehiculo.getPosicion());
         return (cantidad && posicionesIguales);
 
     }

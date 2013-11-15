@@ -2,7 +2,7 @@ package modeloTests;
 
 import static org.junit.Assert.assertEquals;
 import modelo.SorpresaFavorable;
-import modelo.Vector;
+import modelo.Posicion;
 import modelo.VehiculoAuto;
 
 import org.junit.Test;
@@ -11,7 +11,7 @@ public class SorpresaFavorableTest {
 
     @Test
     public void testDeberiaRestarCorrectamentePuntaje() {
-        VehiculoAuto auto = new VehiculoAuto(new Vector(0,0));
+        VehiculoAuto auto = new VehiculoAuto(new Posicion(0,0));
         auto.setCantidadDeMovimientos(76);
         SorpresaFavorable sorpresaFavorable = new SorpresaFavorable();
         sorpresaFavorable.interactuarCon(auto);

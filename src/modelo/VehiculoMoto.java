@@ -3,7 +3,7 @@ package modelo;
 
 public class VehiculoMoto extends Vehiculo {
 
-    public VehiculoMoto(Vector posicionInicial) {
+    public VehiculoMoto(Posicion posicionInicial) {
         super(posicionInicial);
         // esta porcion de codigo esta tanto vehiculo4x4 y vehiculoAuto
     }

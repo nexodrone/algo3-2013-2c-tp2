@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 import modelo.Bocacalle;
 import modelo.Direccion;
 import modelo.Tablero;
-import modelo.Vector;
+import modelo.Posicion;
 
 import org.junit.Test;
 
@@ -31,7 +31,7 @@ public class TableroTest {
     @Test
     public void testObtenerBocacalleATransitarDeUnaPosicionValidaNoDeberiaSerNula() {
         Tablero unTablero = new Tablero(10, 10);
-        Bocacalle unaBocacalle = unTablero.getBocacalleEnPosicion(new Vector(3, 4));
+        Bocacalle unaBocacalle = unTablero.getBocacalleEnPosicion(new Posicion(3, 4));
         assertNotNull(unaBocacalle);
     }
 
@@ -42,17 +42,17 @@ public class TableroTest {
         Direccion este = new Direccion(1,0);
         Direccion oeste = new Direccion(-1,0);
         Tablero unTablero = new Tablero(5, 5);
-        assertEquals(unTablero.getBocacalleEnPosicion(new Vector(0,0)).obtenerCalleEnDireccion(norte),
-        				unTablero.getBocacalleEnPosicion(new Vector(0,1)).obtenerCalleEnDireccion(sur));
-        assertEquals(unTablero.getBocacalleEnPosicion(new Vector(3,1)).obtenerCalleEnDireccion(este),
-				unTablero.getBocacalleEnPosicion(new Vector(4,1)).obtenerCalleEnDireccion(oeste));
+        assertEquals(unTablero.getBocacalleEnPosicion(new Posicion(0,0)).obtenerCalleEnDireccion(norte),
+        				unTablero.getBocacalleEnPosicion(new Posicion(0,1)).obtenerCalleEnDireccion(sur));
+        assertEquals(unTablero.getBocacalleEnPosicion(new Posicion(3,1)).obtenerCalleEnDireccion(este),
+				unTablero.getBocacalleEnPosicion(new Posicion(4,1)).obtenerCalleEnDireccion(oeste));
     }
 
     @Test
     public void testDePosicionConFilaFueraDeRangoDeberiaSerInavildaSinImportarLaColumna() {
         Tablero tablero = new Tablero(10,10);
         for (int i=0; i<10; i++) {
-            Vector unaPosicion = new Vector(-1,i);
+            Posicion unaPosicion = new Posicion(-1,i);
             assertFalse(tablero.posicionValida(unaPosicion));
         }
     }
@@ -60,7 +60,7 @@ public class TableroTest {
     @Test
     public void testPosicionDelVerticeDelTableroDeberiaSerValida() {
         Tablero tablero = new Tablero(10,10);
-        Vector unaPosicion = new Vector(9,9);
+        Posicion unaPosicion = new Posicion(9,9);
         assertTrue(tablero.posicionValida(unaPosicion));
         }
 
@@ -68,7 +68,7 @@ public class TableroTest {
     public void testDePosicionConColumnaFueraDeRangoDeberiaSerInavildaSinImportarLaFila() {
         Tablero tablero = new Tablero(10,10);
         for (int i=0; i<10; i++) {
-            Vector unaPosicion = new Vector(i,10);
+            Posicion unaPosicion = new Posicion(i,10);
             assertFalse(tablero.posicionValida(unaPosicion));
         }
 }
@@ -78,7 +78,7 @@ public class TableroTest {
         Tablero tablero = new Tablero(10,10);
         for (int i=0; i<10; i++) {
         	for (int j=0; j<10; j++){
-            Vector unaPosicion = new Vector(i,j);
+            Posicion unaPosicion = new Posicion(i,j);
             assertEquals(tablero.posicionValida(unaPosicion),true);
         	}
         }
