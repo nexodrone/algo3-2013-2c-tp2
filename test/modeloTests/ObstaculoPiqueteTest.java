@@ -5,7 +5,7 @@ import modelo.Calle;
 import modelo.Direccion;
 import modelo.ObstaculoPiquete;
 import modelo.SorpresaFavorable;
-import modelo.Vector;
+import modelo.Posicion;
 import modelo.Vehiculo;
 import modelo.Vehiculo4x4;
 import modelo.VehiculoAuto;
@@ -18,7 +18,7 @@ public class ObstaculoPiqueteTest {
 
 	@Test
 	public void testDeberiaTirarExcepcionSiPasa4x4() throws PasajeBloqueadoPorPiqueteExcepcion {
-		Vehiculo4x4 todoterreno = new Vehiculo4x4(new Vector(0,0));
+		Vehiculo4x4 todoterreno = new Vehiculo4x4(new Posicion(0,0));
 		todoterreno.setCantidadDeMovimientos(5);
 		ObstaculoPiquete piquete = new ObstaculoPiquete();
 		try { 	piquete.interactuarCon(todoterreno);
@@ -29,7 +29,7 @@ public class ObstaculoPiqueteTest {
 
 	@Test
 	public void testDeberiaTirarExcepcionSiPasaAuto() throws PasajeBloqueadoPorPiqueteExcepcion {
-		VehiculoAuto auto = new VehiculoAuto(new Vector(0,0));
+		VehiculoAuto auto = new VehiculoAuto(new Posicion(0,0));
 		auto.setCantidadDeMovimientos(5);
 		ObstaculoPiquete piquete = new ObstaculoPiquete();
 		try { 	piquete.interactuarCon(auto);
@@ -41,7 +41,7 @@ public class ObstaculoPiqueteTest {
 	//ESTE TEST VERIFICA SUPUESTO 2 PUES SE SUMAN x+1 MOVIMIENTOS
 	@Test
 	public void testDeberiaSumar2DePenalizacionMovimientoAMoto() {
-		VehiculoMoto moto = new VehiculoMoto(new Vector(0,0));
+		VehiculoMoto moto = new VehiculoMoto(new Posicion(0,0));
 		moto.setCantidadDeMovimientos(5);
 		ObstaculoPiquete piquete = new ObstaculoPiquete();
 		piquete.interactuarCon(moto);
@@ -51,7 +51,7 @@ public class ObstaculoPiqueteTest {
 	//ESTE TEST VERIFICA EL PRIMER SUPUESTO
 	@Test
 	public void testSiPasamosPorUnaCalleConObstaculoYSorpresaPrimeroSeInteractuaConVehiculo() throws PasajeBloqueadoPorPiqueteExcepcion{
-		Vehiculo todoterreno = new Vehiculo4x4(new Vector(0,0));
+		Vehiculo todoterreno = new Vehiculo4x4(new Posicion(0,0));
 		Calle calleATransitar = new Calle(new ObstaculoPiquete(),new SorpresaFavorable());
 		todoterreno.setCantidadDeMovimientos(0);
 		boolean excepcionCapturada = false;

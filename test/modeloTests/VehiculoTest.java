@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import modelo.Bocacalle;
 import modelo.Direccion;
-import modelo.Vector;
+import modelo.Posicion;
 import modelo.Vehiculo;
 import modelo.VehiculoAuto;
 import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
@@ -15,21 +15,21 @@ public class VehiculoTest {
 
     @Test
     public void testDeberiaCrearVehiculo() {
-        Vehiculo vehiculo = new VehiculoAuto(new Vector(2, 2));
+        Vehiculo vehiculo = new VehiculoAuto(new Posicion(2, 2));
         //estaba en cero
         assertNotNull(vehiculo);
     }
 
     @Test
     public void testVehiculoDeberiaQuedarseEnPosicionIndicada() {
-        Vehiculo unVehiculo = new VehiculoAuto(new Vector(2, 3));
+        Vehiculo unVehiculo = new VehiculoAuto(new Posicion(2, 3));
         //estaba en cero
         assertEquals(unVehiculo.getPosicion().asString(), "2,3");
     }
 
     @Test
     public void testPoderMoverseEnTodasDireccionesPosibles() throws PasajeBloqueadoPorPiqueteExcepcion {
-        Vehiculo unVehiculo = new VehiculoAuto(new Vector(2, 3));
+        Vehiculo unVehiculo = new VehiculoAuto(new Posicion(2, 3));
         unVehiculo.setCantidadDeMovimientos(0);
         Bocacalle bocacalleNeutral = new Bocacalle();
         Direccion norte = new Direccion(0, 1);

@@ -2,7 +2,7 @@ package modeloTests;
 
 import static org.junit.Assert.assertEquals;
 import modelo.ObstaculoPozo;
-import modelo.Vector;
+import modelo.Posicion;
 import modelo.Vehiculo4x4;
 import modelo.VehiculoAuto;
 import modelo.VehiculoMoto;
@@ -14,7 +14,7 @@ public class ObstaculoPozoTest {
 	//SI PASAMOS POR CALLE CON POZO NO NOS AFECTA
 	@Test
 	public void testDeberiaSumar1MovimientoA4x4() {
-		Vehiculo4x4 todoterreno = new Vehiculo4x4(new Vector(0,0));
+		Vehiculo4x4 todoterreno = new Vehiculo4x4(new Posicion(0,0));
 		todoterreno.setCantidadDeMovimientos(5);
 		ObstaculoPozo pozo = new ObstaculoPozo();
 		pozo.interactuarCon(todoterreno);
@@ -24,7 +24,7 @@ public class ObstaculoPozoTest {
 	//ESTE TEST VERIFICA EL SUPUESTO DOS PARA AUTOS CON OBSTACULO POZO
 	@Test
 	public void testDeberiaSumar4MovimientosAAuto() {
-		VehiculoAuto auto = new VehiculoAuto(new Vector(0,0));
+		VehiculoAuto auto = new VehiculoAuto(new Posicion(0,0));
 		auto.setCantidadDeMovimientos(5);
 		ObstaculoPozo pozo = new ObstaculoPozo();
 		pozo.interactuarCon(auto);
@@ -33,7 +33,7 @@ public class ObstaculoPozoTest {
 
 	@Test
 	public void testDeberiaSumar4MovimientoAMoto() {
-		VehiculoMoto moto = new VehiculoMoto(new Vector(0,0));
+		VehiculoMoto moto = new VehiculoMoto(new Posicion(0,0));
 		moto.setCantidadDeMovimientos(5);
 		ObstaculoPozo pozo = new ObstaculoPozo();
 		pozo.interactuarCon(moto);
