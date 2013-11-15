@@ -21,7 +21,7 @@ public abstract class Vehiculo {
         return this.cantidadDeMovimientos;
     }
 
-    public void moverEnDireccion(Vector direccion, Calle calleAPasar) throws PasajeBloqueadoPorPiqueteExcepcion {
+    public void moverEnDireccion(Direccion direccion, Calle calleAPasar) throws PasajeBloqueadoPorPiqueteExcepcion {
         try{
             pasarPorCalle(calleAPasar);
         } catch (PasajeBloqueadoPorPiqueteExcepcion e) {
@@ -30,7 +30,7 @@ public abstract class Vehiculo {
       this.posicion = calcularSiguientePosicion(direccion);
     }
 
-    public Vector calcularSiguientePosicion(Vector direccion) {
+    public Vector calcularSiguientePosicion(Direccion direccion) {
         Vector nuevaPosicion = this.posicion.copy();
         nuevaPosicion.incrementarY(direccion.y());
         nuevaPosicion.incrementarX(direccion.x());

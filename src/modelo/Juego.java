@@ -30,7 +30,7 @@ public class Juego {
         vehiculo = nuevoVehiculo;
     }
     
-    public void realizarJugadaEnDireccion(Vector direccion) throws PasajeBloqueadoPorPiqueteExcepcion, MovimientoInvalidoExcepcion {
+    public void realizarJugadaEnDireccion(Direccion direccion) throws PasajeBloqueadoPorPiqueteExcepcion, MovimientoInvalidoExcepcion {
         Vector nuevaPosicion = vehiculo.calcularSiguientePosicion(direccion);
         if (tablero.posicionValida(nuevaPosicion)){
         	Bocacalle bocacalleActual = tablero.getBocacalleEnPosicion(vehiculo.getPosicion());
@@ -44,6 +44,5 @@ public class Juego {
              }  	
         } else throw new MovimientoInvalidoExcepcion(); 
     }
-    
 
 }

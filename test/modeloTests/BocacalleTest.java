@@ -3,8 +3,7 @@ package modeloTests;
 import static org.junit.Assert.assertNotNull;
 import modelo.Bocacalle;
 import modelo.Calle;
-import modelo.Vector;
-
+import modelo.Direccion;
 import org.junit.Test;
 
 public class BocacalleTest {
@@ -17,7 +16,7 @@ public class BocacalleTest {
 
     @Test
     public void testParaComprobarQuelaCalleNorteNoEsNula() {
-        Vector norte = new Vector(0, 1);
+        Direccion norte = new Direccion(0, 1);
         Bocacalle unaBocaCalle = new Bocacalle();
         Calle calleNorte = unaBocaCalle.obtenerCalleEnDireccion(norte);
         assertNotNull(calleNorte);
@@ -25,7 +24,7 @@ public class BocacalleTest {
 
     @Test
     public void testParaComprobarQuelaCalleSurNoEsNula() {
-        Vector sur = new Vector(0, -1);
+        Direccion sur = new Direccion(0, -1);
         Bocacalle unaBocaCalle = new Bocacalle();
         Calle calleSur = unaBocaCalle.obtenerCalleEnDireccion(sur);
         assertNotNull(calleSur);
@@ -33,7 +32,7 @@ public class BocacalleTest {
 
     @Test
     public void testParaComprobarQueLaCalleEsteNoEsNula() {
-        Vector este = new Vector(1, 0);
+        Direccion este = new Direccion(1, 0);
         Bocacalle unaBocaCalle = new Bocacalle();
         Calle calleEste = unaBocaCalle.obtenerCalleEnDireccion(este);
         assertNotNull(calleEste);
@@ -42,7 +41,7 @@ public class BocacalleTest {
 
     @Test
     public void testParaComprobarQueLaCalleOesteNoEsNula() {
-        Vector oeste = new Vector(-1, 0);
+        Direccion oeste = new Direccion(-1, 0);
         Bocacalle unaBocaCalle = new Bocacalle();
         Calle calleOeste = unaBocaCalle.obtenerCalleEnDireccion(oeste);
         assertNotNull(calleOeste);

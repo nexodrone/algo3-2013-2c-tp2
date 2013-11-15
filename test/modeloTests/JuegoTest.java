@@ -2,6 +2,7 @@ package modeloTests;
 
 import static org.junit.Assert.*;
 import modelo.Calle;
+import modelo.Direccion;
 import modelo.Juego;
 import modelo.ObstaculoPozo;
 import modelo.SorpresaCambioDeVehiculo;
@@ -31,9 +32,9 @@ public class JuegoTest {
 		Tablero tablero = new Tablero(6,3);
 		Vehiculo vehiculo = new VehiculoAuto(new Vector(4,0));
 		Juego unJuego = new Juego(tablero, vehiculo, new Vector(0,0));
-    	Vector norte = new Vector(0,1);
-    	Vector este = new Vector(1,0);
-    	Vector oeste = new Vector(-1,0);
+        Direccion norte = new Direccion(0, 1);
+        Direccion este = new Direccion(1, 0);
+        Direccion oeste = new Direccion(-1, 0);
 		try{unJuego.realizarJugadaEnDireccion(este);
 		unJuego.realizarJugadaEnDireccion(norte);
 		unJuego.realizarJugadaEnDireccion(norte);
@@ -48,7 +49,7 @@ public class JuegoTest {
 		Vehiculo vehiculo = new VehiculoAuto(new Vector(4,0));
 		vehiculo.setCantidadDeMovimientos(1);
 		Juego unJuego = new Juego(tablero, vehiculo, new Vector(0,0));
-    	Vector sur = new Vector(0,-1);
+        Direccion sur = new Direccion(0, -1);
     	try {	unJuego.realizarJugadaEnDireccion(sur);
     			fail("Excepcion esperada");		
     		} catch (MovimientoInvalidoExcepcion esperada) {};
@@ -64,12 +65,11 @@ public class JuegoTest {
     	vehiculo.setCantidadDeMovimientos(0);
     	Vector posicionGanadora = new Vector(2,2);
     	
-    	Vector este = new Vector(1,0);
-    	Vector oeste = new Vector(-1,0);
-    	Vector sur = new Vector(0,-1);
-    	Vector norte = new Vector(0,1);
-    	
-    	
+        Direccion norte = new Direccion(0, 1);
+        Direccion sur = new Direccion(0, -1);
+        Direccion este = new Direccion(1, 0);
+        Direccion oeste = new Direccion(-1, 0);
+    	    	
     	Calle calleSurDePosicionUnoCero = tablero.getBocacalleEnPosicion(new Vector(1,0)).obtenerCalleEnDireccion(sur);
     	calleSurDePosicionUnoCero.setSorpresa(new SorpresaCambioDeVehiculo());
     	Calle calleOesteDePosicionUnoUno = tablero.getBocacalleEnPosicion(new Vector(1,0)).obtenerCalleEnDireccion(oeste);

@@ -2,6 +2,7 @@ package modeloTests;
 
 import static org.junit.Assert.*;
 import modelo.Calle;
+import modelo.Direccion;
 import modelo.ObstaculoPiquete;
 import modelo.SorpresaFavorable;
 import modelo.Vector;
@@ -55,7 +56,7 @@ public class ObstaculoPiqueteTest {
 		todoterreno.setCantidadDeMovimientos(0);
 		boolean excepcionCapturada = false;
 		try{
-			todoterreno.moverEnDireccion(new Vector(1,0), calleATransitar);
+			todoterreno.moverEnDireccion(new Direccion(1,0), calleATransitar);
 			fail("Excepcion esperada");			
 		} catch (PasajeBloqueadoPorPiqueteExcepcion esperada) {
 			excepcionCapturada = true;			
