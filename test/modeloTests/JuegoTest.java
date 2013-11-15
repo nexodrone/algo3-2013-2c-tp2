@@ -1,7 +1,11 @@
 package modeloTests;
 
 import static org.junit.Assert.*;
+import modelo.Calle;
 import modelo.Juego;
+import modelo.ObstaculoPozo;
+import modelo.SorpresaCambioDeVehiculo;
+import modelo.SorpresaDesfavorable;
 import modelo.Tablero;
 import modelo.Vector;
 import modelo.Vehiculo;
@@ -12,6 +16,7 @@ import org.junit.Test;
 import excepciones.MovimientoInvalidoExcepcion;
 
 public class JuegoTest {
+
 
 	@Test
 	public void testDeberiaCrearJuego() {
@@ -50,5 +55,35 @@ public class JuegoTest {
     }
  
     
+    //ESTE VA A SER UN TEST INTEGRADOR
+    @Test
+    public void testIntegradorValoresDePuntajeDeberianSerChorentesConLosEsperados() throws MovimientoInvalidoExcepcion{
+    	Tablero tablero = new Tablero(3,3);
+    	Vehiculo vehiculo = new VehiculoAuto(new Vector(0,0));
+    	vehiculo.setCantidadDeMovimientos(0);
+    	Vector posicionGanadora = new Vector(2,2);
+    	
+    	Vector este = new Vector(1,0);
+    	Vector oeste = new Vector(-1,0);
+    	Vector sur = new Vector(0,-1);
+    	Vector norte = new Vector(0,1);
+    	
+    	
+    	Calle calleSurDePosicionUnoCero = tablero.getBocacalleEnPosicion(new Vector(1,0)).obtenerCalleEnDireccion(sur);
+    	calleSurDePosicionUnoCero.setSorpresa(new SorpresaCambioDeVehiculo());
+    	Calle calleOesteDePosicionUnoUno = tablero.getBocacalleEnPosicion(new Vector(1,0)).obtenerCalleEnDireccion(oeste);
+    	calleOesteDePosicionUnoUno.setObstaculo(new ObstaculoPozo());
+    	Calle calleEsteDePosicionUnoUno = tablero.getBocacalleEnPosicion(new Vector(1,0)).obtenerCalleEnDireccion(este);
+    	calleEsteDePosicionUnoUno.setSorpresa(new SorpresaDesfavorable());
+    	
+    	Juego nuevoJuego = new Juego(tablero,vehiculo,posicionGanadora);
+    	nuevoJuego.realizarJugadaEnDireccion(norte);
+    	nuevoJuego.realizarJugadaEnDireccion(este);
+    	nuevoJuego.realizarJugadaEnDireccion(este);
+    	nuevoJuego.realizarJugadaEnDireccion(norte);
+    	assertEquals(nuevoJuego.getVehiculo().getCantidadDeMovimientos(),4);
+    	assertEquals(nuevoJuego.getVehiculo().getPosicion().asString(),"2,2");
+    	
+    }
     
 }

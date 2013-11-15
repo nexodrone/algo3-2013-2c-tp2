@@ -23,4 +23,13 @@ public class Calle {
 		return this.sorpresa;
 	}
 
+	public void setObstaculo(Obstaculo obstaculoAColocar){
+		obstaculo = obstaculoAColocar;
+	}
+	
+	public void setSorpresa(Sorpresa sorpresaAColocar){
+		sorpresa = sorpresaAColocar;
+		
+	}
+	
 }
