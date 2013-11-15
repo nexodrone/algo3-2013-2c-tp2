@@ -48,5 +48,7 @@ public class JuegoTest {
     		} catch (MovimientoInvalidoExcepcion esperada) {};
         assertEquals(unJuego.getVehiculo().getCantidadDeMovimientos(), 1);
     }
-
+ 
+    
+    
 }

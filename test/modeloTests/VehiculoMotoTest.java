@@ -26,7 +26,7 @@ public class VehiculoMotoTest {
         moto.setCantidadDeMovimientos(0);
         Calle calleATransitar = new Calle(new ObstaculoPiquete(), null);
         moto.pasarPorCalle(calleATransitar);
-        assertEquals(2, moto.getCantidadDeMovimientos());
+        assertEquals(3, moto.getCantidadDeMovimientos());
     }
 
     // TESTS DE METODOS
