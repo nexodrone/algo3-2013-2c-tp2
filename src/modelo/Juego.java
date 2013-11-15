@@ -23,28 +23,26 @@ public class Juego {
         return this.vehiculo;
     }
 
-    public void realizarJugadaEnDireccion(Vector direccion) throws MovimientoInvalidoExcepcion {
-        Vector nuevaPosicion = vehiculo.calcularSiguientePosicion(direccion);
-        Bocacalle bocacalleActual = tablero.getBocacalleEnPosicion(vehiculo.getPosicion());
-
-        Calle calleATransitar = bocacalleActual.obtenerCalleEnDireccion(direccion);
-        if (tablero.posicionValida(nuevaPosicion)) {
-            try {
-                vehiculo.moverEnDireccion(direccion, calleATransitar);
-            } catch (MovimientoNoRealizadoException e) {
-                System.out.print("Imposible mover en esa direcci�n.");
-            }
-        } else
-            throw new MovimientoInvalidoExcepcion();
-
-        // POR ULTIMO, VERIFICAMOS SI LA JUGADA HIZO QUE HAYA GANADO.
-        if (posicionGanadora.equals(vehiculo.getPosicion())) {
-            // GANO. ACA TERMINA LA JUGADA.
-        }
-    }
 
     public void cambiarVehiculo(Vehiculo nuevoVehiculo) {
         System.out.print("cambio de vehiculo");
         vehiculo = nuevoVehiculo;
     }
+    
+    public void realizarJugadaEnDireccion(Vector direccion) throws MovimientoInvalidoExcepcion {
+        Vector nuevaPosicion = vehiculo.calcularSiguientePosicion(direccion);
+        if (tablero.posicionValida(nuevaPosicion)){
+        	Bocacalle bocacalleActual = tablero.getBocacalleEnPosicion(vehiculo.getPosicion());
+        	Calle calleATransitar = bocacalleActual.obtenerCalleEnDireccion(direccion);
+        	try {
+                  vehiculo.moverEnDireccion(direccion, calleATransitar);
+                  if(vehiculo.getPosicion().asString()== posicionGanadora.asString())
+                	 System.out.print("Jugador gano el nivel");
+        	} catch (MovimientoNoRealizadoException e) {
+                  	System.out.print("Imposible mover en esa direccion.");
+             		}  	
+        } else throw new MovimientoInvalidoExcepcion(); 
+    }
+    
+
 }
