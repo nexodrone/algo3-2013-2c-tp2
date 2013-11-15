@@ -6,9 +6,9 @@ import modelo.Bocacalle;
 import modelo.Vector;
 import modelo.Vehiculo;
 import modelo.VehiculoAuto;
+import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
 import org.junit.Test;
-import excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
 public class VehiculoTest {
 

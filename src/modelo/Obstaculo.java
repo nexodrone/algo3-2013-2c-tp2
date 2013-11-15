@@ -1,6 +1,6 @@
 package modelo;
 
-import excepciones.PasajeBloqueadoPorPiqueteExcepcion;;
+import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
 public abstract class Obstaculo {
 	public abstract void interactuarCon(VehiculoAuto auto) throws PasajeBloqueadoPorPiqueteExcepcion;

@@ -1,6 +1,6 @@
 package modelo;
 
-import excepciones.PasajeBloqueadoPorPiqueteExcepcion;
+import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
 public class ObstaculoPiquete extends Obstaculo {
 

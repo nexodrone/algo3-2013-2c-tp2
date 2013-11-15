@@ -1,6 +1,6 @@
 package modelo;
 
-import excepciones.PasajeBloqueadoPorPiqueteExcepcion;
+import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
 
 public abstract class Vehiculo {
