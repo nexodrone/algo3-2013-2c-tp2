@@ -36,8 +36,8 @@ public class Juego {
         	Calle calleATransitar = bocacalleActual.obtenerCalleEnDireccion(direccion);
         	try {
                   vehiculo.moverEnDireccion(direccion, calleATransitar);
-                  if(vehiculo.getPosicion().asString()== posicionGanadora.asString())
-                	 System.out.print("Jugador gano el nivel");
+                  if(vehiculo.getPosicion().sonIguales(posicionGanadora))
+                	  System.out.print("Jugador gano el nivel");
         	} catch (MovimientoNoRealizadoException e) {
                   	System.out.print("Imposible mover en esa direccion.");
              		}  	
