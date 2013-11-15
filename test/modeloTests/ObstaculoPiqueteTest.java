@@ -9,8 +9,9 @@ import modelo.Vehiculo;
 import modelo.Vehiculo4x4;
 import modelo.VehiculoAuto;
 import modelo.VehiculoMoto;
+import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
+
 import org.junit.Test;
-import excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
 public class ObstaculoPiqueteTest {
 

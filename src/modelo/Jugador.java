@@ -1,8 +1,8 @@
 package modelo;
 
 
-import excepciones.MovimientoInvalidoExcepcion;
-import excepciones.PasajeBloqueadoPorPiqueteExcepcion;
+import modelo.excepciones.MovimientoInvalidoExcepcion;
+import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
 public class Jugador {
 

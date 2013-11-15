@@ -10,11 +10,10 @@ import modelo.Tablero;
 import modelo.Vector;
 import modelo.Vehiculo;
 import modelo.VehiculoAuto;
+import modelo.excepciones.MovimientoInvalidoExcepcion;
+import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
 import org.junit.Test;
-
-import excepciones.MovimientoInvalidoExcepcion;
-import excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
 public class JuegoTest {
 
