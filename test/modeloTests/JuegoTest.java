@@ -14,6 +14,7 @@ import modelo.VehiculoAuto;
 import org.junit.Test;
 
 import excepciones.MovimientoInvalidoExcepcion;
+import excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
 public class JuegoTest {
 
@@ -27,22 +28,23 @@ public class JuegoTest {
 		assertNotNull(unJuego);
 	}
     @Test
-    public void testVehiculoDeberiaMoversePorLimitesDelTablero() throws MovimientoInvalidoExcepcion {
+    public void testVehiculoDeberiaMoversePorLimitesDelTablero() throws MovimientoInvalidoExcepcion, PasajeBloqueadoPorPiqueteExcepcion{
 		Tablero tablero = new Tablero(6,3);
 		Vehiculo vehiculo = new VehiculoAuto(new Vector(4,0));
 		Juego unJuego = new Juego(tablero, vehiculo, new Vector(0,0));
     	Vector norte = new Vector(0,1);
     	Vector este = new Vector(1,0);
     	Vector oeste = new Vector(-1,0);
-		unJuego.realizarJugadaEnDireccion(este);
+		try{unJuego.realizarJugadaEnDireccion(este);
 		unJuego.realizarJugadaEnDireccion(norte);
 		unJuego.realizarJugadaEnDireccion(norte);
 		unJuego.realizarJugadaEnDireccion(oeste);
+		} catch (MovimientoInvalidoExcepcion e){};
         assertEquals(unJuego.getVehiculo().getPosicion().asString(), "4,2");
     }
 
     @Test
-    public void testDeberiaTirarExcepcionAlMoverseFueraDelTablero() throws MovimientoInvalidoExcepcion {
+    public void testDeberiaTirarExcepcionAlMoverseFueraDelTablero() throws MovimientoInvalidoExcepcion, PasajeBloqueadoPorPiqueteExcepcion {
 		Tablero tablero = new Tablero(6,3);
 		Vehiculo vehiculo = new VehiculoAuto(new Vector(4,0));
 		vehiculo.setCantidadDeMovimientos(1);
@@ -57,7 +59,7 @@ public class JuegoTest {
     
     //ESTE VA A SER UN TEST INTEGRADOR
     @Test
-    public void testIntegradorValoresDePuntajeDeberianSerChorentesConLosEsperados() throws MovimientoInvalidoExcepcion{
+    public void testIntegradorValoresDePuntajeDeberianSerChorentesConLosEsperados() throws MovimientoInvalidoExcepcion, PasajeBloqueadoPorPiqueteExcepcion{
     	Tablero tablero = new Tablero(3,3);
     	Vehiculo vehiculo = new VehiculoAuto(new Vector(0,0));
     	vehiculo.setCantidadDeMovimientos(0);

@@ -12,6 +12,7 @@ import modelo.VehiculoAuto;
 import org.junit.Test;
 
 import excepciones.MovimientoInvalidoExcepcion;
+import excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
 public class JugadorTest {
 
@@ -35,7 +36,7 @@ public class JugadorTest {
     }
     
     @Test
-    public void testJugadorDebePoderJugar() throws MovimientoInvalidoExcepcion {
+    public void testJugadorDebePoderJugar() throws MovimientoInvalidoExcepcion, PasajeBloqueadoPorPiqueteExcepcion {
         Jugador unJugador = new Jugador("Juansito");
         Vector norte = new Vector(0,1);
         Vehiculo vehiculo = new VehiculoAuto(new Vector(0,1));

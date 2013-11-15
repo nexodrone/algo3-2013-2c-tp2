@@ -10,7 +10,6 @@ import modelo.Vehiculo4x4;
 import modelo.VehiculoAuto;
 import modelo.VehiculoMoto;
 import org.junit.Test;
-import excepciones.MovimientoNoRealizadoException;
 import excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
 public class ObstaculoPiqueteTest {
@@ -49,7 +48,7 @@ public class ObstaculoPiqueteTest {
 	
 	//ESTE TEST VERIFICA EL PRIMER SUPUESTO
 	@Test
-	public void testSiPasamosPorUnaCalleConObstaculoYSorpresaPrimeroSeInteractuaConVehiculo() throws MovimientoNoRealizadoException{
+	public void testSiPasamosPorUnaCalleConObstaculoYSorpresaPrimeroSeInteractuaConVehiculo() throws PasajeBloqueadoPorPiqueteExcepcion{
 		Vehiculo todoterreno = new Vehiculo4x4(new Vector(0,0));
 		Calle calleATransitar = new Calle(new ObstaculoPiquete(),new SorpresaFavorable());
 		todoterreno.setCantidadDeMovimientos(0);
@@ -57,7 +56,7 @@ public class ObstaculoPiqueteTest {
 		try{
 			todoterreno.moverEnDireccion(new Vector(1,0), calleATransitar);
 			fail("Excepcion esperada");			
-		} catch (MovimientoNoRealizadoException esperada) {
+		} catch (PasajeBloqueadoPorPiqueteExcepcion esperada) {
 			excepcionCapturada = true;			
 		}
 		assertTrue(excepcionCapturada);

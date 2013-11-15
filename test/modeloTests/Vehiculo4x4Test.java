@@ -18,31 +18,31 @@ import modelo.VehiculoMoto;
 
 import org.junit.Test;
 
-import excepciones.ImposiblePasarPorCalleException;
-import excepciones.MovimientoNoRealizadoException;
+import excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
 public class Vehiculo4x4Test {
-
-    @Test(expected = ImposiblePasarPorCalleException.class)
-    public void testAtraparExcepcionPorPiquete() throws ImposiblePasarPorCalleException {
+	
+	
+    @Test(expected = PasajeBloqueadoPorPiqueteExcepcion.class)
+    public void testAtraparExcepcionPorPiquete() throws PasajeBloqueadoPorPiqueteExcepcion {
         Vehiculo4x4 auto = new Vehiculo4x4(new Vector(2, 2));
         Calle calleATransitar = new Calle(new ObstaculoPiquete(), null);
         auto.pasarPorCalle(calleATransitar);
     }
 
-    @Test(expected = MovimientoNoRealizadoException.class)
-    public void testAtraparExcepcionYQuedarseEnElLugarYSinSumarUnMovimiento() throws MovimientoNoRealizadoException {
+    @Test(expected = PasajeBloqueadoPorPiqueteExcepcion.class)
+    public void testAtraparExcepcionYQuedarseEnElLugarYSinSumarUnMovimiento() throws PasajeBloqueadoPorPiqueteExcepcion {
         Vector vectorInicial = new Vector(2, 3);
         Vehiculo4x4 unVehiculo = new Vehiculo4x4(vectorInicial);
         Calle calleSur = new Calle(new ObstaculoPiquete(), null);
         Vector sur = new Vector(0, -1);
         try {
             unVehiculo.moverEnDireccion(sur, calleSur);
-        } catch (MovimientoNoRealizadoException e) {
+        } catch (PasajeBloqueadoPorPiqueteExcepcion e) {
             Vector vectorFinal = unVehiculo.getPosicion();
             assertEquals(0, unVehiculo.getCantidadDeMovimientos());
             assertEquals(vectorInicial.asString(), vectorFinal.asString());
-            throw new MovimientoNoRealizadoException();
+            throw new PasajeBloqueadoPorPiqueteExcepcion();
         }
     }
 

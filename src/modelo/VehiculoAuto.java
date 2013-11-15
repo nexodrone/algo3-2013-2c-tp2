@@ -1,7 +1,7 @@
 package modelo;
 
-import excepciones.ImposiblePasarPorCalleException;
 import excepciones.PasajeBloqueadoPorPiqueteExcepcion;
+
 
 public class VehiculoAuto extends Vehiculo {
 
@@ -10,12 +10,12 @@ public class VehiculoAuto extends Vehiculo {
         // esta porcion de codigo esta tanto en vehiculo4x4 y vehiculoMoto
     }
 
-    public void pasarPorCalle(Calle calleAPasar) throws ImposiblePasarPorCalleException {
+    public void pasarPorCalle(Calle calleAPasar) throws PasajeBloqueadoPorPiqueteExcepcion {
         Obstaculo obstaculo = calleAPasar.getObstaculo();
         if (obstaculo != null)
             try {
                 obstaculo.interactuarCon(this);
-            }catch (PasajeBloqueadoPorPiqueteExcepcion e) {throw new ImposiblePasarPorCalleException();}
+            }catch (PasajeBloqueadoPorPiqueteExcepcion e) {throw new PasajeBloqueadoPorPiqueteExcepcion();}
         Sorpresa unaSorpresa = calleAPasar.getSorpresa();
         if(unaSorpresa != null) {
         	unaSorpresa.interactuarCon(this);
