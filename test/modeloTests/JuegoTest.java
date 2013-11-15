@@ -47,7 +47,6 @@ public class JuegoTest {
     			fail("Excepcion esperada");		
     		} catch (MovimientoInvalidoExcepcion esperada) {};
         assertEquals(unJuego.getVehiculo().getCantidadDeMovimientos(), 1);
-/* se comprueba que al intentar a mover en direccion invalida NO SE SUMAN MOVIMIENTOS */
     }
 
 }
