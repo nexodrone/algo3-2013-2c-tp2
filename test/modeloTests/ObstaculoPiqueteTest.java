@@ -1,13 +1,16 @@
 package modeloTests;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
+import modelo.Calle;
 import modelo.ObstaculoPiquete;
+import modelo.SorpresaFavorable;
 import modelo.Vector;
+import modelo.Vehiculo;
 import modelo.Vehiculo4x4;
 import modelo.VehiculoAuto;
 import modelo.VehiculoMoto;
 import org.junit.Test;
+import excepciones.MovimientoNoRealizadoException;
 import excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
 public class ObstaculoPiqueteTest {
@@ -43,6 +46,23 @@ public class ObstaculoPiqueteTest {
 		ObstaculoPiquete piquete = new ObstaculoPiquete();
 		piquete.interactuarCon(moto);
 		assertEquals(moto.getCantidadDeMovimientos(),7);
+	}
+	
+	//ESTE TEST VERIFICA EL PRIMER SUPUESTO
+	@Test
+	public void testSiPasamosPorUnaCalleConObstaculoYSorpresaPrimeroSeInteractuaConVehiculo() throws MovimientoNoRealizadoException{
+		Vehiculo todoterreno = new Vehiculo4x4(new Vector(0,0));
+		Calle calleATransitar = new Calle(new ObstaculoPiquete(),new SorpresaFavorable());
+		todoterreno.setCantidadDeMovimientos(0);
+		boolean excepcionCapturada = false;
+		try{
+			todoterreno.moverEnDireccion(new Vector(1,0), calleATransitar);
+			fail("Excepcion esperada");			
+		} catch (MovimientoNoRealizadoException esperada) {
+			excepcionCapturada = true;			
+		}
+		assertTrue(excepcionCapturada);
+		assertEquals(todoterreno.getCantidadDeMovimientos(),0);
 	}
 
 }
