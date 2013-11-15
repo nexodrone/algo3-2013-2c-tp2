@@ -27,8 +27,7 @@ public abstract class Vehiculo {
         } catch (ImposiblePasarPorCalleException e) {
             throw new MovimientoNoRealizadoException();
         }
-        this.cantidadDeMovimientos = cantidadDeMovimientos + 1;
-        this.posicion = calcularSiguientePosicion(direccion);
+      this.posicion = calcularSiguientePosicion(direccion);
     }
 
     public Vector calcularSiguientePosicion(Vector direccion) {

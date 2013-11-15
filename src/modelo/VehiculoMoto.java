@@ -17,6 +17,10 @@ public class VehiculoMoto extends Vehiculo {
         Obstaculo obstaculo = calleAPasar.getObstaculo();
         if (obstaculo != null)
             obstaculo.interactuarCon(this);
+        Sorpresa unaSorpresa = calleAPasar.getSorpresa();
+        if(unaSorpresa != null) {
+        	unaSorpresa.interactuarCon(this);
+        }else if(obstaculo == null && unaSorpresa == null)this.cantidadDeMovimientos++;
     }
 
     public static Vehiculo nuevoVehiculo(Vehiculo unVehiculo) {

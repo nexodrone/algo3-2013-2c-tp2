@@ -15,11 +15,13 @@ public class VehiculoAuto extends Vehiculo {
         if (obstaculo != null)
             try {
                 obstaculo.interactuarCon(this);
-            } catch (PasajeBloqueadoPorPiqueteExcepcion e) {
-                System.out.print("Calle bloqueada por el Frente Piqueteros Revolucionarios.\n");
-                throw new ImposiblePasarPorCalleException();
-            }
+            }catch (PasajeBloqueadoPorPiqueteExcepcion e) {throw new ImposiblePasarPorCalleException();}
+        Sorpresa unaSorpresa = calleAPasar.getSorpresa();
+        if(unaSorpresa != null) {
+        	unaSorpresa.interactuarCon(this);
+        }else if (obstaculo == null && unaSorpresa == null)this.cantidadDeMovimientos++;
     }
+    
 
     public void aplicarEvento(Sorpresa sorpresa) {
         sorpresa.interactuarCon(this);
