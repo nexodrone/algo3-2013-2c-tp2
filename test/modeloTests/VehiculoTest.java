@@ -39,28 +39,22 @@ public class VehiculoTest {
         Vector oeste = new Vector(-1, 0);
         try {
             unVehiculo.moverEnDireccion(sur, bocacalleNeutral.obtenerCalleEnDireccion(sur));
-        } catch (MovimientoNoRealizadoException e) {
-        };
+        } catch (MovimientoNoRealizadoException e) {};
         try {
             unVehiculo.moverEnDireccion(este, bocacalleNeutral.obtenerCalleEnDireccion(este));
-        } catch (MovimientoNoRealizadoException e) {
-        };
+        } catch (MovimientoNoRealizadoException e) {};
         try {
             unVehiculo.moverEnDireccion(sur, bocacalleNeutral.obtenerCalleEnDireccion(sur));
-        } catch (MovimientoNoRealizadoException e) {
-        };
+        } catch (MovimientoNoRealizadoException e) {};
         try {
             unVehiculo.moverEnDireccion(oeste, bocacalleNeutral.obtenerCalleEnDireccion(oeste));
-        } catch (MovimientoNoRealizadoException e) {
-        };
+        } catch (MovimientoNoRealizadoException e) {};
         try {
             unVehiculo.moverEnDireccion(oeste, bocacalleNeutral.obtenerCalleEnDireccion(oeste));
-        } catch (MovimientoNoRealizadoException e) {
-        };
+        } catch (MovimientoNoRealizadoException e) {};
         try {
             unVehiculo.moverEnDireccion(norte, bocacalleNeutral.obtenerCalleEnDireccion(norte));
-        } catch (MovimientoNoRealizadoException e) {
-        };
+        } catch (MovimientoNoRealizadoException e) {};
         assertEquals(unVehiculo.getPosicion().asString(), "1,2");
         assertEquals(unVehiculo.getCantidadDeMovimientos(), 6);
     }
