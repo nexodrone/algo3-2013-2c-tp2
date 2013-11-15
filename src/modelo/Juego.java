@@ -1,7 +1,8 @@
 package modelo;
 
+
 import excepciones.MovimientoInvalidoExcepcion;
-import excepciones.MovimientoNoRealizadoException;
+import excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
 public class Juego {
 
@@ -29,7 +30,7 @@ public class Juego {
         vehiculo = nuevoVehiculo;
     }
     
-    public void realizarJugadaEnDireccion(Vector direccion) throws MovimientoInvalidoExcepcion {
+    public void realizarJugadaEnDireccion(Vector direccion) throws PasajeBloqueadoPorPiqueteExcepcion, MovimientoInvalidoExcepcion {
         Vector nuevaPosicion = vehiculo.calcularSiguientePosicion(direccion);
         if (tablero.posicionValida(nuevaPosicion)){
         	Bocacalle bocacalleActual = tablero.getBocacalleEnPosicion(vehiculo.getPosicion());
@@ -38,7 +39,7 @@ public class Juego {
                   vehiculo.moverEnDireccion(direccion, calleATransitar);
                   if(vehiculo.getPosicion().sonIguales(posicionGanadora))
                 	  System.out.print("Jugador gano el nivel");
-        	} catch (MovimientoNoRealizadoException e) {
+        	} catch (PasajeBloqueadoPorPiqueteExcepcion e) {
                   	System.out.print("Imposible mover en esa direccion.");
              }  	
         } else throw new MovimientoInvalidoExcepcion(); 

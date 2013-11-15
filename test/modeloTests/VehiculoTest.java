@@ -8,9 +8,7 @@ import modelo.Vehiculo;
 import modelo.VehiculoAuto;
 
 import org.junit.Test;
-
-import excepciones.MovimientoInvalidoExcepcion;
-import excepciones.MovimientoNoRealizadoException;
+import excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
 public class VehiculoTest {
 
@@ -29,7 +27,7 @@ public class VehiculoTest {
     }
 
     @Test
-    public void testPoderMoverseEnTodasDireccionesPosibles() throws MovimientoInvalidoExcepcion {
+    public void testPoderMoverseEnTodasDireccionesPosibles() throws PasajeBloqueadoPorPiqueteExcepcion {
         Vehiculo unVehiculo = new VehiculoAuto(new Vector(2, 3));
         unVehiculo.setCantidadDeMovimientos(0);
         Bocacalle bocacalleNeutral = new Bocacalle();
@@ -39,22 +37,22 @@ public class VehiculoTest {
         Vector oeste = new Vector(-1, 0);
         try {
             unVehiculo.moverEnDireccion(sur, bocacalleNeutral.obtenerCalleEnDireccion(sur));
-        } catch (MovimientoNoRealizadoException e) {};
+        } catch (PasajeBloqueadoPorPiqueteExcepcion e) {};
         try {
             unVehiculo.moverEnDireccion(este, bocacalleNeutral.obtenerCalleEnDireccion(este));
-        } catch (MovimientoNoRealizadoException e) {};
+        } catch (PasajeBloqueadoPorPiqueteExcepcion e) {};
         try {
             unVehiculo.moverEnDireccion(sur, bocacalleNeutral.obtenerCalleEnDireccion(sur));
-        } catch (MovimientoNoRealizadoException e) {};
+        } catch (PasajeBloqueadoPorPiqueteExcepcion e) {};
         try {
             unVehiculo.moverEnDireccion(oeste, bocacalleNeutral.obtenerCalleEnDireccion(oeste));
-        } catch (MovimientoNoRealizadoException e) {};
+        } catch (PasajeBloqueadoPorPiqueteExcepcion e) {};
         try {
             unVehiculo.moverEnDireccion(oeste, bocacalleNeutral.obtenerCalleEnDireccion(oeste));
-        } catch (MovimientoNoRealizadoException e) {};
+        } catch (PasajeBloqueadoPorPiqueteExcepcion e) {};
         try {
             unVehiculo.moverEnDireccion(norte, bocacalleNeutral.obtenerCalleEnDireccion(norte));
-        } catch (MovimientoNoRealizadoException e) {};
+        } catch (PasajeBloqueadoPorPiqueteExcepcion e) {};
         assertEquals(unVehiculo.getPosicion().asString(), "1,2");
         assertEquals(unVehiculo.getCantidadDeMovimientos(), 6);
     }

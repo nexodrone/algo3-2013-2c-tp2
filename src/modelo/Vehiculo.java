@@ -1,7 +1,7 @@
 package modelo;
 
-import excepciones.ImposiblePasarPorCalleException;
-import excepciones.MovimientoNoRealizadoException;
+import excepciones.PasajeBloqueadoPorPiqueteExcepcion;
+
 
 public abstract class Vehiculo {
 
@@ -21,11 +21,11 @@ public abstract class Vehiculo {
         return this.cantidadDeMovimientos;
     }
 
-    public void moverEnDireccion(Vector direccion, Calle calleAPasar) throws MovimientoNoRealizadoException {
+    public void moverEnDireccion(Vector direccion, Calle calleAPasar) throws PasajeBloqueadoPorPiqueteExcepcion {
         try{
             pasarPorCalle(calleAPasar);
-        } catch (ImposiblePasarPorCalleException e) {
-            throw new MovimientoNoRealizadoException();
+        } catch (PasajeBloqueadoPorPiqueteExcepcion e) {
+            throw new PasajeBloqueadoPorPiqueteExcepcion();
         }
       this.posicion = calcularSiguientePosicion(direccion);
     }
@@ -41,7 +41,7 @@ public abstract class Vehiculo {
         this.cantidadDeMovimientos = this.cantidadDeMovimientos + movimientos;
     }
 
-    protected abstract void pasarPorCalle(Calle calle) throws ImposiblePasarPorCalleException;
+    protected abstract void pasarPorCalle(Calle calle) throws PasajeBloqueadoPorPiqueteExcepcion;
 
     public void aplicarPorcentajeAMovimientos(int porcentaje) {
         float movimientosResultantes = this.cantidadDeMovimientos + this.cantidadDeMovimientos * porcentaje / 100;

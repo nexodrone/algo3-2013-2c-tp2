@@ -1,6 +1,8 @@
 package modelo;
 
+
 import excepciones.MovimientoInvalidoExcepcion;
+import excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
 public class Jugador {
 
@@ -23,7 +25,7 @@ public class Jugador {
     	return juegoActual;
     }
     
-    public void jugar(Vector direccion) throws MovimientoInvalidoExcepcion {
+    public void jugar(Vector direccion) throws PasajeBloqueadoPorPiqueteExcepcion, MovimientoInvalidoExcepcion {
     	this.juegoActual.realizarJugadaEnDireccion(direccion);
     }
 }

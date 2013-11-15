@@ -18,12 +18,13 @@ import modelo.VehiculoMoto;
 
 import org.junit.Test;
 
-import excepciones.ImposiblePasarPorCalleException;
+import excepciones.PasajeBloqueadoPorPiqueteExcepcion;
+
 
 public class VehiculoAutoTest {
 
-    @Test(expected = ImposiblePasarPorCalleException.class)
-    public void testAtraparExcepcionPorPiquete() throws ImposiblePasarPorCalleException {
+    @Test(expected = PasajeBloqueadoPorPiqueteExcepcion.class)
+    public void testAtraparExcepcionPorPiquete() throws PasajeBloqueadoPorPiqueteExcepcion {
         VehiculoAuto auto = new VehiculoAuto(new Vector(2, 2));
         auto.setCantidadDeMovimientos(0);
         Calle calleATransitar = new Calle(new ObstaculoPiquete(), null);
