@@ -3,10 +3,14 @@ package modeloTests;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import modelo.Bocacalle;
+import modelo.Calle;
 import modelo.Direccion;
+import modelo.ObstaculoPozo;
 import modelo.Posicion;
+import modelo.SorpresaDesfavorable;
 import modelo.Vehiculo;
 import modelo.VehiculoAuto;
+import modelo.VehiculoMoto;
 import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
 import org.junit.Test;
@@ -56,6 +60,17 @@ public class VehiculoTest {
         } catch (PasajeBloqueadoPorPiqueteExcepcion e) {};
         assertEquals(unVehiculo.getPosicion().asString(), "1,2");
         assertEquals(unVehiculo.getCantidadDeMovimientos(), 6);
+    }
+
+    @Test
+    public void testDeberiaCalcularBienElPuntajeAlPasarPorCalleConPozoYSorpresa() {
+        VehiculoMoto moto = new VehiculoMoto(new Posicion(0, 0));
+        moto.setCantidadDeMovimientos(60);
+        Calle calle = new Calle();
+        calle.setObstaculo(new ObstaculoPozo());
+        calle.setSorpresa(new SorpresaDesfavorable());
+        moto.pasarPorCalle(calle);
+        assertEquals(moto.getCantidadDeMovimientos(),80);
     }
 
 }
