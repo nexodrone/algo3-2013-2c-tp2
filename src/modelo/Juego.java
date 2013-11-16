@@ -37,16 +37,18 @@ public class Juego {
         boolean posicionGanadora = verificarEsPosicionGanadoraEnDireccion(direccion);
         if (!posicionGanadora) {
             Posicion nuevaPosicion = vehiculo.calcularSiguientePosicion(direccion);
-            boolean posicionValida = verificarPosicionEnTablero(nuevaPosicion);
-        }
+            posicionEsValida = verificarPosicionEnTablero(nuevaPosicion);
+        } else
+            posicionEsValida = true;
         if (posicionEsValida) {
             Bocacalle bocacalleActual = tablero.getBocacalleEnPosicion(vehiculo.getPosicion());
-            Calle calleATransitar = bocacalleActual.obtenerCalleEnDireccion(direccion);
+            Calle calleATransitar = bocacalleActual.getCalleEnDireccion(direccion);
             try {
                 vehiculo.moverEnDireccion(direccion, calleATransitar);
-                if (vehiculo.getPosicion().equals(posicionGanadora))
+                if (vehiculo.getPosicion().equals(posicionGanadora)) {
                     System.out.print("Jugador gano el nivel");
-                victoria = true;
+                    victoria = true;
+                }
             } catch (PasajeBloqueadoPorPiqueteExcepcion e) {
                 System.out.print("Imposible mover en esa direccion.");
             }
