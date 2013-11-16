@@ -54,12 +54,13 @@ public class JuegoTest {
     			fail("Excepcion esperada");		
     		} catch (MovimientoInvalidoExcepcion esperada) {};
         assertEquals(unJuego.getVehiculo().getCantidadDeMovimientos(), 1);
+        /* Se comprueba que la cantidad de movimientos no se cambio */
     }
  
     
     //ESTE VA A SER UN TEST INTEGRADOR
     @Test
-    public void testIntegradorValoresDePuntajeDeberianSerChorentesConLosEsperados() throws MovimientoInvalidoExcepcion, PasajeBloqueadoPorPiqueteExcepcion{
+    public void testIntegradorValoresDePuntajeDeberianSerCoherentesConLosEsperados() throws MovimientoInvalidoExcepcion, PasajeBloqueadoPorPiqueteExcepcion{
     	Tablero tablero = new Tablero(3,3);
     	Vehiculo vehiculo = new VehiculoAuto(new Posicion(0,0));
     	vehiculo.setCantidadDeMovimientos(0);

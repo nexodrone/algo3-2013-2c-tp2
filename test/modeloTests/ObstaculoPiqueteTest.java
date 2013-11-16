@@ -48,7 +48,7 @@ public class ObstaculoPiqueteTest {
 	}
 
 	@Test
-	public void testSiPasamosPorUnaCalleConObstaculoYSorpresaPrimeroSeInteractuaConVehiculo() throws PasajeBloqueadoPorPiqueteExcepcion{
+	public void testSiPasamosPorUnaCalleConObstaculoYSorpresaPrimeroSeInteractuaConObstaculo() throws PasajeBloqueadoPorPiqueteExcepcion{
 		Vehiculo todoterreno = new Vehiculo4x4(new Posicion(0,0));
 		Calle calleATransitar = new Calle(new ObstaculoPiquete(),new SorpresaFavorable());
 		todoterreno.setCantidadDeMovimientos(0);
