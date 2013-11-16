@@ -2,7 +2,6 @@ package modelo;
 
 import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
-
 public abstract class Vehiculo {
 
     protected Posicion posicion;
@@ -38,13 +37,13 @@ public abstract class Vehiculo {
         this.cantidadDeMovimientos = this.cantidadDeMovimientos + movimientos;
     }
 
-    protected abstract void pasarPorCalle(Calle calle) throws PasajeBloqueadoPorPiqueteExcepcion;
-
     public void aplicarPorcentajeAMovimientos(int porcentaje) {
         float movimientosResultantes = this.cantidadDeMovimientos + this.cantidadDeMovimientos * porcentaje / 100;
         this.cantidadDeMovimientos = Math.round(movimientosResultantes);
     }
 
+    protected abstract void pasarPorCalle(Calle calle) throws PasajeBloqueadoPorPiqueteExcepcion;
+    
     public void cambiarA(Vehiculo vehiculo) {
         juego.cambiarVehiculo(vehiculo);
     }
@@ -53,7 +52,6 @@ public abstract class Vehiculo {
         boolean cantidad = (cantidadDeMovimientos == vehiculo.getCantidadDeMovimientos());
         boolean posicionesIguales = posicion.equals(vehiculo.getPosicion());
         return (cantidad && posicionesIguales);
-
     }
 
     public void setJuegoActual(Juego juegoActual) {

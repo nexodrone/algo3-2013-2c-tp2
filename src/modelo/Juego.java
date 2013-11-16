@@ -1,6 +1,5 @@
 package modelo;
 
-
 import modelo.excepciones.MovimientoInvalidoExcepcion;
 import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
@@ -24,24 +23,24 @@ public class Juego {
         return this.vehiculo;
     }
 
-
     public void cambiarVehiculo(Vehiculo nuevoVehiculo) {
-        System.out.print("cambio de vehiculo");
+        // System.out.print("cambio de vehiculo");
         vehiculo = nuevoVehiculo;
     }
-    
+
     public void realizarJugadaEnDireccion(Direccion direccion) throws PasajeBloqueadoPorPiqueteExcepcion, MovimientoInvalidoExcepcion {
         Posicion nuevaPosicion = vehiculo.calcularSiguientePosicion(direccion);
-        if (tablero.posicionValida(nuevaPosicion)){
+    	boolean posicionEsValida = nuevaPosicion.equals(posicionGanadora);
+    	if (!posicionEsValida) posicionEsValida = this.tablero.posicionValida(nuevaPosicion);
+        if (posicionEsValida) {
         	Bocacalle bocacalleActual = tablero.getBocacalleEnPosicion(vehiculo.getPosicion());
         	Calle calleATransitar = bocacalleActual.obtenerCalleEnDireccion(direccion);
-        	try {
-                  vehiculo.moverEnDireccion(direccion, calleATransitar);
-                  if(vehiculo.getPosicion().equals(posicionGanadora))
-                	  System.out.print("Jugador gano el nivel");
+        	try {	vehiculo.moverEnDireccion(direccion, calleATransitar);
+            		if (vehiculo.getPosicion().equals(posicionGanadora))
+            			System.out.print("Jugador gano el nivel");
         	} catch (PasajeBloqueadoPorPiqueteExcepcion e) {
                   	System.out.print("Imposible mover en esa direccion.");
-             }  	
+            }  	
         } else throw new MovimientoInvalidoExcepcion(); 
     }
 
