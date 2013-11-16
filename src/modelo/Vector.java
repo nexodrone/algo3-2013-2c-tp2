@@ -22,7 +22,6 @@ public class Vector {
         return (igualX && igualY);
     }
 
-
     public void incrementarX(int incremento) {
         x = x + incremento;
     }
