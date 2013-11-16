@@ -8,6 +8,7 @@ public class Juego {
     private Tablero tablero;
     private Vehiculo vehiculo;
     private Posicion posicionGanadora;
+    private boolean victoria;
 
     public Juego(Tablero tablero, Vehiculo vehiculo, Posicion posicionGanadora) {
         this.tablero = tablero;
@@ -29,19 +30,43 @@ public class Juego {
     }
 
     public void realizarJugadaEnDireccion(Direccion direccion) throws PasajeBloqueadoPorPiqueteExcepcion, MovimientoInvalidoExcepcion {
-        Posicion nuevaPosicion = vehiculo.calcularSiguientePosicion(direccion);
-    	boolean posicionEsValida = nuevaPosicion.equals(posicionGanadora);
-    	if (!posicionEsValida) posicionEsValida = this.tablero.posicionValida(nuevaPosicion);
+        if (this.verificarEstadoDeVictoria() == true) {
+            // cortar el el funcion
+        }
+        boolean posicionEsValida = false;
+        boolean posicionGanadora = verificarEsPosicionGanadoraEnDireccion(direccion);
+        if (!posicionGanadora) {
+            Posicion nuevaPosicion = vehiculo.calcularSiguientePosicion(direccion);
+            boolean posicionValida = verificarPosicionEnTablero(nuevaPosicion);
+        }
         if (posicionEsValida) {
-        	Bocacalle bocacalleActual = tablero.getBocacalleEnPosicion(vehiculo.getPosicion());
-        	Calle calleATransitar = bocacalleActual.getCalleEnDireccion(direccion);
-        	try {	vehiculo.moverEnDireccion(direccion, calleATransitar);
-            		if (vehiculo.getPosicion().equals(posicionGanadora))
-            			System.out.print("Jugador gano el nivel");
-        	} catch (PasajeBloqueadoPorPiqueteExcepcion e) {
-                  	System.out.print("Imposible mover en esa direccion.");
-            }  	
-        } else throw new MovimientoInvalidoExcepcion(); 
+            Bocacalle bocacalleActual = tablero.getBocacalleEnPosicion(vehiculo.getPosicion());
+            Calle calleATransitar = bocacalleActual.obtenerCalleEnDireccion(direccion);
+            try {
+                vehiculo.moverEnDireccion(direccion, calleATransitar);
+                if (vehiculo.getPosicion().equals(posicionGanadora))
+                    System.out.print("Jugador gano el nivel");
+                victoria = true;
+            } catch (PasajeBloqueadoPorPiqueteExcepcion e) {
+                System.out.print("Imposible mover en esa direccion.");
+            }
+        } else
+            throw new MovimientoInvalidoExcepcion();
     }
 
+    public boolean verificarEsPosicionGanadoraEnDireccion(Direccion direccion) {
+        boolean valor;
+        Posicion nuevaPosicion = vehiculo.calcularSiguientePosicion(direccion);
+        valor = nuevaPosicion.equals(posicionGanadora);
+        return valor;
+
+    }
+
+    public boolean verificarPosicionEnTablero(Posicion posicion) {
+        return this.tablero.posicionValida(posicion);
+    }
+
+    public boolean verificarEstadoDeVictoria() {
+        return (victoria == true);
+    }
 }
