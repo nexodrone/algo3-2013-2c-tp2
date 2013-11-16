@@ -2,14 +2,17 @@ package modelo;
 
 import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
-
 public class VehiculoAuto extends Vehiculo {
 
     public VehiculoAuto(Posicion posicionInicial) {
         super(posicionInicial);
-        // esta porcion de codigo esta tanto en vehiculo4x4 y vehiculoMoto
+        /* esta porcion de codigo esta tanto en vehiculo4x4 y vehiculoMoto */
     }
 
+    public void aplicarEvento(Sorpresa sorpresa) {
+        sorpresa.interactuarCon(this);
+    }
+    
     public void pasarPorCalle(Calle calleAPasar) throws PasajeBloqueadoPorPiqueteExcepcion {
         Obstaculo obstaculo = calleAPasar.getObstaculo();
         if (obstaculo != null) { obstaculo.interactuarCon(this); };
@@ -18,12 +21,6 @@ public class VehiculoAuto extends Vehiculo {
 								calleAPasar.setSorpresa(null); };
         this.cantidadDeMovimientos++;
      }
-    
-
-    public void aplicarEvento(Sorpresa sorpresa) {
-        sorpresa.interactuarCon(this);
-
-    }
 
     public static Vehiculo nuevoVehiculo(Vehiculo vehiculo) {
         Vehiculo nuevoAuto = new VehiculoAuto(vehiculo.getPosicion());

@@ -1,16 +1,14 @@
 package modelo;
 
-
 public class VehiculoMoto extends Vehiculo {
 
     public VehiculoMoto(Posicion posicionInicial) {
         super(posicionInicial);
-        // esta porcion de codigo esta tanto vehiculo4x4 y vehiculoAuto
+        /* esta porcion de codigo esta tanto vehiculo4x4 y vehiculoAuto */
     }
 
     public void aplicarEvento(Sorpresa sorpresa) {
         sorpresa.interactuarCon(this);
-
     }
 
     public void pasarPorCalle(Calle calleAPasar) {
@@ -23,9 +21,9 @@ public class VehiculoMoto extends Vehiculo {
      }
 
     public static Vehiculo nuevoVehiculo(Vehiculo unVehiculo) {
-        Vehiculo nuevoAuto = new VehiculoMoto(unVehiculo.getPosicion());
-        nuevoAuto.setCantidadDeMovimientos(unVehiculo.getCantidadDeMovimientos());
-        return nuevoAuto;
+        Vehiculo nuevoMoto = new VehiculoMoto(unVehiculo.getPosicion());
+        nuevoMoto.setCantidadDeMovimientos(unVehiculo.getCantidadDeMovimientos());
+        return nuevoMoto;
     }
 
 }
