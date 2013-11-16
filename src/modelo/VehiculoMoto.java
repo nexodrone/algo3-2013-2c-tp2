@@ -17,7 +17,8 @@ public class VehiculoMoto extends Vehiculo {
         Obstaculo obstaculo = calleAPasar.getObstaculo();
         if (obstaculo != null) { obstaculo.interactuarCon(this); };
         Sorpresa sorpresa = calleAPasar.getSorpresa(); /* si llego hasta aca entonces no hay problema con obstaculo */
-        if (sorpresa != null) { sorpresa.interactuarCon(this); };
+        if (sorpresa != null) { sorpresa.interactuarCon(this);
+        						calleAPasar.setSorpresa(null); };
         this.cantidadDeMovimientos++;
      }
 

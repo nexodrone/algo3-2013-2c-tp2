@@ -22,6 +22,12 @@ import org.junit.Test;
 
 public class VehiculoAutoTest {
 
+	@Test
+	public void testDeberiaCrearseCon0Movimientos() {
+        VehiculoAuto auto = new VehiculoAuto(new Posicion(2, 2));
+        assertEquals(auto.getCantidadDeMovimientos(),0);
+	}
+	
     @Test(expected = PasajeBloqueadoPorPiqueteExcepcion.class)
     public void testAtraparExcepcionPorPiquete() throws PasajeBloqueadoPorPiqueteExcepcion {
         VehiculoAuto auto = new VehiculoAuto(new Posicion(2, 2));
