@@ -41,15 +41,15 @@ public class Juego {
     			Calle calleATransitar = bocacalleActual.getCalleEnDireccion(direccion);
     			try {	vehiculo.moverEnDireccion(direccion, calleATransitar);
     					if (vehiculo.getPosicion().equals(posicionGanadora))
-    						{	System.out.print("Jugador gano el nivel");
+    						{	System.out.print("Jugador gano el nivel \n");
             					this.juegoGanado = true;
             				}
     				} catch (PasajeBloqueadoPorPiqueteExcepcion e) {
-    					System.out.print("Imposible mover en esa direccion.");
+    					System.out.print("Imposible mover en esa direccion. \n");
     					}
     			} else throw new MovimientoInvalidoExcepcion();
 
-    		} else System.out.print("Juego ganado ya!");
+    		} else System.out.print("Juego ganado ya!\n");
     }
     
 }
