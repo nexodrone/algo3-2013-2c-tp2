@@ -34,7 +34,7 @@ public class Juego {
     	if (!posicionEsValida) posicionEsValida = this.tablero.posicionValida(nuevaPosicion);
         if (posicionEsValida) {
         	Bocacalle bocacalleActual = tablero.getBocacalleEnPosicion(vehiculo.getPosicion());
-        	Calle calleATransitar = bocacalleActual.obtenerCalleEnDireccion(direccion);
+        	Calle calleATransitar = bocacalleActual.getCalleEnDireccion(direccion);
         	try {	vehiculo.moverEnDireccion(direccion, calleATransitar);
             		if (vehiculo.getPosicion().equals(posicionGanadora))
             			System.out.print("Jugador gano el nivel");

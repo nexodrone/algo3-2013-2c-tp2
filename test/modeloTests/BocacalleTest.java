@@ -18,7 +18,7 @@ public class BocacalleTest {
     public void testParaComprobarQuelaCalleNorteNoEsNula() {
         Direccion norte = new Direccion(0, 1);
         Bocacalle unaBocaCalle = new Bocacalle();
-        Calle calleNorte = unaBocaCalle.obtenerCalleEnDireccion(norte);
+        Calle calleNorte = unaBocaCalle.getCalleEnDireccion(norte);
         assertNotNull(calleNorte);
     }
 
@@ -26,7 +26,7 @@ public class BocacalleTest {
     public void testParaComprobarQuelaCalleSurNoEsNula() {
         Direccion sur = new Direccion(0, -1);
         Bocacalle unaBocaCalle = new Bocacalle();
-        Calle calleSur = unaBocaCalle.obtenerCalleEnDireccion(sur);
+        Calle calleSur = unaBocaCalle.getCalleEnDireccion(sur);
         assertNotNull(calleSur);
     }
 
@@ -34,7 +34,7 @@ public class BocacalleTest {
     public void testParaComprobarQueLaCalleEsteNoEsNula() {
         Direccion este = new Direccion(1, 0);
         Bocacalle unaBocaCalle = new Bocacalle();
-        Calle calleEste = unaBocaCalle.obtenerCalleEnDireccion(este);
+        Calle calleEste = unaBocaCalle.getCalleEnDireccion(este);
         assertNotNull(calleEste);
 
     }
@@ -43,7 +43,7 @@ public class BocacalleTest {
     public void testParaComprobarQueLaCalleOesteNoEsNula() {
         Direccion oeste = new Direccion(-1, 0);
         Bocacalle unaBocaCalle = new Bocacalle();
-        Calle calleOeste = unaBocaCalle.obtenerCalleEnDireccion(oeste);
+        Calle calleOeste = unaBocaCalle.getCalleEnDireccion(oeste);
         assertNotNull(calleOeste);
     }
 

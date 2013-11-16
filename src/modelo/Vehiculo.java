@@ -38,7 +38,7 @@ public abstract class Vehiculo {
     }
 
     public void aplicarPorcentajeAMovimientos(int porcentaje) {
-        float movimientosResultantes = this.cantidadDeMovimientos + this.cantidadDeMovimientos * porcentaje / 100;
+        float movimientosResultantes = this.cantidadDeMovimientos + (float) this.cantidadDeMovimientos * porcentaje / 100;
         this.cantidadDeMovimientos = Math.round(movimientosResultantes);
     }
 

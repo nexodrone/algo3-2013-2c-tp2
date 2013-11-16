@@ -24,19 +24,19 @@ public class SorpresaDesfavorableTest {
 	@Test
 	public void testDeberiaSumarCorrectamentePuntajeAl4x4() {
 		Vehiculo4x4 todoterreno = new Vehiculo4x4(new Posicion(0,0));
-		todoterreno.setCantidadDeMovimientos(77);
+		todoterreno.setCantidadDeMovimientos(11);
 		SorpresaDesfavorable sdf = new SorpresaDesfavorable();
 		sdf.interactuarCon(todoterreno);
-		assertEquals(todoterreno.getCantidadDeMovimientos(),96);
+		assertEquals(todoterreno.getCantidadDeMovimientos(),14);
 	}
 	
 	@Test
 	public void testDeberiaSumarCorrectamentePuntajeALaMoto() {
 		VehiculoMoto moto = new VehiculoMoto(new Posicion(0,0));
-		moto.setCantidadDeMovimientos(77);
+		moto.setCantidadDeMovimientos(43);
 		SorpresaDesfavorable sdf = new SorpresaDesfavorable();
 		sdf.interactuarCon(moto);
-		assertEquals(moto.getCantidadDeMovimientos(),96);
+		assertEquals(moto.getCantidadDeMovimientos(),54);
 	}
 	
 }
