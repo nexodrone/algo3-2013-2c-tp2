@@ -23,12 +23,8 @@ public abstract class Vehiculo {
     }
 
     public void moverEnDireccion(Direccion direccion, Calle calleAPasar) throws PasajeBloqueadoPorPiqueteExcepcion {
-        try{
-            pasarPorCalle(calleAPasar);
-        } catch (PasajeBloqueadoPorPiqueteExcepcion e) {
-            throw new PasajeBloqueadoPorPiqueteExcepcion();
-        }
-      this.posicion = calcularSiguientePosicion(direccion);
+    	pasarPorCalle(calleAPasar);
+    	this.posicion = calcularSiguientePosicion(direccion);
     }
 
     public Posicion calcularSiguientePosicion(Direccion direccion) {
