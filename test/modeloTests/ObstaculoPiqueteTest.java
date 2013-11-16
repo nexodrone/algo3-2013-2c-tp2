@@ -38,17 +38,15 @@ public class ObstaculoPiqueteTest {
 		assertEquals(auto.getCantidadDeMovimientos(),5);
 	}
 	
-	//ESTE TEST VERIFICA SUPUESTO 2 PUES SE SUMAN x+1 MOVIMIENTOS
 	@Test
 	public void testDeberiaSumar2DePenalizacionMovimientoAMoto() {
 		VehiculoMoto moto = new VehiculoMoto(new Posicion(0,0));
 		moto.setCantidadDeMovimientos(5);
 		ObstaculoPiquete piquete = new ObstaculoPiquete();
 		piquete.interactuarCon(moto);
-		assertEquals(moto.getCantidadDeMovimientos(),8);
+		assertEquals(moto.getCantidadDeMovimientos(),7);
 	}
-	
-	//ESTE TEST VERIFICA EL PRIMER SUPUESTO
+
 	@Test
 	public void testSiPasamosPorUnaCalleConObstaculoYSorpresaPrimeroSeInteractuaConVehiculo() throws PasajeBloqueadoPorPiqueteExcepcion{
 		Vehiculo todoterreno = new Vehiculo4x4(new Posicion(0,0));

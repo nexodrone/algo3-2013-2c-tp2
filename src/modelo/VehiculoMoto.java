@@ -15,13 +15,11 @@ public class VehiculoMoto extends Vehiculo {
 
     public void pasarPorCalle(Calle calleAPasar) {
         Obstaculo obstaculo = calleAPasar.getObstaculo();
-        if (obstaculo != null)
-            obstaculo.interactuarCon(this);
-        Sorpresa unaSorpresa = calleAPasar.getSorpresa();
-        if(unaSorpresa != null) {
-        	unaSorpresa.interactuarCon(this);
-        }else if(obstaculo == null && unaSorpresa == null)this.cantidadDeMovimientos++;
-    }
+        if (obstaculo != null) { obstaculo.interactuarCon(this); };
+        Sorpresa sorpresa = calleAPasar.getSorpresa(); /* si llego hasta aca entonces no hay problema con obstaculo */
+        if (sorpresa != null) { sorpresa.interactuarCon(this); };
+        this.cantidadDeMovimientos++;
+     }
 
     public static Vehiculo nuevoVehiculo(Vehiculo unVehiculo) {
         Vehiculo nuevoAuto = new VehiculoMoto(unVehiculo.getPosicion());

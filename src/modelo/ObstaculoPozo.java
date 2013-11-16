@@ -6,18 +6,16 @@ public class ObstaculoPozo extends Obstaculo {
 	private static int penalizacion4x4 = 0;
 	private static int penalizacionMoto = 3;
 	
-	//CHICOS ESTOS VALORES ESTABAN HARCODEADOS. REFIEREN AL SUPUESTO 2
-	
 	public void interactuarCon(VehiculoAuto auto) {
-		auto.sumarMovimientos(penalizacionAuto+1);
+		auto.sumarMovimientos(penalizacionAuto);
 	}
 
 	public void interactuarCon(Vehiculo4x4 todoterreno) {
-		todoterreno.sumarMovimientos(penalizacion4x4+1);
+		todoterreno.sumarMovimientos(penalizacion4x4);
 	}
 
 	public void interactuarCon(VehiculoMoto moto) {
-		moto.sumarMovimientos(penalizacionMoto+1);
+		moto.sumarMovimientos(penalizacionMoto);
 	}
 
 }
