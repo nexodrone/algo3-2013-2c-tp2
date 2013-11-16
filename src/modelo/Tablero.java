@@ -27,12 +27,12 @@ public class Tablero {
         Direccion norte = new Direccion(0,1);
         for (int i=1; i<cantidadDeColumnas; i++) {
             for (int j=0; j<cantidadDeFilas; j++) { // unificar calles horizontales
-                this.bocacalles.get(i).get(j).setCalleOeste(this.bocacalles.get(i-1).get(j).obtenerCalleEnDireccion(este));
+                this.bocacalles.get(i).get(j).setCalleOeste(this.bocacalles.get(i-1).get(j).getCalleEnDireccion(este));
             }
         }
         for (int i=0; i<cantidadDeColumnas; i++) {
             for (int j=1; j<cantidadDeFilas; j++) { // unificar calles verticales
-                this.bocacalles.get(i).get(j).setCalleSur(this.bocacalles.get(i).get(j-1).obtenerCalleEnDireccion(norte));
+                this.bocacalles.get(i).get(j).setCalleSur(this.bocacalles.get(i).get(j-1).getCalleEnDireccion(norte));
             }
         }
     }

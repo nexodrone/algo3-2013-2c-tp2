@@ -19,7 +19,7 @@ public class Bocacalle {
         this.calleOeste = calleOeste;
     }
 
-    public Calle obtenerCalleEnDireccion(Direccion direccion) {
+    public Calle getCalleEnDireccion(Direccion direccion) {
         if (direccion.x() == 1)
             return calleEste;
         if (direccion.x() == -1)

@@ -42,10 +42,10 @@ public class TableroTest {
         Direccion este = new Direccion(1,0);
         Direccion oeste = new Direccion(-1,0);
         Tablero unTablero = new Tablero(5, 5);
-        assertEquals(unTablero.getBocacalleEnPosicion(new Posicion(0,0)).obtenerCalleEnDireccion(norte),
-        				unTablero.getBocacalleEnPosicion(new Posicion(0,1)).obtenerCalleEnDireccion(sur));
-        assertEquals(unTablero.getBocacalleEnPosicion(new Posicion(3,1)).obtenerCalleEnDireccion(este),
-				unTablero.getBocacalleEnPosicion(new Posicion(4,1)).obtenerCalleEnDireccion(oeste));
+        assertEquals(unTablero.getBocacalleEnPosicion(new Posicion(0,0)).getCalleEnDireccion(norte),
+        				unTablero.getBocacalleEnPosicion(new Posicion(0,1)).getCalleEnDireccion(sur));
+        assertEquals(unTablero.getBocacalleEnPosicion(new Posicion(3,1)).getCalleEnDireccion(este),
+				unTablero.getBocacalleEnPosicion(new Posicion(4,1)).getCalleEnDireccion(oeste));
     }
 
     @Test

@@ -37,22 +37,22 @@ public class VehiculoTest {
         Direccion este = new Direccion(1, 0);
         Direccion oeste = new Direccion(-1, 0);
         try {
-            unVehiculo.moverEnDireccion(sur, bocacalleNeutral.obtenerCalleEnDireccion(sur));
+            unVehiculo.moverEnDireccion(sur, bocacalleNeutral.getCalleEnDireccion(sur));
         } catch (PasajeBloqueadoPorPiqueteExcepcion e) {};
         try {
-            unVehiculo.moverEnDireccion(este, bocacalleNeutral.obtenerCalleEnDireccion(este));
+            unVehiculo.moverEnDireccion(este, bocacalleNeutral.getCalleEnDireccion(este));
         } catch (PasajeBloqueadoPorPiqueteExcepcion e) {};
         try {
-            unVehiculo.moverEnDireccion(sur, bocacalleNeutral.obtenerCalleEnDireccion(sur));
+            unVehiculo.moverEnDireccion(sur, bocacalleNeutral.getCalleEnDireccion(sur));
         } catch (PasajeBloqueadoPorPiqueteExcepcion e) {};
         try {
-            unVehiculo.moverEnDireccion(oeste, bocacalleNeutral.obtenerCalleEnDireccion(oeste));
+            unVehiculo.moverEnDireccion(oeste, bocacalleNeutral.getCalleEnDireccion(oeste));
         } catch (PasajeBloqueadoPorPiqueteExcepcion e) {};
         try {
-            unVehiculo.moverEnDireccion(oeste, bocacalleNeutral.obtenerCalleEnDireccion(oeste));
+            unVehiculo.moverEnDireccion(oeste, bocacalleNeutral.getCalleEnDireccion(oeste));
         } catch (PasajeBloqueadoPorPiqueteExcepcion e) {};
         try {
-            unVehiculo.moverEnDireccion(norte, bocacalleNeutral.obtenerCalleEnDireccion(norte));
+            unVehiculo.moverEnDireccion(norte, bocacalleNeutral.getCalleEnDireccion(norte));
         } catch (PasajeBloqueadoPorPiqueteExcepcion e) {};
         assertEquals(unVehiculo.getPosicion().asString(), "1,2");
         assertEquals(unVehiculo.getCantidadDeMovimientos(), 6);

@@ -71,11 +71,11 @@ public class JuegoTest {
         Direccion este = new Direccion(1, 0);
         Direccion oeste = new Direccion(-1, 0);
     	    	
-    	Calle calleSurDePosicionUnoCero = tablero.getBocacalleEnPosicion(new Posicion(1,0)).obtenerCalleEnDireccion(sur);
+    	Calle calleSurDePosicionUnoCero = tablero.getBocacalleEnPosicion(new Posicion(1,0)).getCalleEnDireccion(sur);
     	calleSurDePosicionUnoCero.setSorpresa(new SorpresaCambioDeVehiculo());
-    	Calle calleOesteDePosicionUnoUno = tablero.getBocacalleEnPosicion(new Posicion(1,0)).obtenerCalleEnDireccion(oeste);
+    	Calle calleOesteDePosicionUnoUno = tablero.getBocacalleEnPosicion(new Posicion(1,0)).getCalleEnDireccion(oeste);
     	calleOesteDePosicionUnoUno.setObstaculo(new ObstaculoPozo());
-    	Calle calleEsteDePosicionUnoUno = tablero.getBocacalleEnPosicion(new Posicion(1,0)).obtenerCalleEnDireccion(este);
+    	Calle calleEsteDePosicionUnoUno = tablero.getBocacalleEnPosicion(new Posicion(1,0)).getCalleEnDireccion(este);
     	calleEsteDePosicionUnoUno.setSorpresa(new SorpresaDesfavorable());
     	
     	Juego nuevoJuego = new Juego(tablero,vehiculo,posicionGanadora);
