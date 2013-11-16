@@ -29,7 +29,6 @@ public class Calle {
 	
 	public void setSorpresa(Sorpresa sorpresaAColocar){
 		sorpresa = sorpresaAColocar;
-		
 	}
 	
 }
