@@ -19,6 +19,12 @@ import modelo.VehiculoMoto;
 import org.junit.Test;
 
 public class VehiculoMotoTest {
+	
+	@Test
+	public void testDeberiaCrearseCon0Movimientos() {
+        VehiculoMoto moto = new VehiculoMoto(new Posicion(2, 2));
+        assertEquals(moto.getCantidadDeMovimientos(),0);
+	}
 
     @Test
     public void testDeberiaPerderDosMovimientosPorPiquete() {

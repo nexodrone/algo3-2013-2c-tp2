@@ -11,6 +11,7 @@ public abstract class Vehiculo {
 
     public Vehiculo(Posicion nuevaPosicion) {
         posicion = nuevaPosicion;
+        this.cantidadDeMovimientos = 0;
      }
 
     public Posicion getPosicion() {

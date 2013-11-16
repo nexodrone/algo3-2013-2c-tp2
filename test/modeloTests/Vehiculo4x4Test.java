@@ -22,12 +22,17 @@ import org.junit.Test;
 
 public class Vehiculo4x4Test {
 	
+	@Test
+	public void testDeberiaCrearseCon0Movimientos() {
+        Vehiculo4x4 todoterreno = new Vehiculo4x4(new Posicion(2, 2));
+        assertEquals(todoterreno.getCantidadDeMovimientos(),0);
+	}
 	
     @Test(expected = PasajeBloqueadoPorPiqueteExcepcion.class)
     public void testAtraparExcepcionPorPiquete() throws PasajeBloqueadoPorPiqueteExcepcion {
-        Vehiculo4x4 auto = new Vehiculo4x4(new Posicion(2, 2));
+        Vehiculo4x4 todoterreno = new Vehiculo4x4(new Posicion(2, 2));
         Calle calleATransitar = new Calle(new ObstaculoPiquete(), null);
-        auto.pasarPorCalle(calleATransitar);
+        todoterreno.pasarPorCalle(calleATransitar);
     }
 
     @Test(expected = PasajeBloqueadoPorPiqueteExcepcion.class)
