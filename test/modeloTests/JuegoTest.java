@@ -4,13 +4,16 @@ import static org.junit.Assert.*;
 import modelo.Calle;
 import modelo.Direccion;
 import modelo.Juego;
+import modelo.ObstaculoPiquete;
 import modelo.ObstaculoPozo;
 import modelo.Posicion;
 import modelo.SorpresaCambioDeVehiculo;
 import modelo.SorpresaDesfavorable;
+import modelo.SorpresaFavorable;
 import modelo.Tablero;
 import modelo.Vehiculo;
 import modelo.VehiculoAuto;
+import modelo.VehiculoMoto;
 import modelo.excepciones.MovimientoInvalidoExcepcion;
 import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
@@ -87,5 +90,45 @@ public class JuegoTest {
     	assertEquals(nuevoJuego.getVehiculo().getPosicion().asString(),"2,2");
     	
     }
+    
+    @Test
+    public void testObstaculosYSorpresasDebenSerAplicadosDeFormaCoherente() throws PasajeBloqueadoPorPiqueteExcepcion, MovimientoInvalidoExcepcion{
+    	Tablero tablero = new Tablero(5,4);
+    	Vehiculo vehiculo = new VehiculoMoto(new Posicion(1,1));
+    	vehiculo.setCantidadDeMovimientos(0);
+    	Posicion posicionGanadora = new Posicion(0,3);
+    	
+    	Direccion norte = new Direccion(0, 1);
+    	Direccion sur = new Direccion(0, -1);
+        Direccion este = new Direccion(1, 0);
+        Direccion oeste = new Direccion(-1, 0);
+    
+        Calle calleEsteDePosicionUnoUno = tablero.getBocacalleEnPosicion(new Posicion(1,1)).getCalleEnDireccion(este);
+        calleEsteDePosicionUnoUno.setObstaculo(new ObstaculoPiquete());
+        Calle calleEsteDePosicionUnoDos = tablero.getBocacalleEnPosicion(new Posicion(1,2)).getCalleEnDireccion(este);
+        calleEsteDePosicionUnoDos.setSorpresa(new SorpresaFavorable());
+        Calle calleNorteDePosicionUnoTres = tablero.getBocacalleEnPosicion(new Posicion(1,3)).getCalleEnDireccion(norte);
+        calleNorteDePosicionUnoTres.setSorpresa(new SorpresaCambioDeVehiculo());
+        Calle calleOesteDePosicionTresTres = tablero.getBocacalleEnPosicion(new Posicion(3,3)).getCalleEnDireccion(oeste);
+        calleOesteDePosicionTresTres.setSorpresa(new SorpresaDesfavorable());
+        
+        Juego nuevoJuego = new Juego(tablero,vehiculo,posicionGanadora);
+        
+        nuevoJuego.realizarJugadaEnDireccion(este);
+        nuevoJuego.realizarJugadaEnDireccion(este);
+        nuevoJuego.realizarJugadaEnDireccion(norte);
+        nuevoJuego.realizarJugadaEnDireccion(norte);
+        nuevoJuego.realizarJugadaEnDireccion(oeste);
+        nuevoJuego.realizarJugadaEnDireccion(este);
+        nuevoJuego.realizarJugadaEnDireccion(sur);
+        nuevoJuego.realizarJugadaEnDireccion(oeste);
+        nuevoJuego.realizarJugadaEnDireccion(oeste);
+        nuevoJuego.realizarJugadaEnDireccion(norte);
+        nuevoJuego.realizarJugadaEnDireccion(oeste);
+        assertEquals(nuevoJuego.getVehiculo().getCantidadDeMovimientos(),13);
+    }
+    
+    
+    
     
 }
