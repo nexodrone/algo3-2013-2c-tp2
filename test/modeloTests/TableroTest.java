@@ -2,7 +2,11 @@ package modeloTests;
 
 import static org.junit.Assert.*;
 import modelo.Bocacalle;
+import modelo.Calle;
 import modelo.Direccion;
+import modelo.ObstaculoControlPolicial;
+import modelo.ObstaculoPiquete;
+import modelo.SorpresaFavorable;
 import modelo.Tablero;
 import modelo.Posicion;
 
@@ -82,6 +86,41 @@ public class TableroTest {
             assertEquals(tablero.posicionValida(unaPosicion),true);
         	}
         }
+    }
+    
+    
+    @Test
+    public void testTableroConSorpresasYObstaculosDebenSerCompartidaPorBocacallesVecinas(){
+    	
+    	Direccion norte = new Direccion(0, 1);
+    	Direccion sur = new Direccion(0, -1);
+        Direccion este = new Direccion(1, 0);
+        Direccion oeste = new Direccion(-1, 0);
+    	Tablero tablero = new Tablero(6,4);
+
+    	Calle calleNortePosicionUnoUno = tablero.getBocacalleEnPosicion(new Posicion(1,1)).getCalleEnDireccion(norte);
+    	calleNortePosicionUnoUno.setObstaculo(new ObstaculoControlPolicial());
+    	Calle calleEstePosicionDosDos = tablero.getBocacalleEnPosicion(new Posicion(2,2)).getCalleEnDireccion(este);
+    	calleEstePosicionDosDos.setSorpresa(new SorpresaFavorable());
+    	Calle calleSurPosicionUnoTres = tablero.getBocacalleEnPosicion(new Posicion(1,3)).getCalleEnDireccion(sur);
+    	calleSurPosicionUnoTres.setObstaculo(new ObstaculoPiquete());
+    	Calle calleSurPosicionDosTres = tablero.getBocacalleEnPosicion(new Posicion(2,3)).getCalleEnDireccion(sur);
+    	calleSurPosicionDosTres.setSorpresa(new SorpresaFavorable());
+    	
+    	assertNotNull(tablero.getBocacalleEnPosicion(new Posicion(2,1)).getCalleEnDireccion(sur));
+    	assertNotNull(tablero.getBocacalleEnPosicion(new Posicion(2,3)).getCalleEnDireccion(oeste));
+    	assertNotNull(tablero.getBocacalleEnPosicion(new Posicion(0,3)).getCalleEnDireccion(norte));
+    	assertNotNull(tablero.getBocacalleEnPosicion(new Posicion(2,0)).getCalleEnDireccion(norte));
+    	
+    	assertEquals(tablero.getBocacalleEnPosicion(new Posicion(1,2)).getCalleEnDireccion(sur).getObstaculo(),
+    			tablero.getBocacalleEnPosicion(new Posicion(1,1)).getCalleEnDireccion(norte).getObstaculo());
+    	assertEquals(tablero.getBocacalleEnPosicion(new Posicion(2,2)).getCalleEnDireccion(este).getSorpresa(),
+    			tablero.getBocacalleEnPosicion(new Posicion(3,2)).getCalleEnDireccion(oeste).getSorpresa());
+    	assertEquals(tablero.getBocacalleEnPosicion(new Posicion(1,3)).getCalleEnDireccion(sur).getObstaculo(),
+    			tablero.getBocacalleEnPosicion(new Posicion(1,2)).getCalleEnDireccion(norte).getObstaculo());
+    	assertEquals(tablero.getBocacalleEnPosicion(new Posicion(2,3)).getCalleEnDireccion(sur).getSorpresa(),
+    			tablero.getBocacalleEnPosicion(new Posicion(2,2)).getCalleEnDireccion(norte).getSorpresa());
+    	
     }
 
 }
