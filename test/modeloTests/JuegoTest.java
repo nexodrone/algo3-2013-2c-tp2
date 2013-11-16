@@ -91,6 +91,7 @@ public class JuegoTest {
     	
     }
     
+    //SEGUNDO TESTS DE INTEGRACION, LA IDEA GRAFICA DEL MOVIMIENTO ESTA ADJUNTADA EN .docs COMO SEGUNDA PRUEBA DE INTEGRACION
     @Test
     public void testObstaculosYSorpresasDebenSerAplicadosDeFormaCoherente() throws PasajeBloqueadoPorPiqueteExcepcion, MovimientoInvalidoExcepcion{
     	Tablero tablero = new Tablero(5,4);
@@ -126,6 +127,7 @@ public class JuegoTest {
         nuevoJuego.realizarJugadaEnDireccion(norte);
         nuevoJuego.realizarJugadaEnDireccion(oeste);
         assertEquals(nuevoJuego.getVehiculo().getCantidadDeMovimientos(),13);
+     
     }
     
     
