@@ -1,6 +1,5 @@
 package modelo;
 
-
 import modelo.excepciones.MovimientoInvalidoExcepcion;
 import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
@@ -14,7 +13,7 @@ public class Jugador {
     }
 
     public void asignarJuego(Juego juego) {
-    	juegoActual = juego;
+        juegoActual = juego;
     }
 
     public String getNickName() {
@@ -22,15 +21,15 @@ public class Jugador {
     }
 
     public Juego getJuegoActual() {
-    	return juegoActual;
+        return juegoActual;
     }
-    
+
     public void jugar(Direccion direccion) throws PasajeBloqueadoPorPiqueteExcepcion, MovimientoInvalidoExcepcion {
-    	try {
-    		this.juegoActual.realizarJugadaEnDireccion(direccion);
-    	}catch (MovimientoInvalidoExcepcion e){
-    		System.out.print("Debe realizar otro movimiento válido \n");
-    	}
+        try {
+            this.juegoActual.realizarJugadaEnDireccion(direccion);
+        } catch (MovimientoInvalidoExcepcion e) {
+            System.out.print("Debe realizar otro movimiento valido \n");
+        }
     }
-    
+
 }
