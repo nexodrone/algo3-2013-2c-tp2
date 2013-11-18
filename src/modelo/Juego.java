@@ -35,21 +35,27 @@ public class Juego {
     		
     		Posicion nuevaPosicion = vehiculo.calcularSiguientePosicion(direccion);
     		boolean posicionEsValida = nuevaPosicion.equals(posicionGanadora);
-    		if (!posicionEsValida) posicionEsValida = this.tablero.posicionValida(nuevaPosicion);
+    		if (!posicionEsValida) 
+    			posicionEsValida = this.tablero.posicionValida(nuevaPosicion);
     		if (posicionEsValida) {
     			Bocacalle bocacalleActual = tablero.getBocacalleEnPosicion(vehiculo.getPosicion());
     			Calle calleATransitar = bocacalleActual.getCalleEnDireccion(direccion);
     			try {	vehiculo.moverEnDireccion(direccion, calleATransitar);
-    					if (vehiculo.getPosicion().equals(posicionGanadora))
-    						{	System.out.print("Jugador gano el nivel \n");
-            					this.juegoGanado = true;
+    					if (vehiculo.getPosicion().equals(posicionGanadora)){	
+    						System.out.print("Jugador gano el nivel \n");
+            				this.juegoGanado = true;
             				}
-    				} catch (PasajeBloqueadoPorPiqueteExcepcion e) {
+    			} catch (PasajeBloqueadoPorPiqueteExcepcion e) {
     					System.out.print("Imposible mover en esa direccion. \n");
     					}
-    			} else throw new MovimientoInvalidoExcepcion();
+    		}else throw new MovimientoInvalidoExcepcion();
 
-    		} else System.out.print("Juego ganado ya!\n");
+    	}else System.out.print("Juego ganado ya!\n");
     }
+    
+    
+    
+    
+    
     
 }

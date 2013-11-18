@@ -26,6 +26,11 @@ public class Jugador {
     }
     
     public void jugar(Direccion direccion) throws PasajeBloqueadoPorPiqueteExcepcion, MovimientoInvalidoExcepcion {
-    	this.juegoActual.realizarJugadaEnDireccion(direccion);
+    	try {
+    		this.juegoActual.realizarJugadaEnDireccion(direccion);
+    	}catch (MovimientoInvalidoExcepcion e){
+    		System.out.print("Debe realizar otro movimiento válido \n");
+    	}
     }
+    
 }

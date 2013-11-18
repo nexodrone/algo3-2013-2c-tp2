@@ -48,6 +48,19 @@ public class JugadorTest {
         assertEquals(vehiculo.getPosicion().asString(),"0,2");
     }
     
+   
+    @Test
+    public void testJugadorNoDeberiaPoderMoverseFueraDelRangoDelVehiculo() throws PasajeBloqueadoPorPiqueteExcepcion, MovimientoInvalidoExcepcion{
+    	Jugador unJugador = new Jugador("Juansito");
+        Vehiculo vehiculo = new VehiculoAuto(new Posicion(0,0));
+        unJugador.asignarJuego(new Juego(new Tablero(5,5), vehiculo, new Posicion(3,5)));
+        Direccion oeste = new Direccion(-1, 0);
+        unJugador.jugar(oeste);
+        assertEquals(vehiculo.getPosicion().asString(),"0,0");
+    }
+     
+    
+    
     /* Test de integracion */
     @Test
     public void testJugadaCompleta() throws MovimientoInvalidoExcepcion, PasajeBloqueadoPorPiqueteExcepcion {
