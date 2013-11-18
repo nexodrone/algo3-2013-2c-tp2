@@ -2,6 +2,7 @@ package modelo;
 
 import modelo.excepciones.MovimientoInvalidoExcepcion;
 import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
+import java.io.FileWriter;
 
 public class Juego {
 

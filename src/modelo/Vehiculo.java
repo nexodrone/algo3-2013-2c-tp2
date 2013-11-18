@@ -1,5 +1,11 @@
 package modelo;
 
+import java.io.*;
+
+import org.simpleframework.*;
+import org.simpleframework.xml.Serializer;
+import org.simpleframework.xml.core.Persister;
+
 import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
 public abstract class Vehiculo {
@@ -7,7 +13,7 @@ public abstract class Vehiculo {
     protected Posicion posicion;
     protected int cantidadDeMovimientos;
     protected Juego juego;
-
+    
     public Vehiculo(Posicion nuevaPosicion) {
         posicion = nuevaPosicion;
         this.cantidadDeMovimientos = 0;
@@ -60,6 +66,13 @@ public abstract class Vehiculo {
 
     public void setCantidadDeMovimientos(int cantidad){
     	cantidadDeMovimientos = cantidad;
+    }
+    
+    public void guardar(String path) throws Exception{
+    	Serializer serializador = new Persister();
+    	File resultado = new File(path);
+    	
+    	serializador.write(this, resultado);
     }
     
 }

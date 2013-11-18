@@ -72,5 +72,29 @@ public class VehiculoTest {
         moto.pasarPorCalle(calle);
         assertEquals(moto.getCantidadDeMovimientos(),80);
     }
+    
+    @Test
+    public void testDeberiaSerializarEstadoYDeserializarloCorrectamente() {
+    	VehiculoAuto auto = new VehiculoAuto(new Posicion(2,2));
+    	auto.setCantidadDeMovimientos(60);
+    	Calle calle = new Calle();
+        calle.setObstaculo(new ObstaculoPozo());
+        calle.setSorpresa(new SorpresaDesfavorable());
+        
+        try{
+        	auto.guardar("test/vehiculoTest.xml");
+        }catch(Exception ex){
+        	System.out.print("No se pudo serializar el archivo.");
+        }
+        
+        VehiculoAuto otroAuto = new VehiculoAuto(new Posicion(0,0));
+        //auto.recuperar("persistencia/vehiculoTest.xml");
+        try{
+        	auto.pasarPorCalle(calle);
+        }catch(PasajeBloqueadoPorPiqueteExcepcion ex){
+        	System.out.print("Pasaje bloqueado.");
+        }
+        assertEquals(auto.getCantidadDeMovimientos(), 80);     
+    }
 
 }
