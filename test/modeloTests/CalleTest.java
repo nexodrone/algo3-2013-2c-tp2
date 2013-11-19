@@ -2,6 +2,8 @@ package modeloTests;
 
 import static org.junit.Assert.*;
 import modelo.Calle;
+import modelo.Jugador;
+import modelo.ObstaculoControlPolicial;
 import modelo.Posicion;
 import modelo.SorpresaFavorable;
 import modelo.VehiculoAuto;
@@ -28,5 +30,21 @@ public class CalleTest {
 		auto.pasarPorCalle(calle);
 		assertEquals(auto.getCantidadDeMovimientos(),67);
 	}
-	
+	/*
+    @Test
+    public void testGuardarYCargarCorrectamente () throws Exception{
+    	Calle unaCalle = new Calle();
+    	unaCalle.setSorpresa(new SorpresaFavorable());
+    	unaCalle.setObstaculo(new ObstaculoControlPolicial());
+    	unaCalle.guardar("test/calleTest.xml");
+        
+        Calle otraCalle = new Calle();
+        try {
+        	otraCalle = Calle.recuperar("test/calleTest.xml");
+        }catch(Exception ex) {
+        	System.out.print("No se pudo deserializar el objeto.\n");
+        }
+
+        assertEquals(otraCalle.getNickName(), "Chango");  
+    }*/
 }

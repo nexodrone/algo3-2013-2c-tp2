@@ -12,6 +12,7 @@ import modelo.Tablero;
 import modelo.Posicion;
 import modelo.Vehiculo;
 import modelo.VehiculoAuto;
+import modelo.VehiculoMoto;
 import modelo.excepciones.MovimientoInvalidoExcepcion;
 import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
@@ -105,6 +106,21 @@ public class JugadorTest {
 		Pepe.jugar(este);
 		assertTrue(vehiculo.getPosicion().equals(new Posicion(4,4)));
 		assertEquals(vehiculo.getCantidadDeMovimientos(),15);
+    }
+    
+    @Test
+    public void testGuardarYCargarCorrectamenteJuego () throws Exception{
+    	Jugador unJugador = new Jugador("Chango");
+    	unJugador.guardar("test/jugadorTest.xml");
+        
+        Jugador otroJugador = new Jugador("Matori");
+        try {
+        	otroJugador = Jugador.recuperar("test/jugadorTest.xml");
+        }catch(Exception ex) {
+        	System.out.print("No se pudo deserializar el objeto.\n");
+        }
+
+        assertEquals(otroJugador.getNickName(), "Chango");  
     }
     
 }

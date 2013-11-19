@@ -4,14 +4,14 @@ import modelo.excepciones.MovimientoInvalidoExcepcion;
 import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 import org.simpleframework.xml.*;
 
-@Root
+@Root(name = "JUEGO")
 public class Juego {
 
-	@Element(required = false)
+	@Element(name = "Tablero")
     private Tablero tablero;
-	@Element(name = "vehiculoJuego")
+	@Element(name = "Vehiculo Jugador")
     private Vehiculo vehiculo;
-	@Element(name = "posicionGanadora")
+	@Element(name = "Posicion Ganadora")
     private Posicion posicionGanadora;
 	@Attribute
     private boolean juegoGanado;

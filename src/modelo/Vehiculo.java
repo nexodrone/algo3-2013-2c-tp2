@@ -1,6 +1,10 @@
 package modelo;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 import org.simpleframework.xml.*;
 import org.simpleframework.xml.core.Persister;
@@ -10,17 +14,16 @@ import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 @Root
 public abstract class Vehiculo {
 	
-	@Element(name="posicionActualVehiculo")
+	@Element(name="posicionActual", type = Posicion.class)
     protected Posicion posicion;
-	@Element(required = false)
+	@Attribute
     protected int cantidadDeMovimientos;
-	@Element(required=false)
+	@Element(name="ref al juego", type = Juego.class, required = false)
     protected Juego juego;
     
-    public Vehiculo(Posicion nuevaPosicion) {
+    public Vehiculo(@Element(name="posicionActual")Posicion nuevaPosicion) {
         posicion = nuevaPosicion;
         this.cantidadDeMovimientos = 0;
-        juego = null;
      }
 
     public Posicion getPosicion() {
@@ -74,16 +77,8 @@ public abstract class Vehiculo {
     
     public void guardar(String path) throws Exception {
     	Serializer serializador = new Persister();
-    	File resultado = new File(path);
+    	OutputStream resultado = new FileOutputStream(path);
     	serializador.write(this, resultado);
     }
     
-    public static Vehiculo recuperar(String path) throws Exception {
-        Serializer deserializador = new Persister();
-        File src = new File(path);
-        
-        VehiculoAuto x = new VehiculoAuto(new Posicion(1, 2));
-        Vehiculo devolver = deserializador.read(x, src);
-        return devolver;
-    }
  }
