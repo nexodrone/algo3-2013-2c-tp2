@@ -1,7 +1,14 @@
 package modelo;
 
+import java.io.File;
+
+import org.simpleframework.xml.*;
+import org.simpleframework.xml.Serializer;
+import org.simpleframework.xml.core.Persister;
+
 import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
+@Root(name="Auto")
 public class VehiculoAuto extends Vehiculo {
 
     public VehiculoAuto(Posicion posicionInicial) {
@@ -27,5 +34,21 @@ public class VehiculoAuto extends Vehiculo {
         nuevoAuto.setCantidadDeMovimientos(vehiculo.getCantidadDeMovimientos());
         return nuevoAuto;
     }
-
+    
+    public static VehiculoAuto recuperar(String path) throws Exception {
+        Serializer deserializador = new Persister();
+        File src = new File(path);
+        
+        VehiculoAuto devolver = deserializador.read(new VehiculoAuto(new Posicion(1,1)), src);
+        return devolver;
+    }
+    /*
+    public static VehiculoAuto recuperar(String path) throws Exception{
+    Serializer deserializador = new Persister();
+    File src = new File(path);
+    
+    System.out.print("hola");
+    VehiculoAuto devolver = deserializador.read(VehiculoAuto.class, src);
+    return devolver;
+    }*/
 }

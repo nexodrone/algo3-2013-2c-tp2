@@ -1,22 +1,26 @@
 package modelo;
 
-import java.io.*;
+import java.io.File;
 
-import org.simpleframework.*;
-import org.simpleframework.xml.Serializer;
+import org.simpleframework.xml.*;
 import org.simpleframework.xml.core.Persister;
 
 import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
+@Root
 public abstract class Vehiculo {
-
+	
+	@Element(name="posicionActualVehiculo")
     protected Posicion posicion;
+	@Element(required = false)
     protected int cantidadDeMovimientos;
+	@Element(required=false)
     protected Juego juego;
     
     public Vehiculo(Posicion nuevaPosicion) {
         posicion = nuevaPosicion;
         this.cantidadDeMovimientos = 0;
+        juego = null;
      }
 
     public Posicion getPosicion() {
@@ -71,10 +75,15 @@ public abstract class Vehiculo {
     public void guardar(String path) throws Exception {
     	Serializer serializador = new Persister();
     	File resultado = new File(path);
-    	
     	serializador.write(this, resultado);
     }
     
-    protected abstract Vehiculo recuperar(String path) throws Exception;
-    
-}
+    public static Vehiculo recuperar(String path) throws Exception {
+        Serializer deserializador = new Persister();
+        File src = new File(path);
+        
+        VehiculoAuto x = new VehiculoAuto(new Posicion(1, 2));
+        Vehiculo devolver = deserializador.read(x, src);
+        return devolver;
+    }
+ }

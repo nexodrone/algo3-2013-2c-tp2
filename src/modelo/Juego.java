@@ -2,13 +2,18 @@ package modelo;
 
 import modelo.excepciones.MovimientoInvalidoExcepcion;
 import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
-import java.io.FileWriter;
+import org.simpleframework.xml.*;
 
+@Root
 public class Juego {
 
+	@Element(required = false)
     private Tablero tablero;
+	@Element(name = "vehiculoJuego")
     private Vehiculo vehiculo;
+	@Element(name = "posicionGanadora")
     private Posicion posicionGanadora;
+	@Attribute
     private boolean juegoGanado;
 
     public Juego(Tablero tablero, Vehiculo vehiculo, Posicion posicionGanadora) {
