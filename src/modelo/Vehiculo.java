@@ -1,10 +1,6 @@
 package modelo;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
 
 import org.simpleframework.xml.*;
 import org.simpleframework.xml.core.Persister;
@@ -26,6 +22,8 @@ public abstract class Vehiculo {
         this.cantidadDeMovimientos = 0;
      }
 
+    public Vehiculo() {}
+    
     public Posicion getPosicion() {
         return this.posicion;
     }
@@ -77,7 +75,7 @@ public abstract class Vehiculo {
     
     public void guardar(String path) throws Exception {
     	Serializer serializador = new Persister();
-    	OutputStream resultado = new FileOutputStream(path);
+    	File resultado = new File(path);
     	serializador.write(this, resultado);
     }
     

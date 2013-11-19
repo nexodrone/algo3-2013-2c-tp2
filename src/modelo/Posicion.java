@@ -18,9 +18,7 @@ public class Posicion {
 		this.vector = new Vector(posX,posY);
     }
 	
-	public Posicion() {
-		this.vector = new Vector(0,0);
-	}
+	public Posicion() {}
 	
     public int x() {
         return vector.x();

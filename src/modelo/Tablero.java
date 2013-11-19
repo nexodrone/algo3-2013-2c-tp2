@@ -1,13 +1,15 @@
 package modelo;
 
+import java.io.File;
 import java.util.ArrayList;
+
 import org.simpleframework.xml.*;
-//import org.simpleframework.xml.convert.;
+import org.simpleframework.xml.core.Persister;
 
 @Root(name = "Tablero")
 public class Tablero {
 
-	@ElementArray (required = false)
+	@ElementList
     private ArrayList<ArrayList<Bocacalle>> bocacalles;
 	@Attribute
     private int cantidadDeColumnas;
@@ -28,6 +30,10 @@ public class Tablero {
         unificarCalles();
     }
 
+    public Tablero() {
+    	this.bocacalles = new ArrayList<ArrayList<Bocacalle>>();
+    };
+    
     private void unificarCalles() {
         Direccion este = new Direccion(1,0);
         Direccion norte = new Direccion(0,1);
@@ -64,4 +70,15 @@ public class Tablero {
         return true;
     }
 
+    public void guardar(String path) throws Exception {
+    	Serializer serializador = new Persister();
+    	File resultado = new File(path);
+    	serializador.write(this, resultado);
+    }
+    
+    public static Tablero recuperar(String path) throws Exception{
+    Serializer deserializador = new Persister();
+    File src = new File(path);
+    return deserializador.read(Tablero.class, src);
+    }
 }

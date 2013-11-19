@@ -1,11 +1,6 @@
 package modelo;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-
 import org.simpleframework.xml.*;
 import org.simpleframework.xml.core.Persister;
 
@@ -40,7 +35,7 @@ public class VehiculoAuto extends Vehiculo {
     
     public static VehiculoAuto recuperar(String path) throws Exception{
     Serializer deserializador = new Persister();
-    InputStream src = new FileInputStream(path);
+    File src = new File(path);
     return deserializador.read(VehiculoAuto.class, src);
     }
 }

@@ -3,11 +3,6 @@ package modelo;
 import org.simpleframework.xml.*;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.Serializable;
 
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
@@ -59,13 +54,13 @@ public class Vector {
     
     public void guardar(String path) throws Exception {
     	Serializer serializador = new Persister();
-    	OutputStream resultado = new FileOutputStream(path);
+    	File resultado = new File(path);
     	serializador.write(this, resultado);
     }
 
     public static Vector recuperar(String path) throws Exception {
     	Serializer deserializador = new Persister();
-    	InputStream src = new FileInputStream(path);
+    	File src = new File(path);
     	return deserializador.read(Vector.class, src);
     }
 }

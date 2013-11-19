@@ -8,6 +8,8 @@ public class Direccion {
 		this.vector = new Vector(dirX,dirY);
     }
 
+	public Direccion() {}
+	
     public int x() {
         return vector.x();
     }
