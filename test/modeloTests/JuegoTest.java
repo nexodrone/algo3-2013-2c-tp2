@@ -167,12 +167,21 @@ public class JuegoTest {
 
         assertEquals(juego.getVehiculo(), vehiculo);
     }
-/*
+
     @Test
-    public void testGuardarYCargarCorrectamenteJuego () {
+    public void testGuardarYCargarCorrectamenteJuego () throws Exception {
     	Tablero unTablero = new Tablero(4, 4);
     	VehiculoMoto unVehiculo = new VehiculoMoto(new Posicion(2,3));
-    	Juego unJuego = new Juego(unTablero, unVehiculo, new Posicion(1,1));
+    	unVehiculo.setCantidadDeMovimientos(34);
     	
-    }*/
+    	Posicion posicionGanadora = new Posicion(1,2);
+    	Juego unJuego = new Juego(unTablero, unVehiculo, posicionGanadora);
+    	
+    	unJuego.guardar("test/juegoTest.xml");
+    	
+    	Juego otroJuego = Juego.recuperar("test/juegoTest.xml");
+    	
+    	assertEquals(otroJuego.getVehiculo().getCantidadDeMovimientos(), unVehiculo.getCantidadDeMovimientos());
+    	assertEquals(otroJuego.getPosicionGanadora().asString(), posicionGanadora.asString());
+    }
 }

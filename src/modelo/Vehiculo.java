@@ -14,10 +14,10 @@ public abstract class Vehiculo {
     protected Posicion posicion;
 	@Attribute
     protected int cantidadDeMovimientos;
-	@Element(name="ref al juego", type = Juego.class, required = false)
+	//@Element(name="ref al juego", required = false)
     protected Juego juego;
     
-    public Vehiculo(@Element(name="posicionActual")Posicion nuevaPosicion) {
+    public Vehiculo(Posicion nuevaPosicion) {
         posicion = nuevaPosicion;
         this.cantidadDeMovimientos = 0;
      }

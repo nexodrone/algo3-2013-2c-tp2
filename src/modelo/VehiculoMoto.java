@@ -11,6 +11,8 @@ public class VehiculoMoto extends Vehiculo {
         /* esta porcion de codigo esta tanto vehiculo4x4 y vehiculoAuto */
     }
 
+    public VehiculoMoto(){}
+    
     public void aplicarEvento(Sorpresa sorpresa) {
         sorpresa.interactuarCon(this);
     }
