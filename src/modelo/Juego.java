@@ -1,8 +1,12 @@
 package modelo;
 
+import java.io.File;
+
 import modelo.excepciones.MovimientoInvalidoExcepcion;
 import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
+
 import org.simpleframework.xml.*;
+import org.simpleframework.xml.core.Persister;
 
 @Root(name = "JUEGO")
 public class Juego {
@@ -23,12 +27,18 @@ public class Juego {
         this.juegoGanado = false;
     }
 
+    public Juego() {};
+    
     public void setPosicionGanadora(Posicion posicionGanadora) {
         this.posicionGanadora = posicionGanadora;
     }
 
     public Vehiculo getVehiculo() {
         return this.vehiculo;
+    }
+    
+    public Posicion getPosicionGanadora() {
+        return this.posicionGanadora;
     }
 
     public void cambiarVehiculo(Vehiculo nuevoVehiculo) {
@@ -59,9 +69,17 @@ public class Juego {
     	}else System.out.print("Juego ganado ya!\n");
     }
     
+    public void guardar(String path) throws Exception {
+    	Serializer serializador = new Persister();
+    	File resultado = new File(path);
+    	serializador.write(this,  resultado);
+    }
     
-    
-    
+    public static Juego recuperar(String path) throws Exception {
+    	Serializer deserializador = new Persister();
+    	File src = new File(path);
+    	return deserializador.read(Juego.class, path);
+    }
     
     
 }

@@ -12,6 +12,9 @@ import modelo.Posicion;
 
 import org.junit.Test;
 
+import org.simpleframework.xml.*;
+import org.simpleframework.xml.core.*;
+
 public class TableroTest {
 
     @Test
@@ -121,6 +124,17 @@ public class TableroTest {
     	assertEquals(tablero.getBocacalleEnPosicion(new Posicion(2,3)).getCalleEnDireccion(sur).getSorpresa(),
     			tablero.getBocacalleEnPosicion(new Posicion(2,2)).getCalleEnDireccion(norte).getSorpresa());
     	
+    }
+    
+    @Test
+    public void testGuardarYRecuperarCorrectamente() throws Exception {
+    	Tablero tablero = new Tablero(6,4);
+    	
+    	tablero.guardar("test/tableroTest.xml");
+    	
+    	Tablero otroTablero = Tablero.recuperar("test/tableroTest.xml");
+    	assertEquals(tablero.getCantidadDeColumnas(), otroTablero.getCantidadDeColumnas());
+    	assertEquals(tablero.getCantidadDeFilas(), otroTablero.getCantidadDeFilas());
     }
 
 }

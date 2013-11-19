@@ -1,5 +1,10 @@
 package modelo;
 
+import java.io.File;
+
+import org.simpleframework.xml.*;
+import org.simpleframework.xml.core.Persister;
+
 public class Bocacalle {
 
     private Calle calleNorte, calleSur, calleEste, calleOeste;
@@ -10,7 +15,7 @@ public class Bocacalle {
         this.calleEste = new Calle();
         this.calleOeste = new Calle();
     }
-
+    
     void setCalleSur(Calle calleSur) { /* visibilidad en paquete, necesario para constructor del tablero */
         this.calleSur = calleSur;
     }
@@ -27,6 +32,10 @@ public class Bocacalle {
         if (direccion.y() == 1)
             return calleNorte;
         return calleSur;
+    }
+    
+    public void guardar(String path) {
+    	
     }
 
 }
