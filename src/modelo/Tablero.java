@@ -2,6 +2,7 @@ package modelo;
 
 import java.util.ArrayList;
 import org.simpleframework.xml.*;
+//import org.simpleframework.xml.convert.;
 
 @Root(name = "Tablero")
 public class Tablero {

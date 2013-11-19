@@ -6,18 +6,24 @@ import static org.junit.Assert.assertTrue;
 import modelo.Calle;
 import modelo.Juego;
 import modelo.ObstaculoPiquete;
+import modelo.ObstaculoPozo;
 import modelo.Sorpresa;
 import modelo.SorpresaCambioDeVehiculo;
 import modelo.SorpresaDesfavorable;
 import modelo.SorpresaFavorable;
 import modelo.Posicion;
+import modelo.Tablero;
 import modelo.Vehiculo;
 import modelo.Vehiculo4x4;
 import modelo.VehiculoAuto;
 import modelo.VehiculoMoto;
 import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
+import org.simpleframework.xml.core.*;
+
+
 import org.junit.Test;
+import org.simpleframework.xml.core.ConstructorException;
 
 
 public class VehiculoAutoTest {
@@ -170,6 +176,18 @@ public class VehiculoAutoTest {
         Vehiculo nuevoVehiculo = juego.getVehiculo();
         Vehiculo otroVehiculo = new VehiculoMoto(null);
         assertEquals(nuevoVehiculo.getClass(), otroVehiculo.getClass());
+    }
+    
+    @Test
+    public void testDeberiaSerializarEstadoYDeserializarloCorrectamente() throws Exception{   	
+    	VehiculoAuto auto = new VehiculoAuto(new Posicion(2,4));
+    	auto.setCantidadDeMovimientos(45);
+    	auto.guardar("test/vehiculoTest.xml");
+        
+        VehiculoAuto otroAuto = new VehiculoAuto(new Posicion(0,0));
+        otroAuto = VehiculoAuto.recuperar("test/vehiculoTest.xml");
+
+        assertEquals(otroAuto.getCantidadDeMovimientos(), 45);     
     }
 
 }

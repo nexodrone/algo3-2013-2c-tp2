@@ -34,12 +34,5 @@ public class Vehiculo4x4 extends Vehiculo {
         nuevo4x4.setCantidadDeMovimientos(vehiculo.getCantidadDeMovimientos());
         return nuevo4x4;
     }
-    
-    public static Vehiculo4x4 recuperar(String path) throws Exception{
-    	Serializer deserializador = new Persister();
-    	File src = new File(path);
-    	
-    	return deserializador.read(Vehiculo4x4.class, src);
-    }
 
 }

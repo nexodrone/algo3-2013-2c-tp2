@@ -81,34 +81,4 @@ public class VehiculoTest {
         moto.pasarPorCalle(calle);
         assertEquals(moto.getCantidadDeMovimientos(),80);
     }
-   /*
-    @Test
-    public void testDeberiaSerializarEstadoYDeserializarloCorrectamente() throws Exception{
-    	Tablero unTablero = new Tablero(4, 4);
-    	VehiculoMoto unVehiculo = new VehiculoMoto(new Posicion(2,3));
-    	Juego unJuego = new Juego(unTablero, unVehiculo, new Posicion(1,1));
-    	
-    	VehiculoAuto auto = new VehiculoAuto(new Posicion(2,4));
-    	auto.setCantidadDeMovimientos(45);
-    	auto.guardar("test/vehiculoTest.xml");
-        
-        VehiculoAuto otroAuto = new VehiculoAuto(new Posicion(0,0));
-        otroAuto.setCantidadDeMovimientos(0);
-        try {
-        	otroAuto = VehiculoAuto.recuperar("test/vehiculoTest.xml");
-        }catch(Exception ex) {
-        	System.out.print("No se pudo deserializar el objeto.\n");
-        }
-        
-        Calle calle = new Calle();
-        calle.setObstaculo(new ObstaculoPozo());
-        calle.setSorpresa(new SorpresaDesfavorable());
-        try{
-        	otroAuto.pasarPorCalle(calle);
-        }catch(PasajeBloqueadoPorPiqueteExcepcion ex){
-        	System.out.print("Pasaje bloqueado.");
-        }
-        assertEquals(otroAuto.getCantidadDeMovimientos(), 90);     
-    }*/
-
 }

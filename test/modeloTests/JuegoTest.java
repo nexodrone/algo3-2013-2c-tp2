@@ -167,5 +167,12 @@ public class JuegoTest {
 
         assertEquals(juego.getVehiculo(), vehiculo);
     }
-
+/*
+    @Test
+    public void testGuardarYCargarCorrectamenteJuego () {
+    	Tablero unTablero = new Tablero(4, 4);
+    	VehiculoMoto unVehiculo = new VehiculoMoto(new Posicion(2,3));
+    	Juego unJuego = new Juego(unTablero, unVehiculo, new Posicion(1,1));
+    	
+    }*/
 }
