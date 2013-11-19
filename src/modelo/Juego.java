@@ -13,9 +13,9 @@ public class Juego {
 
 	@Element(name = "Tablero")
     private Tablero tablero;
-	@Element(name = "Vehiculo Jugador")
+	@Element(name = "VehiculoJugador")
     private Vehiculo vehiculo;
-	@Element(name = "Posicion Ganadora")
+	@Element(name = "PosicionGanadora")
     private Posicion posicionGanadora;
 	@Attribute
     private boolean juegoGanado;
@@ -78,7 +78,7 @@ public class Juego {
     public static Juego recuperar(String path) throws Exception {
     	Serializer deserializador = new Persister();
     	File src = new File(path);
-    	return deserializador.read(Juego.class, path);
+    	return deserializador.read(Juego.class, src);
     }
     
     

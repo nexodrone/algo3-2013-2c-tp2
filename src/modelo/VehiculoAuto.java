@@ -6,7 +6,7 @@ import org.simpleframework.xml.core.Persister;
 
 import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
-@Root(name="Auto", strict = false)
+@Root(name="Auto")
 public class VehiculoAuto extends Vehiculo {
 
     public VehiculoAuto(@Element(name="posicionActual") Posicion posicionInicial) {
