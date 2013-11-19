@@ -1,11 +1,16 @@
 package modelo;
 
 import java.util.ArrayList;
+import org.simpleframework.xml.*;
 
+@Root(name = "Tablero")
 public class Tablero {
 
+	@ElementArray (required = false)
     private ArrayList<ArrayList<Bocacalle>> bocacalles;
+	@Attribute
     private int cantidadDeColumnas;
+	@Attribute
     private int cantidadDeFilas;
 
     public Tablero(int columnas, int filas) {

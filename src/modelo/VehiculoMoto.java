@@ -1,5 +1,9 @@
 package modelo;
 
+import org.simpleframework.xml.*;
+
+
+@Root(name="Moto")
 public class VehiculoMoto extends Vehiculo {
 
     public VehiculoMoto(Posicion posicionInicial) {

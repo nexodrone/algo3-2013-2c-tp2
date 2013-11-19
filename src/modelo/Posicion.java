@@ -1,7 +1,11 @@
 package modelo;
 
+import org.simpleframework.xml.*;
+
+@Root
 public class Posicion {
 	
+	@Element(name = "vectorPosicion")
 	private Vector vector;
 	
 	public	Posicion (int posX, int posY) {
