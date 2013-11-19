@@ -77,20 +77,25 @@ public class VehiculoTest {
     public void testDeberiaSerializarEstadoYDeserializarloCorrectamente() {
     	VehiculoAuto auto = new VehiculoAuto(new Posicion(2,2));
     	auto.setCantidadDeMovimientos(60);
-    	Calle calle = new Calle();
-        calle.setObstaculo(new ObstaculoPozo());
-        calle.setSorpresa(new SorpresaDesfavorable());
         
         try{
         	auto.guardar("test/vehiculoTest.xml");
         }catch(Exception ex){
-        	System.out.print("No se pudo serializar el archivo.");
+        	System.out.print("No se pudo serializar el objeto.\n");
         }
         
         VehiculoAuto otroAuto = new VehiculoAuto(new Posicion(0,0));
-        //auto.recuperar("persistencia/vehiculoTest.xml");
+        try {
+        	otroAuto = VehiculoAuto.recuperar("persistencia/vehiculoTest.xml");
+        }catch(Exception ex) {
+        	System.out.print("No se pudo deserializar el objeto.\n");
+        }
+        
+        Calle calle = new Calle();
+        calle.setObstaculo(new ObstaculoPozo());
+        calle.setSorpresa(new SorpresaDesfavorable());
         try{
-        	auto.pasarPorCalle(calle);
+        	otroAuto.pasarPorCalle(calle);
         }catch(PasajeBloqueadoPorPiqueteExcepcion ex){
         	System.out.print("Pasaje bloqueado.");
         }
