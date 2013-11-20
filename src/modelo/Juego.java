@@ -1,7 +1,11 @@
 package modelo;
 
+//import java.awt.List;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.HashMap;
 
 import modelo.excepciones.MovimientoInvalidoExcepcion;
 import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
@@ -20,14 +24,15 @@ public class Juego {
     private Posicion posicionGanadora;
 	@Attribute
     private boolean juegoGanado;
-	//@ElementList
-	//private List<Jugador> jugadores;// guardara los jugadores y sus puntajes
+	@ElementMap
+	private HashMap<String, Integer> puntajes;
 
     public Juego(Tablero tablero, Vehiculo vehiculo, Posicion posicionGanadora) {
         this.tablero = tablero;
         this.vehiculo = vehiculo;
         this.posicionGanadora = posicionGanadora;
         this.juegoGanado = false;
+        this.puntajes = new HashMap<String, Integer>();
     }
 
     public Juego() {};
@@ -70,6 +75,16 @@ public class Juego {
     		}else throw new MovimientoInvalidoExcepcion();
 
     	}else System.out.print("Juego ganado ya!\n");
+    }
+    
+    public void guardarPuntaje(String nombre, Integer puntaje) {
+    	puntajes.put(nombre, puntaje);
+    }
+    
+    public List<Integer> recuperarPuntajesOrdenados() {
+    	List<Integer> puntajes = new ArrayList<Integer> (this.puntajes.values());
+    	Collections.sort( puntajes );
+    	return puntajes;
     }
     
     public void guardar(String path) throws Exception {
