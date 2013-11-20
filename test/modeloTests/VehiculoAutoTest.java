@@ -6,24 +6,18 @@ import static org.junit.Assert.assertTrue;
 import modelo.Calle;
 import modelo.Juego;
 import modelo.ObstaculoPiquete;
-import modelo.ObstaculoPozo;
 import modelo.Sorpresa;
 import modelo.SorpresaCambioDeVehiculo;
 import modelo.SorpresaDesfavorable;
 import modelo.SorpresaFavorable;
 import modelo.Posicion;
-import modelo.Tablero;
 import modelo.Vehiculo;
 import modelo.Vehiculo4x4;
 import modelo.VehiculoAuto;
 import modelo.VehiculoMoto;
 import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
-import org.simpleframework.xml.core.*;
-
-
 import org.junit.Test;
-import org.simpleframework.xml.core.ConstructorException;
 
 
 public class VehiculoAutoTest {

@@ -3,19 +3,11 @@ package modeloTests;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
-
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-
 import java.util.Map.Entry;
-import java.util.Set;
-
 import modelo.Calle;
 import modelo.Direccion;
 import modelo.Juego;
-import modelo.porNombre;
 import modelo.ObstaculoPiquete;
 import modelo.ObstaculoPozo;
 import modelo.Posicion;
@@ -29,7 +21,6 @@ import modelo.VehiculoAuto;
 import modelo.VehiculoMoto;
 import modelo.excepciones.MovimientoInvalidoExcepcion;
 import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
-
 import org.junit.Test;
 
 public class JuegoTest {

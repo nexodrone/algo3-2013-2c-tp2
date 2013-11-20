@@ -2,8 +2,6 @@ package modeloTests;
 
 import static org.junit.Assert.*;
 import modelo.Calle;
-import modelo.Jugador;
-import modelo.ObstaculoControlPolicial;
 import modelo.Posicion;
 import modelo.SorpresaFavorable;
 import modelo.VehiculoAuto;

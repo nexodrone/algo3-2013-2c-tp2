@@ -9,11 +9,7 @@ import modelo.ObstaculoPiquete;
 import modelo.SorpresaFavorable;
 import modelo.Tablero;
 import modelo.Posicion;
-
 import org.junit.Test;
-
-import org.simpleframework.xml.*;
-import org.simpleframework.xml.core.*;
 
 public class TableroTest {
 

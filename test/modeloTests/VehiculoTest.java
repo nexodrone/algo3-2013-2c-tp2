@@ -2,27 +2,17 @@ package modeloTests;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-
-import java.io.File;
-
 import modelo.Bocacalle;
 import modelo.Calle;
 import modelo.Direccion;
-import modelo.Juego;
 import modelo.ObstaculoPozo;
 import modelo.Posicion;
 import modelo.SorpresaDesfavorable;
-import modelo.Tablero;
 import modelo.Vehiculo;
 import modelo.VehiculoAuto;
 import modelo.VehiculoMoto;
 import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
-
 import org.junit.Test;
-//import org.simpleframework.xml.strategy.*;
-import org.simpleframework.xml.Serializer;
-import org.simpleframework.xml.core.Persister;
-
 
 public class VehiculoTest {
 

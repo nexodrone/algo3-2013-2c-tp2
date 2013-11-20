@@ -4,10 +4,6 @@ import static org.junit.Assert.*;
 import modelo.Vector;
 import org.junit.Test;
 
-import java.io.File;
-import org.simpleframework.xml.Serializer;
-import org.simpleframework.xml.core.Persister;
-
 public class VectorTest {
 
     @Test

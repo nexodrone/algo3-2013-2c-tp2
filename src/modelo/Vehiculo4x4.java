@@ -1,10 +1,5 @@
 package modelo;
 
-import java.io.File;
-
-import org.simpleframework.xml.Serializer;
-import org.simpleframework.xml.core.Persister;
-
 import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 import org.simpleframework.xml.*;
 
