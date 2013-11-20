@@ -3,9 +3,19 @@ package modeloTests;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+
+import java.util.Map.Entry;
+import java.util.Set;
+
 import modelo.Calle;
 import modelo.Direccion;
 import modelo.Juego;
+import modelo.porNombre;
 import modelo.ObstaculoPiquete;
 import modelo.ObstaculoPozo;
 import modelo.Posicion;
@@ -183,5 +193,24 @@ public class JuegoTest {
     	
     	assertEquals(otroJuego.getVehiculo().getCantidadDeMovimientos(), unVehiculo.getCantidadDeMovimientos());
     	assertEquals(otroJuego.getPosicionGanadora().asString(), posicionGanadora.asString());
+    }
+    
+    @Test
+    public void testGuardarYRecuperarPuntajes() {
+    	Juego unJuego = new Juego(null, null, null);
+    	unJuego.guardarPuntaje("Chango" , 45);
+    	unJuego.guardarPuntaje("Matori", 32);
+    	unJuego.guardarPuntaje("Jedi", 77);
+    	unJuego.guardarPuntaje("Ciriaso", 10);
+    	unJuego.guardarPuntaje("Carolo", 10);
+    	
+    	ArrayList<Entry<String, Integer>> puntajesOrdenados =
+    			( unJuego.recuperarPuntajesOrdenados() );
+
+    	System.out.print("Puntajes: " + puntajesOrdenados);
+    	/*assertEquals(puntajesOrdenados.get(0), );
+    	assertEquals(puntajes.get(1).intValue(), 45);
+    	assertEquals(puntajes.get(2).intValue(), 32);
+    	assertEquals(puntajes.get(3).intValue(), 10);*/
     }
 }

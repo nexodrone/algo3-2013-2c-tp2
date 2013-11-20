@@ -1,6 +1,8 @@
 package modelo;
 
 import java.io.File;
+import java.util.Comparator;
+import java.util.Map.Entry;
 
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
@@ -50,5 +52,4 @@ public class Jugador {
     File src = new File(path);
     return deserializador.read(Jugador.class, src);
     }
-
 }
