@@ -4,13 +4,13 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 import modelo.Calle;
 import modelo.Direccion;
 import modelo.Juego;
 import modelo.ObstaculoPiquete;
 import modelo.ObstaculoPozo;
 import modelo.Posicion;
+import modelo.Puntaje;
 import modelo.SorpresaCambioDeVehiculo;
 import modelo.SorpresaDesfavorable;
 import modelo.SorpresaFavorable;
@@ -187,7 +187,7 @@ public class JuegoTest {
     }
     
     @Test
-    public void testGuardarYRecuperarPuntajes() {
+    public void testGuardarPuntajes() throws Exception {
     	Juego unJuego = new Juego(null, null, null);
     	unJuego.guardarPuntaje("Chango" , 45);
     	unJuego.guardarPuntaje("Matori", 32);
@@ -195,13 +195,18 @@ public class JuegoTest {
     	unJuego.guardarPuntaje("Ciriaso", 10);
     	unJuego.guardarPuntaje("Carolo", 10);
     	
-    	ArrayList<Entry<String, Integer>> puntajesOrdenados =
-    			( unJuego.recuperarPuntajesOrdenados() );
-
-    	System.out.print("Puntajes: " + puntajesOrdenados);
-    	/*assertEquals(puntajesOrdenados.get(0), );
-    	assertEquals(puntajes.get(1).intValue(), 45);
-    	assertEquals(puntajes.get(2).intValue(), 32);
-    	assertEquals(puntajes.get(3).intValue(), 10);*/
+    	unJuego.guardarPuntajes("test/puntajesTest.xml");
+    	
+    	Juego otroJuego = new Juego(null, null, null);
+    	otroJuego.cargarPuntajes("test/puntajesTest.xml");
+    	
+    	ArrayList<Puntaje> puntajesOrdenados =
+    			( otroJuego.getPuntajesOrdenados() );
+    	
+    	assertEquals(puntajesOrdenados.get(0).getPuntaje(), 77);
+    	assertEquals(puntajesOrdenados.get(1).getPuntaje(), 45);
+    	assertEquals(puntajesOrdenados.get(2).getPuntaje(), 32);
+    	assertEquals(puntajesOrdenados.get(3).getPuntaje(), 10);
+    	assertEquals(puntajesOrdenados.get(4).getPuntaje(), 10);		
     }
 }

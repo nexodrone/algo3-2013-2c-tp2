@@ -2,15 +2,12 @@ package modelo;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Collections;
 
 import modelo.excepciones.MovimientoInvalidoExcepcion;
 import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
 import org.simpleframework.xml.*;
 import org.simpleframework.xml.core.Persister;
-
-import persistencia.PorPuntaje;
 
 @Root(name = "JUEGO")
 public class Juego {
@@ -23,22 +20,18 @@ public class Juego {
     private Posicion posicionGanadora;
 	@Attribute
     private boolean juegoGanado;
-	@ElementList(name = "puntajes")
-	private ArrayList<Puntaje> puntajes;
+	
+	private Puntajes puntajes;
 	
     public Juego(Tablero tablero, Vehiculo vehiculo, Posicion posicionGanadora) {
         this.tablero = tablero;
         this.vehiculo = vehiculo;
         this.posicionGanadora = posicionGanadora;
         this.juegoGanado = false;
-        //this.puntajes = new TreeMap<String, Integer>();
-        this.puntajes = new ArrayList<Puntaje> ();
+        this.puntajes = new Puntajes ();
     }
 
-    public Juego() {
-    	//puntajes = new TreeMap<String, Integer>();
-    	this.puntajes = new ArrayList<Puntaje>();
-    };
+    public Juego() {};
     
     public void setPosicionGanadora(Posicion posicionGanadora) {
         this.posicionGanadora = posicionGanadora;
@@ -81,12 +74,19 @@ public class Juego {
     }
     
     public void guardarPuntaje(String nombre, Integer puntaje) {
-    	this.puntajes.add(new Puntaje(nombre, puntaje));
+    	this.puntajes.agregarPuntaje(nombre, puntaje);
+    }
+    
+    public void guardarPuntajes(String path) throws Exception{
+    	puntajes.guardar(path);
+    }
+    
+    public void cargarPuntajes(String path) throws Exception {
+    	this.puntajes = Puntajes.recuperar(path);
     }
     
     public ArrayList<Puntaje> getPuntajesOrdenados() throws Exception{
-    	Collections.sort(puntajes, new PorPuntaje() );
-    	return puntajes;
+    	return puntajes.getPuntajesOrdenados();
     }
     
     public void guardar(String path) throws Exception {

@@ -6,7 +6,7 @@ import org.simpleframework.xml.*;
 public class Puntaje {
 	@Attribute
 	private String nombre;
-	@Element
+	@Attribute
 	private int puntaje;
 	
 	public Puntaje(String nombre, int puntaje) {
