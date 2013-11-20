@@ -5,7 +5,13 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map.Entry;
+import java.util.NavigableMap;
+import java.util.Set;
+import java.util.TreeMap;
 import java.util.HashMap;
+
+import javax.sound.sampled.ReverbType;
 
 import modelo.excepciones.MovimientoInvalidoExcepcion;
 import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
@@ -25,14 +31,14 @@ public class Juego {
 	@Attribute
     private boolean juegoGanado;
 	@ElementMap
-	private HashMap<String, Integer> puntajes;
+	private TreeMap<String, Integer> puntajes;
 
     public Juego(Tablero tablero, Vehiculo vehiculo, Posicion posicionGanadora) {
         this.tablero = tablero;
         this.vehiculo = vehiculo;
         this.posicionGanadora = posicionGanadora;
         this.juegoGanado = false;
-        this.puntajes = new HashMap<String, Integer>();
+        this.puntajes = new TreeMap<String, Integer>();
     }
 
     public Juego() {};
@@ -78,13 +84,15 @@ public class Juego {
     }
     
     public void guardarPuntaje(String nombre, Integer puntaje) {
-    	puntajes.put(nombre, puntaje);
+    	this.puntajes.put(nombre, puntaje);
     }
     
-    public List<Integer> recuperarPuntajesOrdenados() {
-    	List<Integer> puntajes = new ArrayList<Integer> (this.puntajes.values());
-    	Collections.sort( puntajes );
-    	return puntajes;
+    public ArrayList<Entry<String, Integer>> recuperarPuntajesOrdenados() {
+    	NavigableMap<String, Integer> puntajes = this.puntajes.descendingMap();
+    	Set<Entry<String, Integer>> setPtjes = puntajes.entrySet();
+    	ArrayList<Entry<String, Integer>> ptjesOrdenados = new ArrayList<Entry<String, Integer>>(setPtjes);
+    	Collections.sort( ptjesOrdenados, new porNombre() );
+    	return ptjesOrdenados;
     }
     
     public void guardar(String path) throws Exception {
