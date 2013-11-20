@@ -10,7 +10,7 @@ import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 @Root
 public abstract class Vehiculo {
 	
-	@Element(name="posicionActual", type = Posicion.class)
+	@Element(name="posicionActual")
     protected Posicion posicion;
 	@Attribute
     protected int cantidadDeMovimientos;

@@ -1,9 +1,6 @@
 package modelo;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.File;
 
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
@@ -42,17 +39,14 @@ public class Jugador {
     
     public void guardar(String path) throws Exception {
     	Serializer serializador = new Persister();
-    	OutputStream resultado = new FileOutputStream(path);
+    	File resultado = new File(path);
     	serializador.write(this, resultado);
     }
     
     public static Jugador recuperar(String path) throws Exception{
     Serializer deserializador = new Persister();
-    InputStream src = new FileInputStream(path);
-    
-    Jugador x = new Jugador("Chango");
-    Jugador devolver = deserializador.read(x, src);
-    return devolver;
+    File src = new File(path);
+    return deserializador.read(Jugador.class, src);
     }
 
 }

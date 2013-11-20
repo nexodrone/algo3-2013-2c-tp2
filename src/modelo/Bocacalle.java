@@ -16,11 +16,11 @@ public class Bocacalle {
         this.calleOeste = new Calle();
     }
     
-    void setCalleSur(Calle calleSur) { /* visibilidad en paquete, necesario para constructor del tablero */
+    public void setCalleSur(Calle calleSur) { /* visibilidad en paquete, necesario para constructor del tablero */
         this.calleSur = calleSur;
     }
 
-    void setCalleOeste(Calle calleOeste) { /* visibilidad en paquete, necesario para constructor del tablero */
+    public void setCalleOeste(Calle calleOeste) { /* visibilidad en paquete, necesario para constructor del tablero */
         this.calleOeste = calleOeste;
     }
 
@@ -34,8 +34,15 @@ public class Bocacalle {
         return calleSur;
     }
     
-    public void guardar(String path) {
-    	
+    public void guardar(String path) throws Exception{
+    	Serializer serializador = new Persister();
+    	File resultado = new File(path);
+    	serializador.write(this, resultado);
     }
 
+    public static Bocacalle recuperar(String path) throws Exception{
+    Serializer deserializador = new Persister();
+    File src = new File(path);
+    return deserializador.read(Bocacalle.class, src);
+    }
 }

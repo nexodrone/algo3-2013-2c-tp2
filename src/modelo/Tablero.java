@@ -9,7 +9,7 @@ import org.simpleframework.xml.core.Persister;
 @Root(name = "Tablero")
 public class Tablero {
 
-	@ElementList
+	@ElementList(name = "Bocacalles")
     private ArrayList<ColumnasDeBocacalles> bocacalles;
 	@Attribute
     private int cantidadDeColumnas;

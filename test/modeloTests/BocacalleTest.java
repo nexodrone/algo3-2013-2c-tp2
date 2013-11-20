@@ -1,9 +1,15 @@
 package modeloTests;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import modelo.Bocacalle;
 import modelo.Calle;
 import modelo.Direccion;
+import modelo.ObstaculoPozo;
+import modelo.Posicion;
+import modelo.SorpresaDesfavorable;
+import modelo.VehiculoMoto;
+
 import org.junit.Test;
 
 public class BocacalleTest {
@@ -46,5 +52,15 @@ public class BocacalleTest {
         Calle calleOeste = unaBocaCalle.getCalleEnDireccion(oeste);
         assertNotNull(calleOeste);
     }
-
+    
+    @Test
+    public void testGuardarYRecuperarCorrectamente() {
+        Bocacalle unaBocacalle = new Bocacalle();
+        Calle calle = new Calle();
+        calle.setObstaculo(new ObstaculoPozo());
+        calle.setSorpresa(new SorpresaDesfavorable());
+        unaBocacalle.setCalleOeste(calle);
+        
+        
+    }
 }

@@ -1,6 +1,7 @@
 package modelo;
 
 import java.io.File;
+import java.util.List;
 
 import modelo.excepciones.MovimientoInvalidoExcepcion;
 import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
@@ -19,6 +20,8 @@ public class Juego {
     private Posicion posicionGanadora;
 	@Attribute
     private boolean juegoGanado;
+	@ElementList
+	private List<Jugador> jugadores;// guardara los jugadores y sus puntajes
 
     public Juego(Tablero tablero, Vehiculo vehiculo, Posicion posicionGanadora) {
         this.tablero = tablero;
