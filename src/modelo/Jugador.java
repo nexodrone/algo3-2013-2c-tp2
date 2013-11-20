@@ -17,6 +17,8 @@ public class Jugador {
         this.nombre = nombre;
     }
 
+    public Jugador(){}
+    
     public void asignarJuego(Juego juego) {
         juegoActual = juego;
     }
