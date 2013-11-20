@@ -12,7 +12,6 @@ import modelo.Tablero;
 import modelo.Posicion;
 import modelo.Vehiculo;
 import modelo.VehiculoAuto;
-import modelo.VehiculoMoto;
 import modelo.excepciones.MovimientoInvalidoExcepcion;
 import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 

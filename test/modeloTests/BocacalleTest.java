@@ -1,15 +1,11 @@
 package modeloTests;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import modelo.Bocacalle;
 import modelo.Calle;
 import modelo.Direccion;
 import modelo.ObstaculoPozo;
-import modelo.Posicion;
 import modelo.SorpresaDesfavorable;
-import modelo.VehiculoMoto;
-
 import org.junit.Test;
 
 public class BocacalleTest {
