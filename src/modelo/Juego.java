@@ -1,18 +1,16 @@
 package modelo;
 
-//import java.awt.List;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Map.Entry;
-import java.util.NavigableMap;
-import java.util.Set;
-import java.util.TreeMap;
+
 import modelo.excepciones.MovimientoInvalidoExcepcion;
 import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
 import org.simpleframework.xml.*;
 import org.simpleframework.xml.core.Persister;
+
+import persistencia.PorPuntaje;
 
 @Root(name = "JUEGO")
 public class Juego {
@@ -25,18 +23,22 @@ public class Juego {
     private Posicion posicionGanadora;
 	@Attribute
     private boolean juegoGanado;
-	@ElementMap
-	private TreeMap<String, Integer> puntajes;
-
+	@ElementList(name = "puntajes")
+	private ArrayList<Puntaje> puntajes;
+	
     public Juego(Tablero tablero, Vehiculo vehiculo, Posicion posicionGanadora) {
         this.tablero = tablero;
         this.vehiculo = vehiculo;
         this.posicionGanadora = posicionGanadora;
         this.juegoGanado = false;
-        this.puntajes = new TreeMap<String, Integer>();
+        //this.puntajes = new TreeMap<String, Integer>();
+        this.puntajes = new ArrayList<Puntaje> ();
     }
 
-    public Juego() {};
+    public Juego() {
+    	//puntajes = new TreeMap<String, Integer>();
+    	this.puntajes = new ArrayList<Puntaje>();
+    };
     
     public void setPosicionGanadora(Posicion posicionGanadora) {
         this.posicionGanadora = posicionGanadora;
@@ -79,15 +81,12 @@ public class Juego {
     }
     
     public void guardarPuntaje(String nombre, Integer puntaje) {
-    	this.puntajes.put(nombre, puntaje);
+    	this.puntajes.add(new Puntaje(nombre, puntaje));
     }
     
-    public ArrayList<Entry<String, Integer>> recuperarPuntajesOrdenados() {
-    	NavigableMap<String, Integer> puntajes = this.puntajes.descendingMap();
-    	Set<Entry<String, Integer>> setPtjes = puntajes.entrySet();
-    	ArrayList<Entry<String, Integer>> ptjesOrdenados = new ArrayList<Entry<String, Integer>>(setPtjes);
-    	Collections.sort( ptjesOrdenados, new porNombre() );
-    	return ptjesOrdenados;
+    public ArrayList<Puntaje> getPuntajesOrdenados() throws Exception{
+    	Collections.sort(puntajes, new PorPuntaje() );
+    	return puntajes;
     }
     
     public void guardar(String path) throws Exception {
@@ -101,6 +100,4 @@ public class Juego {
     	File src = new File(path);
     	return deserializador.read(Juego.class, src);
     }
-    
-    
 }
