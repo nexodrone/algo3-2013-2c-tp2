@@ -32,6 +32,7 @@ public class Juego {
         this.movimientosDisponibles=cantidadDeMovimientos;
     }
 
+    
     public Juego() {};
     
     public void setPosicionGanadora(Posicion posicionGanadora) {
