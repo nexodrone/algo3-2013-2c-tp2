@@ -34,7 +34,8 @@ public class JugadorTest {
     @Test
     public void testJugadorDebePoderEntrarEnJuego() {
         Jugador unJugador = new Jugador("Juansito");
-        unJugador.asignarJuego(new Juego(new Tablero(5,5), new VehiculoAuto(new Posicion(0,0)), new Posicion(3,5)));
+        int cantidadDeMovimientos = 100;
+        unJugador.asignarJuego(new Juego(new Tablero(5,5), new VehiculoAuto(new Posicion(0,0)), new Posicion(3,5),cantidadDeMovimientos));
         assertNotNull(unJugador.getJuegoActual());
     }
     
@@ -43,7 +44,8 @@ public class JugadorTest {
         Jugador unJugador = new Jugador("Juansito");
         Direccion norte = new Direccion(0,1);
         Vehiculo vehiculo = new VehiculoAuto(new Posicion(0,1));
-        unJugador.asignarJuego(new Juego(new Tablero(5,5), vehiculo, new Posicion(3,5)));
+        int cantidadDeMovimientos = 100;
+        unJugador.asignarJuego(new Juego(new Tablero(5,5), vehiculo, new Posicion(3,5),cantidadDeMovimientos));
         unJugador.jugar(norte);
         assertEquals(vehiculo.getPosicion().asString(),"0,2");
     }
@@ -53,7 +55,8 @@ public class JugadorTest {
     public void testJugadorNoDeberiaPoderMoverseFueraDelRangoDelVehiculo() throws PasajeBloqueadoPorPiqueteExcepcion, MovimientoInvalidoExcepcion{
     	Jugador unJugador = new Jugador("Juansito");
         Vehiculo vehiculo = new VehiculoAuto(new Posicion(0,0));
-        unJugador.asignarJuego(new Juego(new Tablero(5,5), vehiculo, new Posicion(3,5)));
+        int cantidadDeMovimientos = 100;
+        unJugador.asignarJuego(new Juego(new Tablero(5,5), vehiculo, new Posicion(3,5),cantidadDeMovimientos));
         Direccion oeste = new Direccion(-1, 0);
         unJugador.jugar(oeste);
         assertEquals(vehiculo.getPosicion().asString(),"0,0");
@@ -68,7 +71,8 @@ public class JugadorTest {
 		Tablero tablero = new Tablero(4,6);
 		Vehiculo vehiculo = new VehiculoAuto(new Posicion(0,0));
 		vehiculo.setCantidadDeMovimientos(0);
-		Juego unJuego = new Juego(tablero, vehiculo, new Posicion(0,0));
+		int cantidadDeMovimientos = 100;
+		Juego unJuego = new Juego(tablero, vehiculo, new Posicion(0,0),cantidadDeMovimientos);
 		vehiculo.setJuegoActual(unJuego);
 		unJuego.setPosicionGanadora(new Posicion(4,4));
 		

@@ -20,15 +20,16 @@ public class Juego {
     private Posicion posicionGanadora;
 	@Attribute
     private boolean juegoGanado;	
-	//private int movimientosDisponibles;
+	private int movimientosDisponibles;
 	private Puntajes puntajes;
 	
-    public Juego(Tablero tablero, Vehiculo vehiculo, Posicion posicionGanadora) {
+    public Juego(Tablero tablero, Vehiculo vehiculo, Posicion posicionGanadora,int cantidadDeMovimientos) {
         this.tablero = tablero;
         this.vehiculo = vehiculo;
         this.posicionGanadora = posicionGanadora;
         this.juegoGanado = false;
         this.puntajes = new Puntajes ();
+        this.movimientosDisponibles=cantidadDeMovimientos;
     }
 
     public Juego() {};
@@ -51,7 +52,7 @@ public class Juego {
     }
     
     public boolean juegoFinalizado(){
-		return juegoGanado;
+		return (movimientosDisponibles<=0);
     }
 
     public void realizarJugadaEnDireccion(Direccion direccion) throws PasajeBloqueadoPorPiqueteExcepcion, MovimientoInvalidoExcepcion {
