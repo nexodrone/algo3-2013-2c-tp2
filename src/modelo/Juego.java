@@ -19,8 +19,8 @@ public class Juego {
 	@Element(name = "PosicionGanadora")
     private Posicion posicionGanadora;
 	@Attribute
-    private boolean juegoGanado;
-	
+    private boolean juegoGanado;	
+	//private int movimientosDisponibles;
 	private Puntajes puntajes;
 	
     public Juego(Tablero tablero, Vehiculo vehiculo, Posicion posicionGanadora) {
@@ -48,6 +48,10 @@ public class Juego {
     public void cambiarVehiculo(Vehiculo nuevoVehiculo) {
         // System.out.print("cambio de vehiculo");
         vehiculo = nuevoVehiculo;
+    }
+    
+    public boolean juegoFinalizado(){
+		return juegoGanado;
     }
 
     public void realizarJugadaEnDireccion(Direccion direccion) throws PasajeBloqueadoPorPiqueteExcepcion, MovimientoInvalidoExcepcion {

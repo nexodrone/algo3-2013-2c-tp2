@@ -16,4 +16,24 @@ public class Nivel {
 		this.cantidadDeObstaculos = 5;
 	}
 	
+	public int getCantidadDeMovimientos(){
+		return movimientosDisponibles;
+	}
+	
+	public int getCantidadDeFilas(){
+		return filasTablero;
+	}
+	
+	public int getCantidadDeColumnas(){
+		return columnasTablero;
+	}
+	
+	public int getCantidadDeSorpresas(){
+		return cantidadDeSorpresas;
+	}
+	
+	public int getCantidadDeObstaculos(){
+		return cantidadDeObstaculos;
+	}
+	
 }

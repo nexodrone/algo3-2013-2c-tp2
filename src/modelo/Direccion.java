@@ -17,5 +17,4 @@ public class Direccion {
     public int y() {
         return vector.y();
     }
-
 }
