@@ -32,7 +32,6 @@ public class Juego {
         this.movimientosDisponibles=cantidadDeMovimientos;
     }
 
-    
     public Juego() {};
     
     public void setPosicionGanadora(Posicion posicionGanadora) {
@@ -53,30 +52,31 @@ public class Juego {
     }
     
     public boolean juegoFinalizado(){
-		return (movimientosDisponibles<=0);
+    		return (vehiculo.getCantidadDeMovimientos()>= movimientosDisponibles);
     }
+    
+    public void verificarEstadoJugador(){
+    	if (vehiculo.getPosicion().equals(posicionGanadora)){	
+			System.out.print("Jugador gano el nivel \n");
+			this.juegoGanado = true;
+    	}else if (vehiculo.getCantidadDeMovimientos()>= movimientosDisponibles){
+    		System.out.print("Jugador pierde el nivel \n");
+    	}
+     }
 
+    
     public void realizarJugadaEnDireccion(Direccion direccion) throws PasajeBloqueadoPorPiqueteExcepcion, MovimientoInvalidoExcepcion {
-    	if (!juegoGanado) {
-    		
-    		Posicion nuevaPosicion = vehiculo.calcularSiguientePosicion(direccion);
-    		boolean posicionEsValida = nuevaPosicion.equals(posicionGanadora);
-    		if (!posicionEsValida) 
-    			posicionEsValida = this.tablero.posicionValida(nuevaPosicion);
-    		if (posicionEsValida) {
+       		Posicion nuevaPosicion = vehiculo.calcularSiguientePosicion(direccion);
+       		if (this.tablero.posicionValida(nuevaPosicion)) {
     			Bocacalle bocacalleActual = tablero.getBocacalleEnPosicion(vehiculo.getPosicion());
     			Calle calleATransitar = bocacalleActual.getCalleEnDireccion(direccion);
-    			try {	vehiculo.moverEnDireccion(direccion, calleATransitar);
-    					if (vehiculo.getPosicion().equals(posicionGanadora)){	
-    						System.out.print("Jugador gano el nivel \n");
-            				this.juegoGanado = true;
-            				}
-    			} catch (PasajeBloqueadoPorPiqueteExcepcion e) {
+    			try {	
+    				vehiculo.moverEnDireccion(direccion, calleATransitar);
+    				verificarEstadoJugador();
+    			}catch (PasajeBloqueadoPorPiqueteExcepcion e) {
     					System.out.print("Imposible mover en esa direccion. \n");
-    					}
+    				}
     		}else throw new MovimientoInvalidoExcepcion();
-
-    	}else System.out.print("Juego ganado ya!\n");
     }
     
     public void guardarPuntaje(String nombre, Integer puntaje) {

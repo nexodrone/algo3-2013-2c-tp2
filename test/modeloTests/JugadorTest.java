@@ -74,7 +74,7 @@ public class JugadorTest {
 		int cantidadDeMovimientos = 100;
 		Juego unJuego = new Juego(tablero, vehiculo, new Posicion(0,0),cantidadDeMovimientos);
 		vehiculo.setJuegoActual(unJuego);
-		unJuego.setPosicionGanadora(new Posicion(4,4));
+		unJuego.setPosicionGanadora(new Posicion(3,4));
 		
         Direccion norte = new Direccion(0, 1);
         Direccion sur = new Direccion(0, -1);
@@ -106,9 +106,8 @@ public class JugadorTest {
 		assertEquals(vehiculo.getCantidadDeMovimientos(),16);
 		assertTrue(vehiculo.getPosicion().equals(new Posicion(2,4)));
 		Pepe.jugar(este);
-		Pepe.jugar(este);
-		assertTrue(vehiculo.getPosicion().equals(new Posicion(4,4)));
-		assertEquals(vehiculo.getCantidadDeMovimientos(),15);
+		assertTrue(vehiculo.getPosicion().equals(new Posicion(3,4)));
+		assertEquals(vehiculo.getCantidadDeMovimientos(),14);
     }
     
     @Test
