@@ -10,7 +10,7 @@ public class Boton extends JButton {
     public Boton(int posX, int posY, String direccionIm, String nombre) {
         super(nombre);
         ImageIcon icono = new ImageIcon(direccionIm);
-        this.setIcon(icono);
+        thissetIcon(icono);
         this.setBounds(posX, posY, tamX, tamY);
     }
 }
