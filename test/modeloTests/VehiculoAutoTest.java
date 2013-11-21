@@ -134,7 +134,8 @@ public class VehiculoAutoTest {
         VehiculoAuto vehiculo = new VehiculoAuto(null);
         vehiculo.setCantidadDeMovimientos(cantidadDeMovimientos);
         Sorpresa sorpresa = new SorpresaCambioDeVehiculo();
-        Juego juego = new Juego(null, vehiculo, null);
+        int movimientosDisponibles = 100;
+        Juego juego = new Juego(null, vehiculo, null,movimientosDisponibles);
         vehiculo.setJuegoActual(juego);
         vehiculo.aplicarEvento(sorpresa);
 
@@ -151,7 +152,8 @@ public class VehiculoAutoTest {
         VehiculoAuto vehiculo = new VehiculoAuto(posicion);
         vehiculo.setCantidadDeMovimientos(cantidadDeMovimientos);
         Sorpresa sorpresa = new SorpresaCambioDeVehiculo();
-        Juego juego = new Juego(null, vehiculo, null);
+        int movimientosDisponibles = 100;
+        Juego juego = new Juego(null, vehiculo, null,movimientosDisponibles);
         vehiculo.setJuegoActual(juego);
         vehiculo.aplicarEvento(sorpresa);
         Vehiculo nuevoVehiculo = juego.getVehiculo();
@@ -164,7 +166,8 @@ public class VehiculoAutoTest {
         Vehiculo4x4 vehiculo = new Vehiculo4x4(null);
         vehiculo.setCantidadDeMovimientos(cantidadDeMovimientos);
         Sorpresa sorpresa = new SorpresaCambioDeVehiculo();
-        Juego juego = new Juego(null, vehiculo, null);
+        int movimientosDisponibles = 100;
+        Juego juego = new Juego(null, vehiculo, null,movimientosDisponibles);
         vehiculo.setJuegoActual(juego);
         vehiculo.aplicarEvento(sorpresa);
         Vehiculo nuevoVehiculo = juego.getVehiculo();

@@ -30,7 +30,8 @@ public class JuegoTest {
         Tablero tablero = new Tablero(10, 10);
         Vehiculo vehiculo = new VehiculoAuto(new Posicion(0, 0));
         Posicion posicionGanadora = new Posicion(6, 10);
-        Juego unJuego = new Juego(tablero, vehiculo, posicionGanadora);
+        int cantidadDeMovimientos = 10;
+        Juego unJuego = new Juego(tablero, vehiculo, posicionGanadora,cantidadDeMovimientos);
         assertNotNull(unJuego);
     }
 
@@ -38,7 +39,8 @@ public class JuegoTest {
     public void testVehiculoDeberiaMoversePorLimitesDelTablero() throws MovimientoInvalidoExcepcion, PasajeBloqueadoPorPiqueteExcepcion {
         Tablero tablero = new Tablero(6, 3);
         Vehiculo vehiculo = new VehiculoAuto(new Posicion(4, 0));
-        Juego unJuego = new Juego(tablero, vehiculo, new Posicion(0, 0));
+        int cantidadDeMovimientos = 10;
+        Juego unJuego = new Juego(tablero, vehiculo, new Posicion(0, 0),cantidadDeMovimientos);
         Direccion norte = new Direccion(0, 1);
         Direccion este = new Direccion(1, 0);
         Direccion oeste = new Direccion(-1, 0);
@@ -57,7 +59,8 @@ public class JuegoTest {
         Tablero tablero = new Tablero(6, 3);
         Vehiculo vehiculo = new VehiculoAuto(new Posicion(4, 0));
         vehiculo.setCantidadDeMovimientos(1);
-        Juego unJuego = new Juego(tablero, vehiculo, new Posicion(0, 0));
+        int cantidadDeMovimientos = 10;
+        Juego unJuego = new Juego(tablero, vehiculo, new Posicion(0, 0),cantidadDeMovimientos);
         Direccion sur = new Direccion(0, -1);
         try {
             unJuego.realizarJugadaEnDireccion(sur);
@@ -75,6 +78,7 @@ public class JuegoTest {
         Vehiculo vehiculo = new VehiculoAuto(new Posicion(0, 0));
         vehiculo.setCantidadDeMovimientos(0);
         Posicion posicionGanadora = new Posicion(2, 2);
+        int cantidadDeMovimientos = 100;
 
         Direccion norte = new Direccion(0, 1);
         Direccion sur = new Direccion(0, -1);
@@ -88,7 +92,7 @@ public class JuegoTest {
         Calle calleEsteDePosicionUnoUno = tablero.getBocacalleEnPosicion(new Posicion(1, 0)).getCalleEnDireccion(este);
         calleEsteDePosicionUnoUno.setSorpresa(new SorpresaDesfavorable());
 
-        Juego nuevoJuego = new Juego(tablero, vehiculo, posicionGanadora);
+        Juego nuevoJuego = new Juego(tablero, vehiculo, posicionGanadora,cantidadDeMovimientos);
         nuevoJuego.realizarJugadaEnDireccion(norte);
         nuevoJuego.realizarJugadaEnDireccion(este);
         nuevoJuego.realizarJugadaEnDireccion(este);
@@ -106,6 +110,7 @@ public class JuegoTest {
         Vehiculo vehiculo = new VehiculoMoto(new Posicion(1, 1));
         vehiculo.setCantidadDeMovimientos(0);
         Posicion posicionGanadora = new Posicion(0, 3);
+        int cantidadDeMovimientos = 100;
 
         Direccion norte = new Direccion(0, 1);
         Direccion sur = new Direccion(0, -1);
@@ -121,7 +126,7 @@ public class JuegoTest {
         Calle calleOesteDePosicionTresTres = tablero.getBocacalleEnPosicion(new Posicion(3, 3)).getCalleEnDireccion(oeste);
         calleOesteDePosicionTresTres.setSorpresa(new SorpresaDesfavorable());
 
-        Juego nuevoJuego = new Juego(tablero, vehiculo, posicionGanadora);
+        Juego nuevoJuego = new Juego(tablero, vehiculo, posicionGanadora,cantidadDeMovimientos);
 
         nuevoJuego.realizarJugadaEnDireccion(este);
         nuevoJuego.realizarJugadaEnDireccion(este);
@@ -151,8 +156,10 @@ public class JuegoTest {
         Vehiculo vehiculo = new Vehiculo4x4(null); // Es irrelevante la posicion para esta prueba
 
         Posicion posicionGanadora = new Posicion(0, 0);
+        
+        int cantidadDeMovimientos = 10;
 
-        Juego juego = new Juego(tablero, vehiculo, posicionGanadora);
+        Juego juego = new Juego(tablero, vehiculo, posicionGanadora,cantidadDeMovimientos);
 
         Vehiculo nuevoVehiculo = new VehiculoAuto(null);
 
@@ -164,7 +171,8 @@ public class JuegoTest {
     @Test
     public void testParaComprobarQueDevuelveCorrectamenteElVehiculo() {
         Vehiculo vehiculo = new Vehiculo4x4(null);
-        Juego juego = new Juego(null, vehiculo, null);
+        int cantidadDeMovimientos = 10;
+        Juego juego = new Juego(null, vehiculo, null,cantidadDeMovimientos);
 
         assertEquals(juego.getVehiculo(), vehiculo);
     }
@@ -176,7 +184,8 @@ public class JuegoTest {
     	unVehiculo.setCantidadDeMovimientos(34);
     	
     	Posicion posicionGanadora = new Posicion(1,2);
-    	Juego unJuego = new Juego(unTablero, unVehiculo, posicionGanadora);
+    	int cantidadDeMovimientos = 10;
+    	Juego unJuego = new Juego(unTablero, unVehiculo, posicionGanadora,cantidadDeMovimientos);
     	
     	unJuego.guardar("test/juegoTest.xml");
     	
@@ -188,7 +197,8 @@ public class JuegoTest {
     
     @Test
     public void testGuardarPuntajes() throws Exception {
-    	Juego unJuego = new Juego(null, null, null);
+    	int cantidadDeMovimientos = 10;
+    	Juego unJuego = new Juego(null, null, null,cantidadDeMovimientos);
     	unJuego.guardarPuntaje("Chango" , 45);
     	unJuego.guardarPuntaje("Matori", 32);
     	unJuego.guardarPuntaje("Jedi", 77);
@@ -197,7 +207,7 @@ public class JuegoTest {
     	
     	unJuego.guardarPuntajes("test/puntajesTest.xml");
     	
-    	Juego otroJuego = new Juego(null, null, null);
+    	Juego otroJuego = new Juego(null, null, null,cantidadDeMovimientos);
     	otroJuego.cargarPuntajes("test/puntajesTest.xml");
     	
     	ArrayList<Puntaje> puntajesOrdenados =
