@@ -31,13 +31,17 @@ public class Jugador {
     }
 
     public void jugar(Direccion direccion) throws PasajeBloqueadoPorPiqueteExcepcion, MovimientoInvalidoExcepcion {
-        
-    	try {
-            this.juegoActual.realizarJugadaEnDireccion(direccion);
-        } catch (MovimientoInvalidoExcepcion e) {
-            System.out.print("Debe realizar otro movimiento valido \n");
-        }
+    	if (!juegoActual.juegoFinalizado()){
+    		try {
+    			this.juegoActual.realizarJugadaEnDireccion(direccion);
+    		}catch (MovimientoInvalidoExcepcion e){
+    			System.out.print("Debe realizar otro movimiento valido \n");
+    		}
+    	}else{ 
+    		System.out.print("el juego ah finalizado \n");
+    	}
     }
+    	
     
     public void guardar(String path) throws Exception {
     	Serializer serializador = new Persister();
