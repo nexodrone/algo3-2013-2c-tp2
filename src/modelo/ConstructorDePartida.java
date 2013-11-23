@@ -1,7 +1,7 @@
 package modelo;
 import java.util.Random;
 
-public class ConstructorJuego {
+public class ConstructorDePartida {
 	
 	public Posicion generarPosicionValida(Nivel nivel){
 		Random rnd = new Random();
@@ -12,17 +12,18 @@ public class ConstructorJuego {
 	}
 	
 
-	public Juego construirJuegoCon4x4(Nivel nivel){
+	public Partida construirPartidaCon4x4(Nivel nivel){
 		Posicion posicionGanadora = generarPosicionValida(nivel);
 		Posicion posicionInicial = generarPosicionValida(nivel);
 		
 		Vehiculo camioneta = new Vehiculo4x4(posicionInicial);
 		Tablero nuevoTablero = new Tablero(nivel.getCantidadDeColumnas(),nivel.getCantidadDeFilas()); 
 		int movimientosDisponibles = nivel.getCantidadDeMovimientos();
-		return new Juego(nuevoTablero,camioneta,posicionGanadora,movimientosDisponibles);
+		
+		return new Partida(nuevoTablero,camioneta,posicionGanadora,movimientosDisponibles);
 	}
 	
-	public Juego construirJuegoConMoto(Nivel nivel){
+	public Partida construirPartidaConMoto(Nivel nivel){
 		Posicion posicionGanadora = generarPosicionValida(nivel);
 		Posicion posicionInicial = generarPosicionValida(nivel);
 		
@@ -30,10 +31,10 @@ public class ConstructorJuego {
 		Tablero nuevoTablero = new Tablero(nivel.getCantidadDeColumnas(),nivel.getCantidadDeFilas()); 
 		int movimientosDisponibles = nivel.getCantidadDeMovimientos();
 		
-		return new Juego(nuevoTablero,moto,posicionGanadora,movimientosDisponibles);
+		return new Partida(nuevoTablero,moto,posicionGanadora,movimientosDisponibles);
 	}
 		
-	public Juego construirJuegoConAuto(Nivel nivel){
+	public Partida construirPartidaConAuto(Nivel nivel){
 		Posicion posicionGanadora = generarPosicionValida(nivel);
 		Posicion posicionInicial = generarPosicionValida(nivel);
 		
@@ -41,7 +42,7 @@ public class ConstructorJuego {
 		Tablero nuevoTablero = new Tablero(nivel.getCantidadDeColumnas(),nivel.getCantidadDeFilas());
 		int movimientosDisponibles = nivel.getCantidadDeMovimientos();
 		
-		return new Juego(nuevoTablero,auto,posicionGanadora,movimientosDisponibles);
+		return new Partida(nuevoTablero,auto,posicionGanadora,movimientosDisponibles);
 	}
 
 }

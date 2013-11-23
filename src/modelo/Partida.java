@@ -2,14 +2,21 @@ package modelo;
 
 public class Partida {
 
-	private int cantidadDeMovimientosTotales;
+	private Posicion posicionGanadora;
+	private int movimientosDisponibles;
+	private Vehiculo vehiculo;
+	private Tablero tablero;
 	
-	public Partida() {
-		this.cantidadDeMovimientosTotales = 0;
+	public Partida() {}
+
+	public Partida(Tablero tablero, Vehiculo vehiculo, Posicion posicion, int movimientos) {
+		this.tablero = tablero;
+		this.vehiculo = vehiculo;
+		this.movimientosDisponibles = movimientos;
+		this.posicionGanadora = posicion;
 	}
-	
-	public int getCantidadaDeMovimientosTotales() {
-		return cantidadDeMovimientosTotales;
+
+	public Vehiculo getVehiculo() {
+		return this.vehiculo;
 	}
-	
 }
