@@ -18,6 +18,7 @@ public class VentanaGeneral extends JFrame {
         this.setResizable(false);
         this.setTitle(titulo);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
         frame = this;
     }
 
