@@ -12,10 +12,4 @@ public class PartidaTest {
 		Partida unaPartida = new Partida();
 		assertNotNull(unaPartida);
 	}
-
-	@Test
-	public void testDeberiaDevolverMovimientosTotales() {
-		Partida unaPartida = new Partida();
-		assertEquals(unaPartida.getCantidadaDeMovimientosTotales(),0);
-	}
 }
