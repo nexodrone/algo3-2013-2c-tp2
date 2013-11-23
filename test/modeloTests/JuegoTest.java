@@ -88,20 +88,39 @@ public class JuegoTest {
         assertEquals(unJuego.getPartida().getVehiculo().getPosicion().asString(), "4,2");
     }
     
-    @Test
+//    @Test
+//    public void testDeberiaTirarExcepcionAlMoverseFueraDelTablero() throws MovimientoInvalidoExcepcion, PasajeBloqueadoPorPiqueteExcepcion {
+//        Tablero tablero = new Tablero(6, 3);
+//        Vehiculo vehiculo = new VehiculoAuto(new Posicion(4, 0));
+//        vehiculo.setCantidadDeMovimientos(1);
+//        int cantidadDeMovimientos = 10;
+//        Juego unJuego = new Juego(tablero, vehiculo, new Posicion(0, 0),cantidadDeMovimientos);
+//        Direccion sur = new Direccion(0, -1);
+//        try {
+//            unJuego.realizarJugadaEnDireccion(sur);
+//            fail("Excepcion esperada");
+//        } catch (MovimientoInvalidoExcepcion esperada) {
+//        };
+//        assertEquals(unJuego.getVehiculo().getCantidadDeMovimientos(), 1);
+//        /* Se comprueba que la cantidad de movimientos no se cambio */
+//    }
+    
+    @Test // ACTUALIZADO 23/11
     public void testDeberiaTirarExcepcionAlMoverseFueraDelTablero() throws MovimientoInvalidoExcepcion, PasajeBloqueadoPorPiqueteExcepcion {
         Tablero tablero = new Tablero(6, 3);
         Vehiculo vehiculo = new VehiculoAuto(new Posicion(4, 0));
         vehiculo.setCantidadDeMovimientos(1);
         int cantidadDeMovimientos = 10;
-        Juego unJuego = new Juego(tablero, vehiculo, new Posicion(0, 0),cantidadDeMovimientos);
+        Partida unaPartida = new Partida(tablero, vehiculo, new Posicion(0,0), cantidadDeMovimientos);
+        
+        Juego unJuego = new Juego(unaPartida, cantidadDeMovimientos, "Rober");
         Direccion sur = new Direccion(0, -1);
         try {
-            unJuego.realizarJugadaEnDireccion(sur);
+            unJuego.realizarJugadaEnDireccion__NUEVO(sur);
             fail("Excepcion esperada");
         } catch (MovimientoInvalidoExcepcion esperada) {
         };
-        assertEquals(unJuego.getVehiculo().getCantidadDeMovimientos(), 1);
+        assertEquals(unJuego.getPartida().getVehiculo().getCantidadDeMovimientos(), 1);
         /* Se comprueba que la cantidad de movimientos no se cambio */
     }
 
