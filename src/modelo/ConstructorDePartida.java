@@ -5,8 +5,8 @@ public class ConstructorDePartida {
 	
 	public Posicion generarPosicionValida(Nivel nivel){
 		Random rnd = new Random();
-		int columnas = rnd.nextInt(nivel.getCantidadDeFilas());		
-		int filas = rnd.nextInt(nivel.getCantidadDeFilas());
+		int columnas = rnd.nextInt(nivel.columnasTablero);		
+		int filas = rnd.nextInt(nivel.filasTablero);
 		
 		return new Posicion(columnas,filas);
 	}
@@ -17,8 +17,8 @@ public class ConstructorDePartida {
 		Posicion posicionInicial = generarPosicionValida(nivel);
 		
 		Vehiculo camioneta = new Vehiculo4x4(posicionInicial);
-		Tablero nuevoTablero = new Tablero(nivel.getCantidadDeColumnas(),nivel.getCantidadDeFilas()); 
-		int movimientosDisponibles = nivel.getCantidadDeMovimientos();
+		Tablero nuevoTablero = new Tablero(nivel.columnasTablero,nivel.filasTablero); 
+		int movimientosDisponibles = nivel.movimientosDisponibles;
 		
 		return new Partida(nuevoTablero,camioneta,posicionGanadora,movimientosDisponibles);
 	}
@@ -28,8 +28,8 @@ public class ConstructorDePartida {
 		Posicion posicionInicial = generarPosicionValida(nivel);
 		
 		Vehiculo moto = new VehiculoMoto(posicionInicial);
-		Tablero nuevoTablero = new Tablero(nivel.getCantidadDeColumnas(),nivel.getCantidadDeFilas()); 
-		int movimientosDisponibles = nivel.getCantidadDeMovimientos();
+		Tablero nuevoTablero = new Tablero(nivel.columnasTablero,nivel.filasTablero); 
+		int movimientosDisponibles = nivel.movimientosDisponibles;
 		
 		return new Partida(nuevoTablero,moto,posicionGanadora,movimientosDisponibles);
 	}
@@ -39,9 +39,9 @@ public class ConstructorDePartida {
 		Posicion posicionInicial = generarPosicionValida(nivel);
 		
 		Vehiculo auto = new VehiculoAuto(posicionInicial);
-		Tablero nuevoTablero = new Tablero(nivel.getCantidadDeColumnas(),nivel.getCantidadDeFilas());
-		int movimientosDisponibles = nivel.getCantidadDeMovimientos();
-		
+		Tablero nuevoTablero = new Tablero(nivel.columnasTablero,nivel.filasTablero); 
+		int movimientosDisponibles = nivel.movimientosDisponibles;
+
 		return new Partida(nuevoTablero,auto,posicionGanadora,movimientosDisponibles);
 	}
 

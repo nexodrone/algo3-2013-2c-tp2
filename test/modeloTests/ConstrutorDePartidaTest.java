@@ -34,8 +34,8 @@ public class ConstrutorDePartidaTest {
 		ConstructorDePartida constructor = new ConstructorDePartida();
 		for (int i=0; i<=100; i++) {
 			Posicion nuevaPosicion = constructor.generarPosicionValida(nuevoNivel);
-			if (nuevaPosicion.x() <= nuevoNivel.getCantidadDeColumnas() &&
-				nuevaPosicion.y() <= nuevoNivel.getCantidadDeFilas())
+			if (nuevaPosicion.x() <= nuevoNivel.columnasTablero &&
+				nuevaPosicion.y() <= nuevoNivel.filasTablero)
 					esValida = true;				
 				else esValida = false;
 		assertTrue(esValida);
