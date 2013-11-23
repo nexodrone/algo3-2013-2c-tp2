@@ -22,8 +22,8 @@ public class Juego {
     private boolean juegoGanado;	
 	private int movimientosDisponibles;
 	private Puntajes puntajes;
-	
-    public Juego(Tablero tablero, Vehiculo vehiculo, Posicion posicionGanadora,int cantidadDeMovimientos) {
+
+	public Juego(Tablero tablero, Vehiculo vehiculo, Posicion posicionGanadora,int cantidadDeMovimientos) {
         this.tablero = tablero;
         this.vehiculo = vehiculo;
         this.posicionGanadora = posicionGanadora;
