@@ -16,7 +16,7 @@ public class VentanaBienvenida extends VentanaGeneral {
 
     private void agregarBtnNuevoUsuario() {
         String direccion = "src/vista/imagenes/btnNuevoUsuario.png";
-        Boton btnNuevoUsuario = new Boton(250, 0, direccion, "nombre");
+        Boton btnNuevoUsuario = new Boton(250, 200, direccion);
         btnNuevoUsuario.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
@@ -28,7 +28,7 @@ public class VentanaBienvenida extends VentanaGeneral {
 
     private void agregarBtnUsuarioRegistrado() {
         String direccion = "src/vista/imagenes/btnUsuarioRegistrado.png";
-        Boton btnUsuarioRegistrado = new Boton(250, 100, direccion, "usuario");
+        Boton btnUsuarioRegistrado = new Boton(250, 0, direccion);
         btnUsuarioRegistrado.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
