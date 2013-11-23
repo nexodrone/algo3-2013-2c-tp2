@@ -37,9 +37,9 @@ public class VehiculoAuto extends Vehiculo {
         return nuevoAuto;
     }
     
-    public static VehiculoAuto recuperar(String path) throws Exception{
-    Serializer deserializador = new Persister();
-    File src = new File(path);
-    return deserializador.read(VehiculoAuto.class, src);
-    }
+//    public static VehiculoAuto recuperar(String path) throws Exception{
+//    Serializer deserializador = new Persister();
+//    File src = new File(path);
+//    return deserializador.read(VehiculoAuto.class, src);
+//    }
 }

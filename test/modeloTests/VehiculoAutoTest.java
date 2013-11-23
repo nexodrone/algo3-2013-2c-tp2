@@ -175,16 +175,16 @@ public class VehiculoAutoTest {
         assertEquals(nuevoVehiculo.getClass(), otroVehiculo.getClass());
     }
     
-    @Test
-    public void testDeberiaSerializarEstadoYDeserializarloCorrectamente() throws Exception{   	
-    	VehiculoAuto auto = new VehiculoAuto(new Posicion(2,4));
-    	auto.setCantidadDeMovimientos(45);
-    	auto.guardar("test/vehiculoTest.xml");
-        
-        VehiculoAuto otroAuto = new VehiculoAuto(new Posicion(0,0));
-        otroAuto = VehiculoAuto.recuperar("test/vehiculoTest.xml");
-
-        assertEquals(otroAuto.getCantidadDeMovimientos(), 45);     
-    }
+//    @Test
+//    public void testDeberiaSerializarEstadoYDeserializarloCorrectamente() throws Exception{   	
+//    	VehiculoAuto auto = new VehiculoAuto(new Posicion(2,4));
+//    	auto.setCantidadDeMovimientos(45);
+//    	auto.guardar("test/vehiculoTest.xml");
+//        
+//        VehiculoAuto otroAuto = new VehiculoAuto(new Posicion(0,0));
+//        otroAuto = VehiculoAuto.recuperar("test/vehiculoTest.xml");
+//
+//        assertEquals(otroAuto.getCantidadDeMovimientos(), 45);     
+//    }
 
 }

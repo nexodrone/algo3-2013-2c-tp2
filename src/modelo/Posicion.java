@@ -49,16 +49,16 @@ public class Posicion {
     	return this.vector.asString();
     }
     
-    public void guardar(String path) throws Exception {
-    	Serializer serializador = new Persister();
-    	OutputStream resultado = new FileOutputStream(path);
-    	serializador.write(this, resultado);
-    }
-
-    public static Posicion recuperar(String path) throws Exception {
-    	Serializer deserializador = new Persister();
-    	InputStream src = new FileInputStream(path);
-    	Posicion r = deserializador.read(new Posicion(1,0), src);
-    	return r;
-    }
+//    public void guardar(String path) throws Exception {
+//    	Serializer serializador = new Persister();
+//    	OutputStream resultado = new FileOutputStream(path);
+//    	serializador.write(this, resultado);
+//    }
+//
+//    public static Posicion recuperar(String path) throws Exception {
+//    	Serializer deserializador = new Persister();
+//    	InputStream src = new FileInputStream(path);
+//    	Posicion r = deserializador.read(new Posicion(1,0), src);
+//    	return r;
+//    }
 }

@@ -39,19 +39,19 @@ public class Calle {
 		sorpresa = sorpresaAColocar;
 	}
 	
-    public void guardar(String path) throws Exception {
-    	Serializer serializador = new Persister();
-    	OutputStream resultado = new FileOutputStream(path);
-    	serializador.write(this, resultado);
-    }
-    
-    public static Calle recuperar(String path) throws Exception{
-    	Serializer deserializador = new Persister();
-    	InputStream src = new FileInputStream(path);
-    
-    	Calle x = new Calle();
-    	Calle devolver = deserializador.read(x, src);
-    	return devolver;
-    }
-	
+//    public void guardar(String path) throws Exception {
+//    	Serializer serializador = new Persister();
+//    	OutputStream resultado = new FileOutputStream(path);
+//    	serializador.write(this, resultado);
+//    }
+//    
+//    public static Calle recuperar(String path) throws Exception{
+//    	Serializer deserializador = new Persister();
+//    	InputStream src = new FileInputStream(path);
+//    
+//    	Calle x = new Calle();
+//    	Calle devolver = deserializador.read(x, src);
+//    	return devolver;
+//    }
+//	
 }
