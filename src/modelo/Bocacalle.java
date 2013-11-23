@@ -33,16 +33,16 @@ public class Bocacalle {
             return calleNorte;
         return calleSur;
     }
-    
-    public void guardar(String path) throws Exception{
-    	Serializer serializador = new Persister();
-    	File resultado = new File(path);
-    	serializador.write(this, resultado);
-    }
-
-    public static Bocacalle recuperar(String path) throws Exception{
-    Serializer deserializador = new Persister();
-    File src = new File(path);
-    return deserializador.read(Bocacalle.class, src);
-    }
+   
+//    public void guardar(String path) throws Exception{
+//    	Serializer serializador = new Persister();
+//    	File resultado = new File(path);
+//    	serializador.write(this, resultado);
+//    }
+//
+//    public static Bocacalle recuperar(String path) throws Exception{
+//    Serializer deserializador = new Persister();
+//    File src = new File(path);
+//    return deserializador.read(Bocacalle.class, src);
+//    }
 }

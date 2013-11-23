@@ -73,10 +73,10 @@ public abstract class Vehiculo {
     	cantidadDeMovimientos = cantidad;
     }
     
-    public void guardar(String path) throws Exception {
-    	Serializer serializador = new Persister();
-    	File resultado = new File(path);
-    	serializador.write(this, resultado);
-    }
+//    public void guardar(String path) throws Exception {
+//    	Serializer serializador = new Persister();
+//    	File resultado = new File(path);
+//    	serializador.write(this, resultado);
+//    }
     
  }

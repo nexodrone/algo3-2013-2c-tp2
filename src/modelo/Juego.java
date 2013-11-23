@@ -18,19 +18,33 @@ public class Juego {
     private Vehiculo vehiculo;
 	@Element(name = "PosicionGanadora")
     private Posicion posicionGanadora;
-	@Attribute
+	
     private boolean juegoGanado;	
 	private int movimientosDisponibles;
+	
+	//******* NUEVOS CAMBIOS *****//
+	private Partida partidaActual;
+	private Jugador jugadorActual;
 	private Puntajes puntajes;
+	//***//
 
 	public Juego(Tablero tablero, Vehiculo vehiculo, Posicion posicionGanadora,int cantidadDeMovimientos) {
         this.tablero = tablero;
         this.vehiculo = vehiculo;
         this.posicionGanadora = posicionGanadora;
         this.juegoGanado = false;
+        
         this.puntajes = new Puntajes ();
         this.movimientosDisponibles=cantidadDeMovimientos;
+        partidaActual = new Partida();
+        jugadorActual = new Jugador();
     }
+	
+	public Juego(Partida nuevaPartida, int cantidadDeMovimientosDisponibles, String nombreJugador) {
+		partidaActual = nuevaPartida;
+		movimientosDisponibles = cantidadDeMovimientosDisponibles;
+		jugadorActual = new Jugador(nombreJugador);		
+	}
 
     public Juego() {};
     
@@ -46,6 +60,10 @@ public class Juego {
         return this.posicionGanadora;
     }
 
+    public Partida getPartida() {
+    	return this.partidaActual;
+    }
+    
     public void cambiarVehiculo(Vehiculo nuevoVehiculo) {
         // System.out.print("cambio de vehiculo");
         vehiculo = nuevoVehiculo;
@@ -63,7 +81,21 @@ public class Juego {
     		System.out.print("Jugador pierde el nivel \n");
     	}
      }
-
+    
+//    public void verificarEstadoJugador__NUEVO(){
+//    	if (partidaActual.partidaGanada){	
+//			System.out.print("Jugador gano el nivel \n");
+//			this.juegoGanado = true;
+//    	}else if (vehiculo.getCantidadDeMovimientos()>= movimientosDisponibles){
+//    		System.out.print("Jugador pierde el nivel \n");
+//    	}
+//     }
+    
+    public void realizarJugadaEnDireccion__NUEVO(Direccion direccion)
+    		throws PasajeBloqueadoPorPiqueteExcepcion, MovimientoInvalidoExcepcion
+    	{
+    		partidaActual.moverPiezaEnDireccion(direccion);
+    	}
     
     public void realizarJugadaEnDireccion(Direccion direccion) throws PasajeBloqueadoPorPiqueteExcepcion, MovimientoInvalidoExcepcion {
        		Posicion nuevaPosicion = vehiculo.calcularSiguientePosicion(direccion);

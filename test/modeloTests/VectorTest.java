@@ -53,15 +53,15 @@ public class VectorTest {
         assertEquals(vector.asString(),"5,3");
     }
     
-    @Test
-    public void testDeberiaSerializarYDeserializar() throws Exception{
-    	Vector vector2 = new Vector(5, 3);
-    	vector2.guardar("test/vectorTest.xml");
-    	
-    	Vector otroVec = new Vector(1,1);
-    	otroVec = Vector.recuperar("test/vectorTest.xml");
-
-    	assertEquals(otroVec.asString(),"5,3");
-    }
+//    @Test
+//    public void testDeberiaSerializarYDeserializar() throws Exception{
+//    	Vector vector2 = new Vector(5, 3);
+//    	vector2.guardar("test/vectorTest.xml");
+//    	
+//    	Vector otroVec = new Vector(1,1);
+//    	otroVec = Vector.recuperar("test/vectorTest.xml");
+//
+//    	assertEquals(otroVec.asString(),"5,3");
+//    }
     
 }

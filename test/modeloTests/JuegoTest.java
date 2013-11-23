@@ -1,12 +1,15 @@
 package modeloTests;
 
 import static org.junit.Assert.*;
+
 import java.util.ArrayList;
+
 import modelo.Calle;
 import modelo.Direccion;
 import modelo.Juego;
 import modelo.ObstaculoPiquete;
 import modelo.ObstaculoPozo;
+import modelo.Partida;
 import modelo.Posicion;
 import modelo.Puntaje;
 import modelo.SorpresaCambioDeVehiculo;
@@ -23,36 +26,68 @@ import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 import org.junit.Test;
 
 public class JuegoTest {
-
-    @Test
+//
+//    @Test
+//    public void testDeberiaCrearJuego() {
+//        Tablero tablero = new Tablero(10, 10);
+//        Vehiculo vehiculo = new VehiculoAuto(new Posicion(0, 0));
+//        Posicion posicionGanadora = new Posicion(6, 10);
+//        int cantidadDeMovimientos = 10;
+//        Juego unJuego = new Juego(tablero, vehiculo, posicionGanadora,cantidadDeMovimientos);
+//        assertNotNull(unJuego);
+//    }
+	
+    @Test // ACTUALIZADO 23/11
     public void testDeberiaCrearJuego() {
         Tablero tablero = new Tablero(10, 10);
         Vehiculo vehiculo = new VehiculoAuto(new Posicion(0, 0));
         Posicion posicionGanadora = new Posicion(6, 10);
         int cantidadDeMovimientos = 10;
-        Juego unJuego = new Juego(tablero, vehiculo, posicionGanadora,cantidadDeMovimientos);
+        Partida unaPartida = new Partida(tablero, vehiculo, posicionGanadora,cantidadDeMovimientos);
+        Juego unJuego = new Juego(unaPartida, cantidadDeMovimientos, "unJugador");
         assertNotNull(unJuego);
     }
 
-    @Test
+//    @Test
+//    public void testVehiculoDeberiaMoversePorLimitesDelTablero() throws MovimientoInvalidoExcepcion, PasajeBloqueadoPorPiqueteExcepcion {
+//        Tablero tablero = new Tablero(6, 3);
+//        Vehiculo vehiculo = new VehiculoAuto(new Posicion(4, 0));
+//        int cantidadDeMovimientos = 10;
+//        Juego unJuego = new Juego(tablero, vehiculo, new Posicion(0, 0),cantidadDeMovimientos);
+//        Direccion norte = new Direccion(0, 1);
+//        Direccion este = new Direccion(1, 0);
+//        Direccion oeste = new Direccion(-1, 0);
+//        try {
+//            unJuego.realizarJugadaEnDireccion(este);
+//            unJuego.realizarJugadaEnDireccion(norte);
+//            unJuego.realizarJugadaEnDireccion(norte);
+//            unJuego.realizarJugadaEnDireccion(oeste);
+//        } catch (MovimientoInvalidoExcepcion e) {
+//        };
+//        assertEquals(unJuego.getVehiculo().getPosicion().asString(), "4,2");
+//    }
+
+    @Test // ACTUALIZADO 23/11
     public void testVehiculoDeberiaMoversePorLimitesDelTablero() throws MovimientoInvalidoExcepcion, PasajeBloqueadoPorPiqueteExcepcion {
         Tablero tablero = new Tablero(6, 3);
         Vehiculo vehiculo = new VehiculoAuto(new Posicion(4, 0));
         int cantidadDeMovimientos = 10;
-        Juego unJuego = new Juego(tablero, vehiculo, new Posicion(0, 0),cantidadDeMovimientos);
+        Partida unaPartida = new Partida(tablero, vehiculo, new Posicion(0, 0),cantidadDeMovimientos);
+        
+        Juego unJuego = new Juego(unaPartida,cantidadDeMovimientos, "unJugador");
         Direccion norte = new Direccion(0, 1);
         Direccion este = new Direccion(1, 0);
         Direccion oeste = new Direccion(-1, 0);
         try {
-            unJuego.realizarJugadaEnDireccion(este);
-            unJuego.realizarJugadaEnDireccion(norte);
-            unJuego.realizarJugadaEnDireccion(norte);
-            unJuego.realizarJugadaEnDireccion(oeste);
-        } catch (MovimientoInvalidoExcepcion e) {
-        };
-        assertEquals(unJuego.getVehiculo().getPosicion().asString(), "4,2");
+            unJuego.realizarJugadaEnDireccion__NUEVO(este);
+            unJuego.realizarJugadaEnDireccion__NUEVO(norte);
+            unJuego.realizarJugadaEnDireccion__NUEVO(norte);
+            unJuego.realizarJugadaEnDireccion__NUEVO(oeste);
+        } catch (MovimientoInvalidoExcepcion e) {};
+        
+        assertEquals(unJuego.getPartida().getVehiculo().getPosicion().asString(), "4,2");
     }
-
+    
     @Test
     public void testDeberiaTirarExcepcionAlMoverseFueraDelTablero() throws MovimientoInvalidoExcepcion, PasajeBloqueadoPorPiqueteExcepcion {
         Tablero tablero = new Tablero(6, 3);

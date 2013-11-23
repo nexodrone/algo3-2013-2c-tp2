@@ -122,15 +122,15 @@ public class TableroTest {
     	
     }
     
-    @Test
-    public void testGuardarYRecuperarCorrectamente() throws Exception {
-    	Tablero tablero = new Tablero(6,4);
-    	
-    	tablero.guardar("test/tableroTest.xml");
-    	
-    	Tablero otroTablero = Tablero.recuperar("test/tableroTest.xml");
-    	assertEquals(tablero.getCantidadDeColumnas(), otroTablero.getCantidadDeColumnas());
-    	assertEquals(tablero.getCantidadDeFilas(), otroTablero.getCantidadDeFilas());
-    }
+//    @Test
+//    public void testGuardarYRecuperarCorrectamente() throws Exception {
+//    	Tablero tablero = new Tablero(6,4);
+//    	
+//    	tablero.guardar("test/tableroTest.xml");
+//    	
+//    	Tablero otroTablero = Tablero.recuperar("test/tableroTest.xml");
+//    	assertEquals(tablero.getCantidadDeColumnas(), otroTablero.getCantidadDeColumnas());
+//    	assertEquals(tablero.getCantidadDeFilas(), otroTablero.getCantidadDeFilas());
+//    }
 
 }

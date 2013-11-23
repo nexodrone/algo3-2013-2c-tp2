@@ -70,15 +70,15 @@ public class Tablero {
         return true;
     }
 
-    public void guardar(String path) throws Exception {
-    	Serializer serializador = new Persister();
-    	File resultado = new File(path);
-    	serializador.write(this, resultado);
-    }
-    
-    public static Tablero recuperar(String path) throws Exception{
-    Serializer deserializador = new Persister();
-    File src = new File(path);
-    return deserializador.read(Tablero.class, src);
-    }
+//    public void guardar(String path) throws Exception {
+//    	Serializer serializador = new Persister();
+//    	File resultado = new File(path);
+//    	serializador.write(this, resultado);
+//    }
+//    
+//    public static Tablero recuperar(String path) throws Exception{
+//    Serializer deserializador = new Persister();
+//    File src = new File(path);
+//    return deserializador.read(Tablero.class, src);
+//    }
 }
