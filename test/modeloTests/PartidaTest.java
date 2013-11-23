@@ -2,12 +2,17 @@ package modeloTests;
 
 import static org.junit.Assert.*;
 import modelo.Direccion;
+import modelo.Juego;
 import modelo.Partida;
 import modelo.Tablero;
+import modelo.Vehiculo;
 import modelo.VehiculoAuto;
 import modelo.Posicion;
 
 
+
+import modelo.excepciones.MovimientoInvalidoExcepcion;
+import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
 import org.junit.Test;
 
@@ -43,4 +48,23 @@ public class PartidaTest {
 		assertEquals(unaPartida.getCantidadDeMovimientosDisponibles(), 7);		
 	}
 	
+    @Test
+    public void testDeberiaTirarExcepcionAlMoverseFueraDelTablero() throws MovimientoInvalidoExcepcion, PasajeBloqueadoPorPiqueteExcepcion {
+        Tablero tablero = new Tablero(6, 3);
+        Vehiculo vehiculo = new VehiculoAuto(new Posicion(4, 0));
+        vehiculo.setCantidadDeMovimientos(1);
+        int cantidadDeMovimientos = 10;
+        Partida unaPartida = new Partida(tablero, vehiculo, new Posicion (0,0),cantidadDeMovimientos);
+        
+        Direccion sur = new Direccion(0, -1);
+        try {
+            unaPartida.moverPiezaEnDireccion(sur);
+            fail("Excepcion esperada");
+        } catch (MovimientoInvalidoExcepcion esperada) {
+        };
+        assertEquals(unaPartida.getVehiculo().getCantidadDeMovimientos(), 1);
+        /* Se comprueba que la cantidad de movimientos no se cambio */
+    }
+    
+    
 }
