@@ -9,55 +9,20 @@ import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 import org.simpleframework.xml.*;
 import org.simpleframework.xml.core.Persister;
 
-@Root(name = "JUEGO")
 public class Juego {
 
-	@Element(name = "Tablero")
-    private Tablero tablero;
-	@Element(name = "VehiculoJugador")
-    private Vehiculo vehiculo;
-	@Element(name = "PosicionGanadora")
-    private Posicion posicionGanadora;
-	
-    private boolean juegoGanado;	
-	private int movimientosDisponibles;
-	
-	//******* NUEVOS CAMBIOS *****//
 	private Partida partidaActual;
 	private Jugador jugadorActual;
 	private Puntajes puntajes;
-	//***//
-
-	public Juego(Tablero tablero, Vehiculo vehiculo, Posicion posicionGanadora,int cantidadDeMovimientos) {
-        this.tablero = tablero;
-        this.vehiculo = vehiculo;
-        this.posicionGanadora = posicionGanadora;
-        this.juegoGanado = false;
-        
-        this.puntajes = new Puntajes ();
-        this.movimientosDisponibles=cantidadDeMovimientos;
-        partidaActual = new Partida();
-        jugadorActual = new Jugador();
-    }
-	
-	public Juego(Partida nuevaPartida, int cantidadDeMovimientosDisponibles, String nombreJugador) {
-		partidaActual = nuevaPartida;
-		movimientosDisponibles = cantidadDeMovimientosDisponibles;
-		jugadorActual = new Jugador(nombreJugador);		
-	}
 
     public Juego() {};
-    
-    public void setPosicionGanadora(Posicion posicionGanadora) {
-        this.posicionGanadora = posicionGanadora;
-    }
 
-    public Vehiculo getVehiculo() {
-        return this.vehiculo;
+    public void setJugador(Jugador jugador) {
+    	this.jugadorActual = jugador;
     }
-    
-    public Posicion getPosicionGanadora() {
-        return this.posicionGanadora;
+	
+    public void setPartida(Partida partida) {
+    	this.partidaActual = partida;
     }
 
     public Partida getPartida() {
@@ -66,49 +31,33 @@ public class Juego {
     
     public void cambiarVehiculo(Vehiculo nuevoVehiculo) {
         // System.out.print("cambio de vehiculo");
-        vehiculo = nuevoVehiculo;
+        partidaActual.setVehiculo(nuevoVehiculo);
     }
     
-    public boolean juegoFinalizado(){
-    		return (vehiculo.getCantidadDeMovimientos()>= movimientosDisponibles);
+    public void verificarEstadoDelJugador() {
+    	if (partidaActual.esGanada())
+    		System.out.print("Jugador gano el nivel. \n");
+    	if (partidaActual.esPerdida())
+    		System.out.print("Jugador pierde el nivel. \n");
+    	}
+
+    public void realizarJugadaEnDireccion(Direccion direccion) throws MovimientoInvalidoExcepcion {
+    	if (this.partidaActual.esGanada() || this.partidaActual.esPerdida())
+    				System.out.print("Se termino la partida. \n");
+    	else jugarEnDireccion(direccion);
     }
-    
-    public void verificarEstadoJugador(){
-    	if (vehiculo.getPosicion().equals(posicionGanadora)){	
-			System.out.print("Jugador gano el nivel \n");
-			this.juegoGanado = true;
-    	}else if (vehiculo.getCantidadDeMovimientos()>= movimientosDisponibles){
-    		System.out.print("Jugador pierde el nivel \n");
-    	}
-     }
-    
-//    public void verificarEstadoJugador__NUEVO(){
-//    	if (partidaActual.partidaGanada){	
-//			System.out.print("Jugador gano el nivel \n");
-//			this.juegoGanado = true;
-//    	}else if (vehiculo.getCantidadDeMovimientos()>= movimientosDisponibles){
-//    		System.out.print("Jugador pierde el nivel \n");
-//    	}
-//     }
-    
-    public void realizarJugadaEnDireccion__NUEVO(Direccion direccion)
-    		throws PasajeBloqueadoPorPiqueteExcepcion, MovimientoInvalidoExcepcion
-    	{
-    		partidaActual.moverPiezaEnDireccion(direccion);
-    	}
-    
-    public void realizarJugadaEnDireccion(Direccion direccion) throws PasajeBloqueadoPorPiqueteExcepcion, MovimientoInvalidoExcepcion {
-       		Posicion nuevaPosicion = vehiculo.calcularSiguientePosicion(direccion);
-       		if (this.tablero.posicionValida(nuevaPosicion)) {
-    			Bocacalle bocacalleActual = tablero.getBocacalleEnPosicion(vehiculo.getPosicion());
-    			Calle calleATransitar = bocacalleActual.getCalleEnDireccion(direccion);
-    			try {	
-    				vehiculo.moverEnDireccion(direccion, calleATransitar);
-    				verificarEstadoJugador();
-    			}catch (PasajeBloqueadoPorPiqueteExcepcion e) {
-    					System.out.print("Imposible mover en esa direccion. \n");
-    				}
-    		}else throw new MovimientoInvalidoExcepcion();
+
+    private void jugarEnDireccion(Direccion direccion) throws MovimientoInvalidoExcepcion {
+   		Posicion nuevaPosicion = partidaActual.getVehiculo().calcularSiguientePosicion(direccion);
+   		if (partidaActual.getTablero().posicionValida(nuevaPosicion)) {
+			Bocacalle bocacalleActual = partidaActual.getTablero().getBocacalleEnPosicion(partidaActual.getVehiculo().getPosicion());
+			Calle calleATransitar = bocacalleActual.getCalleEnDireccion(direccion);
+			try {	partidaActual.getVehiculo().moverEnDireccion(direccion, calleATransitar);
+					verificarEstadoDelJugador();
+				}	catch (PasajeBloqueadoPorPiqueteExcepcion e) {
+							System.out.print("Imposible mover en esa direccion. \n");
+						}
+		}	else throw new MovimientoInvalidoExcepcion();
     }
     
     public void guardarPuntaje(String nombre, Integer puntaje) {
@@ -138,4 +87,5 @@ public class Juego {
     	File src = new File(path);
     	return deserializador.read(Juego.class, src);
     }
+
 }
