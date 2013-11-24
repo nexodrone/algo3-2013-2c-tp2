@@ -5,9 +5,13 @@ import java.awt.event.ActionListener;
 
 public class VentanaBienvenida extends VentanaGeneral {
 
-    private static final long serialVersionUID = 1L;
+  
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-    public VentanaBienvenida() {
+	public VentanaBienvenida() {
         super("Bienvenido a GPS CHALLENGE");
         this.agregarBtnNuevoUsuario();
         this.agregarBtnUsuarioRegistrado();
@@ -22,7 +26,8 @@ public class VentanaBienvenida extends VentanaGeneral {
             public void actionPerformed(ActionEvent arg0) {
                 // registrar usuario
             }
-        });
+        }
+        );
         this.getContentPane().add(btnNuevoUsuario);
     }
 
@@ -41,6 +46,5 @@ public class VentanaBienvenida extends VentanaGeneral {
 
     public static void main(String[] arguments) {
         VentanaBienvenida ventana = new VentanaBienvenida();
-
     }
 }

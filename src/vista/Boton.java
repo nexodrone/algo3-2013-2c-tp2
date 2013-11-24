@@ -5,8 +5,8 @@ import javax.swing.JButton;
 
 public class Boton extends JButton {
 
-    private static final long serialVersionUID = 1L;
-    int tamX = 218;
+  
+	int tamX = 218;
     int tamY = 54;
 
     public Boton(int posX, int posY, String direccionIm) {
