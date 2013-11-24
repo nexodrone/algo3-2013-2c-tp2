@@ -15,7 +15,7 @@ public class VentanaBienvenida extends VentanaGeneral {
         super("Bienvenido a GPS CHALLENGE");
         this.agregarBtnNuevoUsuario();
         this.agregarBtnUsuarioRegistrado();
-
+     
     }
 
     private void agregarBtnNuevoUsuario() {
@@ -29,6 +29,7 @@ public class VentanaBienvenida extends VentanaGeneral {
         }
         );
         this.getContentPane().add(btnNuevoUsuario);
+     
     }
 
     private void agregarBtnUsuarioRegistrado() {
@@ -41,7 +42,7 @@ public class VentanaBienvenida extends VentanaGeneral {
             }
         });
         this.getContentPane().add(btnUsuarioRegistrado);
-
+  
     }
 
     public static void main(String[] arguments) {
