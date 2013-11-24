@@ -18,6 +18,7 @@ import modelo.VehiculoAuto;
 import modelo.VehiculoMoto;
 import modelo.excepciones.MovimientoInvalidoExcepcion;
 import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
+
 import org.junit.Test;
 
 public class JuegoTest {
@@ -106,7 +107,7 @@ public class JuegoTest {
 
     /* Test integrador */
     @Test
-    public void testObstaculosYSorpresasDebenSerAplicadosDeFormaCoherente() throws PasajeBloqueadoPorPiqueteExcepcion, MovimientoInvalidoExcepcion {
+    public void testObstaculosYSorpresasDebenSerAplicadosDeFormaCoherente() throws MovimientoInvalidoExcepcion {
         Tablero tablero = new Tablero(5, 4);
         Vehiculo vehiculo = new VehiculoMoto(new Posicion(1, 1));
         vehiculo.setCantidadDeMovimientos(0);
@@ -143,11 +144,13 @@ public class JuegoTest {
         unJuego.realizarJugadaEnDireccion(norte);
         unJuego.realizarJugadaEnDireccion(oeste);
         assertEquals(unJuego.getPartida().getVehiculo().getCantidadDeMovimientos(), 13);
+		assertTrue(unJuego.getPartida().getVehiculo().getPosicion().equals(new Posicion(0,3)));
+		assertEquals(unJuego.getPartida().getVehiculo().getClass(), (new VehiculoAuto()).getClass());
     }
 
-    /* Test de integracion */
+    /* Test integrador */
     @Test
-    public void testJegoCompleto() throws MovimientoInvalidoExcepcion {
+    public void testJegoCompletoGanancia() throws MovimientoInvalidoExcepcion {
 		Tablero tablero = new Tablero(4,6);
 		Vehiculo vehiculo = new VehiculoAuto(new Posicion(0,0));
 		vehiculo.setCantidadDeMovimientos(0);
@@ -193,6 +196,63 @@ public class JuegoTest {
 		assertEquals(vehiculo.getCantidadDeMovimientos(),14);
     }
     
+    /* Test integrador */
+    @Test
+    public void testJegoCompletoPerdida() throws MovimientoInvalidoExcepcion {
+		Tablero tablero = new Tablero(5,3);
+		Vehiculo4x4 vehiculo = new Vehiculo4x4(new Posicion(4,2));
+		vehiculo.setCantidadDeMovimientos(0);
+		Posicion posicionGanadora = new Posicion(0,0);
+		int movimientosDisponibles = 10;
+		
+		Partida unaPartida = new Partida(tablero, vehiculo, posicionGanadora, movimientosDisponibles);
+		
+		Juego unJuego = new Juego();
+		unJuego.setPartida(unaPartida);
+		vehiculo.setJuegoActual(unJuego);
+		
+        Direccion norte = new Direccion(0, 1);
+        Direccion sur = new Direccion(0, -1);
+        Direccion oeste = new Direccion(-1, 0);
+		
+		tablero.getBocacalleEnPosicion(new Posicion(3,0)).getCalleEnDireccion(norte).setObstaculo(new ObstaculoPiquete());
+		tablero.getBocacalleEnPosicion(new Posicion(2,0)).getCalleEnDireccion(norte).setObstaculo(new ObstaculoPiquete());
+		tablero.getBocacalleEnPosicion(new Posicion(4,1)).getCalleEnDireccion(norte).setObstaculo(new ObstaculoPozo());
+		tablero.getBocacalleEnPosicion(new Posicion(1,0)).getCalleEnDireccion(norte).setSorpresa(new SorpresaDesfavorable());
+		tablero.getBocacalleEnPosicion(new Posicion(3,0)).getCalleEnDireccion(oeste).setSorpresa(new SorpresaFavorable());
+		tablero.getBocacalleEnPosicion(new Posicion(3,0)).getCalleEnDireccion(norte).setSorpresa(new SorpresaFavorable());
+		tablero.getBocacalleEnPosicion(new Posicion(3,1)).getCalleEnDireccion(oeste).setSorpresa(new SorpresaCambioDeVehiculo());
+
+		unJuego.realizarJugadaEnDireccion(sur);
+		unJuego.realizarJugadaEnDireccion(oeste);
+		assertEquals(unJuego.getPartida().getVehiculo().getCantidadDeMovimientos(),2);
+		assertEquals(unJuego.getPartida().getVehiculo().getPosicion().asString(), "3,1");
+		
+		unJuego.realizarJugadaEnDireccion(sur);
+		assertEquals(unJuego.getPartida().getVehiculo().getCantidadDeMovimientos(),2);
+		assertEquals(unJuego.getPartida().getVehiculo().getPosicion().asString(), "3,1");
+		
+		unJuego.realizarJugadaEnDireccion(oeste);
+		assertEquals(unJuego.getPartida().getVehiculo().getClass(), (new VehiculoMoto()).getClass());
+		System.out.print(unJuego.getPartida().getVehiculo().getPosicion().asString());
+		assertTrue(unJuego.getPartida().getVehiculo().getPosicion().equals(new Posicion(2,1)));
+		
+		unJuego.realizarJugadaEnDireccion(sur);
+		assertTrue(unJuego.getPartida().getVehiculo().getPosicion().equals(new Posicion(2,0)));
+		assertEquals(unJuego.getPartida().getVehiculo().getCantidadDeMovimientos(),6);
+
+		unJuego.realizarJugadaEnDireccion(oeste);
+		unJuego.realizarJugadaEnDireccion(norte);
+		assertEquals(unJuego.getPartida().getVehiculo().getCantidadDeMovimientos(),10);
+		assertTrue(unJuego.getPartida().getVehiculo().getPosicion().equals(new Posicion(1,1)));
+
+		unJuego.realizarJugadaEnDireccion(sur);
+		unJuego.realizarJugadaEnDireccion(oeste);
+		assertEquals(unJuego.getPartida().getVehiculo().getCantidadDeMovimientos(),10);
+		assertTrue(unJuego.getPartida().getVehiculo().getPosicion().equals(new Posicion(1,1)));
+		/* se comprueba que una vez perdida la partida no se mueva el vehiculo */
+    }
+    
     /* Tests de metodos */
     @Test
     public void testParaComprobarQueCambiaCorrectamenteElVehiculo() {
@@ -215,6 +275,48 @@ public class JuegoTest {
         assertEquals(unJuego.getPartida().getVehiculo(), nuevoVehiculo);
     }
 
+    @Test
+    public void testAlMoverPorCalleConSorpresaCambioDeVehiculo4x4SeTransformaEnMoto() throws PasajeBloqueadoPorPiqueteExcepcion {
+    	Vehiculo4x4 todoterreno = new Vehiculo4x4(null);
+    	Juego unJuego = new Juego();
+    	Partida unaPartida = new Partida(null, todoterreno, null, 100);
+    	unJuego.setPartida(unaPartida);
+    	todoterreno.setJuegoActual(unJuego);
+    	
+        Calle calle = new Calle();
+        calle.setSorpresa(new SorpresaCambioDeVehiculo());
+        todoterreno.pasarPorCalle(calle);
+		assertEquals(unJuego.getPartida().getVehiculo().getClass(), (new VehiculoMoto()).getClass());
+    }
+    
+    @Test
+    public void testAlMoverPorCalleConSorpresaCambioDeVehiculoMotoSeTransformaEnAuto() throws PasajeBloqueadoPorPiqueteExcepcion {
+    	VehiculoMoto moto = new VehiculoMoto(null);
+    	Juego unJuego = new Juego();
+    	Partida unaPartida = new Partida(null, moto, null, 100);
+    	unJuego.setPartida(unaPartida);
+    	moto.setJuegoActual(unJuego);
+    	
+        Calle calle = new Calle();
+        calle.setSorpresa(new SorpresaCambioDeVehiculo());
+        moto.pasarPorCalle(calle);
+		assertEquals(unJuego.getPartida().getVehiculo().getClass(), (new VehiculoAuto()).getClass());
+    }
+    
+    @Test
+    public void testAlMoverPorCalleConSorpresaCambioDeVehiculoAutoSeTransformaEn4x4() throws PasajeBloqueadoPorPiqueteExcepcion {
+    	VehiculoAuto auto = new VehiculoAuto(null);
+    	Juego unJuego = new Juego();
+    	Partida unaPartida = new Partida(null, auto, null, 100);
+    	unJuego.setPartida(unaPartida);
+    	auto.setJuegoActual(unJuego);
+    	
+        Calle calle = new Calle();
+        calle.setSorpresa(new SorpresaCambioDeVehiculo());
+        auto.pasarPorCalle(calle);
+		assertEquals(unJuego.getPartida().getVehiculo().getClass(), (new Vehiculo4x4()).getClass());
+    }
+    
 /*    @Test
     public void testGuardarYCargarCorrectamenteJuego () throws Exception {
     	Tablero unTablero = new Tablero(4, 4);

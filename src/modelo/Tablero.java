@@ -10,7 +10,7 @@ import org.simpleframework.xml.core.Persister;
 public class Tablero {
 
 	@ElementList(name = "Bocacalles")
-    private ArrayList<ColumnasDeBocacalles> bocacalles;
+    private ArrayList<ColumnaDeBocacalles> bocacalles;
 	@Attribute
     private int cantidadDeColumnas;
 	@Attribute
@@ -19,9 +19,9 @@ public class Tablero {
     public Tablero(int columnas, int filas) {
         this.cantidadDeColumnas = columnas;
         this.cantidadDeFilas = filas;
-        this.bocacalles = new ArrayList<ColumnasDeBocacalles>();
+        this.bocacalles = new ArrayList<ColumnaDeBocacalles>();
         for (int i = 0; i < columnas; i++) {
-            ColumnasDeBocacalles unaColumna = new ColumnasDeBocacalles();
+            ColumnaDeBocacalles unaColumna = new ColumnaDeBocacalles();
             for (int j = 0; j < filas; j++) {
                 unaColumna.add(new Bocacalle());
             }
@@ -31,7 +31,7 @@ public class Tablero {
     }
 
     public Tablero() {
-    	this.bocacalles = new ArrayList<ColumnasDeBocacalles>();
+    	this.bocacalles = new ArrayList<ColumnaDeBocacalles>();
     };
     
     private void unificarCalles() {
