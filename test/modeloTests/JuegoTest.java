@@ -105,7 +105,7 @@ public class JuegoTest {
 
     }
 
-    /* Test integrador */
+    /* Test integrador 
     @Test
     public void testObstaculosYSorpresasDebenSerAplicadosDeFormaCoherente() throws MovimientoInvalidoExcepcion {
         Tablero tablero = new Tablero(5, 4);
@@ -150,7 +150,7 @@ public class JuegoTest {
 
     /* Test integrador */
     @Test
-    public void testJegoCompletoGanancia() throws MovimientoInvalidoExcepcion {
+    public void testJuegoCompletoGanancia() throws MovimientoInvalidoExcepcion {
 		Tablero tablero = new Tablero(4,6);
 		Vehiculo vehiculo = new VehiculoAuto(new Posicion(0,0));
 		vehiculo.setCantidadDeMovimientos(0);
@@ -196,9 +196,9 @@ public class JuegoTest {
 		assertEquals(vehiculo.getCantidadDeMovimientos(),14);
     }
     
-    /* Test integrador */
+    /* Test integrador 
     @Test
-    public void testJegoCompletoPerdida() throws MovimientoInvalidoExcepcion {
+    public void testJuegoCompletoPerdida() throws MovimientoInvalidoExcepcion {
 		Tablero tablero = new Tablero(5,3);
 		Vehiculo4x4 vehiculo = new Vehiculo4x4(new Posicion(4,2));
 		vehiculo.setCantidadDeMovimientos(0);
@@ -250,7 +250,7 @@ public class JuegoTest {
 		unJuego.realizarJugadaEnDireccion(oeste);
 		assertEquals(unJuego.getPartida().getVehiculo().getCantidadDeMovimientos(),10);
 		assertTrue(unJuego.getPartida().getVehiculo().getPosicion().equals(new Posicion(1,1)));
-		/* se comprueba que una vez perdida la partida no se mueva el vehiculo */
+		/* se comprueba que una vez perdida la partida no se mueva el vehiculo 
     }
     
     /* Tests de metodos */
