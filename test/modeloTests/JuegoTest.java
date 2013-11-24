@@ -52,24 +52,7 @@ public class JuegoTest {
         assertEquals(unJuego.getPartida().getVehiculo().getPosicion().asString(), "4,2");
     }
     
-//    @Test
-//    public void testDeberiaTirarExcepcionAlMoverseFueraDelTablero() throws MovimientoInvalidoExcepcion, PasajeBloqueadoPorPiqueteExcepcion {
-//        Tablero tablero = new Tablero(6, 3);
-//        Vehiculo vehiculo = new VehiculoAuto(new Posicion(4, 0));
-//        vehiculo.setCantidadDeMovimientos(1);
-//        int cantidadDeMovimientos = 10;
-//        Juego unJuego = new Juego(tablero, vehiculo, new Posicion(0, 0),cantidadDeMovimientos);
-//        Direccion sur = new Direccion(0, -1);
-//        try {
-//            unJuego.realizarJugadaEnDireccion(sur);
-//            fail("Excepcion esperada");
-//        } catch (MovimientoInvalidoExcepcion esperada) {
-//        };
-//        assertEquals(unJuego.getVehiculo().getCantidadDeMovimientos(), 1);
-//        /* Se comprueba que la cantidad de movimientos no se cambio */
-//    }
-    
-    @Test // ACTUALIZADO 23/11
+    @Test
     public void testDeberiaTirarExcepcionAlMoverseFueraDelTablero() throws MovimientoInvalidoExcepcion {
         Tablero tablero = new Tablero(6, 3);
         Vehiculo vehiculo = new VehiculoAuto(new Posicion(4, 0));
