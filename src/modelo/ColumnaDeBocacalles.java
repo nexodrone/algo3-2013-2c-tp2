@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
-public class ColumnasDeBocacalles {
+public class ColumnaDeBocacalles {
 	private ArrayList<Bocacalle> columna;
 	
-	public ColumnasDeBocacalles() {
+	public ColumnaDeBocacalles() {
 		this.columna = new ArrayList<Bocacalle>();
 	}
 	

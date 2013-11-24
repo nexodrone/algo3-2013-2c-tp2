@@ -9,11 +9,13 @@ import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 @Root(name="Auto")
 public class VehiculoAuto extends Vehiculo {
 
-    public VehiculoAuto(@Element(name="posicionActual") Posicion posicionInicial) {
+    public VehiculoAuto(Posicion posicionInicial) {
         super(posicionInicial);
         /* esta porcion de codigo esta tanto en vehiculo4x4 y vehiculoMoto */
     }
 
+    public VehiculoAuto() {}
+    
     public void aplicarEvento(Sorpresa sorpresa) {
         sorpresa.interactuarCon(this);
     }
