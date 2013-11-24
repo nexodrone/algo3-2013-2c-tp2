@@ -17,8 +17,10 @@ public class VentanaNuevoUsuario extends JFrame{
 	
 	public VentanaNuevoUsuario(){
 		setLayout(new FlowLayout());
-		setBounds(0,0,500,500);
+		setBounds(0,0,800,481);
 		setLocationRelativeTo(null);
+		setTitle("Bienvenido");
+		
 		
 		lblUno = new JLabel("Por favor introduzca su nombre");
 		getContentPane().add(lblUno);
@@ -26,6 +28,15 @@ public class VentanaNuevoUsuario extends JFrame{
 		txtUno = new JTextField(10);
 		getContentPane().add(txtUno);
 		
+		agregarBtnCerrar();
+		agregarBtnAceptar();
+		
+		
+		setVisible(true);
+		setResizable(false);
+		}
+	
+	public void agregarBtnCerrar(){
 		btnUno = new JButton("Cerrar");
 		getContentPane().add(btnUno);
 		
@@ -36,10 +47,24 @@ public class VentanaNuevoUsuario extends JFrame{
 				System.exit(0);
 			}
 		});
-		
-		setVisible(true);
-		setResizable(false);
-		}
+	}
+	
+	public void agregarBtnAceptar(){
+		String direccion = "src/vista/imagenes/btnAceptar.png";
+		Boton nuevoBtn = new Boton(218,54,direccion);
+				
+		nuevoBtn.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				//acepta
+			}
+		});
+		this.getContentPane().add(nuevoBtn);
+	}
+	
+	
 	
 	 public static void main(String[] arguments) {
 	        VentanaNuevoUsuario ventana = new VentanaNuevoUsuario();
