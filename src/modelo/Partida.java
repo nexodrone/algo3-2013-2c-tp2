@@ -1,8 +1,5 @@
 package modelo;
 
-import modelo.excepciones.MovimientoInvalidoExcepcion;
-import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
-
 public class Partida {
 
 	private Tablero tablero;
@@ -12,45 +9,43 @@ public class Partida {
 	
 	public Partida() {}
 
-	public Partida(Tablero tablero, Vehiculo vehiculo, Posicion posicion, int movimientos) {
+	public Partida(Tablero tablero, Vehiculo vehiculo, Posicion posicionGanadora, int movimientosDisponibles) {
 		this.tablero = tablero;
 		this.vehiculo = vehiculo;
-		this.movimientosDisponibles = movimientos;
-		this.posicionGanadora = posicion;
+		this.movimientosDisponibles = movimientosDisponibles;
+		this.posicionGanadora = posicionGanadora;
+	}
+
+	public Tablero getTablero() {
+		return this.tablero;
 	}
 
 	public Vehiculo getVehiculo() {
 		return this.vehiculo;
 	}
 	
-	public Posicion posicionPieza() {
-		return vehiculo.getPosicion();
+	public void setVehiculo(Vehiculo vehiculo) {
+		this.vehiculo = vehiculo;
 	}
 	
+    public Posicion getPosicionGanadora() {
+        return this.posicionGanadora;
+    }
+
+	public Posicion posicionDelVehiculo() {
+		return vehiculo.getPosicion();
+	}
+
 	public int getCantidadDeMovimientosDisponibles() {
 		return movimientosDisponibles;
 	}
+
+	public boolean esGanada() {
+		return (posicionGanadora.equals(vehiculo.posicion));
+	}
 	
-    public void cambiarVehiculo(Vehiculo nuevoVehiculo) {
-        // System.out.print("cambio de vehiculo");
-        vehiculo = nuevoVehiculo;
-    }
-	
-    public void moverPiezaEnDireccion(Direccion direccion)
-    		throws PasajeBloqueadoPorPiqueteExcepcion, MovimientoInvalidoExcepcion
-    {
-   		Posicion nuevaPosicion = vehiculo.calcularSiguientePosicion(direccion);
-   		if (this.tablero.posicionValida(nuevaPosicion)) {
-			Bocacalle bocacalleActual = tablero.getBocacalleEnPosicion(vehiculo.getPosicion());
-			Calle calleATransitar = bocacalleActual.getCalleEnDireccion(direccion);
-			try {	
-				vehiculo.moverEnDireccion(direccion, calleATransitar);
-				//verificarEstadoJugador();
-			}catch (PasajeBloqueadoPorPiqueteExcepcion e) {
-					System.out.print("Imposible mover en esa direccion. \n");
-				}
-		}else throw new MovimientoInvalidoExcepcion();
-   		
-   		movimientosDisponibles--;
-    }
+	public boolean esPerdida() {
+		return (movimientosDisponibles-vehiculo.cantidadDeMovimientos < 1);
+	}
+
 }

@@ -126,7 +126,7 @@ public class VehiculoMotoTest {
         assertEquals(vehiculo.getCantidadDeMovimientos(), nuevaCantidad);
     }
 
-    @Test
+/*    @Test
     public void testParaComprobarQueCuandoCambiaDeVehiculoNoEsElMismoObjeto() {
         int cantidadDeMovimientos = 0;
         VehiculoMoto vehiculo = new VehiculoMoto(null);
@@ -169,5 +169,5 @@ public class VehiculoMotoTest {
         Vehiculo otroVehiculo = new VehiculoAuto(null);
         assertEquals(nuevoVehiculo.getClass(), otroVehiculo.getClass());
     }
-
+*/
 }
