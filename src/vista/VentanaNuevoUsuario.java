@@ -1,43 +1,49 @@
 package vista;
 
 
-import java.awt.Container;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.SpringLayout;
+
+
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
 
 public class VentanaNuevoUsuario extends JFrame{
 
-	private final JLabel nombre = new JLabel("Por favor introduzca su nombre :");
-	private final JTextField campo_nombre = new JTextField(10);	
+	private JLabel lblUno;
+	private JTextField txtUno;
+	private JButton btnUno;
 	
 	public VentanaNuevoUsuario(){
+		setLayout(new FlowLayout());
+		setBounds(0,0,500,500);
+		setLocationRelativeTo(null);
 		
-		setTitle("Nuevo Usuario");
-		setSize(800,451);//crea la ventana de 800x481
-        setLocation(250,250);//dibuja a 250px de distancia del monitor
-        setResizable(false);//evita que la ventana se maximize
-        setVisible(true);//permite mostrar la ventana
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        
-        Container contenedor = getContentPane();
-		SpringLayout layout = new SpringLayout();
-		contenedor.setLayout(layout);
+		lblUno = new JLabel("Por favor introduzca su nombre");
+		getContentPane().add(lblUno);
 		
-		layout.putConstraint(SpringLayout.WEST, nombre, 50, SpringLayout.WEST, contenedor);//eje x
-		layout.putConstraint(SpringLayout.NORTH, nombre, 50, SpringLayout.NORTH, contenedor);//eje y
+		txtUno = new JTextField(10);
+		getContentPane().add(txtUno);
 		
-		contenedor.add(nombre);
-		contenedor.add(campo_nombre);
-	}
-
-
-	public static void main(String[] arguments){
-		VentanaNuevoUsuario dialog = new VentanaNuevoUsuario(); 
+		btnUno = new JButton("Cerrar");
+		getContentPane().add(btnUno);
 		
-	}
+		btnUno.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				System.exit(0);
+			}
+		});
+		
+		setVisible(true);
+		setResizable(false);
+		}
 	
+	 public static void main(String[] arguments) {
+	        VentanaNuevoUsuario ventana = new VentanaNuevoUsuario();
+	    }
+
 }
+
