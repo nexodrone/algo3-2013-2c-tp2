@@ -3,13 +3,14 @@ package vista;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class VentanaUsuarioNuevo extends JFrame {
+public class VentanaUsuarioNuevo extends VentanaGeneral {
 	
 	private JButton botonVolver = new JButton("Volver");
 	private JTextField nombre = new JTextField();
 	
 	public VentanaUsuarioNuevo() {
 		
+		super("Registro de usuario");
 		JPanel panelUsuarioNuevo = new JPanel();
 		panelUsuarioNuevo.setLayout(null);
 		
@@ -19,13 +20,15 @@ public class VentanaUsuarioNuevo extends JFrame {
 		panelUsuarioNuevo.add(nombre);
 		panelUsuarioNuevo.add(botonVolver);
 		
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(600, 400);
 		this.add(panelUsuarioNuevo);
 	}
 
 	public void agregarEscuchaVolver(ActionListener escuchaVolver) {
 		botonVolver.addActionListener(escuchaVolver);
 	}
+	
+	public static void main(String[] arguments) {
+        VentanaUsuarioNuevo ventana = new VentanaUsuarioNuevo();
+ }
 
 }
