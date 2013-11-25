@@ -3,13 +3,14 @@ package vista;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class VentanaPrincipal extends JFrame {
+public class VentanaPrincipal extends VentanaGeneral {
 	
 	private JButton botonNuevoUsuario = new JButton("Nuevo Usuario");
 	private JButton botonUsuarioRegistrado = new JButton("Usuario Registrado");
 	
 	public VentanaPrincipal() {
 		
+		super("Bienvenido");
 		JPanel panelBienvenido = new JPanel();
 		panelBienvenido.setLayout(null);
 		
@@ -18,9 +19,7 @@ public class VentanaPrincipal extends JFrame {
 		
 		panelBienvenido.add(botonNuevoUsuario);
 		panelBienvenido.add(botonUsuarioRegistrado);
-		
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(600, 400);
+
 		this.add(panelBienvenido);
 	}
 
@@ -31,5 +30,7 @@ public class VentanaPrincipal extends JFrame {
 	public void agregarEscuchaUsuarioRegistrado(ActionListener escuchaUsuarioRegistrado) {
 		botonUsuarioRegistrado.addActionListener(escuchaUsuarioRegistrado);
 	}
+	
+	
 
 }
