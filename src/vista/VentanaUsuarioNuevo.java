@@ -36,4 +36,15 @@ public class VentanaUsuarioNuevo extends Ventana {
 	public void agregarEscuchaGuardar(ActionListener escuchaGuardar){
 		botonGuardar.addActionListener(escuchaGuardar);
 	}
+	
+	public String mostrarNombre(){
+		return nombre.getText();
+	}
+	
+	public static void main(String argc[]){
+		VentanaUsuarioNuevo ventana = new VentanaUsuarioNuevo();
+		ventana.setVisible(true);
+		String unString = ventana.mostrarNombre();
+		System.out.print(unString);
+	}
 }
