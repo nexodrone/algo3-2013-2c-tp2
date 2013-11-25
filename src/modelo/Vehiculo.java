@@ -14,7 +14,7 @@ public abstract class Vehiculo {
     protected Posicion posicion;
 	@Attribute
     protected int cantidadDeMovimientos;
-	//@Element(name="ref al juego", required = false)
+
     protected Juego juego;
     
     public Vehiculo(Posicion nuevaPosicion) {

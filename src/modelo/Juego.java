@@ -1,13 +1,9 @@
 package modelo;
 
-import java.io.File;
 import java.util.ArrayList;
 
 import modelo.excepciones.MovimientoInvalidoExcepcion;
 import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
-
-import org.simpleframework.xml.*;
-import org.simpleframework.xml.core.Persister;
 
 public class Juego {
 
@@ -15,7 +11,9 @@ public class Juego {
 	private Jugador jugadorActual;
 	private Puntajes puntajes;
 
-    public Juego() {};
+    public Juego() {
+    	puntajes = new Puntajes();
+    };
 
     public void setJugador(Jugador jugador) {
     	this.jugadorActual = jugador;
@@ -76,16 +74,13 @@ public class Juego {
     	return puntajes.getPuntajesOrdenados();
     }
     
-    public void guardar(String path) throws Exception {
-    	Serializer serializador = new Persister();
-    	File resultado = new File(path);
-    	serializador.write(this,  resultado);
+    public void guardarPartida() throws Exception {
+    	String path = "partida" + jugadorActual.getNickName() + ".xml";
+    	partidaActual.guardar(path);
     }
     
-    public static Juego recuperar(String path) throws Exception {
-    	Serializer deserializador = new Persister();
-    	File src = new File(path);
-    	return deserializador.read(Juego.class, src);
+    public void cargarPartida() throws Exception {
+    	String path = "partida" + jugadorActual.getNickName() + ".xml";
+    	this.partidaActual = Partida.recuperar(path);
     }
-
 }

@@ -15,7 +15,7 @@ public class Controlador {
 	private VentanaBienvenido ventanaBienvenido;
 	private VentanaUsuarioNuevo ventanaUsuarioNuevo;
 	private VentanaComenzarPartida ventanaComenzarPartida;
-	private String nombre;
+	//private String nombre;
 	
 	public Controlador(Juego juego) {
 		this.juego = juego;
@@ -37,7 +37,7 @@ public class Controlador {
 		ventanaUsuarioNuevo.setVisible(false);
 	}
 	
-	private void inicializarVentanaComenzarPartida(){
+	private void inicializarVentanaComenzarPartida(String nombre){
 		ventanaComenzarPartida = new VentanaComenzarPartida(nombre);
 		ventanaComenzarPartida.agregarEscucharComenzarPartida(new EscuchaComenzarPartida());
 		ventanaComenzarPartida.agregarEscucharRetomarPartida(new EscuchaRetomarPartida());
@@ -72,11 +72,10 @@ public class Controlador {
 	public class EscuchaGuardar implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e){
-			nombre = ventanaUsuarioNuevo.mostrarNombre();
-			inicializarVentanaComenzarPartida();
+			inicializarVentanaComenzarPartida(ventanaUsuarioNuevo.mostrarNombre());
 			ventanaComenzarPartida.setVisible(true);
 			ventanaUsuarioNuevo.setVisible(false);
-		}
+		}			 
 	}
 	
 	public class EscuchaComenzarPartida implements ActionListener{

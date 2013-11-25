@@ -5,6 +5,8 @@ public class ObstaculoControlPolicial extends Obstaculo {
 
 	private static int penalizacion = 3;
 
+	public ObstaculoControlPolicial() {}
+	
 	public void interactuarCon(VehiculoAuto auto) {
 		double probabilidad = Math.random();
 		if (probabilidad<=0.5) { 
