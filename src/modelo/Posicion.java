@@ -11,7 +11,7 @@ import org.simpleframework.xml.core.Persister;
 @Root
 public class Posicion {
 	
-	@Element(name = "vectorPosicion")
+	@Element(name = "coordenadas")
 	private Vector vector;
 	
 	public	Posicion (int posX, int posY) {

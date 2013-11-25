@@ -5,12 +5,16 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import org.simpleframework.xml.*;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
+@Root ( name= "Calle")
 public class Calle {
 	
+	@Element ( name = "Obstaculo")
 	private Obstaculo obstaculo;
+	@Element (name = "Sopresa")
 	private Sorpresa sorpresa;
 	
 	public Calle() {

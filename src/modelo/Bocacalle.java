@@ -5,9 +5,17 @@ import java.io.File;
 import org.simpleframework.xml.*;
 import org.simpleframework.xml.core.Persister;
 
+@Root (name = "Bocacalle")
 public class Bocacalle {
 
-    private Calle calleNorte, calleSur, calleEste, calleOeste;
+	@Element
+    private Calle calleNorte;
+	@Element
+	private Calle calleSur;
+	@Element
+	private Calle calleEste;
+	@Element
+	private Calle calleOeste;
 
     public Bocacalle() {
         this.calleNorte = new Calle();

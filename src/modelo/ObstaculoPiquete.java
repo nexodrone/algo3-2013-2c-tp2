@@ -6,6 +6,8 @@ public class ObstaculoPiquete extends Obstaculo {
 
 	private static int penalizacionMoto = 2;
 	
+	public ObstaculoPiquete() {}
+	
 	public void interactuarCon(VehiculoAuto auto) throws PasajeBloqueadoPorPiqueteExcepcion {
 		throw new PasajeBloqueadoPorPiqueteExcepcion();
 	}
