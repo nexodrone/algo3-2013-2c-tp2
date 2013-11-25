@@ -4,13 +4,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import modelo.Juego;
-import vista.VentanaPrincipal;
+import vista.VentanaBienvenido;
 import vista.VentanaUsuarioNuevo;
 
 public class Controlador {
 	
 	private Juego juego;
-	private VentanaPrincipal ventanaPrincipal;
+	private VentanaBienvenido ventanaBienvenido;
 	private VentanaUsuarioNuevo ventanaUsuarioNuevo;
 	
 	public Controlador(Juego juego) {
@@ -21,10 +21,10 @@ public class Controlador {
 	
 	
 	private void inicializarVentanaPrincipal() {
-		this.ventanaPrincipal = new VentanaPrincipal();
-		this.ventanaPrincipal.agregarEscuchaNuevoUsuario(new EscuchaNuevoUsuario());
-		this.ventanaPrincipal.agregarEscuchaUsuarioRegistrado(new EscuchaUsuarioRegistrado());
-		ventanaPrincipal.setVisible(true);
+		this.ventanaBienvenido = new VentanaBienvenido();
+		this.ventanaBienvenido.agregarEscuchaNuevoUsuario(new EscuchaNuevoUsuario());
+		this.ventanaBienvenido.agregarEscuchaUsuarioRegistrado(new EscuchaUsuarioRegistrado());
+		ventanaBienvenido.setVisible(true);
 	}
 	
 	private void inicializarVentanaUsuarioNuevo() {
@@ -36,7 +36,7 @@ public class Controlador {
 	public class EscuchaNuevoUsuario implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			ventanaPrincipal.setVisible(false);
+			ventanaBienvenido.setVisible(false);
 			ventanaUsuarioNuevo.setVisible(true);
 		}
 	}
@@ -52,7 +52,7 @@ public class Controlador {
 	public class EscuchaVolver implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			ventanaPrincipal.setVisible(true);
+			ventanaBienvenido.setVisible(true);
 			ventanaUsuarioNuevo.setVisible(false);
 		}
 	}

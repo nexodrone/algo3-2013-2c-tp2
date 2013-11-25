@@ -3,14 +3,14 @@ package vista;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class VentanaUsuarioNuevo extends VentanaGeneral {
+public class VentanaUsuarioNuevo extends Ventana {
 	
 	private JButton botonVolver = new JButton("Volver");
 	private JTextField nombre = new JTextField();
 	
 	public VentanaUsuarioNuevo() {
 		
-		super("Registro de usuario");
+		super("GPS Challenge: Registro de usuario");
 		JPanel panelUsuarioNuevo = new JPanel();
 		panelUsuarioNuevo.setLayout(null);
 		
@@ -26,9 +26,5 @@ public class VentanaUsuarioNuevo extends VentanaGeneral {
 	public void agregarEscuchaVolver(ActionListener escuchaVolver) {
 		botonVolver.addActionListener(escuchaVolver);
 	}
-	
-	public static void main(String[] arguments) {
-        VentanaUsuarioNuevo ventana = new VentanaUsuarioNuevo();
- }
 
 }

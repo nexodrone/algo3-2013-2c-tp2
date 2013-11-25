@@ -4,20 +4,21 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class VentanaGeneral extends JFrame {
+public class Ventana extends JFrame {
 
-    /**
-     * 
-     */
     private static final long serialVersionUID = 1L;
     JFrame frame;
 
-    public VentanaGeneral(String titulo) {
+    public Ventana(String titulo) {
         this.setTitle(titulo);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);//evita que la ventana se maximize ni cambia su tamanio
+        this.setLocation(250,250);//dibuja a 250px de distancia del monitor
       	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(600, 400);
+		this.setIconImage(new ImageIcon(getClass().getResource("imagenes/gps.png")).getImage());
+        frame = this;
     }
-    
     
     public void addImagenDeFondo(String direccion) {
         ImageIcon iconoNuevaPartida = new ImageIcon(direccion);
