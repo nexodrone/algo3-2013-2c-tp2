@@ -24,7 +24,8 @@ public class VentanaGeneral extends JFrame {
         this.setVisible(true);//permite mostrar la ventana
         frame = this;
     }
-
+    
+    
     public void addImagenDeFondo(String direccion) {
         ImageIcon iconoNuevaPartida = new ImageIcon(direccion);
         JLabel icono = new JLabel(iconoNuevaPartida);
