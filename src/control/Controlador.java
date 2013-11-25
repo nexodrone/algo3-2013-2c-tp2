@@ -8,20 +8,20 @@ import vista.VentanaBienvenido;
 import vista.VentanaComenzarPartida;
 import vista.VentanaUsuarioNuevo;
 
+
 public class Controlador {
 	
 	private Juego juego;
 	private VentanaBienvenido ventanaBienvenido;
 	private VentanaUsuarioNuevo ventanaUsuarioNuevo;
 	private VentanaComenzarPartida ventanaComenzarPartida;
+	private String nombre;
 	
 	public Controlador(Juego juego) {
 		this.juego = juego;
 		this.inicializarVentanaPrincipal();
 		this.inicializarVentanaUsuarioNuevo();
-		this.inicializarVentanaComenzarPartida();
 	}
-	
 	
 	private void inicializarVentanaPrincipal() {
 		this.ventanaBienvenido = new VentanaBienvenido();
@@ -32,13 +32,13 @@ public class Controlador {
 	
 	private void inicializarVentanaUsuarioNuevo() {
 		ventanaUsuarioNuevo = new VentanaUsuarioNuevo();
-		ventanaUsuarioNuevo.agregarEscuchaGuardar(new EscuchaAceptar());
+		ventanaUsuarioNuevo.agregarEscuchaGuardar(new EscuchaGuardar());
 		ventanaUsuarioNuevo.agregarEscuchaVolver(new EscuchaVolver());
 		ventanaUsuarioNuevo.setVisible(false);
 	}
 	
 	private void inicializarVentanaComenzarPartida(){
-		ventanaComenzarPartida = new VentanaComenzarPartida("Jorge");
+		ventanaComenzarPartida = new VentanaComenzarPartida(nombre);
 		ventanaComenzarPartida.agregarEscucharComenzarPartida(new EscuchaComenzarPartida());
 		ventanaComenzarPartida.agregarEscucharRetomarPartida(new EscuchaRetomarPartida());
 		ventanaComenzarPartida.agregarEscucharVerPuntajes(new EscuchaVerPuntaje());
@@ -69,12 +69,13 @@ public class Controlador {
 		}
 	}
 	
-	public class EscuchaAceptar implements ActionListener{
+	public class EscuchaGuardar implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e){
+			nombre = ventanaUsuarioNuevo.mostrarNombre();
+			inicializarVentanaComenzarPartida();
 			ventanaComenzarPartida.setVisible(true);
 			ventanaUsuarioNuevo.setVisible(false);
-			ventanaBienvenido.setVisible(false);
 		}
 	}
 	
