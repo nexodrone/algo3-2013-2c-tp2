@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import modelo.Juego;
 import vista.VentanaBienvenido;
+import vista.VentanaComenzarPartida;
 import vista.VentanaUsuarioNuevo;
 
 public class Controlador {
@@ -12,11 +13,13 @@ public class Controlador {
 	private Juego juego;
 	private VentanaBienvenido ventanaBienvenido;
 	private VentanaUsuarioNuevo ventanaUsuarioNuevo;
+	private VentanaComenzarPartida ventanaComenzarPartida;
 	
 	public Controlador(Juego juego) {
 		this.juego = juego;
 		this.inicializarVentanaPrincipal();
 		this.inicializarVentanaUsuarioNuevo();
+		this.inicializarVentanaComenzarPartida();
 	}
 	
 	
@@ -29,8 +32,18 @@ public class Controlador {
 	
 	private void inicializarVentanaUsuarioNuevo() {
 		ventanaUsuarioNuevo = new VentanaUsuarioNuevo();
+		ventanaUsuarioNuevo.agregarEscuchaGuardar(new EscuchaAceptar());
 		ventanaUsuarioNuevo.agregarEscuchaVolver(new EscuchaVolver());
 		ventanaUsuarioNuevo.setVisible(false);
+	}
+	
+	private void inicializarVentanaComenzarPartida(){
+		ventanaComenzarPartida = new VentanaComenzarPartida("Jorge");
+		ventanaComenzarPartida.agregarEscucharComenzarPartida(new EscuchaComenzarPartida());
+		ventanaComenzarPartida.agregarEscucharRetomarPartida(new EscuchaRetomarPartida());
+		ventanaComenzarPartida.agregarEscucharVerPuntajes(new EscuchaVerPuntaje());
+		ventanaComenzarPartida.agregarEscucharSalir(new EscuchaSalir());
+		ventanaComenzarPartida.setVisible(false);	
 	}
 	
 	public class EscuchaNuevoUsuario implements ActionListener {
@@ -45,7 +58,6 @@ public class Controlador {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			
 		}
 	}
 	
@@ -54,6 +66,43 @@ public class Controlador {
 		public void actionPerformed(ActionEvent e) {
 			ventanaBienvenido.setVisible(true);
 			ventanaUsuarioNuevo.setVisible(false);
+		}
+	}
+	
+	public class EscuchaAceptar implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e){
+			ventanaComenzarPartida.setVisible(true);
+			ventanaUsuarioNuevo.setVisible(false);
+			ventanaBienvenido.setVisible(false);
+		}
+	}
+	
+	public class EscuchaComenzarPartida implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e){
+			// TODO Auto-generated method stub
+		}
+	}
+	
+	public class EscuchaRetomarPartida implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e){
+			// TODO Auto-generated method stub
+		}
+	}
+	
+	public class EscuchaVerPuntaje implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e){
+			// TODO Auto-generated method stub
+		}
+	}
+	
+	public class EscuchaSalir implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e){
+			// TODO Auto-generated method stub
 		}
 	}
 	
