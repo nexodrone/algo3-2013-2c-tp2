@@ -1,16 +1,17 @@
 package vista;
 
 import java.awt.event.ActionListener;
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JPanel;
 
-public class VentanaPrincipal extends VentanaGeneral {
+public class VentanaBienvenido extends Ventana {
 	
 	private JButton botonNuevoUsuario = new JButton("Nuevo Usuario");
 	private JButton botonUsuarioRegistrado = new JButton("Usuario Registrado");
 	
-	public VentanaPrincipal() {
+	public VentanaBienvenido() {
 		
-		super("Bienvenido");
+		super("GPS Challenge: Bienvenido");
 		JPanel panelBienvenido = new JPanel();
 		panelBienvenido.setLayout(null);
 		
@@ -30,7 +31,5 @@ public class VentanaPrincipal extends VentanaGeneral {
 	public void agregarEscuchaUsuarioRegistrado(ActionListener escuchaUsuarioRegistrado) {
 		botonUsuarioRegistrado.addActionListener(escuchaUsuarioRegistrado);
 	}
-	
-	
 
 }

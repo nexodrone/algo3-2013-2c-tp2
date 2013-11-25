@@ -1,7 +1,7 @@
 package principal;
 
 import modelo.Juego;
-import vista.VentanaPrincipal;
+import vista.VentanaBienvenido;
 import control.Controlador;
 
 public class Principal {
