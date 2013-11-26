@@ -41,4 +41,25 @@ public class NivelTest {
 		assertEquals(nivel.cantidadDeObstaculos,50);
 	}
 	
+	@Test
+	public void testGuardarYCargarNivelCorrectamente() throws Exception {
+		Nivel nivel = new Nivel();
+		
+		nivel.movimientosDisponibles = 50;
+		nivel.filasTablero = 50;
+		nivel.columnasTablero = 50;
+		nivel.cantidadDeSorpresas = 50;
+		nivel.cantidadDeObstaculos = 50;
+		
+		nivel.guardarNivel1();
+		
+		Nivel otroNivel = Nivel.setearNivel1();
+		
+		assertEquals(otroNivel.movimientosDisponibles,50);
+		assertEquals(otroNivel.filasTablero,50);
+		assertEquals(otroNivel.columnasTablero,50);
+		assertEquals(otroNivel.cantidadDeSorpresas,50);
+		assertEquals(otroNivel.cantidadDeObstaculos,50);		
+	}
+	
 }
