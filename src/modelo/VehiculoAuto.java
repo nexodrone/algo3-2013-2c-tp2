@@ -1,8 +1,6 @@
 package modelo;
 
-import java.io.File;
 import org.simpleframework.xml.*;
-import org.simpleframework.xml.core.Persister;
 
 import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
@@ -38,10 +36,4 @@ public class VehiculoAuto extends Vehiculo {
         nuevoAuto.setCantidadDeMovimientos(vehiculo.getCantidadDeMovimientos());
         return nuevoAuto;
     }
-    
-//    public static VehiculoAuto recuperar(String path) throws Exception{
-//    Serializer deserializador = new Persister();
-//    File src = new File(path);
-//    return deserializador.read(VehiculoAuto.class, src);
-//    }
 }

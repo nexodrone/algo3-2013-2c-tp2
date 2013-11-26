@@ -1,6 +1,8 @@
 package modelo;
 
+import org.simpleframework.xml.*;
 
+@Root(name = "ControlPolicial" )
 public class ObstaculoControlPolicial extends Obstaculo {
 
 	private static int penalizacion = 3;

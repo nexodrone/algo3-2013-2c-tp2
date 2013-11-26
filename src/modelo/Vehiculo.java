@@ -1,13 +1,9 @@
 package modelo;
 
-import java.io.File;
-
 import org.simpleframework.xml.*;
-import org.simpleframework.xml.core.Persister;
 
 import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
-@Root
 public abstract class Vehiculo {
 	
 	@Element(name="posicionActual")

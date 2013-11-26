@@ -1,5 +1,8 @@
 package modelo;
 
+import org.simpleframework.xml.*;
+
+@Root( name = "SopresaCambioDeVehiculo" )
 public class SorpresaCambioDeVehiculo extends Sorpresa {
 
     public void interactuarCon(VehiculoMoto vehiculo) {
