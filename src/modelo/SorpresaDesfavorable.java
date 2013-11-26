@@ -1,5 +1,7 @@
 package modelo;
+import org.simpleframework.xml.*;
 
+@Root( name = "SopresaDesfavorable")
 public class SorpresaDesfavorable extends Sorpresa {
 
 	private static int porcentaje = 25;

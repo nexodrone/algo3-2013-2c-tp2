@@ -1,22 +1,13 @@
 package modelo;
 
-import java.io.File;
-
 import org.simpleframework.xml.*;
-import org.simpleframework.xml.core.Persister;
 
 @Root (name = "Bocacalle")
 public class Bocacalle {
 
 	@Element
-    private Calle calleNorte;
-	@Element
-	private Calle calleSur;
-	@Element
-	private Calle calleEste;
-	@Element
-	private Calle calleOeste;
-
+    private Calle calleNorte, calleSur, calleEste, calleOeste;
+	
     public Bocacalle() {
         this.calleNorte = new Calle();
         this.calleSur = new Calle();
@@ -41,16 +32,4 @@ public class Bocacalle {
             return calleNorte;
         return calleSur;
     }
-   
-//    public void guardar(String path) throws Exception{
-//    	Serializer serializador = new Persister();
-//    	File resultado = new File(path);
-//    	serializador.write(this, resultado);
-//    }
-//
-//    public static Bocacalle recuperar(String path) throws Exception{
-//    Serializer deserializador = new Persister();
-//    File src = new File(path);
-//    return deserializador.read(Bocacalle.class, src);
-//    }
 }

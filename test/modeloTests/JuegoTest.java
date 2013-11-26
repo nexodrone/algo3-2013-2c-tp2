@@ -1,13 +1,18 @@
 package modeloTests;
 
 import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+
 import modelo.Calle;
 import modelo.Direccion;
 import modelo.Juego;
+import modelo.Jugador;
 import modelo.ObstaculoPiquete;
 import modelo.ObstaculoPozo;
 import modelo.Partida;
 import modelo.Posicion;
+import modelo.Puntaje;
 import modelo.SorpresaCambioDeVehiculo;
 import modelo.SorpresaDesfavorable;
 import modelo.SorpresaFavorable;
@@ -317,22 +322,41 @@ public class JuegoTest {
 		assertEquals(unJuego.getPartida().getVehiculo().getClass(), (new Vehiculo4x4()).getClass());
     }
     
-/*    @Test
-    public void testGuardarYCargarCorrectamenteJuego () throws Exception {
-    	Tablero unTablero = new Tablero(4, 4);
-    	VehiculoMoto unVehiculo = new VehiculoMoto(new Posicion(2,3));
-    	unVehiculo.setCantidadDeMovimientos(34);
+    @Test
+    public void testGuardarYCargarCorrectamenteUnaPartida () throws Exception {
+		Tablero tablero = new Tablero(4,6);
+		Vehiculo vehiculo = new VehiculoAuto(new Posicion(0,0));
+		vehiculo.setCantidadDeMovimientos(0);
+		Posicion posicionGanadora = new Posicion(3,4);
+		int movimientosDisponibles = 100;
+		
+		Partida unaPartida = new Partida(tablero, vehiculo, posicionGanadora, movimientosDisponibles);
+		Jugador unJugador = new Jugador("Rober");
+		
+		Juego unJuego = new Juego();
+		unJuego.setPartida(unaPartida);
+		unJuego.setJugador(unJugador);
+		vehiculo.setJuegoActual(unJuego);
+		
+        Direccion norte = new Direccion(0, 1);
+        Direccion sur = new Direccion(0, -1);
+        Direccion este = new Direccion(1, 0);
+        Direccion oeste = new Direccion(-1, 0);
+		
+		tablero.getBocacalleEnPosicion(new Posicion(1,0)).getCalleEnDireccion(norte).setObstaculo(new ObstaculoPiquete());
+		tablero.getBocacalleEnPosicion(new Posicion(2,3)).getCalleEnDireccion(sur).setObstaculo(new ObstaculoPozo());
+		tablero.getBocacalleEnPosicion(new Posicion(1,4)).getCalleEnDireccion(este).setSorpresa(new SorpresaDesfavorable());
+		tablero.getBocacalleEnPosicion(new Posicion(3,4)).getCalleEnDireccion(oeste).setSorpresa(new SorpresaFavorable());
     	
-    	Posicion posicionGanadora = new Posicion(1,2);
-    	int cantidadDeMovimientos = 10;
-    	Juego unJuego = new Juego(unTablero, unVehiculo, posicionGanadora,cantidadDeMovimientos);
+    	unJuego.guardarPartida();
     	
-    	unJuego.guardar("test/juegoTest.xml");
+    	Juego otroJuego = new Juego();
+    	otroJuego.setJugador(unJugador);
     	
-    	Juego otroJuego = Juego.recuperar("test/juegoTest.xml");
+    	otroJuego.cargarPartida();
     	
-    	assertEquals(otroJuego.getVehiculo().getCantidadDeMovimientos(), unVehiculo.getCantidadDeMovimientos());
-    	assertEquals(otroJuego.getPosicionGanadora().asString(), posicionGanadora.asString());
+    	assertEquals(otroJuego.getPartida().getVehiculo().getCantidadDeMovimientos(), vehiculo.getCantidadDeMovimientos());
+    	assertEquals(otroJuego.getPartida().getPosicionGanadora().asString(), posicionGanadora.asString());
     }
     
     @Test
@@ -357,5 +381,5 @@ public class JuegoTest {
     	assertEquals(puntajesOrdenados.get(2).getPuntaje(), 32);
     	assertEquals(puntajesOrdenados.get(3).getPuntaje(), 10);
     	assertEquals(puntajesOrdenados.get(4).getPuntaje(), 10);		
-    }  */
+    }
 }

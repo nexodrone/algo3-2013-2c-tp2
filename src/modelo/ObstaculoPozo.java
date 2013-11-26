@@ -1,5 +1,8 @@
 package modelo;
 
+import org.simpleframework.xml.*;
+
+@Root( name = "Pozo")
 public class ObstaculoPozo extends Obstaculo {
 	
 	private static int penalizacionAuto = 3;

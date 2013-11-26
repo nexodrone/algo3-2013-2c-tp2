@@ -1,7 +1,9 @@
 package modelo;
 
 import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
+import org.simpleframework.xml.*;
 
+@Root( name = "Piquete" )
 public class ObstaculoPiquete extends Obstaculo {
 
 	private static int penalizacionMoto = 2;

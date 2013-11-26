@@ -1,26 +1,16 @@
 package modelo;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-
 import org.simpleframework.xml.*;
-import org.simpleframework.xml.Serializer;
-import org.simpleframework.xml.core.Persister;
 
 @Root ( name= "Calle")
 public class Calle {
 	
-	@Element ( name = "Obstaculo")
+	@Element ( name = "Obstaculo", required = false)
 	private Obstaculo obstaculo;
-	@Element (name = "Sopresa")
+	@Element (name = "Sopresa", required = false)
 	private Sorpresa sorpresa;
 	
-	public Calle() {
-		obstaculo = null;
-		sorpresa = null;
-	}
+	public Calle() {}
 	
 	public Calle(Obstaculo obstaculo, Sorpresa sorpresa) {
 		this.obstaculo = obstaculo;
@@ -42,20 +32,4 @@ public class Calle {
 	public void setSorpresa(Sorpresa sorpresaAColocar){
 		sorpresa = sorpresaAColocar;
 	}
-	
-//    public void guardar(String path) throws Exception {
-//    	Serializer serializador = new Persister();
-//    	OutputStream resultado = new FileOutputStream(path);
-//    	serializador.write(this, resultado);
-//    }
-//    
-//    public static Calle recuperar(String path) throws Exception{
-//    	Serializer deserializador = new Persister();
-//    	InputStream src = new FileInputStream(path);
-//    
-//    	Calle x = new Calle();
-//    	Calle devolver = deserializador.read(x, src);
-//    	return devolver;
-//    }
-//	
 }
