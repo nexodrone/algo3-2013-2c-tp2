@@ -7,84 +7,91 @@ import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
 
 public class Juego {
 
-	private Partida partidaActual;
-	private Jugador jugadorActual;
-	private Puntajes puntajes;
+    private Partida partidaActual;
+    private Jugador jugadorActual;
+    private Puntajes puntajes;
 
     public Juego() {
-    	puntajes = new Puntajes();
+        puntajes = new Puntajes();
     };
 
     public void setJugador(Jugador jugador) {
-    	this.jugadorActual = jugador;
+        this.jugadorActual = jugador;
     }
-	
+
     public void setPartida(Partida partida) {
-    	this.partidaActual = partida;
+        this.partidaActual = partida;
     }
 
     public Jugador getJugadorActual() {
-    	return this.jugadorActual;
+        return this.jugadorActual;
     }
-    
+
     public Partida getPartida() {
-    	return this.partidaActual;
+        return this.partidaActual;
     }
-    
-    public void cambiarVehiculo(Vehiculo nuevoVehiculo) {
-        // System.out.print("cambio de vehiculo");
-        partidaActual.setVehiculo(nuevoVehiculo);
-    }
-    
+
     public void verificarEstadoDelJugador() {
-    	if (partidaActual.esGanada())
-    		System.out.print("Jugador gano el nivel. \n");
-    	if (partidaActual.esPerdida())
-    		System.out.print("Jugador pierde el nivel. \n");
-    	}
+        if (partidaActual.esGanada())
+            System.out.print("Jugador gano el nivel. \n");
+        if (partidaActual.esPerdida())
+            System.out.print("Jugador pierde el nivel. \n");
+    }
 
     public void realizarJugadaEnDireccion(Direccion direccion) throws MovimientoInvalidoExcepcion {
-    	if (this.partidaActual.esGanada() || this.partidaActual.esPerdida())
-    				System.out.print("Se termino la partida. \n");
-    	else jugarEnDireccion(direccion);
+        if (this.partidaActual.esGanada() || this.partidaActual.esPerdida())
+            System.out.print("Se termino la partida. \n");
+        else
+            jugarEnDireccion(direccion);
     }
 
     private void jugarEnDireccion(Direccion direccion) throws MovimientoInvalidoExcepcion {
-   		Posicion nuevaPosicion = partidaActual.getVehiculo().calcularSiguientePosicion(direccion);
-   		if (partidaActual.getTablero().posicionValida(nuevaPosicion)) {
-			Bocacalle bocacalleActual = partidaActual.getTablero().getBocacalleEnPosicion(partidaActual.getVehiculo().getPosicion());
-			Calle calleATransitar = bocacalleActual.getCalleEnDireccion(direccion);
-			try {	partidaActual.getVehiculo().moverEnDireccion(direccion, calleATransitar);
-					verificarEstadoDelJugador();
-				}	catch (PasajeBloqueadoPorPiqueteExcepcion e) {
-							System.out.print("Imposible mover en esa direccion. \n");
-						}
-		}	else throw new MovimientoInvalidoExcepcion();
+        Posicion nuevaPosicion = partidaActual.getVehiculo().calcularSiguientePosicion(direccion);
+        if (partidaActual.getTablero().posicionValida(nuevaPosicion)) {
+            Bocacalle bocacalleActual = partidaActual.getTablero().getBocacalleEnPosicion(partidaActual.getVehiculo().getPosicion());
+            Calle calleATransitar = bocacalleActual.getCalleEnDireccion(direccion);
+            try {
+                partidaActual.getVehiculo().moverEnDireccion(direccion, calleATransitar);
+                verificarEstadoDelJugador();
+            } catch (PasajeBloqueadoPorPiqueteExcepcion e) {
+                System.out.print("Imposible mover en esa direccion. \n");
+            }
+        } else
+            throw new MovimientoInvalidoExcepcion();
     }
-    
+
     public void guardarPuntaje(String nombre, Integer puntaje) {
-    	this.puntajes.agregarPuntaje(nombre, puntaje);
+        this.puntajes.agregarPuntaje(nombre, puntaje);
     }
-    
-    public void guardarPuntajes(String path) throws Exception{
-    	puntajes.guardar(path);
+
+    public void guardarPuntajes(String path) throws Exception {
+        puntajes.guardar(path);
     }
-    
+
     public void cargarPuntajes(String path) throws Exception {
-    	this.puntajes = Puntajes.recuperar(path);
+        this.puntajes = Puntajes.recuperar(path);
     }
-    
-    public ArrayList<Puntaje> getPuntajesOrdenados() throws Exception{
-    	return puntajes.getPuntajesOrdenados();
+
+    public ArrayList<Puntaje> getPuntajesOrdenados() throws Exception {
+        return puntajes.getPuntajesOrdenados();
     }
-    
+
     public void guardarPartida() throws Exception {
-    	String path = "partida" + jugadorActual.getNickName() + ".xml";
-    	partidaActual.guardar(path);
+        String path = "partida" + jugadorActual.getNickName() + ".xml";
+        partidaActual.guardar(path);
     }
-    
+
     public void cargarPartida() throws Exception {
-    	String path = "partida" + jugadorActual.getNickName() + ".xml";
-    	this.partidaActual = Partida.recuperar(path);
+        String path = "partida" + jugadorActual.getNickName() + ".xml";
+        this.partidaActual = Partida.recuperar(path);
+    }
+
+    public void setVehiculo(Vehiculo vehiculo) {
+        partidaActual.setVehiculo(vehiculo);
+
+    }
+
+    public Vehiculo getVehiculo() {
+        return partidaActual.getVehiculo();
     }
 }
