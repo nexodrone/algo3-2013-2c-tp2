@@ -51,13 +51,15 @@ public class PanelComenzarPartida extends JPanel {
 
 	  public String obtenerVehiculoSeleccionado(){
 		  Object e = vehiculos.getSelectedItem();
-		  String vehiculoSeleccionado = String.valueOf(e);
+		  String vehiculoSeleccionado = new String();
+		  vehiculoSeleccionado = String.valueOf(e);
 		  return vehiculoSeleccionado;
 	  }
 	  
 	  public String obtenerNivelSeleccionado(){
 		  Object e = niveles.getSelectedItem();
-		  String nivelSeleccionado = String.valueOf(e);
+		  String nivelSeleccionado = new String();
+		  nivelSeleccionado = String.valueOf(e);
 		  return nivelSeleccionado;
 	  }
 }

@@ -44,12 +44,9 @@ public class ControladorComenzarPartida extends Controlador{
 	public class EscuchaComenzarPartida implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e){
-			Juego juego = new Juego();
+			String nivelSeleccionado = panelComenzarPartida.obtenerNivelSeleccionado();
+			String vehiculoSeleccionado = panelComenzarPartida.obtenerVehiculoSeleccionado();
 			juego.setJugador(new Jugador(nombre));
-			String nivelSeleccionado = new String();
-			nivelSeleccionado = panelComenzarPartida.obtenerNivelSeleccionado();
-			String vehiculoSeleccionado = new String();
-			vehiculoSeleccionado = panelComenzarPartida.obtenerVehiculoSeleccionado();
 			Tablero tablero = new Tablero(20,5);
 			VehiculoMoto moto = new VehiculoMoto(new Posicion(0,0));
 			moto.setJuegoActual(juego);
