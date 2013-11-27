@@ -23,6 +23,10 @@ public class Juego {
     	this.partidaActual = partida;
     }
 
+    public Jugador getJugadorActual() {
+    	return this.jugadorActual;
+    }
+    
     public Partida getPartida() {
     	return this.partidaActual;
     }
