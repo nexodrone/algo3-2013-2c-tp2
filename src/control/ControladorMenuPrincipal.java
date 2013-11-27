@@ -27,8 +27,9 @@ public class ControladorMenuPrincipal extends Controlador {
 	public class EscuchaComenzarPartida implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e){
+			String nombreJugador = panelMenuPrincipal.getNombreUsuario();
 			ventana.remove(panelMenuPrincipal);
-			ControladorComenzarPartida controlador = new ControladorComenzarPartida(juego,ventana);
+			ControladorComenzarPartida controlador = new ControladorComenzarPartida(juego,ventana,nombreJugador);
 		}	
 	}
 	

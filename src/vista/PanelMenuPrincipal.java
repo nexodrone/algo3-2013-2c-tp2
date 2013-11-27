@@ -13,10 +13,12 @@ public class PanelMenuPrincipal extends JPanel {
 	private JButton botonVerPuntajes = new JButton("Ver puntajes");
 	private JButton botonSalir = new JButton("Salir");
 	private JLabel nombreUsuario;
+	private String nombre;
 	
 	public PanelMenuPrincipal(String nombre) {
 		this.setLayout(null);
 		
+		this.nombre = nombre;
 		this.nombreUsuario = new JLabel("Hola "+nombre); 
 		this.nombreUsuario.setBounds(270, 10, 100, 100);
 		this.botonComenzarPartida.setBounds(200,100,200,30);
@@ -45,6 +47,10 @@ public class PanelMenuPrincipal extends JPanel {
 	
 	public void agregarEscucharSalir(ActionListener escuchaSalir) {
 		this.botonSalir.addActionListener(escuchaSalir);
+	}
+
+	public String getNombreUsuario(){
+		return nombre;
 	}
 	
 }
