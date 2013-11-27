@@ -2,8 +2,6 @@ package principal;
 
 import modelo.Juego;
 import vista.Ventana;
-import vista.VentanaBienvenido;
-import control.ControladorVIEJO;
 import control.ControladorBienvenido;
 
 public class Principal {

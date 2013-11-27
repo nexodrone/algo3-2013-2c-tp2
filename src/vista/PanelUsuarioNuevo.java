@@ -17,10 +17,10 @@ public class PanelUsuarioNuevo extends JPanel {
 	public PanelUsuarioNuevo() {
 		this.setLayout(null);
 	
-		etiqueta.setBounds(210, 50, 200, 30);
-		nombre.setBounds(200, 90, 200, 20);
-		botonGuardar.setBounds(70,130,200,30);
-		botonVolver.setBounds(320,130,200,30);
+		this.etiqueta.setBounds(210, 50, 200, 30);
+		this.nombre.setBounds(200, 90, 200, 20);
+		this.botonGuardar.setBounds(70,130,200,30);
+		this.botonVolver.setBounds(320,130,200,30);
 		
 		this.add(etiqueta);
 		this.add(nombre);
@@ -28,8 +28,16 @@ public class PanelUsuarioNuevo extends JPanel {
 		this.add(botonVolver);
 	}
 	
+	public String getNombreDelCampo() {
+		return nombre.getText();
+	}
+	
 	public void agregarEscuchaVolver(ActionListener escuchaVolver) {
 		this.botonVolver.addActionListener(escuchaVolver);
+	}
+	
+	public void agregarEscuchaGuardar(ActionListener escuchaGuardar){
+		this.botonGuardar.addActionListener(escuchaGuardar);
 	}
 	
 }
