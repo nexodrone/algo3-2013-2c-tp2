@@ -24,4 +24,19 @@ public class PuntajesTest {
 		assertEquals(otrosPtjes.get(2).getPuntaje(), 22);
 		assertEquals(otrosPtjes.get(3).getPuntaje(), 5);		
 	}
+	
+	@Test
+	public void testGuardarPuntajeCorrectamente() {
+		Puntajes puntajes = new Puntajes();
+		
+		puntajes.agregarPuntaje("Carloncho", 30);
+		puntajes.agregarPuntaje("Roberto", 40);
+		
+		List<Puntaje> ordenados = puntajes.getPuntajesOrdenados();
+		assertEquals(ordenados.get(0).getPuntaje(), 40);
+		assertEquals(ordenados.get(0).getNombre(), "Roberto");
+		
+		assertEquals(ordenados.get(1).getPuntaje(), 30);
+		assertEquals(ordenados.get(1).getNombre(), "Carloncho");
+	}
 }
