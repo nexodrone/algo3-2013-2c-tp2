@@ -25,19 +25,4 @@ public class ControladorPartida extends Controlador {
 		this.panelPartida.inicializarZonaDelJuego(juego.getPartida().getTablero().getCantidadDeColumnas(), juego.getPartida().getTablero().getCantidadDeFilas());
 		ventana.add(panelPartida);
 	}
-	
-/*	public static void main(String args[]) {
-		
-		Juego juego = new Juego();
-		juego.setJugador(new Jugador("Pepe"));
-		Tablero tablero = new Tablero(20,5);
-		VehiculoMoto moto = new VehiculoMoto(new Posicion(0,0));
-		moto.setJuegoActual(juego);
-		Partida partida = new Partida(tablero, moto, new Posicion (6,6), 50);
-		juego.setPartida(partida);
-		
-		Ventana ventana = new Ventana();
-		ControladorPartida control = new ControladorPartida(juego, ventana, "Dificil", "Auto");
-	}*/
-
 }
