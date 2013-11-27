@@ -8,11 +8,11 @@ import modelo.Direccion;
 import modelo.Juego;
 import modelo.ObstaculoPiquete;
 import modelo.Partida;
+import modelo.Posicion;
 import modelo.Sorpresa;
 import modelo.SorpresaCambioDeVehiculo;
 import modelo.SorpresaDesfavorable;
 import modelo.SorpresaFavorable;
-import modelo.Posicion;
 import modelo.Vehiculo;
 import modelo.Vehiculo4x4;
 import modelo.VehiculoAuto;
@@ -23,12 +23,12 @@ import org.junit.Test;
 
 public class VehiculoAutoTest {
 
-	@Test
-	public void testDeberiaCrearseCon0Movimientos() {
+    @Test
+    public void testDeberiaCrearseCon0Movimientos() {
         VehiculoAuto auto = new VehiculoAuto(new Posicion(2, 2));
-        assertEquals(auto.getCantidadDeMovimientos(),0);
-	}
-	
+        assertEquals(auto.getCantidadDeMovimientos(), 0);
+    }
+
     @Test(expected = PasajeBloqueadoPorPiqueteExcepcion.class)
     public void testAtraparExcepcionPorPiquete() throws PasajeBloqueadoPorPiqueteExcepcion {
         VehiculoAuto auto = new VehiculoAuto(new Posicion(2, 2));
@@ -51,8 +51,38 @@ public class VehiculoAutoTest {
             throw new PasajeBloqueadoPorPiqueteExcepcion();
         }
     }
-    
-    /* Tests de metodos */
+
+    // TEST DE METODOS//
+
+    @Test
+    public void testParaComprobarQueGuardarCorrectamenteElJuego() {
+        VehiculoAuto vehiculo = new VehiculoAuto();
+        Juego juego = new Juego();
+
+        vehiculo.setJuegoActual(juego);
+
+        assertEquals(vehiculo.getJuego(), juego);
+    }
+
+    @Test
+    public void testParaComprobarQueSeaCreaConLaPosicionIndicada() {
+        Posicion posicion = new Posicion(1, 1);
+        VehiculoAuto vehiculo = new VehiculoAuto(posicion);
+
+        assertEquals(vehiculo.getPosicion(), posicion);
+    }
+
+    @Test
+    public void testParaComprobarQueCambiarCorrectamenteLaPosicion() {
+        Posicion posicion = new Posicion(2, 1);
+        Posicion nuevaPosicion = new Posicion(3, 1);
+        VehiculoAuto vehiculo = new VehiculoAuto(posicion);
+
+        vehiculo.setPosicion(nuevaPosicion);
+
+        assertEquals(vehiculo.getPosicion(), nuevaPosicion);
+    }
+
     @Test
     public void testParaComprobarQueDosVehiculosTieneElMismoEstadoFuncionaCorrectamente() {
         Posicion posicion = new Posicion(1, 2);
@@ -123,7 +153,7 @@ public class VehiculoAutoTest {
         VehiculoAuto vehiculo = new VehiculoAuto(null);
         vehiculo.setCantidadDeMovimientos(cantidadDeMovimientos);
         Sorpresa sorpresa = new SorpresaFavorable();
-        
+
         vehiculo.aplicarEvento(sorpresa);
         /* se restan 20% */
         int nuevaCantidad = (int) (cantidadDeMovimientos - ((0.2) * cantidadDeMovimientos));
@@ -136,11 +166,11 @@ public class VehiculoAutoTest {
         VehiculoAuto vehiculo = new VehiculoAuto(null);
         vehiculo.setCantidadDeMovimientos(cantidadDeMovimientos);
         Sorpresa sorpresa = new SorpresaDesfavorable();
-        
+
         vehiculo.aplicarEvento(sorpresa);
         /* se suman 25% */
         int nuevaCantidad = (int) (cantidadDeMovimientos + (0.25) * cantidadDeMovimientos);
-        
+
         assertEquals(vehiculo.getCantidadDeMovimientos(), nuevaCantidad);
     }
 
@@ -150,7 +180,7 @@ public class VehiculoAutoTest {
         VehiculoAuto vehiculo = new VehiculoAuto(null);
         vehiculo.setCantidadDeMovimientos(cantidadDeMovimientos);
         Sorpresa sorpresa = new SorpresaCambioDeVehiculo();
-        
+
         Partida unaPartida = new Partida(null, vehiculo, null, 100);
         Juego juego = new Juego();
         juego.setPartida(unaPartida);
@@ -166,16 +196,21 @@ public class VehiculoAutoTest {
     public void testParaComprobarQueCuandoDeVehiculoElMismoTieneElMismoEstadoQueElOtroVehiculo() {
         int cantidadDeMovimientos = 0;
         Posicion posicion = new Posicion(1, 2);
+        Direccion unaDireccion = new Direccion(1, 0);
+        Calle calle = new Calle();
+
         VehiculoAuto vehiculo = new VehiculoAuto(posicion);
         vehiculo.setCantidadDeMovimientos(cantidadDeMovimientos);
         Sorpresa sorpresa = new SorpresaCambioDeVehiculo();
+        calle.setSorpresa(sorpresa);
 
         Partida unaPartida = new Partida(null, vehiculo, null, 100);
+
         Juego juego = new Juego();
         juego.setPartida(unaPartida);
-        
         vehiculo.setJuegoActual(juego);
-        vehiculo.aplicarEvento(sorpresa);
+        vehiculo.moverEnDireccion(unaDireccion, calle);
+
         Vehiculo nuevoVehiculo = juego.getPartida().getVehiculo();
 
         assertTrue(vehiculo.tienenElMismoEstado(nuevoVehiculo));
@@ -187,11 +222,11 @@ public class VehiculoAutoTest {
         VehiculoAuto vehiculo = new VehiculoAuto(null);
         vehiculo.setCantidadDeMovimientos(cantidadDeMovimientos);
         Sorpresa sorpresa = new SorpresaCambioDeVehiculo();
-        
+
         Partida unaPartida = new Partida(null, vehiculo, null, 100);
         Juego juego = new Juego();
         juego.setPartida(unaPartida);
-        
+
         vehiculo.setJuegoActual(juego);
         vehiculo.aplicarEvento(sorpresa);
         Vehiculo nuevoVehiculo = juego.getPartida().getVehiculo();
@@ -199,16 +234,16 @@ public class VehiculoAutoTest {
         assertEquals(nuevoVehiculo.getClass(), otroVehiculo.getClass());
     }
 
-//    @Test
-//    public void testDeberiaSerializarEstadoYDeserializarloCorrectamente() throws Exception{   	
-//    	VehiculoAuto auto = new VehiculoAuto(new Posicion(2,4));
-//    	auto.setCantidadDeMovimientos(45);
-//    	auto.guardar("test/vehiculoTest.xml");
-//        
-//        VehiculoAuto otroAuto = new VehiculoAuto(new Posicion(0,0));
-//        otroAuto = VehiculoAuto.recuperar("test/vehiculoTest.xml");
-//
-//        assertEquals(otroAuto.getCantidadDeMovimientos(), 45);     
-//    }
+    // @Test
+    // public void testDeberiaSerializarEstadoYDeserializarloCorrectamente() throws Exception{
+    // VehiculoAuto auto = new VehiculoAuto(new Posicion(2,4));
+    // auto.setCantidadDeMovimientos(45);
+    // auto.guardar("test/vehiculoTest.xml");
+    //
+    // VehiculoAuto otroAuto = new VehiculoAuto(new Posicion(0,0));
+    // otroAuto = VehiculoAuto.recuperar("test/vehiculoTest.xml");
+    //
+    // assertEquals(otroAuto.getCantidadDeMovimientos(), 45);
+    // }
 
 }

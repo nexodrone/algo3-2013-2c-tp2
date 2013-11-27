@@ -4,14 +4,15 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import modelo.Calle;
+import modelo.Direccion;
 import modelo.Juego;
 import modelo.ObstaculoPiquete;
 import modelo.Partida;
+import modelo.Posicion;
 import modelo.Sorpresa;
 import modelo.SorpresaCambioDeVehiculo;
 import modelo.SorpresaDesfavorable;
 import modelo.SorpresaFavorable;
-import modelo.Posicion;
 import modelo.Vehiculo;
 import modelo.Vehiculo4x4;
 import modelo.VehiculoAuto;
@@ -20,12 +21,12 @@ import modelo.VehiculoMoto;
 import org.junit.Test;
 
 public class VehiculoMotoTest {
-	
-	@Test
-	public void testDeberiaCrearseCon0Movimientos() {
+
+    @Test
+    public void testDeberiaCrearseCon0Movimientos() {
         VehiculoMoto moto = new VehiculoMoto(new Posicion(2, 2));
-        assertEquals(moto.getCantidadDeMovimientos(),0);
-	}
+        assertEquals(moto.getCantidadDeMovimientos(), 0);
+    }
 
     @Test
     public void testDeberiaPerderDosMovimientosPorPiquete() {
@@ -36,7 +37,37 @@ public class VehiculoMotoTest {
         assertEquals(3, moto.getCantidadDeMovimientos());
     }
 
-    /* Tests de metodos */
+    // TEST DE METODOS //
+
+    @Test
+    public void testParaComprobarQueGuardarCorrectamenteElJuego() {
+        VehiculoMoto vehiculo = new VehiculoMoto();
+        Juego juego = new Juego();
+
+        vehiculo.setJuegoActual(juego);
+
+        assertEquals(vehiculo.getJuego(), juego);
+    }
+
+    @Test
+    public void testParaComprobarQueSeaCreaConLaPosicionIndicada() {
+        Posicion posicion = new Posicion(1, 1);
+        VehiculoMoto vehiculo = new VehiculoMoto(posicion);
+
+        assertEquals(vehiculo.getPosicion(), posicion);
+    }
+
+    @Test
+    public void testParaComprobarQueCambiarCorrectamenteLaPosicion() {
+        Posicion posicion = new Posicion(2, 1);
+        Posicion nuevaPosicion = new Posicion(3, 1);
+        VehiculoMoto vehiculo = new VehiculoMoto(posicion);
+
+        vehiculo.setPosicion(nuevaPosicion);
+
+        assertEquals(vehiculo.getPosicion(), nuevaPosicion);
+    }
+
     @Test
     public void testParaComprobarQueDosVehiculosTieneElMismoEstadoFuncionaCorrectamente() {
         Posicion posicion = new Posicion(1, 2);
@@ -107,11 +138,11 @@ public class VehiculoMotoTest {
         VehiculoMoto vehiculo = new VehiculoMoto(null);
         vehiculo.setCantidadDeMovimientos(cantidadDeMovimientos);
         Sorpresa sorpresa = new SorpresaFavorable();
-        
+
         vehiculo.aplicarEvento(sorpresa);
         /* se restan 20% */
         int nuevaCantidad = (int) (cantidadDeMovimientos - ((0.2) * cantidadDeMovimientos));
-        
+
         assertEquals(vehiculo.getCantidadDeMovimientos(), nuevaCantidad);
     }
 
@@ -121,11 +152,11 @@ public class VehiculoMotoTest {
         VehiculoMoto vehiculo = new VehiculoMoto(null);
         vehiculo.setCantidadDeMovimientos(cantidadDeMovimientos);
         Sorpresa sorpresa = new SorpresaDesfavorable();
-        
+
         vehiculo.aplicarEvento(sorpresa);
         /* se suman 25% */
         int nuevaCantidad = (int) (cantidadDeMovimientos + (0.25) * cantidadDeMovimientos);
-        
+
         assertEquals(vehiculo.getCantidadDeMovimientos(), nuevaCantidad);
     }
 
@@ -135,7 +166,7 @@ public class VehiculoMotoTest {
         VehiculoMoto vehiculo = new VehiculoMoto(null);
         vehiculo.setCantidadDeMovimientos(cantidadDeMovimientos);
         Sorpresa sorpresa = new SorpresaCambioDeVehiculo();
-        
+
         Partida unaPartida = new Partida(null, vehiculo, null, 100);
         Juego juego = new Juego();
         juego.setPartida(unaPartida);
@@ -151,16 +182,21 @@ public class VehiculoMotoTest {
     public void testParaComprobarQueCuandoDeVehiculoElMismoTieneElMismoEstadoQueElOtroVehiculo() {
         int cantidadDeMovimientos = 0;
         Posicion posicion = new Posicion(1, 2);
+        Direccion unaDireccion = new Direccion(1, 0);
+        Calle calle = new Calle();
+
         VehiculoMoto vehiculo = new VehiculoMoto(posicion);
         vehiculo.setCantidadDeMovimientos(cantidadDeMovimientos);
         Sorpresa sorpresa = new SorpresaCambioDeVehiculo();
-        
+        calle.setSorpresa(sorpresa);
+
         Partida unaPartida = new Partida(null, vehiculo, null, 100);
+
         Juego juego = new Juego();
         juego.setPartida(unaPartida);
-        
         vehiculo.setJuegoActual(juego);
-        vehiculo.aplicarEvento(sorpresa);
+        vehiculo.moverEnDireccion(unaDireccion, calle);
+
         Vehiculo nuevoVehiculo = juego.getPartida().getVehiculo();
 
         assertTrue(vehiculo.tienenElMismoEstado(nuevoVehiculo));
@@ -169,14 +205,15 @@ public class VehiculoMotoTest {
     @Test
     public void testParaComprobarQueElNuevoVehiculoEsUnAuto() {
         int cantidadDeMovimientos = 0;
-        VehiculoMoto vehiculo = new VehiculoMoto(null);
+        Posicion posicion = new Posicion(2, 3);
+        VehiculoMoto vehiculo = new VehiculoMoto(posicion);
         vehiculo.setCantidadDeMovimientos(cantidadDeMovimientos);
         Sorpresa sorpresa = new SorpresaCambioDeVehiculo();
-        
+
         Partida unaPartida = new Partida(null, vehiculo, null, 100);
         Juego juego = new Juego();
         juego.setPartida(unaPartida);
-        
+
         vehiculo.setJuegoActual(juego);
         vehiculo.aplicarEvento(sorpresa);
         Vehiculo nuevoVehiculo = juego.getPartida().getVehiculo();
