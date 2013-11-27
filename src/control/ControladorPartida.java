@@ -26,7 +26,7 @@ public class ControladorPartida extends Controlador {
 		ventana.add(panelPartida);
 	}
 	
-	public static void main(String args[]) {
+/*	public static void main(String args[]) {
 		
 		Juego juego = new Juego();
 		juego.setJugador(new Jugador("Pepe"));
@@ -38,6 +38,6 @@ public class ControladorPartida extends Controlador {
 		
 		Ventana ventana = new Ventana();
 		ControladorPartida control = new ControladorPartida(juego, ventana, "Dificil", "Auto");
-	}
+	}*/
 
 }
