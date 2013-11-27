@@ -1,10 +1,11 @@
 package control;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import modelo.Juego;
-import vista.PanelBienvenido;
 import vista.PanelMenuPrincipal;
 import vista.Ventana;
-import control.ControladorBienvenido.EscuchaNuevoUsuario;
 
 public class ControladorMenuPrincipal extends Controlador {
 	
@@ -19,6 +20,17 @@ public class ControladorMenuPrincipal extends Controlador {
 
 	private void agregarPanelLocal(String nombre) {
 		this.panelMenuPrincipal = new PanelMenuPrincipal(nombre);
+		this.panelMenuPrincipal.agregarEscucharComenzarPartida(new EscuchaComenzarPartida());
 		ventana.add(panelMenuPrincipal);
 	}
+
+	public class EscuchaComenzarPartida implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e){
+			ventana.remove(panelMenuPrincipal);
+			ControladorComenzarPartida controlador = new ControladorComenzarPartida(juego,ventana);
+		}	
+	}
+	
+
 }
