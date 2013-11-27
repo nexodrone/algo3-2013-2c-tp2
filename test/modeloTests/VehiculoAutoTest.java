@@ -55,6 +55,12 @@ public class VehiculoAutoTest {
     // TEST DE METODOS//
 
     @Test
+    public void testParaComprobarQuePorDefectoLaCantidadDeMovimientosEsCero() {
+        Vehiculo vehiculo = new VehiculoAuto();
+        assertEquals(vehiculo.getCantidadDeMovimientos(), 0);
+    }
+
+    @Test
     public void testParaComprobarQueGuardarCorrectamenteElJuego() {
         VehiculoAuto vehiculo = new VehiculoAuto();
         Juego juego = new Juego();
@@ -81,6 +87,83 @@ public class VehiculoAutoTest {
         vehiculo.setPosicion(nuevaPosicion);
 
         assertEquals(vehiculo.getPosicion(), nuevaPosicion);
+    }
+
+    @Test
+    public void testParaComprobarQueSiLaDireccionEsNullDevuelveLaPosicionActual() {
+        Posicion posicion = new Posicion(2, 3);
+        VehiculoAuto vehiculo = new VehiculoAuto(posicion);
+
+        assertEquals(vehiculo.calcularSiguientePosicion(), posicion);
+    }
+
+    @Test
+    public void testParaComprobarQueLaPosicionEsNullSinoSeLePasaUna() {
+        VehiculoAuto vehiculo = new VehiculoAuto();
+        assertEquals(vehiculo.getJuego(), null);
+    }
+
+    @Test
+    public void testParaComprobarJuegoCambiaDeVehiculoPorMedioDelVehiculoActual() {
+        Juego juego = new Juego();
+        Vehiculo otroVehiculo = new VehiculoAuto();
+        Vehiculo vehiculo = new VehiculoAuto();
+        Partida partida = new Partida();
+        partida.setVehiculo(vehiculo);
+        juego.setPartida(partida);
+
+        vehiculo.setJuegoActual(juego);
+        vehiculo.cambiarA(otroVehiculo);
+
+        assertEquals(juego.getVehiculo(), otroVehiculo);
+    }
+
+    @Test
+    public void testParaComprobarQueSumaCorrectamenteLaCantidadDeMovimientos() {
+        int cantidad = 9;
+        int cantidadASumar = 1;
+
+        Vehiculo vehiculo = new VehiculoAuto();
+        vehiculo.setCantidadDeMovimientos(cantidad);
+
+        vehiculo.sumarMovimientos(cantidadASumar);
+
+        assertEquals(vehiculo.getCantidadDeMovimientos(), cantidadASumar + cantidad);
+    }
+
+    @Test
+    public void testParaComprobarQueCalcularCorrectamenteLaNuevaPosicion() {
+        Posicion posicion = new Posicion(1, 0);
+        Direccion direccion = new Direccion(2, 0);
+        Posicion posicionCorrecta = new Posicion(3, 0);
+
+        Vehiculo vehiculo = new VehiculoAuto(posicion);
+
+        Posicion nuevaPosicion = vehiculo.calcularSiguientePosicion(direccion);
+
+        assertTrue(nuevaPosicion.equals(posicionCorrecta));
+
+    }
+
+    @Test
+    public void testParaComprobarQueCambiarCorrectamenteLaCantidadDeMovimientos() {
+        int cantidad = 9;
+        Vehiculo vehiculo = new VehiculoAuto();
+        vehiculo.setCantidadDeMovimientos(cantidad);
+
+        assertEquals(vehiculo.getCantidadDeMovimientos(), cantidad);
+
+    }
+
+    @Test
+    public void testParaComprobarQueSiLaDireccionEsNullELVehiculoSeQuedaQuieto() {
+        Calle calle = new Calle();
+        Posicion posicion = new Posicion(1, 0);
+        Vehiculo vehiculo = new VehiculoAuto(posicion);
+
+        // la calle esta vacia
+        vehiculo.moverEnDireccion(null, calle);
+        assertEquals(vehiculo.getPosicion(), posicion);
     }
 
     @Test
