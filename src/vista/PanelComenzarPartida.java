@@ -17,6 +17,7 @@ public class PanelComenzarPartida extends JPanel {
 	private JComboBox<String> niveles;
 	private JComboBox<String> vehiculos;
 	private JButton botonAceptar = new JButton("Aceptar");
+	private JButton botonVolver = new JButton("Volver");
 	
 	  public PanelComenzarPartida(){
 		  this.setLayout(null);  
@@ -29,17 +30,22 @@ public class PanelComenzarPartida extends JPanel {
 		  this.seleccioneVehiculo.setBounds(200, 120, 200, 30);
 		  this.vehiculos = new JComboBox<String>(listaDeVehiculos);
 		  this.vehiculos.setBounds(200, 160, 100, 30);
-		  this.botonAceptar.setBounds(200, 210, 200, 30); 
+		  this.botonAceptar.setBounds(110, 230, 150, 30); 
+		  this.botonVolver.setBounds(310,230,150,30);
 		  
 		  this.add(seleccioneNivel);
 		  this.add(niveles);
 		  this.add(seleccioneVehiculo);
 		  this.add(vehiculos);
 		  this.add(botonAceptar);
+		  this.add(botonVolver);
 	  }
 	  
 	  public void agregarEscucharAceptar(ActionListener escuchaAceptar){
 		  this.botonAceptar.addActionListener(escuchaAceptar);
 	  }	
 	  
+	  public void agregarEscuchaVolver(ActionListener escuchaVolver){
+		  this.botonVolver.addActionListener(escuchaVolver);		  
+	  }
 }
