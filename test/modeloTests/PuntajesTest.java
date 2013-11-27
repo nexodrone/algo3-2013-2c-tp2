@@ -26,16 +26,20 @@ public class PuntajesTest {
 	}
 	
 	@Test
-	public void testGuardarPuntajeCorrectamente() {
+	public void testGuardarPuntajeCorrectamente() throws Exception {
 		Puntajes puntajes = new Puntajes();
 		
 		puntajes.agregarPuntaje("Carloncho", 30);
 		puntajes.agregarPuntaje("Roberto", 40);
 		
-		List<Puntaje> ordenados = puntajes.getPuntajesOrdenados();
+		puntajes.guardar("test/puntajesTest.xml");
+		
+		Puntajes otrosPuntajes = Puntajes.recuperar("test/puntajesTest.xml");
+		
+		List<Puntaje> ordenados = otrosPuntajes.getPuntajesOrdenados();
 		assertEquals(ordenados.get(0).getPuntaje(), 40);
 		assertEquals(ordenados.get(0).getNombre(), "Roberto");
-		
+				
 		assertEquals(ordenados.get(1).getPuntaje(), 30);
 		assertEquals(ordenados.get(1).getNombre(), "Carloncho");
 	}
