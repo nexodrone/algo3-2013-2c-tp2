@@ -1,14 +1,17 @@
 package principal;
 
 import modelo.Juego;
+import vista.Ventana;
 import vista.VentanaBienvenido;
-import control.Controlador;
+import control.ControladorVIEJO;
+import control.ControladorBienvenido;
 
 public class Principal {
 	
 	public static void main(String args[]) {
 		
 		Juego juego = new Juego();
-		Controlador control = new Controlador(juego);
+		Ventana ventana = new Ventana();
+		ControladorBienvenido control = new ControladorBienvenido(juego, ventana);
 	}
 }
