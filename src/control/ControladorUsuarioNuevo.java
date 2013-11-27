@@ -22,6 +22,7 @@ public class ControladorUsuarioNuevo extends Controlador {
 	private void agragarPanelLocal() {
 		this.panelUsuarioNuevo = new PanelUsuarioNuevo();
 		this.panelUsuarioNuevo.agregarEscuchaVolver(new EscuchaVolver());
+		this.panelUsuarioNuevo.agregarEscuchaGuardar(new EscuchaGuardar());
 		ventana.add(panelUsuarioNuevo);
 	}
 	
@@ -32,4 +33,13 @@ public class ControladorUsuarioNuevo extends Controlador {
 			ControladorBienvenido contolador = new ControladorBienvenido(juego, ventana);
 		}
 	}
+	
+	public class EscuchaGuardar implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			ventana.remove(panelUsuarioNuevo);
+			ControladorMenuPrincipal contolador = new ControladorMenuPrincipal(juego, ventana, panelUsuarioNuevo.getNombreDelCampo());
+		}			 
+	}
+	
 }
