@@ -17,7 +17,7 @@ public class PanelMenuPrincipal extends JPanel {
 	public PanelMenuPrincipal(String nombre) {
 		this.setLayout(null);
 		
-		this.nombreUsuario = new JLabel("Hola"+" "+nombre); 
+		this.nombreUsuario = new JLabel("Hola "+nombre); 
 		this.nombreUsuario.setBounds(270, 10, 100, 100);
 		this.botonComenzarPartida.setBounds(200,100,200,30);
 		this.botonRetomarPartida.setBounds(200,150,200,30);

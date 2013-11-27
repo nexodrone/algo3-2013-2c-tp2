@@ -13,11 +13,11 @@ public class ControladorBienvenido extends Controlador {
 	public ControladorBienvenido(Juego juego, Ventana ventana) {
 		this.juego = juego;
 		this.ventana = ventana;
-		this.agragarPanelLocal();
+		this.agregarPanelLocal();
 		this.ventana.setVisible(true);
 	}
 
-	private void agragarPanelLocal() {
+	private void agregarPanelLocal() {
 		this.panelBienvenido = new PanelBienvenido();
 		this.panelBienvenido.agregarEscuchaNuevoUsuario(new EscuchaNuevoUsuario());
 		ventana.add(panelBienvenido);

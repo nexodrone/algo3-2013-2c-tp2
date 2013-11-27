@@ -13,11 +13,11 @@ public class ControladorMenuPrincipal extends Controlador {
 	public ControladorMenuPrincipal(Juego juego, Ventana ventana, String nombre) {
 		this.juego = juego;
 		this.ventana = ventana;
-		this.agragarPanelLocal(nombre);
+		this.agregarPanelLocal(nombre);
 		this.ventana.setVisible(true);
 	}
 
-	private void agragarPanelLocal(String nombre) {
+	private void agregarPanelLocal(String nombre) {
 		this.panelMenuPrincipal = new PanelMenuPrincipal(nombre);
 		ventana.add(panelMenuPrincipal);
 	}

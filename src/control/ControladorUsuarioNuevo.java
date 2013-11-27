@@ -15,11 +15,11 @@ public class ControladorUsuarioNuevo extends Controlador {
 	public ControladorUsuarioNuevo(Juego juego, Ventana ventana) {
 		this.juego = juego;
 		this.ventana = ventana;
-		this.agragarPanelLocal();
+		this.agregarPanelLocal();
 		this.ventana.setVisible(true);
 	}
 	
-	private void agragarPanelLocal() {
+	private void agregarPanelLocal() {
 		this.panelUsuarioNuevo = new PanelUsuarioNuevo();
 		this.panelUsuarioNuevo.agregarEscuchaVolver(new EscuchaVolver());
 		this.panelUsuarioNuevo.agregarEscuchaGuardar(new EscuchaGuardar());
