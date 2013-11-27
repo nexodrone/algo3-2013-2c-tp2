@@ -1,7 +1,6 @@
 package modelo;
 
-import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
-import org.simpleframework.xml.*;
+import org.simpleframework.xml.Root;
 
 @Root(name = "4x4")
 public class Vehiculo4x4 extends Vehiculo {
@@ -11,20 +10,12 @@ public class Vehiculo4x4 extends Vehiculo {
         /* esta porcion de codigo esta tanto en VehiculoMoto y VehiculoAuto */
     }
 
-    public Vehiculo4x4() {}
-    
-    public void aplicarEvento(Sorpresa sorpresa) {
-        sorpresa.interactuarCon(this);
+    public Vehiculo4x4() {
     }
 
-    public void pasarPorCalle(Calle calleAPasar) throws PasajeBloqueadoPorPiqueteExcepcion {
-        Obstaculo obstaculo = calleAPasar.getObstaculo();
-        if (obstaculo != null) { obstaculo.interactuarCon(this); };
-        Sorpresa sorpresa = calleAPasar.getSorpresa(); /* si llego hasta aca entonces no hay problema con obstaculo */
-        if (sorpresa != null) { sorpresa.interactuarCon(this);
-								calleAPasar.setSorpresa(null); };
-        this.cantidadDeMovimientos++;
-     }
+    public void aplicarEvento(Evento evento) {
+        evento.interactuarCon(this);
+    }
 
     public static Vehiculo nuevoVehiculo(Vehiculo vehiculo) {
         Vehiculo nuevo4x4 = new Vehiculo4x4(vehiculo.getPosicion());
