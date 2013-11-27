@@ -1,5 +1,7 @@
 package vista;
 
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -29,6 +31,20 @@ public class PanelMenuPrincipal extends JPanel {
 		this.add(botonSalir);
 	}
 	
+	public void agregarEscucharComenzarPartida(ActionListener escuchaComenzarPartida) {
+		this.botonComenzarPartida.addActionListener(escuchaComenzarPartida);
+	}
+
+	public void agregarEscucharRetomarPartida(ActionListener escuchaRetomarPartida) {
+		this.botonRetomarPartida.addActionListener(escuchaRetomarPartida);
+	}
 	
+	public void agregarEscucharVerPuntajes(ActionListener escuchaVerPuntajes) {
+		this.botonVerPuntajes.addActionListener(escuchaVerPuntajes);
+	}
+	
+	public void agregarEscucharSalir(ActionListener escuchaSalir) {
+		this.botonSalir.addActionListener(escuchaSalir);
+	}
 	
 }

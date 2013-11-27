@@ -1,7 +1,10 @@
 package vista;
 
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
 import control.ControladorBienvenido.EscuchaNuevoUsuario;
 
 public class PanelBienvenido extends JPanel {
@@ -20,6 +23,10 @@ public class PanelBienvenido extends JPanel {
 
 	public void agregarEscuchaNuevoUsuario(EscuchaNuevoUsuario escuchaNuevoUsuario) {
 		this.botonNuevoUsuario.addActionListener(escuchaNuevoUsuario);
+	}
+	
+	public void agregarEscuchaUsuarioRegistrado(ActionListener escuchaUsuarioRegistrado) {
+		this.botonUsuarioRegistrado.addActionListener(escuchaUsuarioRegistrado);
 	}
 	
 }
