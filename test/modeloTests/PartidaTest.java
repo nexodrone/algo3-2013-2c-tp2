@@ -13,6 +13,8 @@ import modelo.Tablero;
 import modelo.Vehiculo;
 import modelo.VehiculoAuto;
 
+import java.io.*;
+
 import org.junit.Test;
 
 public class PartidaTest {
@@ -51,6 +53,9 @@ public class PartidaTest {
         assertEquals(otraPartida.getPosicionGanadora().asString(), posicionGanadora.asString());
 	}
 	
-
+	@Test (expected = FileNotFoundException.class )
+	public void testDeberiaTirarmeExcepcionAlNoHaberPartidaGuardad() throws Exception{
+		Partida unaPartida = Partida.recuperar("partidaInexistenteTest.xml");
+	}
     
 }
