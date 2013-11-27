@@ -53,18 +53,12 @@ public abstract class Vehiculo {
     }
 
     public void cambiarA(Vehiculo vehiculo) {
-        juego.cambiarVehiculo(vehiculo);
+        juego.setVehiculo(vehiculo);
     }
 
     public boolean tienenElMismoEstado(Vehiculo vehiculo) {
         boolean cantidad = (cantidadDeMovimientos == vehiculo.getCantidadDeMovimientos());
-        System.out.println("la cantidad es:");
-        System.out.println(cantidad);
         boolean posicionesIguales = posicion.equals(vehiculo.getPosicion());
-        System.out.println("las posicion son:");
-        System.out.println(posicionesIguales);
-        System.out.println(posicion.asString());
-        System.out.println(vehiculo.getPosicion().asString());
         return (cantidad && posicionesIguales);
     }
 
