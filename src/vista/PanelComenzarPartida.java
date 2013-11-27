@@ -48,4 +48,16 @@ public class PanelComenzarPartida extends JPanel {
 	  public void agregarEscuchaVolver(ActionListener escuchaVolver){
 		  this.botonVolver.addActionListener(escuchaVolver);		  
 	  }
+
+	  public String obtenerVehiculoSeleccionado(){
+		  Object e = vehiculos.getSelectedItem();
+		  String vehiculoSeleccionado = String.valueOf(e);
+		  return vehiculoSeleccionado;
+	  }
+	  
+	  public String obtenerNivelSeleccionado(){
+		  Object e = niveles.getSelectedItem();
+		  String nivelSeleccionado = String.valueOf(e);
+		  return nivelSeleccionado;
+	  }
 }
