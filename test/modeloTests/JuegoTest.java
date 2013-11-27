@@ -37,6 +37,29 @@ public class JuegoTest {
         assertNotNull(unJuego);
     }
 
+    // TEST DE METODOS
+
+    @Test
+    public void testParaComprobarQueElVehiculoEsElMismoQueElDeLaPartida() {
+        Juego juego = new Juego();
+        Vehiculo vehiculo = new VehiculoMoto();
+        Partida partida = new Partida();
+        partida.setVehiculo(vehiculo);
+        juego.setPartida(partida);
+
+        assertEquals(juego.getVehiculo(), partida.getVehiculo());
+
+    }
+
+    public void testParaComprobarQueCambiaCorrectamenteElJugador() {
+        Jugador jugador = new Jugador();
+        Juego juego = new Juego();
+        juego.setJugador(jugador);
+
+        assertEquals(juego.getJugadorActual(), jugador);
+
+    }
+
     @Test
     public void testVehiculoDeberiaMoversePorLimitesDelTablero() throws MovimientoInvalidoExcepcion {
         Tablero tablero = new Tablero(6, 3);
@@ -277,7 +300,7 @@ public class JuegoTest {
         vehiculo.setJuegoActual(unJuego);
 
         Vehiculo nuevoVehiculo = new VehiculoAuto(null);
-        unJuego.cambiarVehiculo(nuevoVehiculo);
+        unJuego.setVehiculo(nuevoVehiculo);
 
         assertEquals(unJuego.getPartida().getVehiculo(), nuevoVehiculo);
     }
