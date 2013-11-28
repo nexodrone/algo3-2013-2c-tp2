@@ -17,7 +17,7 @@ import modelo.Vehiculo;
 import modelo.Vehiculo4x4;
 import modelo.VehiculoAuto;
 import modelo.VehiculoMoto;
-import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
+import modelo.excepciones.CalleBloqueadaPorPiqueteExcepcion;
 
 import org.junit.Test;
 
@@ -29,26 +29,26 @@ public class Vehiculo4x4Test {
         assertEquals(todoterreno.getCantidadDeMovimientos(), 0);
     }
 
-    @Test(expected = PasajeBloqueadoPorPiqueteExcepcion.class)
-    public void testAtraparExcepcionPorPiquete() throws PasajeBloqueadoPorPiqueteExcepcion {
+    @Test(expected = CalleBloqueadaPorPiqueteExcepcion.class)
+    public void testAtraparExcepcionPorPiquete() throws CalleBloqueadaPorPiqueteExcepcion {
         Vehiculo4x4 todoterreno = new Vehiculo4x4(new Posicion(2, 2));
         Calle calleATransitar = new Calle(new ObstaculoPiquete(), null);
         todoterreno.pasarPorCalle(calleATransitar);
     }
 
-    @Test(expected = PasajeBloqueadoPorPiqueteExcepcion.class)
-    public void testAtraparExcepcionYQuedarseEnElLugarYSinSumarUnMovimiento() throws PasajeBloqueadoPorPiqueteExcepcion {
+    @Test(expected = CalleBloqueadaPorPiqueteExcepcion.class)
+    public void testAtraparExcepcionYQuedarseEnElLugarYSinSumarUnMovimiento() throws CalleBloqueadaPorPiqueteExcepcion {
         Posicion PosicionInicial = new Posicion(2, 3);
         Vehiculo4x4 unVehiculo = new Vehiculo4x4(PosicionInicial);
         Calle calleSur = new Calle(new ObstaculoPiquete(), null);
         Direccion sur = new Direccion(0, -1);
         try {
             unVehiculo.moverEnDireccion(sur, calleSur);
-        } catch (PasajeBloqueadoPorPiqueteExcepcion e) {
+        } catch (CalleBloqueadaPorPiqueteExcepcion e) {
             Posicion PosicionFinal = unVehiculo.getPosicion();
             assertEquals(0, unVehiculo.getCantidadDeMovimientos());
             assertEquals(PosicionInicial.asString(), PosicionFinal.asString());
-            throw new PasajeBloqueadoPorPiqueteExcepcion();
+            throw new CalleBloqueadaPorPiqueteExcepcion();
         }
     }
 

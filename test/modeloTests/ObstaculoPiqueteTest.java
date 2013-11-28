@@ -10,31 +10,31 @@ import modelo.Vehiculo;
 import modelo.Vehiculo4x4;
 import modelo.VehiculoAuto;
 import modelo.VehiculoMoto;
-import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
+import modelo.excepciones.CalleBloqueadaPorPiqueteExcepcion;
 
 import org.junit.Test;
 
 public class ObstaculoPiqueteTest {
 
 	@Test
-	public void testDeberiaTirarExcepcionSiPasa4x4() throws PasajeBloqueadoPorPiqueteExcepcion {
+	public void testDeberiaTirarExcepcionSiPasa4x4() throws CalleBloqueadaPorPiqueteExcepcion {
 		Vehiculo4x4 todoterreno = new Vehiculo4x4(new Posicion(0,0));
 		todoterreno.setCantidadDeMovimientos(5);
 		ObstaculoPiquete piquete = new ObstaculoPiquete();
 		try { 	piquete.interactuarCon(todoterreno);
 				fail("Excepcion esperada");
-			}	catch (PasajeBloqueadoPorPiqueteExcepcion esperada) {};
+			}	catch (CalleBloqueadaPorPiqueteExcepcion esperada) {};
 		assertEquals(todoterreno.getCantidadDeMovimientos(),5);
 	}
 
 	@Test
-	public void testDeberiaTirarExcepcionSiPasaAuto() throws PasajeBloqueadoPorPiqueteExcepcion {
+	public void testDeberiaTirarExcepcionSiPasaAuto() throws CalleBloqueadaPorPiqueteExcepcion {
 		VehiculoAuto auto = new VehiculoAuto(new Posicion(0,0));
 		auto.setCantidadDeMovimientos(5);
 		ObstaculoPiquete piquete = new ObstaculoPiquete();
 		try { 	piquete.interactuarCon(auto);
 				fail("Excepcion esperada");
-			}	catch (PasajeBloqueadoPorPiqueteExcepcion esperada) {};
+			}	catch (CalleBloqueadaPorPiqueteExcepcion esperada) {};
 		assertEquals(auto.getCantidadDeMovimientos(),5);
 	}
 	
@@ -48,7 +48,7 @@ public class ObstaculoPiqueteTest {
 	}
 
 	@Test
-	public void testSiPasamosPorUnaCalleConObstaculoYSorpresaPrimeroSeInteractuaConObstaculo() throws PasajeBloqueadoPorPiqueteExcepcion{
+	public void testSiPasamosPorUnaCalleConObstaculoYSorpresaPrimeroSeInteractuaConObstaculo() throws CalleBloqueadaPorPiqueteExcepcion{
 		Vehiculo todoterreno = new Vehiculo4x4(new Posicion(0,0));
 		Calle calleATransitar = new Calle(new ObstaculoPiquete(),new SorpresaFavorable());
 		todoterreno.setCantidadDeMovimientos(0);
@@ -56,7 +56,7 @@ public class ObstaculoPiqueteTest {
 		try{
 			todoterreno.moverEnDireccion(new Direccion(1,0), calleATransitar);
 			fail("Excepcion esperada");			
-		} catch (PasajeBloqueadoPorPiqueteExcepcion esperada) {
+		} catch (CalleBloqueadaPorPiqueteExcepcion esperada) {
 			excepcionCapturada = true;			
 		}
 		assertTrue(excepcionCapturada);

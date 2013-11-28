@@ -25,7 +25,7 @@ import modelo.Vehiculo4x4;
 import modelo.VehiculoAuto;
 import modelo.VehiculoMoto;
 import modelo.excepciones.MovimientoInvalidoExcepcion;
-import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
+import modelo.excepciones.CalleBloqueadaPorPiqueteExcepcion;
 
 import org.junit.Test;
 
@@ -107,7 +107,7 @@ public class JuegoTest {
 
     /* Test integrador */
     @Test
-    public void testIntegradorValoresDePuntajeDeberianSerCoherentesConLosEsperados() throws MovimientoInvalidoExcepcion, PasajeBloqueadoPorPiqueteExcepcion {
+    public void testIntegradorValoresDePuntajeDeberianSerCoherentesConLosEsperados() throws MovimientoInvalidoExcepcion, CalleBloqueadaPorPiqueteExcepcion {
         Tablero tablero = new Tablero(3, 3);
         Vehiculo vehiculo = new VehiculoAuto(new Posicion(0, 0));
         vehiculo.setCantidadDeMovimientos(0);
@@ -306,7 +306,7 @@ public class JuegoTest {
     }
 
     @Test
-    public void testAlMoverPorCalleConSorpresaCambioDeVehiculo4x4SeTransformaEnMoto() throws PasajeBloqueadoPorPiqueteExcepcion {
+    public void testAlMoverPorCalleConSorpresaCambioDeVehiculo4x4SeTransformaEnMoto() throws CalleBloqueadaPorPiqueteExcepcion {
         Vehiculo4x4 todoterreno = new Vehiculo4x4(null);
         Juego unJuego = new Juego();
         Partida unaPartida = new Partida(null, todoterreno, null, 100);
@@ -320,7 +320,7 @@ public class JuegoTest {
     }
 
     @Test
-    public void testAlMoverPorCalleConSorpresaCambioDeVehiculoMotoSeTransformaEnAuto() throws PasajeBloqueadoPorPiqueteExcepcion {
+    public void testAlMoverPorCalleConSorpresaCambioDeVehiculoMotoSeTransformaEnAuto() throws CalleBloqueadaPorPiqueteExcepcion {
         VehiculoMoto moto = new VehiculoMoto(null);
         Juego unJuego = new Juego();
         Partida unaPartida = new Partida(null, moto, null, 100);
@@ -334,7 +334,7 @@ public class JuegoTest {
     }
 
     @Test
-    public void testAlMoverPorCalleConSorpresaCambioDeVehiculoAutoSeTransformaEn4x4() throws PasajeBloqueadoPorPiqueteExcepcion {
+    public void testAlMoverPorCalleConSorpresaCambioDeVehiculoAutoSeTransformaEn4x4() throws CalleBloqueadaPorPiqueteExcepcion {
         VehiculoAuto auto = new VehiculoAuto(null);
         Juego unJuego = new Juego();
         Partida unaPartida = new Partida(null, auto, null, 100);

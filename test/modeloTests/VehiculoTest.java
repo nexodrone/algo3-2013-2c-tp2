@@ -11,7 +11,7 @@ import modelo.SorpresaDesfavorable;
 import modelo.Vehiculo;
 import modelo.VehiculoAuto;
 import modelo.VehiculoMoto;
-import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
+import modelo.excepciones.CalleBloqueadaPorPiqueteExcepcion;
 
 import org.junit.Test;
 
@@ -32,7 +32,7 @@ public class VehiculoTest {
     }
 
     @Test
-    public void testPoderMoverseEnTodasDireccionesPosibles() throws PasajeBloqueadoPorPiqueteExcepcion {
+    public void testPoderMoverseEnTodasDireccionesPosibles() throws CalleBloqueadaPorPiqueteExcepcion {
         Vehiculo unVehiculo = new VehiculoAuto(new Posicion(2, 3));
         unVehiculo.setCantidadDeMovimientos(0);
         Bocacalle bocacalleNeutral = new Bocacalle();
@@ -42,27 +42,27 @@ public class VehiculoTest {
         Direccion oeste = new Direccion(-1, 0);
         try {
             unVehiculo.moverEnDireccion(sur, bocacalleNeutral.getCalleEnDireccion(sur));
-        } catch (PasajeBloqueadoPorPiqueteExcepcion e) {
+        } catch (CalleBloqueadaPorPiqueteExcepcion e) {
         };
         try {
             unVehiculo.moverEnDireccion(este, bocacalleNeutral.getCalleEnDireccion(este));
-        } catch (PasajeBloqueadoPorPiqueteExcepcion e) {
+        } catch (CalleBloqueadaPorPiqueteExcepcion e) {
         };
         try {
             unVehiculo.moverEnDireccion(sur, bocacalleNeutral.getCalleEnDireccion(sur));
-        } catch (PasajeBloqueadoPorPiqueteExcepcion e) {
+        } catch (CalleBloqueadaPorPiqueteExcepcion e) {
         };
         try {
             unVehiculo.moverEnDireccion(oeste, bocacalleNeutral.getCalleEnDireccion(oeste));
-        } catch (PasajeBloqueadoPorPiqueteExcepcion e) {
+        } catch (CalleBloqueadaPorPiqueteExcepcion e) {
         };
         try {
             unVehiculo.moverEnDireccion(oeste, bocacalleNeutral.getCalleEnDireccion(oeste));
-        } catch (PasajeBloqueadoPorPiqueteExcepcion e) {
+        } catch (CalleBloqueadaPorPiqueteExcepcion e) {
         };
         try {
             unVehiculo.moverEnDireccion(norte, bocacalleNeutral.getCalleEnDireccion(norte));
-        } catch (PasajeBloqueadoPorPiqueteExcepcion e) {
+        } catch (CalleBloqueadaPorPiqueteExcepcion e) {
         };
         assertEquals(unVehiculo.getPosicion().asString(), "1,2");
         assertEquals(unVehiculo.getCantidadDeMovimientos(), 6);

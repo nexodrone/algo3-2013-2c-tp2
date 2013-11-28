@@ -1,6 +1,6 @@
 package modelo;
 
-import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
+import modelo.excepciones.CalleBloqueadaPorPiqueteExcepcion;
 
 import org.simpleframework.xml.Root;
 
@@ -13,11 +13,11 @@ public class ObstaculoPiquete extends Obstaculo {
     }
 
     public void interactuarCon(VehiculoAuto auto) {
-        throw new PasajeBloqueadoPorPiqueteExcepcion();
+        throw new CalleBloqueadaPorPiqueteExcepcion();
     }
 
     public void interactuarCon(Vehiculo4x4 todoterreno) {
-        throw new PasajeBloqueadoPorPiqueteExcepcion();
+        throw new CalleBloqueadaPorPiqueteExcepcion();
     }
 
     public void interactuarCon(VehiculoMoto moto) {

@@ -3,7 +3,7 @@ package modelo;
 import java.util.ArrayList;
 
 import modelo.excepciones.MovimientoInvalidoExcepcion;
-import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
+import modelo.excepciones.CalleBloqueadaPorPiqueteExcepcion;
 
 public class Juego {
 
@@ -53,7 +53,7 @@ public class Juego {
             try {
                 partidaActual.getVehiculo().moverEnDireccion(direccion, calleATransitar);
                 verificarEstadoDelJugador();
-            } catch (PasajeBloqueadoPorPiqueteExcepcion e) {
+            } catch (CalleBloqueadaPorPiqueteExcepcion e) {
                 System.out.print("Imposible mover en esa direccion. \n");
             }
         } else
