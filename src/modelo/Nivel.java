@@ -29,13 +29,15 @@ public class Nivel {
 		this.cantidadDeObstaculos = 5;
 	}
 	
-	public void guardarNivel1() throws Exception {
+	public void guardarNivel(Integer nivel) throws Exception {
 		Serializer serializador = new Persister();
-		serializador.write(this, new File("test/nivel1Test.xml"));
+		String path = "test/nivel" + nivel.toString() + "Test.xml";
+		serializador.write(this, new File(path));
 	}
 	
-	public static Nivel setearNivel1() throws Exception {
+	public static Nivel setearNivel(Integer nivel) throws Exception {
 		Serializer deserializador = new Persister();
-		return deserializador.read(Nivel.class, new File("test/nivel1Test.xml"));
+		String path = "test/nivel" + nivel.toString() + "Test.xml";
+		return deserializador.read(Nivel.class, new File(path));
 	}	
 }
