@@ -12,6 +12,7 @@ import modelo.SorpresaFavorable;
 import modelo.Tablero;
 import modelo.Vehiculo;
 import modelo.VehiculoAuto;
+import modelo.excepciones.PartidaInexistente;
 
 import java.io.*;
 
@@ -23,6 +24,32 @@ public class PartidaTest {
 	public void testDeberiaCrearPartida() {
 		Partida unaPartida = new Partida();
 		assertNotNull(unaPartida);
+	}
+	
+	@Test
+	public void testDeberiaDevolverCorrectamenteLaPosicionDelVehiculo () {
+        Tablero tablero = new Tablero(4, 6);
+        Vehiculo vehiculo = new VehiculoAuto(new Posicion(2, 1));
+        vehiculo.setCantidadDeMovimientos(0);
+        Posicion posicionGanadora = new Posicion(3, 4);
+        int movimientosDisponibles = 100;
+        
+        Partida unaPartida = new Partida(tablero, vehiculo, posicionGanadora, movimientosDisponibles);
+        
+        assertEquals(unaPartida.posicionDelVehiculo().asString(), "2,1");
+	}
+	
+	@Test
+	public void testDeberiaDevolverCorrectamenteLosMovimientosDisponibles() {
+		Tablero tablero = new Tablero(4, 6);
+        Vehiculo vehiculo = new VehiculoAuto(new Posicion(2, 1));
+        vehiculo.setCantidadDeMovimientos(0);
+        Posicion posicionGanadora = new Posicion(3, 4);
+        int movimientosDisponibles = 100;
+        
+        Partida unaPartida = new Partida(tablero, vehiculo, posicionGanadora, movimientosDisponibles);
+        
+        assertEquals(unaPartida.getCantidadDeMovimientosDisponibles(), 100);
 	}
 	
 	@Test
@@ -45,17 +72,16 @@ public class PartidaTest {
         tablero.getBocacalleEnPosicion(new Posicion(1, 4)).getCalleEnDireccion(este).setSorpresa(new SorpresaDesfavorable());
         tablero.getBocacalleEnPosicion(new Posicion(3, 4)).getCalleEnDireccion(oeste).setSorpresa(new SorpresaFavorable());
         
-        unaPartida.guardar("partidaTest.xml");
+        unaPartida.guardar("test/partidaTest.xml");
         
-        Partida otraPartida = Partida.recuperar("partidaTest.xml");
+        Partida otraPartida = Partida.recuperar("test/partidaTest.xml");
         
         assertEquals(otraPartida.getVehiculo().getCantidadDeMovimientos(), vehiculo.getCantidadDeMovimientos());
         assertEquals(otraPartida.getPosicionGanadora().asString(), posicionGanadora.asString());
 	}
 	
-	@Test (expected = FileNotFoundException.class )
+	@Test (expected = PartidaInexistente.class )
 	public void testDeberiaTirarmeExcepcionAlNoHaberPartidaGuardad() throws Exception{
 		Partida unaPartida = Partida.recuperar("partidaInexistenteTest.xml");
 	}
-    
 }
