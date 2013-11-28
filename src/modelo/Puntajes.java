@@ -7,7 +7,6 @@ import org.simpleframework.xml.*;
 import org.simpleframework.xml.core.Persister;
 
 import modelo.Puntaje;
-import persistencia.PorPuntaje;
 
 
 @Root(name = "nombres")

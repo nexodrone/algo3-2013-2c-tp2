@@ -1,7 +1,6 @@
-package persistencia;
+package modelo;
 
 import java.util.Comparator;
-import modelo.Puntaje;
 
 public class PorPuntaje implements Comparator<Puntaje>{
 	
