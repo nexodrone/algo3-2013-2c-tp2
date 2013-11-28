@@ -5,7 +5,7 @@ import modelo.Calle;
 import modelo.Posicion;
 import modelo.SorpresaFavorable;
 import modelo.VehiculoAuto;
-import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
+import modelo.excepciones.CalleBloqueadaPorPiqueteExcepcion;
 
 import org.junit.Test;
 
@@ -18,7 +18,7 @@ public class CalleTest {
 	}
 
 	@Test
-	public void testPasarPorCalleConSorpresaDeberiaUsarlaUnicaVez() throws PasajeBloqueadoPorPiqueteExcepcion {
+	public void testPasarPorCalleConSorpresaDeberiaUsarlaUnicaVez() throws CalleBloqueadaPorPiqueteExcepcion {
 		Calle calle = new Calle();
 		calle.setSorpresa(new SorpresaFavorable());
 		VehiculoAuto auto = new VehiculoAuto(new Posicion(5,5));

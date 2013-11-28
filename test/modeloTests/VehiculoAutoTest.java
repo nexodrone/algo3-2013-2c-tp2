@@ -17,7 +17,7 @@ import modelo.Vehiculo;
 import modelo.Vehiculo4x4;
 import modelo.VehiculoAuto;
 import modelo.VehiculoMoto;
-import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
+import modelo.excepciones.CalleBloqueadaPorPiqueteExcepcion;
 
 import org.junit.Test;
 
@@ -29,26 +29,26 @@ public class VehiculoAutoTest {
         assertEquals(auto.getCantidadDeMovimientos(), 0);
     }
 
-    @Test(expected = PasajeBloqueadoPorPiqueteExcepcion.class)
-    public void testAtraparExcepcionPorPiquete() throws PasajeBloqueadoPorPiqueteExcepcion {
+    @Test(expected = CalleBloqueadaPorPiqueteExcepcion.class)
+    public void testAtraparExcepcionPorPiquete() throws CalleBloqueadaPorPiqueteExcepcion {
         VehiculoAuto auto = new VehiculoAuto(new Posicion(2, 2));
         Calle calleATransitar = new Calle(new ObstaculoPiquete(), null);
         auto.pasarPorCalle(calleATransitar);
     }
 
-    @Test(expected = PasajeBloqueadoPorPiqueteExcepcion.class)
-    public void testAtraparExcepcionYQuedarseEnElLugarYSinSumarUnMovimiento() throws PasajeBloqueadoPorPiqueteExcepcion {
+    @Test(expected = CalleBloqueadaPorPiqueteExcepcion.class)
+    public void testAtraparExcepcionYQuedarseEnElLugarYSinSumarUnMovimiento() throws CalleBloqueadaPorPiqueteExcepcion {
         Posicion PosicionInicial = new Posicion(2, 3);
         VehiculoAuto unVehiculo = new VehiculoAuto(PosicionInicial);
         Calle calleSur = new Calle(new ObstaculoPiquete(), null);
         Direccion sur = new Direccion(0, -1);
         try {
             unVehiculo.moverEnDireccion(sur, calleSur);
-        } catch (PasajeBloqueadoPorPiqueteExcepcion e) {
+        } catch (CalleBloqueadaPorPiqueteExcepcion e) {
             Posicion PosicionFinal = unVehiculo.getPosicion();
             assertEquals(0, unVehiculo.getCantidadDeMovimientos());
             assertEquals(PosicionInicial.asString(), PosicionFinal.asString());
-            throw new PasajeBloqueadoPorPiqueteExcepcion();
+            throw new CalleBloqueadaPorPiqueteExcepcion();
         }
     }
 

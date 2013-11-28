@@ -1,6 +1,6 @@
 package modelo;
 
-import modelo.excepciones.PasajeBloqueadoPorPiqueteExcepcion;
+import modelo.excepciones.CalleBloqueadaPorPiqueteExcepcion;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
@@ -30,7 +30,7 @@ public abstract class Vehiculo {
         return this.cantidadDeMovimientos;
     }
 
-    public void moverEnDireccion(Direccion unaDireccion, Calle calleAPasar) throws PasajeBloqueadoPorPiqueteExcepcion {
+    public void moverEnDireccion(Direccion unaDireccion, Calle calleAPasar) throws CalleBloqueadaPorPiqueteExcepcion {
         direccion = unaDireccion;
         pasarPorCalle(calleAPasar);
         this.setPosicion(this.calcularSiguientePosicion());
