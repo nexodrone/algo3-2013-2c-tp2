@@ -51,9 +51,9 @@ public class NivelTest {
 		nivel.cantidadDeSorpresas = 50;
 		nivel.cantidadDeObstaculos = 50;
 		
-		nivel.guardarNivel1();
+		nivel.guardarNivel(1);
 		
-		Nivel otroNivel = Nivel.setearNivel1();
+		Nivel otroNivel = Nivel.setearNivel(1);
 		
 		assertEquals(otroNivel.movimientosDisponibles,50);
 		assertEquals(otroNivel.filasTablero,50);
