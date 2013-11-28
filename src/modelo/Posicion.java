@@ -1,12 +1,6 @@
 package modelo;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-
 import org.simpleframework.xml.*;
-import org.simpleframework.xml.core.Persister;
 
 @Root
 public class Posicion {
@@ -48,17 +42,4 @@ public class Posicion {
     public String asString() {
     	return this.vector.asString();
     }
-    
-//    public void guardar(String path) throws Exception {
-//    	Serializer serializador = new Persister();
-//    	OutputStream resultado = new FileOutputStream(path);
-//    	serializador.write(this, resultado);
-//    }
-//
-//    public static Posicion recuperar(String path) throws Exception {
-//    	Serializer deserializador = new Persister();
-//    	InputStream src = new FileInputStream(path);
-//    	Posicion r = deserializador.read(new Posicion(1,0), src);
-//    	return r;
-//    }
 }

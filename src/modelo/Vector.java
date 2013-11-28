@@ -2,11 +2,6 @@ package modelo;
 
 import org.simpleframework.xml.*;
 
-import java.io.File;
-
-import org.simpleframework.xml.Serializer;
-import org.simpleframework.xml.core.Persister;
-
 @Root
 public class Vector {
 	
@@ -51,16 +46,4 @@ public class Vector {
         stringY = String.valueOf(this.y);
         return stringX + "," + stringY;
     }
-    
-//    public void guardar(String path) throws Exception {
-//    	Serializer serializador = new Persister();
-//    	File resultado = new File(path);
-//    	serializador.write(this, resultado);
-//    }
-//
-//    public static Vector recuperar(String path) throws Exception {
-//    	Serializer deserializador = new Persister();
-//    	File src = new File(path);
-//    	return deserializador.read(Vector.class, src);
-//    }
 }
