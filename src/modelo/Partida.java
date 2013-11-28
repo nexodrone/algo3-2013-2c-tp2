@@ -2,6 +2,8 @@ package modelo;
 
 import java.io.File;
 
+import modelo.excepciones.PartidaInexistente;
+
 import org.simpleframework.xml.*;
 import org.simpleframework.xml.core.Persister;
 
@@ -63,9 +65,13 @@ public class Partida {
 		serializador.write(this,  new File(path));
 	}
 
-	public static Partida recuperar(String path) throws Exception {
+	public static Partida recuperar(String path) throws PartidaInexistente {
 		Serializer deserializador = new Persister();
-		return deserializador.read(Partida.class, new File(path));
+		try {
+			return deserializador.read(Partida.class, new File(path));
+		}catch(Exception e){
+			throw new PartidaInexistente();
+		}
 	}
 
 }
