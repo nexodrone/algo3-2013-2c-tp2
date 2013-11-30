@@ -26,7 +26,7 @@ public class Nivel {
 		serializador.write(this, archivoXML);
 	}
 	
-	public static Nivel setearNivel(String path) throws Exception {
+	public static Nivel cargarNivel(String path) throws Exception {
 		Serializer deserializador = new Persister();
 		File archivoXML = new File(path);
 		return deserializador.read(Nivel.class, archivoXML);

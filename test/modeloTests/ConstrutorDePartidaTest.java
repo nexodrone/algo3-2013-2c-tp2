@@ -2,14 +2,9 @@ package modeloTests;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
-import modelo.ConstructorDePartida;
-import modelo.Nivel;
-import modelo.Partida;
-import modelo.Posicion;
-
+import modelo.*;
 
 public class ConstrutorDePartidaTest {
-	
 	
 	@Test
 	public void testPartidaCreadaNoDeberiaSerNula() {
@@ -18,7 +13,7 @@ public class ConstrutorDePartidaTest {
 		constructor.construirPartidaCon4x4(nuevoNivel);
 		assertNotNull(constructor);
 	}
-	
+
 	@Test
 	public void testPartidaCreadaConAutoNoDeberiaTenerVehiculoNulo() {
 		Nivel nuevoNivel = new Nivel();

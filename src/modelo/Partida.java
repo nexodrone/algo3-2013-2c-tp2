@@ -66,7 +66,7 @@ public class Partida {
 		serializador.write(this, archivoXML);
 	}
 
-	public static Partida recuperar(String path) throws PartidaInexistente {
+	public static Partida cargarPartida(String path) throws PartidaInexistente {
 		Serializer deserializador = new Persister();
 		try {
 			return deserializador.read(Partida.class, new File(path));
