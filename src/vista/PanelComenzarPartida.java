@@ -39,7 +39,7 @@ public class PanelComenzarPartida extends JPanel {
 		  this.add(botonVolver);
 	  }
 	  
-	  public void agregarEscucharAceptar(ActionListener escuchaAceptar){
+	  public void agregarEscuchaAceptar(ActionListener escuchaAceptar){
 		  this.botonAceptar.addActionListener(escuchaAceptar);
 	  }	
 	  
