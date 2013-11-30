@@ -3,7 +3,7 @@ package niveles;
 import modelo.Nivel;
 import modelo.Tablero;
 
-public class ConstructorDeNiveles {
+public class EditorDeNiveles {
 	
 	public static void main(String args[]) throws Exception {
 		
