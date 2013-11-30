@@ -13,35 +13,7 @@ public class NivelTest {
 		assertEquals(nivel.movimientosDisponibles,50);
 	}
 	
-	@Test
-	public void testDeberiaSetearFilasTablero() {
-		Nivel nivel = new Nivel();
-		nivel.filasTablero = 50;
-		assertEquals(nivel.filasTablero,50);
-	}
-
-	@Test
-	public void testDeberiaSetearColumnasTablero() {
-		Nivel nivel = new Nivel();
-		nivel.columnasTablero = 50;
-		assertEquals(nivel.columnasTablero,50);
-	}
-	
-	@Test
-	public void testDeberiaSetearCantidadDeSorpresas() {
-		Nivel nivel = new Nivel();
-		nivel.cantidadDeSorpresas = 50;
-		assertEquals(nivel.cantidadDeSorpresas,50);
-	}
-	
-	@Test
-	public void testDeberiaSetearCantidadDeObstaculos() {
-		Nivel nivel = new Nivel();
-		nivel.cantidadDeObstaculos = 50;
-		assertEquals(nivel.cantidadDeObstaculos,50);
-	}
-	
-	@Test
+	/*@Test
 	public void testGuardarYCargarNivelCorrectamente() throws Exception {
 		Nivel nivel = new Nivel();
 		
@@ -60,6 +32,6 @@ public class NivelTest {
 		assertEquals(otroNivel.columnasTablero,50);
 		assertEquals(otroNivel.cantidadDeSorpresas,50);
 		assertEquals(otroNivel.cantidadDeObstaculos,50);		
-	}
+	}*/
 	
 }

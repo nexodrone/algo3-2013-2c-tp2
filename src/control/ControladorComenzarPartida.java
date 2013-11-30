@@ -47,24 +47,26 @@ public class ControladorComenzarPartida extends Controlador{
 	
 	public class EscuchaComenzarPartida implements ActionListener{
 		@Override
-		public void actionPerformed(ActionEvent e){
+		public void actionPerformed(ActionEvent e) {
 			juego.setJugador(new Jugador(nombre));
 			String nivelSeleccionado = panelComenzarPartida.obtenerNivelSeleccionado();
 			String vehiculoSeleccionado = panelComenzarPartida.obtenerVehiculoSeleccionado();
-			Nivel nivel = obtenerNivelSeleccionado(nivelSeleccionado);
-			Partida partida = construirPartidaSeleccionada(vehiculoSeleccionado,nivel);
-			partida.getVehiculo().setJuegoActual(juego);
-			juego.setPartida(partida);			
-		
-			ventana.remove(panelComenzarPartida);
-			ControladorPartida controlador = new ControladorPartida(juego,ventana,nivelSeleccionado,vehiculoSeleccionado);
+			Nivel nivel;
+			try {	nivel = obtenerNivelSeleccionado(nivelSeleccionado);
+					Partida partida = construirPartidaSeleccionada(vehiculoSeleccionado,nivel);
+					partida.getVehiculo().setJuegoActual(juego);
+					juego.setPartida(partida);			
+					ventana.remove(panelComenzarPartida);
+					ControladorPartida controlador = new ControladorPartida(juego,ventana,nivelSeleccionado,vehiculoSeleccionado);
+					
+				} catch (Exception e1) { panelComenzarPartida.mostrarMensajeError(); };
 		}
 	}
 
 	
-	public Nivel obtenerNivelSeleccionado(String nivelSeleccionado){
-		//deberia crear el nivel según los parametros del .xml
-		return new Nivel();
+	public Nivel obtenerNivelSeleccionado(String nivelSeleccionado) throws Exception{
+		Nivel nivel = Nivel.setearNivel("src/niveles/nivel1.xml");
+		return nivel;
 	}
 	
 	public Partida construirPartidaSeleccionada(String vehiculoSeleccionado,Nivel nivel){

@@ -72,7 +72,7 @@ public class PartidaTest {
         tablero.getBocacalleEnPosicion(new Posicion(1, 4)).getCalleEnDireccion(este).setSorpresa(new SorpresaDesfavorable());
         tablero.getBocacalleEnPosicion(new Posicion(3, 4)).getCalleEnDireccion(oeste).setSorpresa(new SorpresaFavorable());
         
-        unaPartida.guardar("test/partidaTest.xml");
+        unaPartida.guardarPartida("test/partidaTest.xml");
         
         Partida otraPartida = Partida.recuperar("test/partidaTest.xml");
         

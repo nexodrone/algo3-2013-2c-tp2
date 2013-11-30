@@ -6,38 +6,29 @@ import org.simpleframework.xml.*;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
-@Root( name = "Nivel" )
+@Root (name = "Nivel")
 public class Nivel {
 	
-	@Element
+	@Attribute
 	public int movimientosDisponibles;
 	@Element
-	public int filasTablero;
-	@Element
-	public int columnasTablero;
-	@Element
-	public int cantidadDeSorpresas;
-	@Element
-	public int cantidadDeObstaculos;
+	public Tablero tablero;
 	
 	public Nivel() {
 
 		this.movimientosDisponibles = 30;
-		this.filasTablero = 10;
-		this.columnasTablero = 10;
-		this.cantidadDeSorpresas = 5;
-		this.cantidadDeObstaculos = 5;
+		this.tablero = new Tablero(10,10);
 	}
 	
-	public void guardarNivel(Integer nivel) throws Exception {
+	public void guardarNivel(String path) throws Exception {
 		Serializer serializador = new Persister();
-		String path = "test/nivel" + nivel.toString() + "Test.xml";
-		serializador.write(this, new File(path));
+		File archivoXML = new File(path);
+		serializador.write(this, archivoXML);
 	}
 	
-	public static Nivel setearNivel(Integer nivel) throws Exception {
+	public static Nivel setearNivel(String path) throws Exception {
 		Serializer deserializador = new Persister();
-		String path = "test/nivel" + nivel.toString() + "Test.xml";
-		return deserializador.read(Nivel.class, new File(path));
+		File archivoXML = new File(path);
+		return deserializador.read(Nivel.class, archivoXML);
 	}	
 }

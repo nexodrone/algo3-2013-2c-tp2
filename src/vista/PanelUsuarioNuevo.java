@@ -41,8 +41,8 @@ public class PanelUsuarioNuevo extends JPanel {
 		this.botonGuardar.addActionListener(escuchaGuardar);
 	}
 	
-	public void mostrarError(String mensaje) {
-		JOptionPane.showMessageDialog(this, mensaje, "Campo vacio", JOptionPane.WARNING_MESSAGE);
+	public void mostrarMensajeCampoVacio() {
+		JOptionPane.showMessageDialog(this, "Por favor ingrese nombre.", "Campo vacio", JOptionPane.WARNING_MESSAGE);
 	}
 	
 }

@@ -5,8 +5,8 @@ public class ConstructorDePartida {
 	
 	public Posicion generarPosicionValida(Nivel nivel){
 		Random rnd = new Random();
-		int columnas = rnd.nextInt(nivel.columnasTablero);		
-		int filas = rnd.nextInt(nivel.filasTablero);
+		int columnas = rnd.nextInt(nivel.tablero.getCantidadDeColumnas());		
+		int filas = rnd.nextInt(nivel.tablero.getCantidadDeFilas());
 		
 		return new Posicion(columnas,filas);
 	}
@@ -17,10 +17,9 @@ public class ConstructorDePartida {
 		Posicion posicionInicial = generarPosicionValida(nivel);
 		
 		Vehiculo camioneta = new Vehiculo4x4(posicionInicial);
-		Tablero nuevoTablero = new Tablero(nivel.columnasTablero,nivel.filasTablero); 
 		int movimientosDisponibles = nivel.movimientosDisponibles;
 		
-		return new Partida(nuevoTablero,camioneta,posicionGanadora,movimientosDisponibles);
+		return new Partida(nivel.tablero, camioneta, posicionGanadora, movimientosDisponibles);
 	}
 	
 	public Partida construirPartidaConMoto(Nivel nivel){
@@ -28,10 +27,9 @@ public class ConstructorDePartida {
 		Posicion posicionInicial = generarPosicionValida(nivel);
 		
 		Vehiculo moto = new VehiculoMoto(posicionInicial);
-		Tablero nuevoTablero = new Tablero(nivel.columnasTablero,nivel.filasTablero); 
 		int movimientosDisponibles = nivel.movimientosDisponibles;
 		
-		return new Partida(nuevoTablero,moto,posicionGanadora,movimientosDisponibles);
+		return new Partida(nivel.tablero, moto, posicionGanadora, movimientosDisponibles);
 	}
 		
 	public Partida construirPartidaConAuto(Nivel nivel){
@@ -39,10 +37,9 @@ public class ConstructorDePartida {
 		Posicion posicionInicial = generarPosicionValida(nivel);
 		
 		Vehiculo auto = new VehiculoAuto(posicionInicial);
-		Tablero nuevoTablero = new Tablero(nivel.columnasTablero,nivel.filasTablero); 
 		int movimientosDisponibles = nivel.movimientosDisponibles;
 
-		return new Partida(nuevoTablero,auto,posicionGanadora,movimientosDisponibles);
+		return new Partida(nivel.tablero, auto, posicionGanadora, movimientosDisponibles);
 	}
 
 }
