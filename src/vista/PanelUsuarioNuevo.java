@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -38,6 +39,10 @@ public class PanelUsuarioNuevo extends JPanel {
 	
 	public void agregarEscuchaGuardar(ActionListener escuchaGuardar){
 		this.botonGuardar.addActionListener(escuchaGuardar);
+	}
+	
+	public void mostrarError(String mensaje) {
+		JOptionPane.showMessageDialog(this, mensaje, "Campo vacio", JOptionPane.WARNING_MESSAGE);
 	}
 	
 }
