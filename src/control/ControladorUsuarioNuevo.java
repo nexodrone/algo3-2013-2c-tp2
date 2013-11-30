@@ -38,7 +38,8 @@ public class ControladorUsuarioNuevo extends Controlador {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			ventana.remove(panelUsuarioNuevo);
-			ControladorMenuPrincipal contolador = new ControladorMenuPrincipal(juego, ventana, panelUsuarioNuevo.getNombreDelCampo());
+			nombreJugadorActual = panelUsuarioNuevo.getNombreDelCampo();
+			ControladorMenuPrincipal contolador = new ControladorMenuPrincipal(juego, ventana);
 		}			 
 	}
 	

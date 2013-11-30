@@ -1,6 +1,5 @@
-package principal;
+package modelo;
 
-import modelo.Juego;
 import vista.Ventana;
 import control.ControladorBienvenido;
 

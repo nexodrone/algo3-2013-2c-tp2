@@ -10,8 +10,8 @@ import javax.swing.JPanel;
 public class PanelComenzarPartida extends JPanel {
 
 	
-	private JLabel seleccioneNivel;
-	private JLabel seleccioneVehiculo;
+	private JLabel seleccioneNivel = new JLabel("Por favor seleccione un nivel");
+	private JLabel seleccioneVehiculo = new JLabel("Por favor seleccione un vehiculo");
 	private String[] listaDeNiveles = {"Facil","Intermedio","Dificil"};
 	private String[] listaDeVehiculos = {"Auto","4x4","Moto"};
 	private JComboBox<String> niveles;
@@ -22,16 +22,14 @@ public class PanelComenzarPartida extends JPanel {
 	  public PanelComenzarPartida(){
 		  this.setLayout(null);  
 		  
-		  this.seleccioneNivel=new JLabel("Por favor seleccione el nivel");
-		  this.seleccioneNivel.setBounds(200, 40, 200, 30);
+		  this.seleccioneNivel.setBounds(500, 60, 200, 20);
 		  this.niveles = new JComboBox<String>(listaDeNiveles);
-		  this.niveles.setBounds(200, 80, 100, 30);
-		  this.seleccioneVehiculo= new JLabel("Por favor seleccione un vehiculo");
-		  this.seleccioneVehiculo.setBounds(200, 120, 200, 30);
+		  this.niveles.setBounds(500, 80, 100, 30);
+		  this.seleccioneVehiculo.setBounds(500, 130, 200, 20);
 		  this.vehiculos = new JComboBox<String>(listaDeVehiculos);
-		  this.vehiculos.setBounds(200, 160, 100, 30);
-		  this.botonAceptar.setBounds(110, 230, 150, 30); 
-		  this.botonVolver.setBounds(310,230,150,30);
+		  this.vehiculos.setBounds(500, 150, 100, 30);
+		  this.botonAceptar.setBounds(500, 200, 200, 30); 
+		  this.botonVolver.setBounds(500, 250, 200, 30);
 		  
 		  this.add(seleccioneNivel);
 		  this.add(niveles);

@@ -42,7 +42,7 @@ public class ControladorComenzarPartida extends Controlador{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			ventana.remove(panelComenzarPartida);
-			ControladorMenuPrincipal contolador = new ControladorMenuPrincipal(juego, ventana,nombre);
+			ControladorMenuPrincipal contolador = new ControladorMenuPrincipal(juego, ventana);
 		}
 	}
 	

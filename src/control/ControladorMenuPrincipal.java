@@ -11,15 +11,15 @@ public class ControladorMenuPrincipal extends Controlador {
 	
 	private PanelMenuPrincipal panelMenuPrincipal;
 	
-	public ControladorMenuPrincipal(Juego juego, Ventana ventana, String nombre) {
+	public ControladorMenuPrincipal(Juego juego, Ventana ventana) {
 		this.juego = juego;
 		this.ventana = ventana;
-		this.agregarPanelLocal(nombre);
+		this.agregarPanelLocal();
 		this.ventana.setVisible(true);
 	}
 
-	private void agregarPanelLocal(String nombre) {
-		this.panelMenuPrincipal = new PanelMenuPrincipal(nombre);
+	private void agregarPanelLocal() {
+		this.panelMenuPrincipal = new PanelMenuPrincipal(nombreJugadorActual);
 		this.panelMenuPrincipal.agregarEscucharComenzarPartida(new EscuchaComenzarPartida());
 		this.panelMenuPrincipal.agregarEscucharSalir(new EscuchaSalir());
 		ventana.add(panelMenuPrincipal);

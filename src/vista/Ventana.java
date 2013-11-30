@@ -16,7 +16,7 @@ public class Ventana extends JFrame {
         this.setResizable(false);//evita que la ventana se maximize ni cambia su tamanio
         this.setLocation(250,250);//dibuja a 250px de distancia del monitor
       	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(600, 400);
+		this.setSize(1200, 800);
 		this.setIconImage(new ImageIcon(getClass().getResource("imagenes/gps.png")).getImage());
         frame = this;
     }
@@ -27,7 +27,7 @@ public class Ventana extends JFrame {
         this.setResizable(false);//evita que la ventana se maximize ni cambia su tamanio
         this.setLocation(250,250);//dibuja a 250px de distancia del monitor
       	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(600, 400);
+		this.setSize(1200, 800);
 		this.setIconImage(new ImageIcon(getClass().getResource("imagenes/gps.png")).getImage());
         frame = this;
     }

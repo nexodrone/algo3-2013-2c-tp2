@@ -20,11 +20,11 @@ public class PanelMenuPrincipal extends JPanel {
 		
 		this.nombre = nombre;
 		this.nombreUsuario = new JLabel("Hola "+nombre); 
-		this.nombreUsuario.setBounds(270, 10, 100, 100);
-		this.botonComenzarPartida.setBounds(200,100,200,30);
-		this.botonRetomarPartida.setBounds(200,150,200,30);
-		this.botonVerPuntajes.setBounds(200,200,200,30);
-		this.botonSalir.setBounds(200,250,200,30);
+		this.nombreUsuario.setBounds(570, 60, 200, 20);
+		this.botonComenzarPartida.setBounds(500, 100, 200,30);
+		this.botonRetomarPartida.setBounds(500, 150, 200,30);
+		this.botonVerPuntajes.setBounds(500, 200, 200, 30);
+		this.botonSalir.setBounds(500, 250, 200, 30);
 		
 		this.add(nombreUsuario);
 		this.add(botonComenzarPartida);
