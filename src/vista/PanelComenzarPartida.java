@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class PanelComenzarPartida extends JPanel {
@@ -60,4 +61,8 @@ public class PanelComenzarPartida extends JPanel {
 		  nivelSeleccionado = String.valueOf(e);
 		  return nivelSeleccionado;
 	  }
+	  
+		public void mostrarMensajeError() {
+			JOptionPane.showMessageDialog(this, "Se ocurrio error!", "Error", JOptionPane.ERROR_MESSAGE);
+		}
 }

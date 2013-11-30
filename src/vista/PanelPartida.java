@@ -1,9 +1,11 @@
 package vista;
 
 import java.awt.Color;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class PanelPartida extends JPanel {
@@ -31,13 +33,24 @@ public class PanelPartida extends JPanel {
 		this.add(this.vehiculoActual);
 		this.add(botonGuardar);
 		this.add(zonaDelJuego);
-		
 	}
 	
 	public void inicializarZonaDelJuego(int tamanioX, int tamanioY) {
 		this.zonaDelJuego.setLayout(null);
 		this.zonaDelJuego.setBounds(150, 10, tamanioX*20, tamanioY*20);
 		this.zonaDelJuego.setBackground(Color.black);
+	}
+	
+	public void agregarEscuchaGuardar(ActionListener escuchaGuardar){
+		this.botonGuardar.addActionListener(escuchaGuardar);
+	}
+	
+	public void mostrarMensajePartidaGuardada() {
+		JOptionPane.showMessageDialog(this, "Su partida es guardada exitosamente.", "Partida guardada", JOptionPane.INFORMATION_MESSAGE);
+	}
+
+	public void mostrarMensajeError() {
+		JOptionPane.showMessageDialog(this, "Se ocurrio error!", "Error", JOptionPane.ERROR_MESSAGE);
 	}
 	
 }

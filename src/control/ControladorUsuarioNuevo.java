@@ -37,7 +37,7 @@ public class ControladorUsuarioNuevo extends Controlador {
 	public class EscuchaGuardar implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if (panelUsuarioNuevo.getNombreDelCampo().isEmpty()) { panelUsuarioNuevo.mostrarError("Por favor ingrese nombre."); }
+			if (panelUsuarioNuevo.getNombreDelCampo().isEmpty()) { panelUsuarioNuevo.mostrarMensajeCampoVacio(); }
 			else {	ventana.remove(panelUsuarioNuevo);
 					nombreJugadorActual = panelUsuarioNuevo.getNombreDelCampo();
 					ControladorMenuPrincipal contolador = new ControladorMenuPrincipal(juego, ventana);	};

@@ -78,7 +78,7 @@ public class Juego {
 
     public void guardarPartida() throws Exception {
         String path = "partida" + jugadorActual.getNickName() + ".xml";
-        partidaActual.guardar(path);
+        partidaActual.guardarPartida(path);
     }
 
     public void cargarPartida() throws Exception {

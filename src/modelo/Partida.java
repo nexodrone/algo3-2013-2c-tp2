@@ -7,16 +7,16 @@ import modelo.excepciones.PartidaInexistente;
 import org.simpleframework.xml.*;
 import org.simpleframework.xml.core.Persister;
 
-@Root(name = "Partida")
+@Root (name = "Partida")
 public class Partida {
 
-	@Element ( name = "Tablero")
+	@Element (name = "Tablero")
 	private Tablero tablero;
-	@Element ( name ="Vehiculo")
+	@Element (name ="Vehiculo")
 	private Vehiculo vehiculo;
-	@Element ( name = "PosicionGanadora")
+	@Element (name = "PosicionGanadora")
 	private Posicion posicionGanadora;
-	@Attribute ( name = "CantidadDeMovimientosDisponibles")
+	@Attribute (name = "CantidadDeMovimientosDisponibles")
 	private int movimientosDisponibles;
 	
 	public Partida() {}
@@ -60,9 +60,10 @@ public class Partida {
 		return (movimientosDisponibles-vehiculo.cantidadDeMovimientos < 1);
 	}
 	
-	public void guardar(String path) throws Exception {
+	public void guardarPartida(String path) throws Exception {
 		Serializer serializador = new Persister();
-		serializador.write(this,  new File(path));
+		File archivoXML = new File(path);
+		serializador.write(this, archivoXML);
 	}
 
 	public static Partida recuperar(String path) throws PartidaInexistente {
