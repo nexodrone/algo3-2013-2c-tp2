@@ -28,13 +28,12 @@ public class ControladorComenzarPartida extends Controlador{
 		this.nombre = nombreJugador;
 		this.agregarPanelLocal();
 		this.ventana.setVisible(true);
-	
 	}
 
 	private void agregarPanelLocal() {
 		this.panelComenzarPartida = new PanelComenzarPartida();
 		this.panelComenzarPartida.agregarEscuchaVolver(new EscuchaVolver());
-		this.panelComenzarPartida.agregarEscucharAceptar(new EscuchaComenzarPartida());
+		this.panelComenzarPartida.agregarEscuchaAceptar(new EscuchaComenzarPartida());
 		ventana.add(panelComenzarPartida);
 	}
 

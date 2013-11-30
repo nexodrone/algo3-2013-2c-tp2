@@ -20,8 +20,8 @@ public class ControladorMenuPrincipal extends Controlador {
 
 	private void agregarPanelLocal() {
 		this.panelMenuPrincipal = new PanelMenuPrincipal(nombreJugadorActual);
-		this.panelMenuPrincipal.agregarEscucharComenzarPartida(new EscuchaComenzarPartida());
-		this.panelMenuPrincipal.agregarEscucharSalir(new EscuchaSalir());
+		this.panelMenuPrincipal.agregarEscuchaComenzarPartida(new EscuchaComenzarPartida());
+		this.panelMenuPrincipal.agregarEscuchaSalir(new EscuchaSalir());
 		ventana.add(panelMenuPrincipal);
 	}
 
@@ -37,7 +37,8 @@ public class ControladorMenuPrincipal extends Controlador {
 	public class EscuchaSalir implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e){
-			ventana.setVisible(false);			
+			ventana.setVisible(false);
+			ventana.dispose();
 		}
 	}
 	

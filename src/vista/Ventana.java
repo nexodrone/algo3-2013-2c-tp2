@@ -14,7 +14,7 @@ public class Ventana extends JFrame {
         this.setTitle("GPS Challenge");
         this.setLocationRelativeTo(null);
         this.setResizable(false);//evita que la ventana se maximize ni cambia su tamanio
-        this.setLocation(250,250);//dibuja a 250px de distancia del monitor
+        this.setLocation(100,100);//dibuja a 100px de distancia del monitor
       	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(1200, 800);
 		this.setIconImage(new ImageIcon(getClass().getResource("imagenes/gps.png")).getImage());

@@ -33,19 +33,19 @@ public class PanelMenuPrincipal extends JPanel {
 		this.add(botonSalir);
 	}
 	
-	public void agregarEscucharComenzarPartida(ActionListener escuchaComenzarPartida) {
+	public void agregarEscuchaComenzarPartida(ActionListener escuchaComenzarPartida) {
 		this.botonComenzarPartida.addActionListener(escuchaComenzarPartida);
 	}
 
-	public void agregarEscucharRetomarPartida(ActionListener escuchaRetomarPartida) {
+	public void agregarEscuchaRetomarPartida(ActionListener escuchaRetomarPartida) {
 		this.botonRetomarPartida.addActionListener(escuchaRetomarPartida);
 	}
 	
-	public void agregarEscucharVerPuntajes(ActionListener escuchaVerPuntajes) {
+	public void agregarEscuchaVerPuntajes(ActionListener escuchaVerPuntajes) {
 		this.botonVerPuntajes.addActionListener(escuchaVerPuntajes);
 	}
 	
-	public void agregarEscucharSalir(ActionListener escuchaSalir) {
+	public void agregarEscuchaSalir(ActionListener escuchaSalir) {
 		this.botonSalir.addActionListener(escuchaSalir);
 	}
 
