@@ -14,8 +14,8 @@ public class PanelBienvenido extends JPanel {
 	
 	public PanelBienvenido() {
 		this.setLayout(null);
-		this.botonNuevoUsuario.setBounds(200,100,200,30);
-		this.botonUsuarioRegistrado.setBounds(200,150,200,30);
+		this.botonNuevoUsuario.setBounds(500,100,200,30);
+		this.botonUsuarioRegistrado.setBounds(500,150,200,30);
 		
 		this.add(botonNuevoUsuario);
 		this.add(botonUsuarioRegistrado);

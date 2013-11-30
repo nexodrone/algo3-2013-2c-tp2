@@ -17,10 +17,10 @@ public class PanelUsuarioNuevo extends JPanel {
 	public PanelUsuarioNuevo() {
 		this.setLayout(null);
 	
-		this.etiqueta.setBounds(210, 50, 200, 30);
-		this.nombre.setBounds(200, 90, 200, 20);
-		this.botonGuardar.setBounds(70,130,200,30);
-		this.botonVolver.setBounds(320,130,200,30);
+		this.etiqueta.setBounds(510, 60, 200, 20);
+		this.nombre.setBounds(500, 100, 200, 20);
+		this.botonGuardar.setBounds(500, 150, 200, 30);
+		this.botonVolver.setBounds(500, 200, 200, 30);
 		
 		this.add(etiqueta);
 		this.add(nombre);
