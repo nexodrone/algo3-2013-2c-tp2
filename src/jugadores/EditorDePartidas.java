@@ -5,7 +5,7 @@ import modelo.Posicion;
 import modelo.Tablero;
 import modelo.VehiculoAuto;
 
-public class ConstructorDePartidas {
+public class EditorDePartidas {
 	
 	public static void main(String args[]) throws Exception {
 	

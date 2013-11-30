@@ -645,10 +645,10 @@
    </Tablero>
    <Vehiculo class="modelo.VehiculoAuto" cantidadDeMovimientos="0">
       <posicionActual>
-         <coordenadas X="4" Y="4"/>
+         <coordenadas X="0" Y="6"/>
       </posicionActual>
    </Vehiculo>
    <PosicionGanadora>
-      <coordenadas X="1" Y="2"/>
+      <coordenadas X="0" Y="6"/>
    </PosicionGanadora>
 </Partida>
