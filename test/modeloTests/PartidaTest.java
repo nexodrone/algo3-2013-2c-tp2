@@ -74,7 +74,7 @@ public class PartidaTest {
         
         unaPartida.guardarPartida("test/partidaTest.xml");
         
-        Partida otraPartida = Partida.recuperar("test/partidaTest.xml");
+        Partida otraPartida = Partida.cargarPartida("test/partidaTest.xml");
         
         assertEquals(otraPartida.getVehiculo().getCantidadDeMovimientos(), vehiculo.getCantidadDeMovimientos());
         assertEquals(otraPartida.getPosicionGanadora().asString(), posicionGanadora.asString());
@@ -82,6 +82,6 @@ public class PartidaTest {
 	
 	@Test (expected = PartidaInexistente.class )
 	public void testDeberiaTirarmeExcepcionAlNoHaberPartidaGuardad() throws Exception{
-		Partida unaPartida = Partida.recuperar("partidaInexistenteTest.xml");
+		Partida unaPartida = Partida.cargarPartida("partidaInexistenteTest.xml");
 	}
 }

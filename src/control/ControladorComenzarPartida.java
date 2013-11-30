@@ -65,7 +65,7 @@ public class ControladorComenzarPartida extends Controlador{
 
 	
 	public Nivel obtenerNivelSeleccionado(String nivelSeleccionado) throws Exception{
-		Nivel nivel = Nivel.setearNivel("src/niveles/nivel1.xml");
+		Nivel nivel = Nivel.cargarNivel("src/niveles/nivel1.xml");
 		return nivel;
 	}
 	

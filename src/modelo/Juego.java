@@ -77,13 +77,13 @@ public class Juego {
     }
 
     public void guardarPartida() throws Exception {
-        String path = "partida" + jugadorActual.getNickName() + ".xml";
+        String path = "src/jugadores/partida" + jugadorActual.getNickName() + ".xml";
         partidaActual.guardarPartida(path);
     }
 
     public void cargarPartida() throws Exception {
-        String path = "partida" + jugadorActual.getNickName() + ".xml";
-        this.partidaActual = Partida.recuperar(path);
+        String path = "src/jugadores/partida" + jugadorActual.getNickName() + ".xml";
+        this.partidaActual = Partida.cargarPartida(path);
     }
 
     public void setVehiculo(Vehiculo vehiculo) {
