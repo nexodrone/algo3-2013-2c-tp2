@@ -2,8 +2,8 @@ package modelo;
 
 import java.util.ArrayList;
 
-import modelo.excepciones.MovimientoInvalidoExcepcion;
 import modelo.excepciones.CalleBloqueadaPorPiqueteExcepcion;
+import modelo.excepciones.MovimientoInvalidoExcepcion;
 
 public class Juego {
 
@@ -94,4 +94,5 @@ public class Juego {
     public Vehiculo getVehiculo() {
         return partidaActual.getVehiculo();
     }
+
 }

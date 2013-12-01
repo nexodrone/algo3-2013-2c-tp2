@@ -12,7 +12,6 @@ public abstract class Vehiculo {
     @Attribute
     protected int cantidadDeMovimientos;
     protected Direccion direccion;
-    protected Juego juego;
 
     public Vehiculo(Posicion nuevaPosicion) {
         posicion = nuevaPosicion;
@@ -52,18 +51,10 @@ public abstract class Vehiculo {
         this.cantidadDeMovimientos = Math.round(movimientosResultantes);
     }
 
-    public void cambiarA(Vehiculo vehiculo) {
-        juego.setVehiculo(vehiculo);
-    }
-
     public boolean tienenElMismoEstado(Vehiculo vehiculo) {
         boolean cantidad = (cantidadDeMovimientos == vehiculo.getCantidadDeMovimientos());
         boolean posicionesIguales = posicion.equals(vehiculo.getPosicion());
         return (cantidad && posicionesIguales);
-    }
-
-    public void setJuegoActual(Juego juegoActual) {
-        juego = juegoActual;
     }
 
     public void setCantidadDeMovimientos(int cantidad) {
@@ -76,10 +67,6 @@ public abstract class Vehiculo {
 
     public void setPosicion(Posicion unaPosicion) {
         posicion = unaPosicion;
-    }
-
-    public Juego getJuego() {
-        return juego;
     }
 
     public Posicion calcularSiguientePosicion(Direccion unaDireccion) {
@@ -102,7 +89,7 @@ public abstract class Vehiculo {
         this.sumarMovimientos(1);
     }
 
-    public abstract void aplicarEvento(Evento evento);
+    public abstract void aplicarEvento(EventoColicion evento);
     // public void guardar(String path) throws Exception {
     // Serializer serializador = new Persister();
     // File resultado = new File(path);
