@@ -1,6 +1,7 @@
 package vista;
 
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -39,6 +40,10 @@ public class PanelUsuarioNuevo extends JPanel {
 	
 	public void agregarEscuchaGuardar(ActionListener escuchaGuardar){
 		this.botonGuardar.addActionListener(escuchaGuardar);
+	}
+	
+	public void agregarEscuchaEnter(KeyListener escuchaEnter) {
+		this.nombre.addKeyListener(escuchaEnter);
 	}
 	
 	public void mostrarMensajeCampoVacio() {
