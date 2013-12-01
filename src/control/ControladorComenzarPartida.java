@@ -40,15 +40,14 @@ public class ControladorComenzarPartida extends Controlador{
 			juego.setJugador(new Jugador(nombre));
 			String nivelSeleccionado = panelComenzarPartida.obtenerNivelSeleccionado();
 			String vehiculoSeleccionado = panelComenzarPartida.obtenerVehiculoSeleccionado();
-			Nivel nivel;
-			try {	nivel = Nivel.cargarNivel("src/niveles/nivel1.xml");
-					Partida partida = construirPartidaSeleccionada(vehiculoSeleccionado,nivel);
-					partida.getVehiculo().setJuegoActual(juego);
-					juego.setPartida(partida);			
-					ventana.remove(panelComenzarPartida);
-					ControladorPartida controlador = new ControladorPartida(juego,ventana,nivelSeleccionado,vehiculoSeleccionado);
-					
-				} catch (Exception e1) { panelComenzarPartida.mostrarMensajeError(); };
+			Nivel nivel = new Nivel();
+			try {	nivel = Nivel.cargarNivel("src/niveles/Nivel"+nivelSeleccionado+".xml");	}
+				catch (Exception e1) {	panelComenzarPartida.mostrarMensajeError();	};
+			Partida partida = construirPartidaSeleccionada(vehiculoSeleccionado, nivel);
+			partida.getVehiculo().setJuegoActual(juego);
+			juego.setPartida(partida);
+			ventana.remove(panelComenzarPartida);
+			ControladorPartida controlador = new ControladorPartida(juego,ventana,nivelSeleccionado,vehiculoSeleccionado); 
 		}
 	}
 

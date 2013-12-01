@@ -8,9 +8,9 @@ public class EditorDeNiveles {
 	public static void main(String args[]) throws Exception {
 		
 		Nivel nivel = new Nivel();
-		nivel.tablero = new Tablero(10,10);
-		nivel.movimientosDisponibles = 20;
+		nivel.tablero = new Tablero(30,30);
+		nivel.movimientosDisponibles = 40;
 		
-		nivel.guardarNivel("src/niveles/nivel1.xml");
+		nivel.guardarNivel("src/niveles/NivelDificil.xml");
 	}
 }
