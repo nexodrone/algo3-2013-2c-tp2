@@ -13,7 +13,7 @@ public class Vehiculo4x4 extends Vehiculo {
     public Vehiculo4x4() {
     }
 
-    public void aplicarEvento(Evento evento) {
+    public void aplicarEvento(EventoColicion evento) {
         evento.interactuarCon(this);
     }
 
