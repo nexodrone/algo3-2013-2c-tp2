@@ -27,8 +27,8 @@ public class PanelPartida extends JPanel {
 		this.nombreUsuario.setBounds(10, 10, 200, 20);
 		this.dificultad.setBounds(10, 30, 200, 20);
 		this.vehiculoActual.setBounds(10, 50, 200, 20);
-		this.botonGuardar.setBounds(10, 650, 200, 30);
-		this.botonVolver.setBounds(10, 700, 200, 30);
+		this.botonGuardar.setBounds(10, 550, 200, 30);
+		this.botonVolver.setBounds(10, 600, 200, 30);
 		this.nota.setBounds(10, 750, 500, 20);
 		
 		this.add(nota);
@@ -42,7 +42,7 @@ public class PanelPartida extends JPanel {
 	
 	public void inicializarZonaDelJuego(int tamanioX, int tamanioY) {
 		this.zonaDelJuego.setLayout(null);
-		this.zonaDelJuego.setBounds(150, 10, tamanioX*20, tamanioY*20);
+		this.zonaDelJuego.setBounds(300, 50, 850, 550);
 		this.zonaDelJuego.setBackground(Color.black);
 	}
 	

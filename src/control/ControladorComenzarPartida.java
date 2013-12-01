@@ -41,8 +41,11 @@ public class ControladorComenzarPartida extends Controlador{
 			String nivelSeleccionado = panelComenzarPartida.obtenerNivelSeleccionado();
 			String vehiculoSeleccionado = panelComenzarPartida.obtenerVehiculoSeleccionado();
 			Nivel nivel = new Nivel();
-			try {	nivel = Nivel.cargarNivel("src/niveles/Nivel"+nivelSeleccionado+".xml");	}
-				catch (Exception e1) {	panelComenzarPartida.mostrarMensajeError();	};
+			try {	
+				nivel = Nivel.cargarNivel("src/niveles/Nivel"+nivelSeleccionado+".xml");	
+			}catch (Exception e1) {	
+				panelComenzarPartida.mostrarMensajeError();	
+			};
 			Partida partida = construirPartidaSeleccionada(vehiculoSeleccionado, nivel);
 			partida.getVehiculo().setJuegoActual(juego);
 			juego.setPartida(partida);
@@ -53,9 +56,12 @@ public class ControladorComenzarPartida extends Controlador{
 
 	public Partida construirPartidaSeleccionada(String vehiculoSeleccionado, Nivel nivel) {
 		switch (vehiculoSeleccionado) {
-		case "Moto":	return ConstructorDePartida.construirPartidaConMoto(nivel);
-		case "Auto":	return ConstructorDePartida.construirPartidaConAuto(nivel);
-		default:		return ConstructorDePartida.construirPartidaCon4x4(nivel);
+			case "Moto":	
+				return ConstructorDePartida.construirPartidaConMoto(nivel);
+			case "Auto":	
+				return ConstructorDePartida.construirPartidaConAuto(nivel);
+			default:
+				return ConstructorDePartida.construirPartidaCon4x4(nivel);
 		}
 	}
 
