@@ -2,6 +2,9 @@ package vista;
 
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 import javax.swing.*;
 
 public class PanelPartida extends JPanel {
@@ -43,12 +46,24 @@ public class PanelPartida extends JPanel {
 		this.zonaDelJuego.setBackground(Color.black);
 	}
 	
-	public void agregarEscuchaGuardar(ActionListener escuchaGuardar){
+	public void agregarEscuchaGuardar(ActionListener escuchaGuardar) {
 		this.botonGuardar.addActionListener(escuchaGuardar);
 	}
 
-	public void agregarEscuchaVolver(ActionListener escuchaVolver){
-		this.botonVolver.addActionListener(escuchaVolver);		  
+	public void agregarEscuchaVolver(ActionListener escuchaVolver) {
+		this.botonVolver.addActionListener(escuchaVolver);
+	}
+	
+	public void agregarEscuchaFlechas(KeyListener escuchaFlechas) {
+		InputMap mapaDeEntrada = this.getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW);
+		ActionMap mapaDeAcciones = this.getActionMap();
+		
+		mapaDeEntrada.put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0), "FlechaArriba");
+		mapaDeEntrada.put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0), "FlechaAbajo");
+		mapaDeEntrada.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0), "FlechaIzquierda");
+		mapaDeEntrada.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0), "FlechaDerecha");
+		
+		this.addKeyListener(escuchaFlechas);
 	}
 	
 	public void mostrarMensajePartidaGuardada() {
@@ -57,6 +72,10 @@ public class PanelPartida extends JPanel {
 
 	public void mostrarMensajeError() {
 		JOptionPane.showMessageDialog(this, "Se ocurrio error!", "Error", JOptionPane.ERROR_MESSAGE);
+	}
+	
+	public void mostrarMensajeMovimientoInvalido() {
+		JOptionPane.showMessageDialog(this, "Imposible escapar de la ciudad.", "A donde van?", JOptionPane.ERROR_MESSAGE);
 	}
 	
 }
