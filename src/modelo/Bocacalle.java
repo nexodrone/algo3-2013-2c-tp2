@@ -15,11 +15,11 @@ public class Bocacalle {
         this.calleOeste = new Calle();
     }
     
-    public void setCalleSur(Calle calleSur) { /* visibilidad en paquete, necesario para constructor del tablero */
+    public void setCalleSur(Calle calleSur) {
         this.calleSur = calleSur;
     }
 
-    public void setCalleOeste(Calle calleOeste) { /* visibilidad en paquete, necesario para constructor del tablero */
+    public void setCalleOeste(Calle calleOeste) {
         this.calleOeste = calleOeste;
     }
 
