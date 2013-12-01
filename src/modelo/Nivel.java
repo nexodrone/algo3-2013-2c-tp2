@@ -15,9 +15,9 @@ public class Nivel {
 	public Tablero tablero;
 	
 	public Nivel() {
-
+		
+		this.tablero = new Tablero(10,20);
 		this.movimientosDisponibles = 30;
-		this.tablero = new Tablero(10,10);
 	}
 	
 	public void guardarNivel(String path) throws Exception {

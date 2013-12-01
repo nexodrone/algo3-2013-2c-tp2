@@ -62,7 +62,7 @@ public class PanelComenzarPartida extends JPanel {
 	}
 	  
 	public void mostrarMensajeError() {
-		JOptionPane.showMessageDialog(this, "Se ocurrio error!", "Error", JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(this, "Se ocurrio error! Se cargara nivel por defecto.", "Error", JOptionPane.ERROR_MESSAGE);
 	}
 
 }
