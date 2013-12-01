@@ -2,6 +2,7 @@ package control;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import modelo.Juego;
 import vista.PanelPartida;
 import vista.Ventana;
@@ -21,6 +22,7 @@ public class ControladorPartida extends Controlador {
 		this.panelPartida = new PanelPartida(nombre, vehiculo, dificultad);
 		this.panelPartida.inicializarZonaDelJuego(juego.getPartida().getTablero().getCantidadDeColumnas(), juego.getPartida().getTablero().getCantidadDeFilas());
 		this.panelPartida.agregarEscuchaGuardar(new EscuchaGuardar());
+		this.panelPartida.agregarEscuchaVolver(new EscuchaVolver());
 		ventana.add(panelPartida);
 	}
 	
@@ -32,5 +34,14 @@ public class ControladorPartida extends Controlador {
 				} catch (Exception e1) { panelPartida.mostrarMensajeError(); };
 		}
 	}
+	
+	public class EscuchaVolver implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			ventana.remove(panelPartida);
+			ControladorMenuPrincipal contolador = new ControladorMenuPrincipal(juego, ventana);
+		}
+	}
+	
 	
 }

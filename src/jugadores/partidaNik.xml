@@ -643,12 +643,12 @@
          </columnaDeBocacalles>
       </Bocacalles>
    </Tablero>
-   <Vehiculo class="modelo.VehiculoAuto" cantidadDeMovimientos="0">
+   <Vehiculo class="modelo.Vehiculo4x4" cantidadDeMovimientos="0">
       <posicionActual>
-         <coordenadas X="9" Y="0"/>
+         <coordenadas X="6" Y="6"/>
       </posicionActual>
    </Vehiculo>
    <PosicionGanadora>
-      <coordenadas X="8" Y="6"/>
+      <coordenadas X="2" Y="5"/>
    </PosicionGanadora>
 </Partida>
