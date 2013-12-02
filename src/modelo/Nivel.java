@@ -31,4 +31,8 @@ public class Nivel {
 		File archivoXML = new File(path);
 		return deserializador.read(Nivel.class, archivoXML);
 	}	
+	
+	public Tablero getTablero(){
+		return this.tablero;
+	}
 }
