@@ -28,7 +28,6 @@ public class ControladorMenuPrincipal extends Controlador {
     public class EscuchaComenzarPartida implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            String nombreJugador = panelMenuPrincipal.getNombreUsuario();
             ventana.remove(panelMenuPrincipal);
             ControladorComenzarPartida controlador = new ControladorComenzarPartida();
         }
@@ -45,7 +44,9 @@ public class ControladorMenuPrincipal extends Controlador {
 	            String vehiculoSeleccionado = partida.getVehiculo().asString();
 	            String nivelSeleccionado = recuperarStringDeDificultad(partida.dificultad);
 	            ControladorPartida controlador = new ControladorPartida(ventana, nivelSeleccionado, vehiculoSeleccionado);
-			} catch (PartidaInexistente e1) {	panelMenuPrincipal.mostrarMensajeNoHayPartida();	}
+			} catch (PartidaInexistente e1) {	
+				panelMenuPrincipal.mostrarMensajeNoHayPartida();	
+			}
 		}
     	
     }
