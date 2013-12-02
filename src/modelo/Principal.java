@@ -7,8 +7,8 @@ public class Principal {
 
     public static void main(String args[]) {
 
-        Juego juego = Juego.getInstance();
+        // Juego juego = Juego.getInstance();
         Ventana ventana = new Ventana();
-        ControladorBienvenido control = new ControladorBienvenido(juego, ventana);
+        ControladorBienvenido control = new ControladorBienvenido(ventana);
     }
 }
