@@ -11,7 +11,6 @@ import modelo.Calle;
 import modelo.Direccion;
 import modelo.Juego;
 import modelo.Jugador;
-import modelo.Observador;
 import modelo.ObstaculoPiquete;
 import modelo.ObstaculoPozo;
 import modelo.Partida;
@@ -34,7 +33,7 @@ public class JuegoTest {
 
     @Test
     public void testDeberiaCrearJuego() {
-        Juego unJuego = new Juego();
+        Juego unJuego = Juego.getInstance();
         assertNotNull(unJuego);
     }
 
@@ -42,7 +41,7 @@ public class JuegoTest {
 
     @Test
     public void testParaComprobarQueElVehiculoEsElMismoQueElDeLaPartida() {
-        Juego juego = new Juego();
+        Juego juego = Juego.getInstance();
         Vehiculo vehiculo = new VehiculoMoto();
         Partida partida = new Partida();
         partida.setVehiculo(vehiculo);
@@ -54,7 +53,7 @@ public class JuegoTest {
 
     public void testParaComprobarQueCambiaCorrectamenteElJugador() {
         Jugador jugador = new Jugador();
-        Juego juego = new Juego();
+        Juego juego = Juego.getInstance();
         juego.setJugador(jugador);
 
         assertEquals(juego.getJugadorActual(), jugador);
@@ -68,7 +67,7 @@ public class JuegoTest {
         int cantidadDeMovimientos = 10;
         Partida unaPartida = new Partida(tablero, vehiculo, new Posicion(0, 0), cantidadDeMovimientos);
 
-        Juego unJuego = new Juego();
+        Juego unJuego = Juego.getInstance();
         unJuego.setPartida(unaPartida);
 
         Direccion norte = new Direccion(0, 1);
@@ -92,7 +91,7 @@ public class JuegoTest {
         Vehiculo vehiculo = new VehiculoAuto(new Posicion(4, 0));
         vehiculo.setCantidadDeMovimientos(6);
         Partida unaPartida = new Partida(tablero, vehiculo, new Posicion(0, 0), 10);
-        Juego unJuego = new Juego();
+        Juego unJuego = Juego.getInstance();
         unJuego.setPartida(unaPartida);
 
         Direccion sur = new Direccion(0, -1);
@@ -113,7 +112,7 @@ public class JuegoTest {
         Vehiculo vehiculo = new VehiculoAuto(new Posicion(0, 0));
         vehiculo.setCantidadDeMovimientos(0);
         Posicion posicionGanadora = new Posicion(2, 2);
-        Observador observador = new Observador();
+        // Observador observador = Observador.getInstance();
 
         int movimientosDisponibles = 100;
 
@@ -123,15 +122,15 @@ public class JuegoTest {
         Direccion oeste = new Direccion(-1, 0);
 
         Calle calleSurDePosicionUnoCero = tablero.getBocacalleEnPosicion(new Posicion(1, 0)).getCalleEnDireccion(sur);
-        calleSurDePosicionUnoCero.setSorpresa(new SorpresaCambioDeVehiculo(observador));
+        calleSurDePosicionUnoCero.setSorpresa(new SorpresaCambioDeVehiculo());
         Calle calleOesteDePosicionUnoUno = tablero.getBocacalleEnPosicion(new Posicion(1, 0)).getCalleEnDireccion(oeste);
         calleOesteDePosicionUnoUno.setObstaculo(new ObstaculoPozo());
         Calle calleEsteDePosicionUnoUno = tablero.getBocacalleEnPosicion(new Posicion(1, 0)).getCalleEnDireccion(este);
         calleEsteDePosicionUnoUno.setSorpresa(new SorpresaDesfavorable());
 
         Partida unaPartida = new Partida(tablero, vehiculo, posicionGanadora, movimientosDisponibles);
-        Juego unJuego = new Juego();
-        observador.setJuego(unJuego);
+        Juego unJuego = Juego.getInstance();
+        // observador.setJuego(unJuego);
         unJuego.setPartida(unaPartida);
 
         unJuego.realizarJugadaEnDireccion(norte);
@@ -150,7 +149,7 @@ public class JuegoTest {
         Vehiculo moto = new VehiculoMoto(new Posicion(1, 1));
         moto.setCantidadDeMovimientos(0);
         Posicion posicionGanadora = new Posicion(0, 3);
-        Observador observador = new Observador();
+        // Observador observador = Observador.getInstance();
         int movimientosDisponibles = 100;
 
         Direccion norte = new Direccion(0, 1);
@@ -160,11 +159,11 @@ public class JuegoTest {
 
         tablero.getBocacalleEnPosicion(new Posicion(1, 1)).getCalleEnDireccion(este).setObstaculo(new ObstaculoPiquete());
         tablero.getBocacalleEnPosicion(new Posicion(2, 1)).getCalleEnDireccion(este).setSorpresa(new SorpresaFavorable());
-        tablero.getBocacalleEnPosicion(new Posicion(3, 1)).getCalleEnDireccion(norte).setSorpresa(new SorpresaCambioDeVehiculo(observador));
+        tablero.getBocacalleEnPosicion(new Posicion(3, 1)).getCalleEnDireccion(norte).setSorpresa(new SorpresaCambioDeVehiculo());
         tablero.getBocacalleEnPosicion(new Posicion(3, 3)).getCalleEnDireccion(oeste).setSorpresa(new SorpresaDesfavorable());
 
-        Juego unJuego = new Juego();
-        observador.setJuego(unJuego);
+        Juego unJuego = Juego.getInstance();
+        // observador.setJuego(unJuego);
         // moto.setJuegoActual(unJuego);
         Partida unaPartida = new Partida(tablero, moto, posicionGanadora, movimientosDisponibles);
         unJuego.setPartida(unaPartida);
@@ -197,7 +196,7 @@ public class JuegoTest {
 
         Partida unaPartida = new Partida(tablero, vehiculo, posicionGanadora, movimientosDisponibles);
 
-        Juego unJuego = new Juego();
+        Juego unJuego = Juego.getInstance();
         unJuego.setPartida(unaPartida);
         // vehiculo.setJuegoActual(unJuego);
 
@@ -241,14 +240,14 @@ public class JuegoTest {
         Vehiculo4x4 vehiculo = new Vehiculo4x4(new Posicion(4, 2));
         vehiculo.setCantidadDeMovimientos(0);
         Posicion posicionGanadora = new Posicion(0, 0);
-        Observador observador = new Observador();
+        // Observador observador = Observador.getInstance();
         int movimientosDisponibles = 10;
 
         Partida unaPartida = new Partida(tablero, vehiculo, posicionGanadora, movimientosDisponibles);
 
-        Juego unJuego = new Juego();
+        Juego unJuego = Juego.getInstance();
         unJuego.setPartida(unaPartida);
-        observador.setJuego(unJuego);
+        // observador.setJuego(unJuego);
         // vehiculo.setJuegoActual(unJuego);
 
         Direccion norte = new Direccion(0, 1);
@@ -261,7 +260,7 @@ public class JuegoTest {
         tablero.getBocacalleEnPosicion(new Posicion(1, 0)).getCalleEnDireccion(norte).setSorpresa(new SorpresaDesfavorable());
         tablero.getBocacalleEnPosicion(new Posicion(3, 0)).getCalleEnDireccion(oeste).setSorpresa(new SorpresaFavorable());
         tablero.getBocacalleEnPosicion(new Posicion(3, 0)).getCalleEnDireccion(norte).setSorpresa(new SorpresaFavorable());
-        tablero.getBocacalleEnPosicion(new Posicion(3, 1)).getCalleEnDireccion(oeste).setSorpresa(new SorpresaCambioDeVehiculo(observador));
+        tablero.getBocacalleEnPosicion(new Posicion(3, 1)).getCalleEnDireccion(oeste).setSorpresa(new SorpresaCambioDeVehiculo());
 
         unJuego.realizarJugadaEnDireccion(sur);
         unJuego.realizarJugadaEnDireccion(oeste);
@@ -304,7 +303,7 @@ public class JuegoTest {
 
         Partida unaPartida = new Partida(tablero, vehiculo, posicionGanadora, movimientosDisponibles);
 
-        Juego unJuego = new Juego();
+        Juego unJuego = Juego.getInstance();
         unJuego.setPartida(unaPartida);
         // vehiculo.setJuegoActual(unJuego);
 
@@ -317,13 +316,14 @@ public class JuegoTest {
     @Test
     public void testAlMoverPorCalleConSorpresaCambioDeVehiculo4x4SeTransformaEnMoto() throws CalleBloqueadaPorPiqueteExcepcion {
         Vehiculo4x4 todoterreno = new Vehiculo4x4(null);
-        Juego unJuego = new Juego();
+        Juego unJuego = Juego.getInstance();
         Partida unaPartida = new Partida(null, todoterreno, null, 100);
         unJuego.setPartida(unaPartida);
-        Observador observador = new Observador(unJuego);
+        // Observador observador = Observador.getInstance();
+        // observador.setJuego(unJuego);
 
         Calle calle = new Calle();
-        calle.setSorpresa(new SorpresaCambioDeVehiculo(observador));
+        calle.setSorpresa(new SorpresaCambioDeVehiculo());
         todoterreno.pasarPorCalle(calle);
         assertEquals(unJuego.getPartida().getVehiculo().getClass(), (new VehiculoMoto()).getClass());
     }
@@ -331,14 +331,15 @@ public class JuegoTest {
     @Test
     public void testAlMoverPorCalleConSorpresaCambioDeVehiculoMotoSeTransformaEnAuto() throws CalleBloqueadaPorPiqueteExcepcion {
         VehiculoMoto moto = new VehiculoMoto(null);
-        Juego unJuego = new Juego();
+        Juego unJuego = Juego.getInstance();
         Partida unaPartida = new Partida(null, moto, null, 100);
-        Observador observador = new Observador(unJuego);
+        // Observador observador = Observador.getInstance();
+        // observador.setJuego(unJuego);
         unJuego.setPartida(unaPartida);
         // moto.setJuegoActual(unJuego);
 
         Calle calle = new Calle();
-        calle.setSorpresa(new SorpresaCambioDeVehiculo(observador));
+        calle.setSorpresa(new SorpresaCambioDeVehiculo());
         moto.pasarPorCalle(calle);
         assertEquals(unJuego.getPartida().getVehiculo().getClass(), (new VehiculoAuto()).getClass());
     }
@@ -346,14 +347,15 @@ public class JuegoTest {
     @Test
     public void testAlMoverPorCalleConSorpresaCambioDeVehiculoAutoSeTransformaEn4x4() throws CalleBloqueadaPorPiqueteExcepcion {
         VehiculoAuto auto = new VehiculoAuto(null);
-        Juego unJuego = new Juego();
+        Juego unJuego = Juego.getInstance();
         Partida unaPartida = new Partida(null, auto, null, 100);
-        Observador observador = new Observador(unJuego);
+        // /Observador observador = Observador.getInstance();
+        // observador.setJuego(unJuego);
         unJuego.setPartida(unaPartida);
         // auto.setJuegoActual(unJuego);
 
         Calle calle = new Calle();
-        calle.setSorpresa(new SorpresaCambioDeVehiculo(observador));
+        calle.setSorpresa(new SorpresaCambioDeVehiculo());
         auto.pasarPorCalle(calle);
         assertEquals(unJuego.getPartida().getVehiculo().getClass(), (new Vehiculo4x4()).getClass());
     }
@@ -369,7 +371,7 @@ public class JuegoTest {
         Partida unaPartida = new Partida(tablero, vehiculo, posicionGanadora, movimientosDisponibles);
         Jugador unJugador = new Jugador("Rober");
 
-        Juego unJuego = new Juego();
+        Juego unJuego = Juego.getInstance();
         unJuego.setPartida(unaPartida);
         unJuego.setJugador(unJugador);
         // vehiculo.setJuegoActual(unJuego);
@@ -386,7 +388,7 @@ public class JuegoTest {
 
         unJuego.guardarPartida();
 
-        Juego otroJuego = new Juego();
+        Juego otroJuego = Juego.getInstance();
         otroJuego.setJugador(unJugador);
 
         otroJuego.cargarPartida();
@@ -397,7 +399,7 @@ public class JuegoTest {
 
     @Test
     public void testGuardarPuntajes() throws Exception {
-        Juego unJuego = new Juego();
+        Juego unJuego = Juego.getInstance();
         unJuego.guardarPuntaje("Chango", 45);
         unJuego.guardarPuntaje("Matori", 32);
         unJuego.guardarPuntaje("Jedi", 77);
@@ -406,7 +408,7 @@ public class JuegoTest {
 
         unJuego.guardarPuntajes("test/puntajesTest.xml");
 
-        Juego otroJuego = new Juego();
+        Juego otroJuego = Juego.getInstance();
         otroJuego.cargarPuntajes("test/puntajesTest.xml");
 
         ArrayList<Puntaje> puntajesOrdenados = (otroJuego.getPuntajesOrdenados());
