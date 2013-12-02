@@ -6,7 +6,6 @@ import static org.junit.Assert.assertTrue;
 import modelo.Calle;
 import modelo.Direccion;
 import modelo.Juego;
-import modelo.Observador;
 import modelo.ObstaculoPiquete;
 import modelo.Partida;
 import modelo.Posicion;
@@ -217,13 +216,13 @@ public class VehiculoMotoTest {
         int cantidadDeMovimientos = 0;
         VehiculoMoto vehiculo = new VehiculoMoto(null);
         vehiculo.setCantidadDeMovimientos(cantidadDeMovimientos);
-        Observador observador = new Observador();
-        Sorpresa sorpresa = new SorpresaCambioDeVehiculo(observador);
+        // Observador observador = Observador.getInstance();
+        Sorpresa sorpresa = new SorpresaCambioDeVehiculo();
 
         Partida unaPartida = new Partida(null, vehiculo, null, 100);
-        Juego juego = new Juego();
+        Juego juego = Juego.getInstance();
         juego.setPartida(unaPartida);
-        observador.setJuego(juego);
+        // observador.setJuego(juego);
 
         // vehiculo.setJuegoActual(juego);
         vehiculo.aplicarEvento(sorpresa);
@@ -237,19 +236,19 @@ public class VehiculoMotoTest {
         int cantidadDeMovimientos = 0;
         Posicion posicion = new Posicion(1, 2);
         Direccion unaDireccion = new Direccion(1, 0);
-        Observador observador = new Observador();
+        // Observador observador = Observador.getInstance();
         Calle calle = new Calle();
 
         VehiculoMoto vehiculo = new VehiculoMoto(posicion);
         vehiculo.setCantidadDeMovimientos(cantidadDeMovimientos);
-        Sorpresa sorpresa = new SorpresaCambioDeVehiculo(observador);
+        Sorpresa sorpresa = new SorpresaCambioDeVehiculo();
         calle.setSorpresa(sorpresa);
 
         Partida unaPartida = new Partida(null, vehiculo, null, 100);
 
-        Juego juego = new Juego();
+        Juego juego = Juego.getInstance();
         juego.setPartida(unaPartida);
-        observador.setJuego(juego);
+        // observador.setJuego(juego);
         // vehiculo.setJuegoActual(juego);
         vehiculo.moverEnDireccion(unaDireccion, calle);
 
@@ -263,16 +262,15 @@ public class VehiculoMotoTest {
         int cantidadDeMovimientos = 0;
         Posicion posicion = new Posicion(2, 3);
         VehiculoMoto vehiculo = new VehiculoMoto(posicion);
-        Observador observador = new Observador();
+        // Observador observador = Observador.getInstance();
         vehiculo.setCantidadDeMovimientos(cantidadDeMovimientos);
-        Sorpresa sorpresa = new SorpresaCambioDeVehiculo(observador);
+        Sorpresa sorpresa = new SorpresaCambioDeVehiculo();
 
         Partida unaPartida = new Partida(null, vehiculo, null, 100);
-        Juego juego = new Juego();
+        Juego juego = Juego.getInstance();
         juego.setPartida(unaPartida);
-        observador.setJuego(juego);
+        // observador.setJuego(juego);
 
-        // vehiculo.setJuegoActual(juego);
         vehiculo.aplicarEvento(sorpresa);
         Vehiculo nuevoVehiculo = juego.getPartida().getVehiculo();
         Vehiculo otroVehiculo = new VehiculoAuto(null);
