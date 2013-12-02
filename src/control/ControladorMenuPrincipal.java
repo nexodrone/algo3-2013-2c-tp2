@@ -29,7 +29,7 @@ public class ControladorMenuPrincipal extends Controlador {
         @Override
         public void actionPerformed(ActionEvent e) {
             ventana.remove(panelMenuPrincipal);
-            ControladorComenzarPartida controlador = new ControladorComenzarPartida();
+            ControladorElegirNivel controlador = new ControladorElegirNivel();
         }
     }
 
