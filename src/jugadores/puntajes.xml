@@ -1,0 +1,9 @@
+<nombres>
+   <lista>
+      <puntaje nombre="Chango" puntaje="45"/>
+      <puntaje nombre="Matori" puntaje="32"/>
+      <puntaje nombre="Jedi" puntaje="77"/>
+      <puntaje nombre="Ciriaso" puntaje="150"/>
+      <puntaje nombre="Carolo" puntaje="10"/>
+   </lista>
+</nombres>
