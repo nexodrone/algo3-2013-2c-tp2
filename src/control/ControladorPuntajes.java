@@ -11,8 +11,8 @@ public class ControladorPuntajes extends Controlador {
 
     private PanelPuntajes elPanel;
 
-    public ControladorPuntajes(Ventana ventana) {
-        this.juego = Juego.getInstance();
+    public ControladorPuntajes() {
+
         try {
             juego.cargarPuntajes("src/jugadores/puntajes.xml");
         } catch (Exception e) {
@@ -30,7 +30,7 @@ public class ControladorPuntajes extends Controlador {
         public void actionPerformed(ActionEvent e) {
             elPanel.setVisible(false);
             ventana.remove(elPanel);
-            ControladorMenuPrincipal controlador = new ControladorMenuPrincipal(ventana);
+            ControladorMenuPrincipal controlador = new ControladorMenuPrincipal();
         }
     }
 }

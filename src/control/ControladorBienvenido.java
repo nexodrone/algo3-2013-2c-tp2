@@ -30,7 +30,7 @@ public class ControladorBienvenido extends Controlador {
         @Override
         public void actionPerformed(ActionEvent e) {
             ventana.remove(panelBienvenido);
-            ControladorUsuarioNuevo contolador = new ControladorUsuarioNuevo(ventana);
+            ControladorUsuarioNuevo contolador = new ControladorUsuarioNuevo();
         }
     }
 
