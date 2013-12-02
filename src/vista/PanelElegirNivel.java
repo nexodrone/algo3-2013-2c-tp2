@@ -1,6 +1,8 @@
 package vista;
 
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
+
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -90,6 +92,12 @@ public class PanelElegirNivel extends JPanel {
 	
 	public void mostrarMensajeCampoVacio() {
 		JOptionPane.showMessageDialog(this, "Por favor seleccione un nivel.", "Nivel no seleccionado", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public void agregarEscuchaEnter(KeyListener escuchaEnter) {
+		this.botonFacil.addKeyListener(escuchaEnter);
+		this.botonIntermedio.addKeyListener(escuchaEnter);
+		this.botonDificil.addKeyListener(escuchaEnter);
 	}
 	
 }

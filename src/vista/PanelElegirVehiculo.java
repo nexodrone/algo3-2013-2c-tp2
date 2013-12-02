@@ -1,6 +1,7 @@
 package vista;
 
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -100,6 +101,13 @@ public class PanelElegirVehiculo extends JPanel {
 	public String obtenerNivelSeleccionado(){
 		return nivel;
 	}
+	
+	public void agregarEscuchaEnter(KeyListener escuchaEnter) {
+		this.botonAuto.addKeyListener(escuchaEnter);
+		this.botonMoto.addKeyListener(escuchaEnter);
+		this.boton4x4.addKeyListener(escuchaEnter);
+	}
+	
 	
 }
 
