@@ -17,9 +17,10 @@ public class ConstructorDePartida {
 		Posicion posicionInicial = generarPosicionValida(nivel);
 		
 		Vehiculo camioneta = new Vehiculo4x4(posicionInicial);
-		int movimientosDisponibles = nivel.movimientosDisponibles;
+		Partida partida = new Partida(nivel.tablero, camioneta, posicionGanadora, nivel.movimientosDisponibles);
+		partida.dificultad = nivel.dificultad;
 		
-		return new Partida(nivel.tablero, camioneta, posicionGanadora, movimientosDisponibles);
+		return partida;
 	}
 	
 	public static Partida construirPartidaConMoto(Nivel nivel){
@@ -27,9 +28,10 @@ public class ConstructorDePartida {
 		Posicion posicionInicial = generarPosicionValida(nivel);
 		
 		Vehiculo moto = new VehiculoMoto(posicionInicial);
-		int movimientosDisponibles = nivel.movimientosDisponibles;
+		Partida partida = new Partida(nivel.tablero, moto, posicionGanadora, nivel.movimientosDisponibles);
+		partida.dificultad = nivel.dificultad;
 		
-		return new Partida(nivel.tablero, moto, posicionGanadora, movimientosDisponibles);
+		return partida;
 	}
 		
 	public static Partida construirPartidaConAuto(Nivel nivel){
@@ -37,9 +39,10 @@ public class ConstructorDePartida {
 		Posicion posicionInicial = generarPosicionValida(nivel);
 		
 		Vehiculo auto = new VehiculoAuto(posicionInicial);
-		int movimientosDisponibles = nivel.movimientosDisponibles;
-
-		return new Partida(nivel.tablero, auto, posicionGanadora, movimientosDisponibles);
+		Partida partida = new Partida(nivel.tablero, auto, posicionGanadora, nivel.movimientosDisponibles);
+		partida.dificultad = nivel.dificultad;
+		
+		return partida;
 	}
 
 }

@@ -11,11 +11,11 @@ public class ControladorBienvenido extends Controlador {
 
     private PanelBienvenido panelBienvenido;
 
-    public ControladorBienvenido(Ventana ventana) {
-        this.juego = Juego.getInstance();
-        this.ventana = ventana;
+    public ControladorBienvenido() {
+        juego = Juego.getInstance();
+        ventana = new Ventana();
         this.agregarPanelLocal();
-        this.ventana.setVisible(true);
+        ventana.setVisible(true);
     }
 
     private void agregarPanelLocal() {

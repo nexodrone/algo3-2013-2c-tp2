@@ -4,12 +4,13 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class PanelMenuPrincipal extends JPanel {
 	
 	private JButton botonComenzarPartida= new JButton("Comenzar partida");
-	private JButton botonRetomarPartida = new JButton("Retomar partido guardada");
+	private JButton botonRetomarPartida = new JButton("Retomar partida guardada");
 	private JButton botonVerPuntajes = new JButton("Ver puntajes");
 	private JButton botonSalir = new JButton("Salir");
 	private JLabel nombreUsuario;
@@ -51,6 +52,10 @@ public class PanelMenuPrincipal extends JPanel {
 
 	public String getNombreUsuario(){
 		return nombre;
+	}
+	
+	public void mostrarMensajeNoHayPartida() {
+		JOptionPane.showMessageDialog(this, "Ud no tiene partida guardada.", "No hay partida", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 }
