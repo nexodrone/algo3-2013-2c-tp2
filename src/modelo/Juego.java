@@ -16,7 +16,7 @@ public class Juego {
         puntajes = new Puntajes();
     };
 
-    public void setJugador(Jugador jugador) {
+    public void setJugadorActual(Jugador jugador) {
         this.jugadorActual = jugador;
     }
 

@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
+import modelo.Jugador;
 import vista.PanelUsuarioNuevo;
 
 public class ControladorUsuarioNuevo extends Controlador {
@@ -38,7 +40,7 @@ public class ControladorUsuarioNuevo extends Controlador {
                 panelUsuarioNuevo.mostrarMensajeCampoVacio();
             } else {
                 ventana.remove(panelUsuarioNuevo);
-                nombreJugadorActual = panelUsuarioNuevo.getNombreDelCampo();
+                juego.setJugadorActual(new Jugador(panelUsuarioNuevo.getNombreDelCampo()));
                 ControladorMenuPrincipal contolador = new ControladorMenuPrincipal();
             };
         }
@@ -56,7 +58,7 @@ public class ControladorUsuarioNuevo extends Controlador {
                     panelUsuarioNuevo.mostrarMensajeCampoVacio();
                 } else {
                     ventana.remove(panelUsuarioNuevo);
-                    nombreJugadorActual = panelUsuarioNuevo.getNombreDelCampo();
+                    juego.setJugadorActual(new Jugador(panelUsuarioNuevo.getNombreDelCampo()));
                     ControladorMenuPrincipal contolador = new ControladorMenuPrincipal();
                 };
             }

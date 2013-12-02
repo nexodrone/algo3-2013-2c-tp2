@@ -54,7 +54,7 @@ public class JuegoTest {
     public void testParaComprobarQueCambiaCorrectamenteElJugador() {
         Jugador jugador = new Jugador();
         Juego juego = Juego.getInstance();
-        juego.setJugador(jugador);
+        juego.setJugadorActual(jugador);
 
         assertEquals(juego.getJugadorActual(), jugador);
 
@@ -373,7 +373,7 @@ public class JuegoTest {
 
         Juego unJuego = Juego.getInstance();
         unJuego.setPartida(unaPartida);
-        unJuego.setJugador(unJugador);
+        unJuego.setJugadorActual(unJugador);
         // vehiculo.setJuegoActual(unJuego);
 
         Direccion norte = new Direccion(0, 1);
@@ -389,7 +389,7 @@ public class JuegoTest {
         unJuego.guardarPartida();
 
         Juego otroJuego = Juego.getInstance();
-        otroJuego.setJugador(unJugador);
+        otroJuego.setJugadorActual(unJugador);
 
         otroJuego.cargarPartida();
 
