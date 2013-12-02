@@ -7,6 +7,9 @@ import java.awt.event.KeyListener;
 
 import javax.swing.*;
 
+import modelo.Nivel;
+import modelo.Tablero;
+
 public class PanelPartida extends JPanel {
 	
 	private JButton botonGuardar = new JButton("Guardar");
@@ -16,20 +19,26 @@ public class PanelPartida extends JPanel {
 	private JLabel dificultad;
 	private JLabel vehiculoActual;
 	private JPanel zonaDelJuego = new JPanel();
+	private int anchoZonaDelJuego = 850;
+	private int largoZonaDelJuego = 550;
+	String nivelSeleccionado;
+
 	
 	public PanelPartida(String nombre, String dificultad, String vehiculo) {
 		this.setLayout(null);
-
+		this.nivelSeleccionado=dificultad;
+		
 		this.nombreUsuario = new JLabel("Jugador: "+nombre);
 		this.dificultad = new JLabel("Dificultad: "+dificultad);
 		this.vehiculoActual = new JLabel("Vehiculo: "+vehiculo);
-		
+			
 		this.nombreUsuario.setBounds(10, 10, 200, 20);
 		this.dificultad.setBounds(10, 30, 200, 20);
 		this.vehiculoActual.setBounds(10, 50, 200, 20);
 		this.botonGuardar.setBounds(10, 550, 200, 30);
 		this.botonVolver.setBounds(10, 600, 200, 30);
 		this.nota.setBounds(10, 750, 500, 20);
+		
 		
 		this.add(nota);
 		this.add(this.nombreUsuario);
@@ -42,8 +51,57 @@ public class PanelPartida extends JPanel {
 	
 	public void inicializarZonaDelJuego(int tamanioX, int tamanioY) {
 		this.zonaDelJuego.setLayout(null);
-		this.zonaDelJuego.setBounds(300, 50, 850, 550);
+		this.zonaDelJuego.setBounds(300, 50,anchoZonaDelJuego,largoZonaDelJuego);
 		this.zonaDelJuego.setBackground(Color.black);
+		
+		Tablero tablero = obtenerTableroDeNivelSeleccionado();
+		int constanteFila=0;
+		int constanteColumna=1;
+		int posicionX=0;
+		int posicionY=0;
+		int largoManzana = calcularLargoManzana();
+		int anchoManzana = calcularAnchoManzana();
+		
+		for (int i=0;i<tablero.getCantidadDeColumnas();i++){
+			for(int j=0; j< tablero.getCantidadDeFilas(); j++){
+				posicionY= largoManzana *(j+constanteFila);
+				JLabel manzana = crearUnaManzana(posicionX,posicionY,anchoManzana,largoManzana);
+				this.zonaDelJuego.add(manzana);
+				constanteFila++;
+			}
+			constanteColumna++;
+			posicionX=anchoManzana *(i+constanteColumna);
+			posicionY=0;
+			constanteFila=0;
+		}	
+	}
+
+	int calcularLargoManzana(){
+		Tablero tablero = obtenerTableroDeNivelSeleccionado();
+		return largoZonaDelJuego/(tablero.getCantidadDeFilas()*2);
+	}
+	
+	public int calcularAnchoManzana(){
+		Tablero tablero = obtenerTableroDeNivelSeleccionado();
+		return anchoZonaDelJuego/(tablero.getCantidadDeColumnas()*2);
+	}
+	
+	public JLabel crearUnaManzana(int posX,int posY,int ancho,int alto){
+		JLabel manzana = new JLabel("");
+		ImageIcon icono = new ImageIcon("src/vista/imagenes/manzana.png");
+		manzana.setIcon(icono);
+		manzana.setBounds(posX, posY, ancho, alto);
+		return manzana;	
+	}
+	
+	public Tablero obtenerTableroDeNivelSeleccionado(){
+		Nivel nivel = new Nivel();
+		try{
+			nivel =  Nivel.cargarNivel("src/niveles/Nivel"+nivelSeleccionado+".xml");
+		}catch(Exception e1){	
+			System.out.print("No existe xml, se carga nivel por defecto");
+		}
+		return nivel.getTablero();
 	}
 	
 	public void agregarEscuchaGuardar(ActionListener escuchaGuardar) {
