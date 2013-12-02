@@ -1,14 +1,23 @@
 package modelo;
 
 public class Observador {
-    Juego juego;
+    private static Observador INSTANCE = null;
+    private Juego juego;
 
-    public Observador(Juego unJuego) {
-        juego = unJuego;
+    // Private constructor suppresses
+    private Observador() {
+        juego = Juego.getInstance();
     }
 
-    public Observador() {
+    private synchronized static void createInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new Observador();
+        }
+    }
 
+    public static Observador getInstance() {
+        createInstance();
+        return INSTANCE;
     }
 
     public void cambiarVehiculo(Vehiculo nuevoVehiculo) {
@@ -16,7 +25,4 @@ public class Observador {
 
     }
 
-    public void setJuego(Juego unJuego) {
-        juego = unJuego;
-    }
 }

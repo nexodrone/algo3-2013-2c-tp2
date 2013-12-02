@@ -6,8 +6,8 @@ import org.simpleframework.xml.Root;
 public class SorpresaCambioDeVehiculo extends Sorpresa {
     Observador observador;
 
-    public SorpresaCambioDeVehiculo(Observador unObservador) {
-        observador = unObservador;
+    public SorpresaCambioDeVehiculo() {
+        observador = Observador.getInstance();
 
     }
 

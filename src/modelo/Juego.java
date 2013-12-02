@@ -10,8 +10,9 @@ public class Juego {
     private Partida partidaActual;
     private Jugador jugadorActual;
     private Puntajes puntajes;
+    private static Juego INSTANCE = null;
 
-    public Juego() {
+    private Juego() {
         puntajes = new Puntajes();
     };
 
@@ -25,6 +26,17 @@ public class Juego {
 
     public Jugador getJugadorActual() {
         return this.jugadorActual;
+    }
+
+    public static Juego getInstance() {
+        createInstance();
+        return INSTANCE;
+    }
+
+    private synchronized static void createInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new Juego();
+        }
     }
 
     public Partida getPartida() {
