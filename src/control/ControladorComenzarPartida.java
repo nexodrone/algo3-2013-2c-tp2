@@ -47,7 +47,6 @@ public class ControladorComenzarPartida extends Controlador {
                 panelComenzarPartida.mostrarMensajeError();
             };
             Partida partida = construirPartidaSeleccionada(vehiculoSeleccionado, nivel);
-            // partida.getVehiculo().setJuegoActual(juego);
             juego.setPartida(partida);
             ventana.remove(panelComenzarPartida);
             ControladorPartida controlador = new ControladorPartida(ventana, nivelSeleccionado, vehiculoSeleccionado);
