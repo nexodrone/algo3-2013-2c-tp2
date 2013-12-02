@@ -56,7 +56,7 @@ public class ControladorPartida extends Controlador {
         @Override
         public void actionPerformed(ActionEvent e) {
             ventana.remove(panelPartida);
-            ControladorMenuPrincipal contolador = new ControladorMenuPrincipal(ventana);
+            ControladorMenuPrincipal contolador = new ControladorMenuPrincipal();
         }
     }
 

@@ -2,23 +2,18 @@ package control;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import modelo.Juego;
 import modelo.Jugador;
 import modelo.Partida;
 import modelo.excepciones.PartidaInexistente;
 import vista.PanelMenuPrincipal;
-import vista.Ventana;
 
 public class ControladorMenuPrincipal extends Controlador {
 
     private PanelMenuPrincipal panelMenuPrincipal;
 
-    public ControladorMenuPrincipal(Ventana ventana) {
-        this.juego = Juego.getInstance();
-        this.ventana = ventana;
+    public ControladorMenuPrincipal() {
         this.agregarPanelLocal();
-        this.ventana.setVisible(true);
+        ventana.setVisible(true);
     }
 
     private void agregarPanelLocal() {
@@ -35,7 +30,7 @@ public class ControladorMenuPrincipal extends Controlador {
         public void actionPerformed(ActionEvent e) {
             String nombreJugador = panelMenuPrincipal.getNombreUsuario();
             ventana.remove(panelMenuPrincipal);
-            ControladorComenzarPartida controlador = new ControladorComenzarPartida(ventana, nombreJugador);
+            ControladorComenzarPartida controlador = new ControladorComenzarPartida(nombreJugador);
         }
     }
 
@@ -77,7 +72,7 @@ public class ControladorMenuPrincipal extends Controlador {
         public void actionPerformed(ActionEvent e) {
             panelMenuPrincipal.setVisible(false);
             ventana.remove(panelMenuPrincipal);
-            ControladorPuntajes controlador = new ControladorPuntajes(ventana);
+            ControladorPuntajes controlador = new ControladorPuntajes();
         }
     }
 

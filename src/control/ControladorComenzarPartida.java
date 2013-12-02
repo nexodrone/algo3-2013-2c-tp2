@@ -16,12 +16,10 @@ public class ControladorComenzarPartida extends Controlador {
     private PanelComenzarPartida panelComenzarPartida;
     private String nombre;
 
-    public ControladorComenzarPartida(Ventana ventana, String nombreJugador) {
-        this.juego = Juego.getInstance();
-        this.ventana = ventana;
+    public ControladorComenzarPartida(String nombreJugador) {
         this.nombre = nombreJugador;
         this.agregarPanelLocal();
-        this.ventana.setVisible(true);
+        ventana.setVisible(true);
     }
 
     private void agregarPanelLocal() {
@@ -35,7 +33,7 @@ public class ControladorComenzarPartida extends Controlador {
         @Override
         public void actionPerformed(ActionEvent e) {
             ventana.remove(panelComenzarPartida);
-            ControladorMenuPrincipal contolador = new ControladorMenuPrincipal(ventana);
+            ControladorMenuPrincipal contolador = new ControladorMenuPrincipal();
         }
     }
 
