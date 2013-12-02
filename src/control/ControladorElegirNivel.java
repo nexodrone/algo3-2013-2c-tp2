@@ -33,10 +33,15 @@ public class ControladorElegirNivel extends Controlador{
 	public class EscuchaComenzarPartida implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e){
+			if (panelElegirNivel.ningunCampoSeleccionado()){
+				panelElegirNivel.mostrarMensajeCampoVacio();
+			}else{
 			String nivelSeleccionado = panelElegirNivel.obtenerNivelSeleccionado();
 			ventana.remove(panelElegirNivel);
 			ControladorElegirVehiculo controlador = new ControladorElegirVehiculo(nivelSeleccionado);
+			}
 		}
 	}
 
+	
 }

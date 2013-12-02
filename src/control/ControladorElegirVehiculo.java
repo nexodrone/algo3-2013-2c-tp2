@@ -37,18 +37,22 @@ public class ControladorElegirVehiculo extends Controlador{
 	  public class EscuchaComenzarPartida implements ActionListener {
 	        @Override
 	        public void actionPerformed(ActionEvent e) {
-	            String nivelSeleccionado = panelElegirVehiculo.obtenerNivelSeleccionado();
-	            String vehiculoSeleccionado = panelElegirVehiculo.obtenerVehiculoSeleccionado();
-	            Nivel nivel = new Nivel();
-	            try {
-	                nivel = Nivel.cargarNivel("src/niveles/Nivel" + nivelSeleccionado + ".xml");
-	            } catch (Exception e1) {
-	            	panelElegirVehiculo.mostrarMensajeError();
-	            };
-	            Partida partida = construirPartidaSeleccionada(vehiculoSeleccionado, nivel);
-	            juego.setPartida(partida);
-	            ventana.remove(panelElegirVehiculo);
-	            ControladorPartida controlador = new ControladorPartida(ventana, nivelSeleccionado, vehiculoSeleccionado);
+	            if(panelElegirVehiculo.ningunCampoSeleccionado()){
+	            	panelElegirVehiculo.mostrarMensajeCampoVacio();	            	
+	            }else{
+	            	String nivelSeleccionado = panelElegirVehiculo.obtenerNivelSeleccionado();
+	            	String vehiculoSeleccionado = panelElegirVehiculo.obtenerVehiculoSeleccionado();
+	            	Nivel nivel = new Nivel();
+	            	try {
+	            		nivel = Nivel.cargarNivel("src/niveles/Nivel" + nivelSeleccionado + ".xml");
+	            	} catch (Exception e1) {
+	            		panelElegirVehiculo.mostrarMensajeError();
+	            	};
+	            	Partida partida = construirPartidaSeleccionada(vehiculoSeleccionado, nivel);
+	            	juego.setPartida(partida);
+	            	ventana.remove(panelElegirVehiculo);
+	            	ControladorPartida controlador = new ControladorPartida(ventana, nivelSeleccionado, vehiculoSeleccionado);
+	            }
 	        }
 	    }
 

@@ -6,6 +6,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
@@ -77,6 +78,18 @@ public class PanelElegirNivel extends JPanel {
 		}else{
 			return "Intermedio";
 		}
+	}
+	
+	public boolean ningunCampoSeleccionado(){
+		if (botonFacil.isSelected() == false && 
+			botonDificil.isSelected() == false && 
+			botonIntermedio.isSelected()==false){
+			return true;
+		} else return false;
+	}
+	
+	public void mostrarMensajeCampoVacio() {
+		JOptionPane.showMessageDialog(this, "Por favor seleccione un nivel.", "Nivel no seleccionado", JOptionPane.WARNING_MESSAGE);
 	}
 	
 }
