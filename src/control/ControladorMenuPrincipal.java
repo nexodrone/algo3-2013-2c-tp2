@@ -17,7 +17,7 @@ public class ControladorMenuPrincipal extends Controlador {
     }
 
     private void agregarPanelLocal() {
-        this.panelMenuPrincipal = new PanelMenuPrincipal(nombreJugadorActual);
+        this.panelMenuPrincipal = new PanelMenuPrincipal(juego.getJugadorActual().getNickName());
         this.panelMenuPrincipal.agregarEscuchaComenzarPartida(new EscuchaComenzarPartida());
         this.panelMenuPrincipal.agregarEscuchaSalir(new EscuchaSalir());
         this.panelMenuPrincipal.agregarEscuchaVerPuntajes(new EscuchaPuntajes());
@@ -30,7 +30,7 @@ public class ControladorMenuPrincipal extends Controlador {
         public void actionPerformed(ActionEvent e) {
             String nombreJugador = panelMenuPrincipal.getNombreUsuario();
             ventana.remove(panelMenuPrincipal);
-            ControladorComenzarPartida controlador = new ControladorComenzarPartida(nombreJugador);
+            ControladorComenzarPartida controlador = new ControladorComenzarPartida();
         }
     }
 
@@ -38,8 +38,8 @@ public class ControladorMenuPrincipal extends Controlador {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			try {
-				Partida partida = Partida.cargarPartida("src/jugadores/partida" + nombreJugadorActual + ".xml");
-	            juego.setJugador(new Jugador(nombreJugadorActual));
+				Partida partida = Partida.cargarPartida("src/jugadores/partida" + juego.getJugadorActual().getNickName() + ".xml");
+	            juego.setJugadorActual(new Jugador(juego.getJugadorActual().getNickName()));
 	            juego.setPartida(partida);
 	            ventana.remove(panelMenuPrincipal);
 	            String vehiculoSeleccionado = partida.getVehiculo().asString();

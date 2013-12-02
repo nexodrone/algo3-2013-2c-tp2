@@ -44,7 +44,7 @@ public class ControladorPartida extends Controlador {
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
-                juego.getPartida().guardarPartida("src/jugadores/partida" + nombreJugadorActual + ".xml");
+                juego.getPartida().guardarPartida("src/jugadores/partida" + juego.getJugadorActual().getNickName() + ".xml");
                 panelPartida.mostrarMensajePartidaGuardada();
             } catch (Exception e1) {
                 panelPartida.mostrarMensajeError();

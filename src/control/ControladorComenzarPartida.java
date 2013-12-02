@@ -2,22 +2,19 @@ package control;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import modelo.ConstructorDePartida;
-import modelo.Juego;
 import modelo.Jugador;
 import modelo.Nivel;
 import modelo.Partida;
 import vista.PanelComenzarPartida;
-import vista.Ventana;
 
 public class ControladorComenzarPartida extends Controlador {
 
     private PanelComenzarPartida panelComenzarPartida;
     private String nombre;
 
-    public ControladorComenzarPartida(String nombreJugador) {
-        this.nombre = nombreJugador;
+    public ControladorComenzarPartida() {
+        this.nombre = juego.getJugadorActual().getNickName();
         this.agregarPanelLocal();
         ventana.setVisible(true);
     }
@@ -40,7 +37,7 @@ public class ControladorComenzarPartida extends Controlador {
     public class EscuchaComenzarPartida implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            juego.setJugador(new Jugador(nombre));
+            juego.setJugadorActual(new Jugador(nombre));
             String nivelSeleccionado = panelComenzarPartida.obtenerNivelSeleccionado();
             String vehiculoSeleccionado = panelComenzarPartida.obtenerVehiculoSeleccionado();
             Nivel nivel = new Nivel();
