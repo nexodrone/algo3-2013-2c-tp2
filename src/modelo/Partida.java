@@ -18,6 +18,8 @@ public class Partida {
 	private Posicion posicionGanadora;
 	@Attribute (name = "CantidadDeMovimientosDisponibles")
 	private int movimientosDisponibles;
+	@Attribute (name = "Dificultad")
+	public int dificultad;
 	
 	public Partida() {}
 

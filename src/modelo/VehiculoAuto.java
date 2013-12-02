@@ -22,4 +22,10 @@ public class VehiculoAuto extends Vehiculo {
         nuevoAuto.setCantidadDeMovimientos(vehiculo.getCantidadDeMovimientos());
         return nuevoAuto;
     }
+    
+	@Override
+	public String asString() {
+		return "Auto";
+	}
+    
 }

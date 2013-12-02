@@ -29,6 +29,8 @@ public abstract class Vehiculo {
         return this.cantidadDeMovimientos;
     }
 
+    public abstract String asString();
+    
     public void moverEnDireccion(Direccion unaDireccion, Calle calleAPasar) throws CalleBloqueadaPorPiqueteExcepcion {
         direccion = unaDireccion;
         pasarPorCalle(calleAPasar);

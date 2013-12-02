@@ -12,7 +12,7 @@ public class Vehiculo4x4 extends Vehiculo {
 
     public Vehiculo4x4() {
     }
-
+    
     public void aplicarEvento(EventoColicion evento) {
         evento.interactuarCon(this);
     }
@@ -22,5 +22,10 @@ public class Vehiculo4x4 extends Vehiculo {
         nuevo4x4.setCantidadDeMovimientos(vehiculo.getCantidadDeMovimientos());
         return nuevo4x4;
     }
+
+	@Override
+	public String asString() {
+		return "4x4";
+	}
 
 }

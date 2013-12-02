@@ -11,6 +11,8 @@ public class Nivel {
 	
 	@Attribute
 	public int movimientosDisponibles;
+	@Attribute
+	public int dificultad;
 	@Element
 	public Tablero tablero;
 	
@@ -18,6 +20,7 @@ public class Nivel {
 		
 		this.tablero = new Tablero(10,20);
 		this.movimientosDisponibles = 30;
+		this.dificultad = 1;
 	}
 	
 	public void guardarNivel(String path) throws Exception {

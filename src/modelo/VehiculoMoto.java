@@ -23,4 +23,9 @@ public class VehiculoMoto extends Vehiculo {
         return nuevoMoto;
     }
 
+	@Override
+	public String asString() {
+		return "Moto";
+	}
+    
 }

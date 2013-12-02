@@ -4,6 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import modelo.Juego;
+import modelo.Jugador;
+import modelo.Partida;
+import modelo.excepciones.PartidaInexistente;
 import vista.PanelMenuPrincipal;
 import vista.Ventana;
 
@@ -23,6 +26,7 @@ public class ControladorMenuPrincipal extends Controlador {
         this.panelMenuPrincipal.agregarEscuchaComenzarPartida(new EscuchaComenzarPartida());
         this.panelMenuPrincipal.agregarEscuchaSalir(new EscuchaSalir());
         this.panelMenuPrincipal.agregarEscuchaVerPuntajes(new EscuchaPuntajes());
+        this.panelMenuPrincipal.agregarEscuchaRetomarPartida(new EscuchaRetomarPartida());
         ventana.add(panelMenuPrincipal);
     }
 
@@ -35,6 +39,31 @@ public class ControladorMenuPrincipal extends Controlador {
         }
     }
 
+    public class EscuchaRetomarPartida implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			try {
+				Partida partida = Partida.cargarPartida("src/jugadores/partida" + nombreJugadorActual + ".xml");
+	            juego.setJugador(new Jugador(nombreJugadorActual));
+	            juego.setPartida(partida);
+	            ventana.remove(panelMenuPrincipal);
+	            String vehiculoSeleccionado = partida.getVehiculo().asString();
+	            String nivelSeleccionado = recuperarStringDeDificultad(partida.dificultad);
+	            ControladorPartida controlador = new ControladorPartida(ventana, nivelSeleccionado, vehiculoSeleccionado);
+			} catch (PartidaInexistente e1) {	panelMenuPrincipal.mostrarMensajeNoHayPartida();	}
+		}
+    	
+    }
+    
+    private String recuperarStringDeDificultad(int dificultad) {
+    	switch (dificultad) {
+    	case 1:	return "Facil";
+    	case 2: return "Intermedio";
+    	default: return "Dificil";
+    	}
+    }
+    
+    
     public class EscuchaSalir implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {

@@ -1,4 +1,4 @@
-<Partida CantidadDeMovimientosDisponibles="20">
+<Partida CantidadDeMovimientosDisponibles="20" Dificultad="1">
    <Tablero cantidadDeColumnas="10" cantidadDeFilas="10">
       <Bocacalles>
          <columnaDeBocacalles>
@@ -643,12 +643,12 @@
          </columnaDeBocacalles>
       </Bocacalles>
    </Tablero>
-   <Vehiculo class="modelo.VehiculoAuto" cantidadDeMovimientos="6">
+   <Vehiculo class="modelo.VehiculoAuto" cantidadDeMovimientos="0">
       <posicionActual>
-         <coordenadas X="7" Y="3"/>
+         <coordenadas X="8" Y="1"/>
       </posicionActual>
    </Vehiculo>
    <PosicionGanadora>
-      <coordenadas X="7" Y="3"/>
+      <coordenadas X="9" Y="2"/>
    </PosicionGanadora>
 </Partida>

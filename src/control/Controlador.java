@@ -5,8 +5,8 @@ import vista.Ventana;
 
 public abstract class Controlador {
 
-	protected Juego juego;
-	protected Ventana ventana;
-	protected static String nombreJugadorActual = new String();
+	protected static Juego juego;
+	protected static Ventana ventana;
+	protected static String nombreJugadorActual;
 	
 }
