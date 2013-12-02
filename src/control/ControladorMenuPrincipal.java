@@ -3,6 +3,7 @@ package control;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import control.ControladorPuntajes;
 import modelo.Juego;
 import vista.PanelMenuPrincipal;
 import vista.Ventana;
@@ -22,6 +23,7 @@ public class ControladorMenuPrincipal extends Controlador {
 		this.panelMenuPrincipal = new PanelMenuPrincipal(nombreJugadorActual);
 		this.panelMenuPrincipal.agregarEscuchaComenzarPartida(new EscuchaComenzarPartida());
 		this.panelMenuPrincipal.agregarEscuchaSalir(new EscuchaSalir());
+		this.panelMenuPrincipal.agregarEscuchaVerPuntajes(new EscuchaPuntajes());
 		ventana.add(panelMenuPrincipal);
 	}
 
@@ -39,6 +41,15 @@ public class ControladorMenuPrincipal extends Controlador {
 		public void actionPerformed(ActionEvent e){
 			ventana.setVisible(false);
 			ventana.dispose();
+		}
+	}
+	
+	public class EscuchaPuntajes implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			panelMenuPrincipal.setVisible(false);
+			ventana.remove(panelMenuPrincipal);
+			ControladorPuntajes controlador = new ControladorPuntajes(juego, ventana);
 		}
 	}
 	

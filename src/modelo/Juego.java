@@ -72,7 +72,7 @@ public class Juego {
         this.puntajes = Puntajes.recuperar(path);
     }
 
-    public ArrayList<Puntaje> getPuntajesOrdenados() throws Exception {
+    public ArrayList<Puntaje> getPuntajesOrdenados() {
         return puntajes.getPuntajesOrdenados();
     }
 
