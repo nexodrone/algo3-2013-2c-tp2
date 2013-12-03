@@ -13,12 +13,18 @@ public class Juego {
     private Partida partidaActual;
     private Jugador jugadorActual;
     private Puntajes puntajes;
+    private String path_puntajes;
     private static Juego INSTANCE = null;
 
     private Juego() {
         puntajes = new Puntajes();
+        
     };
-
+    
+    public void setPathPuntajes(String path) {
+    	path_puntajes = path;
+    }
+    
     public void setJugadorActual(Jugador jugador) {
         this.jugadorActual = jugador;
     }
@@ -94,7 +100,7 @@ public class Juego {
     public void crearUsuario(String nombre) {
     	Jugadores jugadores = new Jugadores();
     	try{
-    		jugadores = Jugadores.recuperar("src/jugadores/jugadores.xml");
+    		jugadores = Jugadores.recuperar(path_puntajes);
     	}catch(Exception e) {
     		System.out.print("No hay jugadores creados.\n");
     	}
@@ -104,7 +110,7 @@ public class Juego {
     		System.out.print("Imposible crear usuario ya existente.\n");
     	}
     	try{ 
-    		jugadores.guardar("src/jugadores/jugadores.xml");
+    		jugadores.guardar(path_puntajes);
     	}catch(Exception e) {
     		System.out.print("Error al guardar los puntajes.\n");
     	}
@@ -113,7 +119,7 @@ public class Juego {
     public void guardarPuntaje222(String nombre, Integer puntaje) {
     	Jugadores jugadores = new Jugadores();
     	try{
-    		jugadores = Jugadores.recuperar("src/jugadores/jugadores.xml");
+    		jugadores = Jugadores.recuperar(path_puntajes);
     	}catch(Exception e) {
     		System.out.print("No hay jugadores creados.\n");
     	}
@@ -123,7 +129,7 @@ public class Juego {
     		System.out.print("Usuario Inexistente.\n");
     	}
     	try{ 
-    		jugadores.guardar("src/jugadores/jugadores.xml");
+    		jugadores.guardar(path_puntajes);
     	}catch(Exception e) {
     		System.out.print("Error al guardar los puntajes.\n");
     	}
@@ -132,7 +138,7 @@ public class Juego {
     public ArrayList<Jugador> getPuntajesOrdenados222() {
     	Jugadores jugadores = new Jugadores();
     	try{
-    		jugadores = Jugadores.recuperar("src/jugadores/jugadores.xml");
+    		jugadores = Jugadores.recuperar(path_puntajes);
     	}catch(Exception e) {
     		System.out.print("No hay jugadores creados.\n");
     	}
