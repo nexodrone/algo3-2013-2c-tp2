@@ -2,8 +2,10 @@ package control;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import modelo.Juego;
+import modelo.Jugador;
 import vista.PanelPuntajes;
 import vista.Ventana;
 
@@ -11,16 +13,15 @@ public class ControladorPuntajes extends Controlador {
 
     private PanelPuntajes elPanel;
 
-    public ControladorPuntajes() {
-
+    public ControladorPuntajes() throws Exception{
+    	ArrayList<Jugador> jugadoresPorPuntajes = new ArrayList<Jugador>();
         try {
-            //juego.cargarPuntajes("src/jugadores/puntajes.xml");
-        	//juego.cargarPuntajes("src/jugadores/puntajes.xml");
-        	elPanel = new PanelPuntajes(juego.getPuntajesOrdenados222());
+        	jugadoresPorPuntajes = juego.getPuntajesOrdenados();
         } catch (Exception e) {
             System.out.print("Puntajes inexistentes.\n");
+            throw new Exception();
         }
-        //elPanel = new PanelPuntajes(juego.getPuntajesOrdenados222());
+        elPanel = new PanelPuntajes(jugadoresPorPuntajes);
         elPanel.agregarVolverListener(new ListenerVolver());
 
         this.ventana = ventana;

@@ -71,9 +71,13 @@ public class ControladorMenuPrincipal extends Controlador {
     public class EscuchaPuntajes implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            panelMenuPrincipal.setVisible(false);
-            ventana.remove(panelMenuPrincipal);
-            ControladorPuntajes controlador = new ControladorPuntajes();
+            try{
+            	ControladorPuntajes controlador = new ControladorPuntajes();
+            	panelMenuPrincipal.setVisible(false);
+            	ventana.remove(panelMenuPrincipal);
+            }catch(Exception ex){
+            	panelMenuPrincipal.mostrarMensajePuntajesInexistentes();
+            }
         }
     }
 

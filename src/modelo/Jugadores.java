@@ -40,7 +40,7 @@ public class Jugadores {
 	}
 	
 	public ArrayList<Jugador> getPuntajesOrdenados() {
-		Collections.sort( jugadores, new PorPuntaje2() );
+		Collections.sort( jugadores, new PorPuntaje() );
 		return jugadores;
 	}
 	
