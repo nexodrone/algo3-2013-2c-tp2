@@ -27,6 +27,8 @@ import modelo.VehiculoMoto;
 import modelo.excepciones.CalleBloqueadaPorPiqueteExcepcion;
 import modelo.excepciones.MovimientoInvalidoExcepcion;
 import modelo.excepciones.NoHayUsuariosCreadosException;
+import modelo.excepciones.PartidaGanadaExcepcion;
+import modelo.excepciones.PartidaPerdidaExcepcion;
 
 import org.junit.Test;
 
@@ -62,7 +64,9 @@ public class JuegoTest {
     }
 
     @Test
-    public void testVehiculoDeberiaMoversePorLimitesDelTablero() throws MovimientoInvalidoExcepcion {
+    public void testVehiculoDeberiaMoversePorLimitesDelTablero()
+    		throws MovimientoInvalidoExcepcion, PartidaGanadaExcepcion, PartidaPerdidaExcepcion
+    {
         Tablero tablero = new Tablero(6, 3);
         Vehiculo vehiculo = new VehiculoAuto(new Posicion(4, 0));
         int cantidadDeMovimientos = 10;
@@ -87,7 +91,9 @@ public class JuegoTest {
     }
 
     @Test
-    public void testDeberiaTirarExcepcionAlMoverseFueraDelTablero() throws MovimientoInvalidoExcepcion {
+    public void testDeberiaTirarExcepcionAlMoverseFueraDelTablero()
+    		throws MovimientoInvalidoExcepcion, PartidaGanadaExcepcion, PartidaPerdidaExcepcion
+    {
         Tablero tablero = new Tablero(6, 3);
         Vehiculo vehiculo = new VehiculoAuto(new Posicion(4, 0));
         vehiculo.setCantidadDeMovimientos(6);
@@ -107,8 +113,11 @@ public class JuegoTest {
     }
 
     /* Test integrador */
-    @Test
-    public void testIntegradorValoresDePuntajeDeberianSerCoherentesConLosEsperados() throws MovimientoInvalidoExcepcion, CalleBloqueadaPorPiqueteExcepcion {
+    @Test (expected = PartidaGanadaExcepcion.class)
+    public void testIntegradorValoresDePuntajeDeberianSerCoherentesConLosEsperados()
+    		throws MovimientoInvalidoExcepcion, CalleBloqueadaPorPiqueteExcepcion,
+    			   PartidaGanadaExcepcion, PartidaPerdidaExcepcion
+    {
         Tablero tablero = new Tablero(3, 3);
         Vehiculo vehiculo = new VehiculoAuto(new Posicion(0, 0));
         vehiculo.setCantidadDeMovimientos(0);
@@ -144,8 +153,10 @@ public class JuegoTest {
     }
 
     /* Test integrador */
-    @Test
-    public void testObstaculosYSorpresasDebenSerAplicadosDeFormaCoherente() throws MovimientoInvalidoExcepcion {
+    @Test (expected = PartidaGanadaExcepcion.class)
+    public void testObstaculosYSorpresasDebenSerAplicadosDeFormaCoherente()
+    		throws MovimientoInvalidoExcepcion, PartidaGanadaExcepcion, PartidaPerdidaExcepcion
+    {
         Tablero tablero = new Tablero(5, 4);
         Vehiculo moto = new VehiculoMoto(new Posicion(1, 1));
         moto.setCantidadDeMovimientos(0);
@@ -186,8 +197,10 @@ public class JuegoTest {
     }
 
     /* Test integrador */
-    @Test
-    public void testJegoCompletoGanancia() throws MovimientoInvalidoExcepcion {
+    @Test (expected = PartidaGanadaExcepcion.class)
+    public void testJegoCompletoGanancia()
+    		throws MovimientoInvalidoExcepcion, PartidaGanadaExcepcion, PartidaPerdidaExcepcion
+    {
         Tablero tablero = new Tablero(4, 6);
         Vehiculo vehiculo = new VehiculoAuto(new Posicion(0, 0));
         vehiculo.setCantidadDeMovimientos(0);
@@ -235,8 +248,10 @@ public class JuegoTest {
     }
 
     /* Test integrador */
-    @Test
-    public void testJegoCompletoPerdida() throws MovimientoInvalidoExcepcion {
+    @Test (expected = PartidaPerdidaExcepcion.class)
+    public void testJegoCompletoPerdida()
+    		throws MovimientoInvalidoExcepcion, PartidaGanadaExcepcion, PartidaPerdidaExcepcion
+    {
         Tablero tablero = new Tablero(5, 3);
         Vehiculo4x4 vehiculo = new Vehiculo4x4(new Posicion(4, 2));
         vehiculo.setCantidadDeMovimientos(0);

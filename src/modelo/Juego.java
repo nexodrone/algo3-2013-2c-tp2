@@ -3,11 +3,7 @@ package modelo;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-import modelo.excepciones.CalleBloqueadaPorPiqueteExcepcion;
-import modelo.excepciones.MovimientoInvalidoExcepcion;
-import modelo.excepciones.NoHayUsuariosCreadosException;
-import modelo.excepciones.UsuarioExistenteException;
-import modelo.excepciones.UsuarioInexistenteException;
+import modelo.excepciones.*;
 
 public class Juego {
 
@@ -58,50 +54,44 @@ public class Juego {
         return this.partidaActual;
     }
 
-    public void verificarEstadoDelJugador() {
-        if (partidaActual.esGanada())
-            System.out.print("Jugador gano el nivel. \n");
-        if (partidaActual.esPerdida())
-            System.out.print("Jugador pierde el nivel. \n");
+    public void verificarEstadoDelJugador()
+    		throws PartidaGanadaExcepcion, PartidaPerdidaExcepcion
+    {
+        if (partidaActual.esGanada()) {
+        	System.out.print("Jugador gano el nivel. \n");
+        	throw new PartidaGanadaExcepcion();
+        }
+        if (partidaActual.esPerdida()) {
+            System.out.print("Jugador pi{erde el nivel. \n");
+        	throw new PartidaPerdidaExcepcion();
+    	}
     }
 
-    public void realizarJugadaEnDireccion(Direccion direccion) throws MovimientoInvalidoExcepcion {
+    public void realizarJugadaEnDireccion(Direccion direccion)
+    		throws MovimientoInvalidoExcepcion, PartidaGanadaExcepcion, PartidaPerdidaExcepcion
+    {
         if (this.partidaActual.esGanada() || this.partidaActual.esPerdida())
             System.out.print("Se termino la partida. \n");
         else
             jugarEnDireccion(direccion);
     }
 
-    private void jugarEnDireccion(Direccion direccion) throws MovimientoInvalidoExcepcion {
+    private void jugarEnDireccion(Direccion direccion)
+    		throws MovimientoInvalidoExcepcion, PartidaGanadaExcepcion, PartidaPerdidaExcepcion
+    {
         Posicion nuevaPosicion = partidaActual.getVehiculo().calcularSiguientePosicion(direccion);
         if (partidaActual.getTablero().posicionValida(nuevaPosicion)) {
             Bocacalle bocacalleActual = partidaActual.getTablero().getBocacalleEnPosicion(partidaActual.getVehiculo().getPosicion());
             Calle calleATransitar = bocacalleActual.getCalleEnDireccion(direccion);
             try {
                 partidaActual.getVehiculo().moverEnDireccion(direccion, calleATransitar);
-                verificarEstadoDelJugador();
             } catch (CalleBloqueadaPorPiqueteExcepcion e) {
                 System.out.print("Imposible mover en esa direccion. \n");
             }
+            verificarEstadoDelJugador();
         } else
             throw new MovimientoInvalidoExcepcion();
     }
-
-//    public void guardarPuntaje(String nombre, Integer puntaje) {
-//        this.puntajes.agregarPuntaje(nombre, puntaje);
-//    }
-//
-//    public void guardarPuntajes(String path) throws Exception {
-//        puntajes.guardar(path);
-//    }
-//
-//    public void cargarPuntajes(String path) throws Exception {
-//        this.puntajes = Puntajes.recuperar(path);
-//    }
-//
-//    public ArrayList<Puntaje> getPuntajesOrdenados() {
-//        return puntajes.getPuntajesOrdenados();
-//    }
     
     public void crearUsuario(String nombre)
     		throws UsuarioExistenteException,

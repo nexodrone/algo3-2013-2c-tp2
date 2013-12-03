@@ -13,6 +13,10 @@ import javax.swing.KeyStroke;
 import modelo.Direccion;
 import modelo.Juego;
 import modelo.excepciones.MovimientoInvalidoExcepcion;
+import modelo.excepciones.NoHayUsuariosCreadosException;
+import modelo.excepciones.PartidaGanadaExcepcion;
+import modelo.excepciones.PartidaPerdidaExcepcion;
+import modelo.excepciones.UsuarioInexistenteException;
 import vista.PanelPartida;
 import vista.Ventana;
 
@@ -101,8 +105,28 @@ public class ControladorPartida extends Controlador {
                 }
             } catch (MovimientoInvalidoExcepcion ex) {
                 panelPartida.mostrarMensajeMovimientoInvalido();
-            };
+            }catch (PartidaGanadaExcepcion ex) {
+            	System.out.print("EXCEPCION PARTIDA GANADA ATRAPADA.\n");
+            	panelPartida.mostrarMensajePartidaGanada();
+            	cargarPuntaje();
+                ventana.remove(panelPartida);
+                ControladorMenuPrincipal contolador = new ControladorMenuPrincipal();
+            }catch (PartidaPerdidaExcepcion ex){
+            	System.out.print("EXCEPCION PARTIDA PERDIDA ATRAPADA.\n");
+            	panelPartida.mostrarMensajePartidaPerdida();
+                ventana.remove(panelPartida);
+                ControladorMenuPrincipal contolador = new ControladorMenuPrincipal();
+            }            
         }
     }
-
+    
+    private void cargarPuntaje() {
+    	String nombre = juego.getJugadorActual().getNickName();
+    	int movRestantes =
+    			juego.getPartida().getCantidadDeMovimientosDisponibles() - juego.getVehiculo().getCantidadDeMovimientos();
+    	Integer puntaje = movRestantes*juego.getPartida().getDificultad();
+		try {
+			juego.guardarPuntaje(nombre, puntaje);
+		} catch (UsuarioInexistenteException | NoHayUsuariosCreadosException e) {}
+    }
 }
