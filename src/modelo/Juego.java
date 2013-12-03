@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import modelo.excepciones.CalleBloqueadaPorPiqueteExcepcion;
 import modelo.excepciones.MovimientoInvalidoExcepcion;
+import modelo.excepciones.NoHayUsuariosCreadosException;
 import modelo.excepciones.UsuarioExistenteException;
 import modelo.excepciones.UsuarioInexistenteException;
 
@@ -18,8 +19,16 @@ public class Juego {
 
     private Juego() {
         puntajes = new Puntajes();
-        
     };
+    
+    public void inicializarPuntajes() {
+    	Jugadores jugadoresVacio = new Jugadores();
+    	try{
+    		jugadoresVacio.guardar(path_puntajes);
+    	}catch(Exception e) {
+    		System.out.print("Error al creaar puntajes.\n");
+    	}
+    }
     
     public void setPathPuntajes(String path) {
     	path_puntajes = path;
@@ -97,18 +106,13 @@ public class Juego {
         return puntajes.getPuntajesOrdenados();
     }
     
-    public void crearUsuario(String nombre) {
+    public void crearUsuario(String nombre)
+    		throws UsuarioExistenteException,
+			   	   NoHayUsuariosCreadosException
+    {
     	Jugadores jugadores = new Jugadores();
-    	try{
-    		jugadores = Jugadores.recuperar(path_puntajes);
-    	}catch(Exception e) {
-    		System.out.print("No hay jugadores creados.\n");
-    	}
-    	try{
-    		jugadores.crearUsuario(nombre);
-    	}catch(UsuarioExistenteException e) {
-    		System.out.print("Imposible crear usuario ya existente.\n");
-    	}
+    	jugadores = Jugadores.recuperar(path_puntajes);
+    	jugadores.crearUsuario(nombre);
     	try{ 
     		jugadores.guardar(path_puntajes);
     	}catch(Exception e) {
@@ -116,18 +120,14 @@ public class Juego {
     	}
     }
     
-    public void guardarPuntaje222(String nombre, Integer puntaje) {
+    public void guardarPuntaje222(String nombre, Integer puntaje)
+    		throws UsuarioInexistenteException,
+    			   NoHayUsuariosCreadosException
+    {
     	Jugadores jugadores = new Jugadores();
-    	try{
-    		jugadores = Jugadores.recuperar(path_puntajes);
-    	}catch(Exception e) {
-    		System.out.print("No hay jugadores creados.\n");
-    	}
-    	try{
-    		jugadores.sumarPuntaje(nombre, puntaje);
-    	}catch(UsuarioInexistenteException e) {
-    		System.out.print("Usuario Inexistente.\n");
-    	}
+    	jugadores = Jugadores.recuperar(path_puntajes);
+
+    	jugadores.sumarPuntaje(nombre, puntaje);
     	try{ 
     		jugadores.guardar(path_puntajes);
     	}catch(Exception e) {
@@ -135,12 +135,13 @@ public class Juego {
     	}
     }
 
-    public ArrayList<Jugador> getPuntajesOrdenados222() {
+    public ArrayList<Jugador> getPuntajesOrdenados222() throws Exception{
     	Jugadores jugadores = new Jugadores();
     	try{
     		jugadores = Jugadores.recuperar(path_puntajes);
     	}catch(Exception e) {
     		System.out.print("No hay jugadores creados.\n");
+    		throw new Exception();
     	}
         return jugadores.getPuntajesOrdenados();
     }

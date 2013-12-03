@@ -28,6 +28,7 @@ import modelo.VehiculoAuto;
 import modelo.VehiculoMoto;
 import modelo.excepciones.CalleBloqueadaPorPiqueteExcepcion;
 import modelo.excepciones.MovimientoInvalidoExcepcion;
+import modelo.excepciones.NoHayUsuariosCreadosException;
 
 import org.junit.Test;
 
@@ -423,13 +424,16 @@ public class JuegoTest {
     }
 
     @Test
-    public void testCrearUsuariosCorrectamente() throws Exception {
+    public void testCrearUsuariosCorrectamente()
+    		throws Exception, NoHayUsuariosCreadosException
+    {
         Juego unJuego = Juego.getInstance();
         // eliminamos el archivo creado en alguna prueba anterior
         File file = new File("test/jugadoresTestJUEGOVACIO.xml");
         file.delete();
         
         unJuego.setPathPuntajes("test/jugadoresTestJUEGOVACIO.xml");
+        unJuego.inicializarPuntajes();
         
         unJuego.crearUsuario("Chango");
         unJuego.crearUsuario("Matori");
@@ -448,14 +452,33 @@ public class JuegoTest {
         assertEquals(puntajesOrdenados.get(4).getPuntaje(), 0);
     }
     
+  @Test (expected = Exception.class)
+  public void testCargarPuntajesVacios() throws Exception{
+	  Juego unJuego = Juego.getInstance();
+	  
+	  unJuego.setPathPuntajes("test/directorioInexistente.xml");
+	  ArrayList<Jugador> puntajesOrdenados = unJuego.getPuntajesOrdenados222();
+  }
+  
+  @Test (expected = Exception.class)
+  public void testSumarPuntajesAJugadorInexistente() throws Exception{
+	  Juego unJuego = Juego.getInstance();
+	  unJuego.setPathPuntajes("test/puntajeMalGuardado.xml");
+	  
+	  unJuego.guardarPuntaje222("Chango", 45);
+  }
+    
   @Test
-  public void testGuardarPuntajes___NUEVO() throws Exception {
+  public void testGuardarPuntajes___NUEVO()
+		  throws NoHayUsuariosCreadosException, Exception
+	{
       Juego unJuego = Juego.getInstance();  
       // eliminamos el archivo creado en alguna prueba anterior
       File file = new File("test/jugadoresTestJUEGO.xml");
       file.delete();
 
       unJuego.setPathPuntajes("test/jugadoresTestJUEGO.xml");
+      unJuego.inicializarPuntajes();
       
       unJuego.crearUsuario("Chango");
       unJuego.crearUsuario("Matori");
