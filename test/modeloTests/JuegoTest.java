@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.io.File;
 import java.util.*;
 
 import modelo.Calle;
@@ -423,7 +424,12 @@ public class JuegoTest {
 
     @Test
     public void testCrearUsuariosCorrectamente() throws Exception {
-        Juego unJuego = Juego.getInstance();     
+        Juego unJuego = Juego.getInstance();
+        // eliminamos el archivo creado en alguna prueba anterior
+        File file = new File("test/jugadoresTestJUEGOVACIO.xml");
+        file.delete();
+        
+        unJuego.setPathPuntajes("test/jugadoresTestJUEGOVACIO.xml");
         
         unJuego.crearUsuario("Chango");
         unJuego.crearUsuario("Matori");
@@ -442,36 +448,52 @@ public class JuegoTest {
         assertEquals(puntajesOrdenados.get(4).getPuntaje(), 0);
     }
     
-//  @Test
-//  public void testGuardarPuntajes___NUEVO() throws Exception {
-//      Juego unJuego = Juego.getInstance();     
-//      
-//      unJuego.crearUsuario("Chango");
-//      unJuego.crearUsuario("Matori");
-//      unJuego.crearUsuario("Jedi");
-//      unJuego.crearUsuario("Ciriaso");
-//      unJuego.crearUsuario("Carolo");
-//      
-//      Jugador jugador1 = new Jugador("Chango", 45);        
-//      Jugador jugador2 = new Jugador("Matori", 32);
-//      Jugador jugador3 = new Jugador("Jedi", 77);
-//      Jugador jugador4 = new Jugador("Ciriaso", 10);
-//      Jugador jugador5 = new Jugador("Carolo", 10);
-//      
-//      unJuego.
-//      
-//      unJuego.guardarPuntajes("test/jugadoresTestJUEGO.xml");
-//
-//      Juego otroJuego = Juego.getInstance();
-//      otroJuego.cargarPuntajes("test/jugadoresTestJUEGO.xml");
-//
-//      ArrayList<Puntaje> puntajesOrdenados = (otroJuego.getPuntajesOrdenados());
-//
-//      assertEquals(puntajesOrdenados.get(0).getPuntaje(), 77);
-//      assertEquals(puntajesOrdenados.get(1).getPuntaje(), 45);
-//      assertEquals(puntajesOrdenados.get(2).getPuntaje(), 32);
-//      assertEquals(puntajesOrdenados.get(3).getPuntaje(), 10);
-//      assertEquals(puntajesOrdenados.get(4).getPuntaje(), 10);
-//  }
+  @Test
+  public void testGuardarPuntajes___NUEVO() throws Exception {
+      Juego unJuego = Juego.getInstance();  
+      // eliminamos el archivo creado en alguna prueba anterior
+      File file = new File("test/jugadoresTestJUEGO.xml");
+      file.delete();
+
+      unJuego.setPathPuntajes("test/jugadoresTestJUEGO.xml");
+      
+      unJuego.crearUsuario("Chango");
+      unJuego.crearUsuario("Matori");
+      unJuego.crearUsuario("Jedi");
+      unJuego.crearUsuario("Ciriaso");
+      unJuego.crearUsuario("Carolo");
+      
+      unJuego.guardarPuntaje222("Chango", 45);        
+      unJuego.guardarPuntaje222("Matori", 32);
+      unJuego.guardarPuntaje222("Jedi", 77);
+      unJuego.guardarPuntaje222("Ciriaso", 10);
+      unJuego.guardarPuntaje222("Carolo", 10);
+      
+      //unJuego.guardarPuntajes("test/jugadoresTestJUEGO.xml");
+
+      Juego otroJuego = Juego.getInstance();
+      //otroJuego.cargarPuntajes("test/jugadoresTestJUEGO.xml");
+      //unJuego.setPathPuntajes("test/jugadoresTestJUEGO.xml");
+      
+      ArrayList<Jugador> puntajesOrdenados = (otroJuego.getPuntajesOrdenados222());
+
+      assertEquals(puntajesOrdenados.get(0).getPuntaje(), 77);
+      assertEquals(puntajesOrdenados.get(1).getPuntaje(), 45);
+      assertEquals(puntajesOrdenados.get(2).getPuntaje(), 32);
+      assertEquals(puntajesOrdenados.get(3).getPuntaje(), 10);
+      assertEquals(puntajesOrdenados.get(4).getPuntaje(), 10);
+      
+      unJuego.guardarPuntaje222("Jedi", 33);
+      unJuego.guardarPuntaje222("Ciriaso", 29);
+      unJuego.guardarPuntaje222("Carolo", 150);
+      
+      puntajesOrdenados = (otroJuego.getPuntajesOrdenados222());
+      
+      assertEquals(puntajesOrdenados.get(0).getPuntaje(), 160);
+      assertEquals(puntajesOrdenados.get(1).getPuntaje(), 110);
+      assertEquals(puntajesOrdenados.get(2).getPuntaje(), 45);
+      assertEquals(puntajesOrdenados.get(3).getPuntaje(), 39);
+      assertEquals(puntajesOrdenados.get(4).getPuntaje(), 32);  
+  }
   
 }
