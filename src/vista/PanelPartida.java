@@ -7,6 +7,7 @@ import java.awt.event.KeyListener;
 
 import javax.swing.*;
 
+import modelo.Juego;
 import modelo.Nivel;
 import modelo.Tablero;
 
@@ -134,6 +135,16 @@ public class PanelPartida extends JPanel {
 	
 	public void mostrarMensajeMovimientoInvalido() {
 		JOptionPane.showMessageDialog(this, "Imposible escapar de la ciudad.", "A donde van?", JOptionPane.ERROR_MESSAGE);
+	}
+	
+	public void mostrarMensajePartidaGanada() {
+		String nombre = Juego.getInstance().getJugadorActual().getNickName(); 
+		JOptionPane.showMessageDialog(this, "¡Felicitaciones "+ nombre +", has ganado el nivel. Eres el puto amo!", "¡Bien ahi Papote!", JOptionPane.INFORMATION_MESSAGE);
+	}
+	
+	public void mostrarMensajePartidaPerdida() {
+		String nombre = Juego.getInstance().getJugadorActual().getNickName(); 
+		JOptionPane.showMessageDialog(this, nombre +", te has quedado sin movimientos. Volve a intertarlo muerto!", "¡JA fracasado!", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 }
