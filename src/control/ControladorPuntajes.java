@@ -15,6 +15,7 @@ public class ControladorPuntajes extends Controlador {
 
         try {
             juego.cargarPuntajes("src/jugadores/puntajes.xml");
+        	//juego.cargarPuntajes("src/jugadores/puntajes.xml");
         } catch (Exception e) {
             System.out.print("Puntajes inexistentes.\n");
         }

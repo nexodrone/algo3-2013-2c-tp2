@@ -1,7 +1,14 @@
 package modeloTests;
 
 import static org.junit.Assert.*;
+
+import java.util.*;
+
+import modelo.Juego;
 import modelo.Jugador;
+import modelo.PorPuntaje;
+import modelo.PorPuntaje2;
+
 import org.junit.Test;
 
 public class JugadorTest {
@@ -31,6 +38,5 @@ public class JugadorTest {
         }
 
         assertEquals(otroJugador.getNickName(), "Chango");  
-    }
-    
+    }    
 }

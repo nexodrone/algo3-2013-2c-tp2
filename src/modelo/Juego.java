@@ -1,9 +1,12 @@
 package modelo;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import modelo.excepciones.CalleBloqueadaPorPiqueteExcepcion;
 import modelo.excepciones.MovimientoInvalidoExcepcion;
+import modelo.excepciones.UsuarioExistenteException;
+import modelo.excepciones.UsuarioInexistenteException;
 
 public class Juego {
 
@@ -86,6 +89,54 @@ public class Juego {
 
     public ArrayList<Puntaje> getPuntajesOrdenados() {
         return puntajes.getPuntajesOrdenados();
+    }
+    
+    public void crearUsuario(String nombre) {
+    	Jugadores jugadores = new Jugadores();
+    	try{
+    		jugadores = Jugadores.recuperar("src/jugadores/jugadores.xml");
+    	}catch(Exception e) {
+    		System.out.print("No hay jugadores creados.\n");
+    	}
+    	try{
+    		jugadores.crearUsuario(nombre);
+    	}catch(UsuarioExistenteException e) {
+    		System.out.print("Imposible crear usuario ya existente.\n");
+    	}
+    	try{ 
+    		jugadores.guardar("src/jugadores/jugadores.xml");
+    	}catch(Exception e) {
+    		System.out.print("Error al guardar los puntajes.\n");
+    	}
+    }
+    
+    public void guardarPuntaje222(String nombre, Integer puntaje) {
+    	Jugadores jugadores = new Jugadores();
+    	try{
+    		jugadores = Jugadores.recuperar("src/jugadores/jugadores.xml");
+    	}catch(Exception e) {
+    		System.out.print("No hay jugadores creados.\n");
+    	}
+    	try{
+    		jugadores.sumarPuntaje(nombre, puntaje);
+    	}catch(UsuarioInexistenteException e) {
+    		System.out.print("Usuario Inexistente.\n");
+    	}
+    	try{ 
+    		jugadores.guardar("src/jugadores/jugadores.xml");
+    	}catch(Exception e) {
+    		System.out.print("Error al guardar los puntajes.\n");
+    	}
+    }
+
+    public ArrayList<Jugador> getPuntajesOrdenados222() {
+    	Jugadores jugadores = new Jugadores();
+    	try{
+    		jugadores = Jugadores.recuperar("src/jugadores/jugadores.xml");
+    	}catch(Exception e) {
+    		System.out.print("No hay jugadores creados.\n");
+    	}
+        return jugadores.getPuntajesOrdenados();
     }
 
     public void guardarPartida() throws Exception {
