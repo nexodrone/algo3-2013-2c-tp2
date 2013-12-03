@@ -14,12 +14,13 @@ public class ControladorPuntajes extends Controlador {
     public ControladorPuntajes() {
 
         try {
-            juego.cargarPuntajes("src/jugadores/puntajes.xml");
+            //juego.cargarPuntajes("src/jugadores/puntajes.xml");
         	//juego.cargarPuntajes("src/jugadores/puntajes.xml");
+        	elPanel = new PanelPuntajes(juego.getPuntajesOrdenados222());
         } catch (Exception e) {
             System.out.print("Puntajes inexistentes.\n");
         }
-        elPanel = new PanelPuntajes(juego.getPuntajesOrdenados());
+        //elPanel = new PanelPuntajes(juego.getPuntajesOrdenados222());
         elPanel.agregarVolverListener(new ListenerVolver());
 
         this.ventana = ventana;

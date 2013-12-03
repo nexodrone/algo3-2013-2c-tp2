@@ -7,6 +7,7 @@ import org.simpleframework.xml.*;
 import org.simpleframework.xml.core.Persister;
 
 import modelo.Jugador;
+import modelo.excepciones.NoHayUsuariosCreadosException;
 import modelo.excepciones.UsuarioExistenteException;
 import modelo.excepciones.UsuarioInexistenteException;
 
@@ -68,8 +69,12 @@ public class Jugadores {
 		Serializer ser = new Persister();
 		ser.write(this, new File(path));
 	}
-	public static Jugadores recuperar (String path) throws Exception {
+	public static Jugadores recuperar (String path) throws NoHayUsuariosCreadosException {
 		Serializer ser = new Persister();
-		return ser.read(Jugadores.class, new File(path));
+		try{
+			return ser.read(Jugadores.class, new File(path));
+		}catch(Exception e){
+			throw new NoHayUsuariosCreadosException();
+		}
 	}
 }
