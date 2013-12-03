@@ -13,6 +13,7 @@ public class ControladorBienvenido extends Controlador {
 
     public ControladorBienvenido() {
         juego = Juego.getInstance();
+        juego.setPathJugadores("src/jugadores/jugadores.xml");
         ventana = new Ventana();
         this.agregarPanelLocal();
         ventana.setVisible(true);

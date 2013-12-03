@@ -7,7 +7,7 @@ import java.util.*;
 import modelo.Juego;
 import modelo.Jugador;
 import modelo.PorPuntaje;
-import modelo.PorPuntaje2;
+import modelo.PorPuntaje;
 
 import org.junit.Test;
 

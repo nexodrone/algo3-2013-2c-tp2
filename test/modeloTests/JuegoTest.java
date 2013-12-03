@@ -12,12 +12,10 @@ import modelo.Calle;
 import modelo.Direccion;
 import modelo.Juego;
 import modelo.Jugador;
-import modelo.Jugadores;
 import modelo.ObstaculoPiquete;
 import modelo.ObstaculoPozo;
 import modelo.Partida;
 import modelo.Posicion;
-import modelo.Puntaje;
 import modelo.SorpresaCambioDeVehiculo;
 import modelo.SorpresaDesfavorable;
 import modelo.SorpresaFavorable;
@@ -401,29 +399,6 @@ public class JuegoTest {
     }
 
     @Test
-    public void testGuardarPuntajes() throws Exception {
-        Juego unJuego = Juego.getInstance();
-        unJuego.guardarPuntaje("Chango", 45);
-        unJuego.guardarPuntaje("Matori", 32);
-        unJuego.guardarPuntaje("Jedi", 77);
-        unJuego.guardarPuntaje("Ciriaso", 10);
-        unJuego.guardarPuntaje("Carolo", 10);
-
-        unJuego.guardarPuntajes("test/puntajesTest.xml");
-
-        Juego otroJuego = Juego.getInstance();
-        otroJuego.cargarPuntajes("test/puntajesTest.xml");
-
-        ArrayList<Puntaje> puntajesOrdenados = (otroJuego.getPuntajesOrdenados());
-
-        assertEquals(puntajesOrdenados.get(0).getPuntaje(), 77);
-        assertEquals(puntajesOrdenados.get(1).getPuntaje(), 45);
-        assertEquals(puntajesOrdenados.get(2).getPuntaje(), 32);
-        assertEquals(puntajesOrdenados.get(3).getPuntaje(), 10);
-        assertEquals(puntajesOrdenados.get(4).getPuntaje(), 10);
-    }
-
-    @Test
     public void testCrearUsuariosCorrectamente()
     		throws Exception, NoHayUsuariosCreadosException
     {
@@ -432,7 +407,7 @@ public class JuegoTest {
         File file = new File("test/jugadoresTestJUEGOVACIO.xml");
         file.delete();
         
-        unJuego.setPathPuntajes("test/jugadoresTestJUEGOVACIO.xml");
+        unJuego.setPathJugadores("test/jugadoresTestJUEGOVACIO.xml");
         unJuego.inicializarPuntajes();
         
         unJuego.crearUsuario("Chango");
@@ -443,7 +418,7 @@ public class JuegoTest {
 
         Juego otroJuego = Juego.getInstance();
 
-        ArrayList<Jugador> puntajesOrdenados = (otroJuego.getPuntajesOrdenados222());
+        ArrayList<Jugador> puntajesOrdenados = (otroJuego.getPuntajesOrdenados());
 
         assertEquals(puntajesOrdenados.get(0).getPuntaje(), 0);
         assertEquals(puntajesOrdenados.get(1).getPuntaje(), 0);
@@ -456,16 +431,16 @@ public class JuegoTest {
   public void testCargarPuntajesVacios() throws Exception{
 	  Juego unJuego = Juego.getInstance();
 	  
-	  unJuego.setPathPuntajes("test/directorioInexistente.xml");
-	  ArrayList<Jugador> puntajesOrdenados = unJuego.getPuntajesOrdenados222();
+	  unJuego.setPathJugadores("test/directorioInexistente.xml");
+	  ArrayList<Jugador> puntajesOrdenados = unJuego.getPuntajesOrdenados();
   }
   
   @Test (expected = Exception.class)
   public void testSumarPuntajesAJugadorInexistente() throws Exception{
 	  Juego unJuego = Juego.getInstance();
-	  unJuego.setPathPuntajes("test/puntajeMalGuardado.xml");
+	  unJuego.setPathJugadores("test/puntajeMalGuardado.xml");
 	  
-	  unJuego.guardarPuntaje222("Chango", 45);
+	  unJuego.guardarPuntaje("Chango", 45);
   }
     
   @Test
@@ -477,7 +452,7 @@ public class JuegoTest {
       File file = new File("test/jugadoresTestJUEGO.xml");
       file.delete();
 
-      unJuego.setPathPuntajes("test/jugadoresTestJUEGO.xml");
+      unJuego.setPathJugadores("test/jugadoresTestJUEGO.xml");
       unJuego.inicializarPuntajes();
       
       unJuego.crearUsuario("Chango");
@@ -486,19 +461,15 @@ public class JuegoTest {
       unJuego.crearUsuario("Ciriaso");
       unJuego.crearUsuario("Carolo");
       
-      unJuego.guardarPuntaje222("Chango", 45);        
-      unJuego.guardarPuntaje222("Matori", 32);
-      unJuego.guardarPuntaje222("Jedi", 77);
-      unJuego.guardarPuntaje222("Ciriaso", 10);
-      unJuego.guardarPuntaje222("Carolo", 10);
-      
-      //unJuego.guardarPuntajes("test/jugadoresTestJUEGO.xml");
+      unJuego.guardarPuntaje("Chango", 45);        
+      unJuego.guardarPuntaje("Matori", 32);
+      unJuego.guardarPuntaje("Jedi", 77);
+      unJuego.guardarPuntaje("Ciriaso", 10);
+      unJuego.guardarPuntaje("Carolo", 10);
 
       Juego otroJuego = Juego.getInstance();
-      //otroJuego.cargarPuntajes("test/jugadoresTestJUEGO.xml");
-      //unJuego.setPathPuntajes("test/jugadoresTestJUEGO.xml");
       
-      ArrayList<Jugador> puntajesOrdenados = (otroJuego.getPuntajesOrdenados222());
+      ArrayList<Jugador> puntajesOrdenados = (otroJuego.getPuntajesOrdenados());
 
       assertEquals(puntajesOrdenados.get(0).getPuntaje(), 77);
       assertEquals(puntajesOrdenados.get(1).getPuntaje(), 45);
@@ -506,11 +477,11 @@ public class JuegoTest {
       assertEquals(puntajesOrdenados.get(3).getPuntaje(), 10);
       assertEquals(puntajesOrdenados.get(4).getPuntaje(), 10);
       
-      unJuego.guardarPuntaje222("Jedi", 33);
-      unJuego.guardarPuntaje222("Ciriaso", 29);
-      unJuego.guardarPuntaje222("Carolo", 150);
+      unJuego.guardarPuntaje("Jedi", 33);
+      unJuego.guardarPuntaje("Ciriaso", 29);
+      unJuego.guardarPuntaje("Carolo", 150);
       
-      puntajesOrdenados = (otroJuego.getPuntajesOrdenados222());
+      puntajesOrdenados = (otroJuego.getPuntajesOrdenados());
       
       assertEquals(puntajesOrdenados.get(0).getPuntaje(), 160);
       assertEquals(puntajesOrdenados.get(1).getPuntaje(), 110);

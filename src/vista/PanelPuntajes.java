@@ -11,7 +11,6 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
 
 import modelo.Jugador;
-import modelo.Puntaje;
 
 public class PanelPuntajes extends JPanel {
 	
@@ -19,31 +18,7 @@ public class PanelPuntajes extends JPanel {
 	JButton volver;
 	JLabel nombre;
 	JLabel puntaje;
-	
-//	public PanelPuntajes(ArrayList<Puntaje> puntajesOrdenados) {
-//		this.setLayout(null);
-//		TablaDePuntajes tablaModelo = new TablaDePuntajes(puntajesOrdenados);
-//		table = new JTable(tablaModelo);
-//		
-//        Render render = new Render();
-//        table.getColumnModel().getColumn(0).setCellRenderer(render);
-//        table.getColumnModel().getColumn(1).setCellRenderer(render);        
-//		
-//		volver = new JButton("Volver");
-//		
-//		nombre = new JLabel("Nombre");		
-//		puntaje = new JLabel("Puntaje");
-//		
-//		nombre.setBounds(130, 10, 100, 40);
-//		puntaje.setBounds(220, 10, 100, 40);
-//		table.setBounds(100, 40, 200, puntajesOrdenados.size()*16);
-//		volver.setBounds(150, puntajesOrdenados.size()*16 + 50, 80, 30);
-//		
-//		this.add(volver);
-//		this.add(table);
-//		this.add(nombre);
-//		this.add(puntaje);
-//	}
+
 	public PanelPuntajes(ArrayList<Jugador> puntajesOrdenados) {
 		this.setLayout(null);
 		TablaDePuntajes tablaModelo = new TablaDePuntajes(puntajesOrdenados);
@@ -131,6 +106,5 @@ public class PanelPuntajes extends JPanel {
 			}
 			return value;
 		}
-	}
-	
+	}	
 }
