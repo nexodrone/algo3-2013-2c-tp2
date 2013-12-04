@@ -55,7 +55,7 @@ public class PanelPartida extends JPanel {
 		this.zonaDelJuego.setBounds(300, 50,anchoZonaDelJuego,largoZonaDelJuego);
 		this.zonaDelJuego.setBackground(Color.black);
 		
-		Tablero tablero = obtenerTableroDeNivelSeleccionado();
+		/*Tablero tablero = Juego.getInstance().getPartida().getTablero();
 		int constanteFila=0;
 		int constanteColumna=1;
 		int posicionX=0;
@@ -74,16 +74,16 @@ public class PanelPartida extends JPanel {
 			posicionX=anchoManzana *(i+constanteColumna);
 			posicionY=0;
 			constanteFila=0;
-		}	
+		}*/	
 	}
 
 	int calcularLargoManzana(){
-		Tablero tablero = obtenerTableroDeNivelSeleccionado();
+		Tablero tablero = Juego.getInstance().getPartida().getTablero();
 		return largoZonaDelJuego/(tablero.getCantidadDeFilas()*2);
 	}
 	
 	public int calcularAnchoManzana(){
-		Tablero tablero = obtenerTableroDeNivelSeleccionado();
+		Tablero tablero = Juego.getInstance().getPartida().getTablero();
 		return anchoZonaDelJuego/(tablero.getCantidadDeColumnas()*2);
 	}
 	
@@ -94,17 +94,7 @@ public class PanelPartida extends JPanel {
 		manzana.setBounds(posX, posY, ancho, alto);
 		return manzana;	
 	}
-	
-	public Tablero obtenerTableroDeNivelSeleccionado(){
-		Nivel nivel = new Nivel();
-		try{
-			nivel =  Nivel.cargarNivel("src/niveles/Nivel"+nivelSeleccionado+".xml");
-		}catch(Exception e1){	
-			System.out.print("No existe xml, se carga nivel por defecto");
-		}
-		return nivel.getTablero();
-	}
-	
+		
 	public void agregarEscuchaGuardar(ActionListener escuchaGuardar) {
 		this.botonGuardar.addActionListener(escuchaGuardar);
 	}
