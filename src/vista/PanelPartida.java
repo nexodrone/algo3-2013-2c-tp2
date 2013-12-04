@@ -137,4 +137,9 @@ public class PanelPartida extends JPanel {
 		JOptionPane.showMessageDialog(this, nombre +", te has quedado sin movimientos. Volve a intertarlo muerto!", "¡JA fracasado!", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
+	public void mostrarMensajeUsuarioInexistente() {
+		String nombre = Juego.getInstance().getJugadorActual().getNickName(); 
+		JOptionPane.showMessageDialog(this,"El usuario '"+ nombre +"' no existe. No se guardara el puntaje.", "Error", JOptionPane.ERROR_MESSAGE);
+	}
+	
 }

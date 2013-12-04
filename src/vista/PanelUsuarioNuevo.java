@@ -50,4 +50,8 @@ public class PanelUsuarioNuevo extends JPanel {
 		JOptionPane.showMessageDialog(this, "Por favor ingrese nombre.", "Campo vacio", JOptionPane.WARNING_MESSAGE);
 	}
 	
+	public void mostrarMensajeNombreNoDisponible() {
+		JOptionPane.showMessageDialog(this, "Ya existe un usuario con ese nombre, por favor eliga otro.", "Nombre no disponible", JOptionPane.WARNING_MESSAGE);
+	}
+	
 }

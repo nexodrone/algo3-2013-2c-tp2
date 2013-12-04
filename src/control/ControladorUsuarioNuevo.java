@@ -6,6 +6,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import modelo.Jugador;
+import modelo.excepciones.NoHayUsuariosCreadosException;
+import modelo.excepciones.UsuarioExistenteException;
 import vista.PanelUsuarioNuevo;
 
 public class ControladorUsuarioNuevo extends Controlador {
@@ -34,32 +36,66 @@ public class ControladorUsuarioNuevo extends Controlador {
     }
 
     public class EscuchaGuardar implements ActionListener {
+    	
+    	boolean completo;
+    	
         @Override
         public void actionPerformed(ActionEvent e) {
+        	completo = true;
             if (panelUsuarioNuevo.getNombreDelCampo().isEmpty()) {
                 panelUsuarioNuevo.mostrarMensajeCampoVacio();
             } else {
-                ventana.remove(panelUsuarioNuevo);
                 juego.setJugadorActual(new Jugador(panelUsuarioNuevo.getNombreDelCampo()));
-                ControladorMenuPrincipal contolador = new ControladorMenuPrincipal();
+                try {
+					juego.crearUsuario(panelUsuarioNuevo.getNombreDelCampo());
+				} catch (UsuarioExistenteException e1) {
+					System.out.print("Usuario existente.");
+					panelUsuarioNuevo.mostrarMensajeNombreNoDisponible();
+					completo = false;
+				} catch (NoHayUsuariosCreadosException e1) {
+					System.out.print("No existe archivo de puntajes.");
+					completo = false;
+				}
+                
+                if ( completo ) {
+                	ventana.remove(panelUsuarioNuevo);
+                	ControladorMenuPrincipal contolador = new ControladorMenuPrincipal();
+                }
             };
         }
     }
 
     public class EscuchaEnter implements KeyListener {
+    	
+    	boolean completo;
+    	
         @Override
         public void keyPressed(KeyEvent e) {
         }
 
         @Override
         public void keyReleased(KeyEvent e) {
+        	completo = true;
             if (e.getKeyChar() == KeyEvent.VK_ENTER) {
                 if (panelUsuarioNuevo.getNombreDelCampo().isEmpty()) {
                     panelUsuarioNuevo.mostrarMensajeCampoVacio();
                 } else {
-                    ventana.remove(panelUsuarioNuevo);
                     juego.setJugadorActual(new Jugador(panelUsuarioNuevo.getNombreDelCampo()));
-                    ControladorMenuPrincipal contolador = new ControladorMenuPrincipal();
+                    try {
+    					juego.crearUsuario(panelUsuarioNuevo.getNombreDelCampo());
+    				} catch (UsuarioExistenteException e1) {
+    					System.out.print("Usuario existente.\n");
+    					panelUsuarioNuevo.mostrarMensajeNombreNoDisponible();
+    					completo = false;
+    				} catch (NoHayUsuariosCreadosException e1) {
+    					System.out.print("No existe archivo de puntajes.\n");
+    					completo = false;
+    				}
+                    
+                    if ( completo ) {
+                    	ventana.remove(panelUsuarioNuevo);
+                    	ControladorMenuPrincipal contolador = new ControladorMenuPrincipal();
+                    }
                 };
             }
         }
