@@ -5,17 +5,17 @@ import javax.swing.JFrame;
 public class Auto2 extends JFrame {
 
     PanelZonaDeJuego board;
-    int largoDeVentana = 500;
-    int anchoDeVentana = 500;
+    int largoDeVentana = 1000;
+    int anchoDeVentana = 1000;
 
     public Auto2() {
 
         board = new PanelZonaDeJuego(largoDeVentana, anchoDeVentana);
 
-        this.setBounds(0, 0, anchoDeVentana, largoDeVentana);
+        this.setBounds(0, 0, 1000, 1000);
         this.add(board);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(anchoDeVentana, largoDeVentana);
+        // setSize(1000, largoDeVentana);
         setLocationRelativeTo(null);
         setTitle("Star");
         setResizable(false);
