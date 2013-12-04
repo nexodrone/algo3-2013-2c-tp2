@@ -54,7 +54,8 @@ public class ControladorUsuarioNuevo extends Controlador {
 					completo = false;
 				} catch (NoHayUsuariosCreadosException e1) {
 					System.out.print("No existe archivo de puntajes.");
-					completo = false;
+					panelUsuarioNuevo.mostrarMensajeNoExisteArchivoDePuntajes();
+					juego.inicializarPuntajesCon(panelUsuarioNuevo.getNombreDelCampo());
 				}
                 
                 if ( completo ) {
@@ -89,6 +90,8 @@ public class ControladorUsuarioNuevo extends Controlador {
     					completo = false;
     				} catch (NoHayUsuariosCreadosException e1) {
     					System.out.print("No existe archivo de puntajes.\n");
+    					juego.inicializarPuntajes();
+    					panelUsuarioNuevo.mostrarMensajeNoExisteArchivoDePuntajes();
     					completo = false;
     				}
                     
