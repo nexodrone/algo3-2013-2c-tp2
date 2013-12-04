@@ -19,6 +19,13 @@ public class ControladorBienvenido extends Controlador {
         ventana.setVisible(true);
     }
 
+    public ControladorBienvenido(String volver){
+    	juego = Juego.getInstance();
+        juego.setPathJugadores("src/jugadores/jugadores.xml");
+        this.agregarPanelLocal();
+        ventana.setVisible(true);
+    }
+    
     private void agregarPanelLocal() {
         this.panelBienvenido = new PanelBienvenido();
         this.panelBienvenido.agregarEscuchaNuevoUsuario(new EscuchaNuevoUsuario());
@@ -46,7 +53,7 @@ public class ControladorBienvenido extends Controlador {
         @Override
         public void actionPerformed(ActionEvent e) {
             ventana.setVisible(false);
-            ventana.dispose();
+            /*ventana.dispose();*/
         }
     }
 
