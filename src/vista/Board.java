@@ -14,7 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import modelo.Juego;
 import modelo.Tablero;
 import control.MyKeyListener;
 
@@ -26,12 +25,13 @@ public class Board extends JPanel implements ActionListener {
 
     private int largoDePanel;
     private int anchoDePanel;
+    private Tablero tablero = new Tablero(10, 10);
     private JPanel zonaDeJuego = new JPanel();
-    
-    public Board(int ancho,int largo) {
-        this.largoDePanel=largo;
-        this.anchoDePanel=ancho;
-    	setBackground(Color.BLACK);
+
+    public Board(int ancho, int largo) {
+        this.largoDePanel = largo;
+        this.anchoDePanel = ancho;
+        setBackground(Color.BLACK);
         KeyListener listener = new MyKeyListener(this);
         addKeyListener(listener);
         ImageIcon ii = new ImageIcon(this.getClass().getResource("dibujo_moto.png"));
@@ -42,7 +42,7 @@ public class Board extends JPanel implements ActionListener {
         x = y = 10;
         int velocidad = 60;
         timer = new Timer(velocidad, this);
-        timer.start();
+        // timer.start();
         this.add(zonaDeJuego);
     }
 
@@ -52,6 +52,7 @@ public class Board extends JPanel implements ActionListener {
         g2d.drawImage(star, x, y, this);
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
+        this.dibujarTablero();
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -68,11 +69,11 @@ public class Board extends JPanel implements ActionListener {
     }
 
     public void dibujarTablero() {
-    	this.zonaDeJuego.setLayout(null);
-    	this.zonaDeJuego.setBounds(0, 0,anchoDePanel,largoDePanel);
-		this.zonaDeJuego.setBackground(Color.black);
-		
-        Tablero tablero = Juego.getInstance().getPartida().getTablero();
+        this.zonaDeJuego.setLayout(null);
+        this.zonaDeJuego.setBounds(0, 0, anchoDePanel, largoDePanel);
+        this.zonaDeJuego.setBackground(Color.black);
+
+        // Tablero tablero = new Tablero(10, 10);
         int constanteFila = 0;
         int constanteColumna = 1;
         int posicionX = 0;
@@ -103,12 +104,12 @@ public class Board extends JPanel implements ActionListener {
     }
 
     int calcularLargoManzana() {
-        Tablero tablero = Juego.getInstance().getPartida().getTablero();
-        return largoDePanel/ (tablero.getCantidadDeFilas() * 2);
+        // Tablero tablero = Juego.getInstance().getPartida().getTablero();
+        return largoDePanel / (tablero.getCantidadDeFilas() * 2);
     }
 
     public int calcularAnchoManzana() {
-        Tablero tablero = Juego.getInstance().getPartida().getTablero();
+        // Tablero tablero = Juego.getInstance().getPartida().getTablero();
         return anchoDePanel / (tablero.getCantidadDeColumnas() * 2);
     }
 
