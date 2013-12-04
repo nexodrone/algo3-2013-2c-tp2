@@ -29,6 +29,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     private JPanel zonaDeJuego = new JPanel();
     private String cadena;
     private Boolean dibujarTablero = true;
+    int longitudManzana;
 
     public PanelZonaDeJuego(int ancho, int largo) {
         cadena = "moto";
@@ -68,9 +69,9 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        if (distancia < 10) {
-            x = (x + 3 * enX) + enX;
-            y = (y + 3 * enY) + enY;
+        if (distancia < 40) {
+            x = (x + 2 * enX);
+            y = (y + 2 * enY);
             distancia = distancia + 1;
             repaint();
             System.out.print("pintando");
@@ -87,18 +88,17 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         int constanteColumna = 1;
         int posicionX = 0;
         int posicionY = 0;
-        int largoManzana = calcularLargoManzana();
-        int anchoManzana = calcularAnchoManzana();
+        longitudManzana = 40;
 
         for (int i = 0; i < tablero.getCantidadDeColumnas(); i++) {
             for (int j = 0; j < tablero.getCantidadDeFilas(); j++) {
-                posicionY = largoManzana * (j + constanteFila);
-                JLabel manzana = crearUnaManzana(posicionX, posicionY, anchoManzana, largoManzana);
+                posicionY = longitudManzana * (j + constanteFila);
+                JLabel manzana = crearUnaManzana(posicionX, posicionY - 20, longitudManzana, longitudManzana);
                 this.zonaDeJuego.add(manzana);
                 constanteFila++;
             }
             constanteColumna++;
-            posicionX = anchoManzana * (i + constanteColumna);
+            posicionX = longitudManzana * (i + constanteColumna);
             posicionY = 0;
             constanteFila = 0;
         }
@@ -115,6 +115,9 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         JLabel manzana = new JLabel("");
         ImageIcon icono = new ImageIcon("src/vista/imagenes/manzana.png");
         manzana.setIcon(icono);
+        System.out.println("Posicion en X:" + posX);
+        System.out.println("Posicion en Y:" + posY);
+        System.out.println();
         manzana.setBounds(posX, posY, ancho, alto);
         return manzana;
     }
