@@ -12,8 +12,6 @@ import javax.swing.KeyStroke;
 
 import modelo.Direccion;
 import modelo.Juego;
-import modelo.Jugadores;
-import modelo.Tablero;
 import modelo.excepciones.MovimientoInvalidoExcepcion;
 import modelo.excepciones.NoHayUsuariosCreadosException;
 import modelo.excepciones.PartidaGanadaExcepcion;

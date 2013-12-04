@@ -11,7 +11,6 @@ public class Auto2 extends JFrame {
     int anchoDeVentana = 830;
 
     public Auto2() {
-
     	Tablero tablero = new Tablero(20,14);
         board = new PanelZonaDeJuego(tablero);
         this.setBounds(0, 0,anchoDeVentana,largoDeVentana);
@@ -21,7 +20,6 @@ public class Auto2 extends JFrame {
         setTitle("Star");
         setResizable(false);
         setVisible(true);
-
     }
 
     public static void main(String[] args) {

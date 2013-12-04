@@ -146,12 +146,21 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
     
     public int centrarEnX(){
-    	return (this.anchoDePanel-tableroActual.getCantidadDeColumnas() * this.longitudManzana * 2)/2;
+    	if(((anchoDePanel - tableroActual.getCantidadDeColumnas() * longitudManzana * 2)/2) < 0){
+    		return 0;
+    	}else{
+    		return (anchoDePanel-tableroActual.getCantidadDeColumnas() * longitudManzana * 2)/2;
+    	}
     }
   
     public int centrarEnY(){
-    	return (this.largoDePanel-tableroActual.getCantidadDeFilas() * this.longitudManzana * 2)/2;
-    } 
-
+    	if(((largoDePanel - tableroActual.getCantidadDeFilas() * longitudManzana * 2)/2) < 0){
+    		return 0;
+    	}else {
+    		return (this.largoDePanel-tableroActual.getCantidadDeFilas() * this.longitudManzana * 2)/2;
+    	}   		
+    }
+ 
+    
 }
 
