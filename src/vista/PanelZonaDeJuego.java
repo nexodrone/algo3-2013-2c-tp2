@@ -26,10 +26,10 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     private int largoDePanel = 570;
     private int anchoDePanel = 830;
     private int longitudManzana = 20;
-    private Tablero tablero = new Tablero(20,14);
+    private Tablero tablero = new Tablero(10,10);
     private JPanel zonaDeJuego = new JPanel();
     private String cadena;
-    private Boolean dibujarTablero = true;
+    private Boolean dibujarTablero = true; //PARA QUE EL TABLERO SE DIBUJE SOLO UNA VEZ
   
 
     public PanelZonaDeJuego() {
@@ -50,7 +50,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         //System.out.println("paint");
         this.configurarTablero();
         if (dibujarTablero) {
-            this.dibujarTablero2();
+            this.dibujarTablero();
         }
         super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
@@ -73,7 +73,6 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
 
     public void dibujarTablero() {
         dibujarTablero = false;
-        System.out.println("dibujarTablero");
         int constanteFila = 0;
         int constanteColumna = 1;
         int posicionX = 0;
@@ -93,7 +92,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         }
     }
     
-    public void dibujarTablero2() {
+    /*ESTE METODO ANDA MAL
+     * public void dibujarTablero2() {
         dibujarTablero = false;
         System.out.println("dibujarTablero");
         zonaDeJuego.setVisible(true);
@@ -113,7 +113,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
                 this.zonaDeJuego.add(manzana);
             }
         }
-    }
+    }*/
 
     public void configurarTablero() {
         this.zonaDeJuego.setLayout(null);
@@ -125,9 +125,6 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         JLabel manzana = new JLabel("");
         ImageIcon icono = new ImageIcon("src/vista/imagenes/manzana.png");
         manzana.setIcon(icono);
-//        System.out.println("Posicion en X:" + posX);
-//        System.out.println("Posicion en Y:" + posY);
-//        System.out.println();
         manzana.setBounds(posX, posY, ancho, alto);
         return manzana;
     }
