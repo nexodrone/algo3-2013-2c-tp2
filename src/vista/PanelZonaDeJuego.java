@@ -55,17 +55,16 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public void paint(Graphics g) {
-        System.out.println("paint");
+        //System.out.println("paint");
         this.configurarTablero();
         if (dibujarTablero) {
-            this.dibujarTablero();
+            this.dibujarTablero2();
         }
         super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(star, x, y, this);
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
-
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -74,7 +73,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
             y = (y + 2 * enY);
             distancia = distancia + 1;
             repaint();
-            System.out.print("pintando");
+            //System.out.print("pintando");
         } else {
             timer.stop(); // paro de dibujar
         }
@@ -93,7 +92,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         for (int i = 0; i < tablero.getCantidadDeColumnas(); i++) {
             for (int j = 0; j < tablero.getCantidadDeFilas(); j++) {
                 posicionY = longitudManzana * (j + constanteFila);
-                JLabel manzana = crearUnaManzana(posicionX, posicionY - 20, longitudManzana, longitudManzana);
+                JLabel manzana = crearUnaManzana(posicionX, posicionY/* - 20*/, longitudManzana, longitudManzana);
                 this.zonaDeJuego.add(manzana);
                 constanteFila++;
             }
@@ -101,6 +100,28 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
             posicionX = longitudManzana * (i + constanteColumna);
             posicionY = 0;
             constanteFila = 0;
+        }
+    }
+    
+    public void dibujarTablero2() {
+        dibujarTablero = false;
+        System.out.println("dibujarTablero");
+        zonaDeJuego.setVisible(true);
+        int posicionCuadraX = 0;
+        int posicionCuadraY = 0;
+        int posicionTableroX = 0;
+        int posicionTableroY = 0;
+        int longitudCuadra = 60;
+        int anchoCalle = 30;
+        int distancia = longitudCuadra + anchoCalle;
+
+        for (int i = 0; i < tablero.getCantidadDeColumnas(); i++) {
+            for (int j = 0; j < tablero.getCantidadDeFilas(); j++) {
+                posicionCuadraY = (distancia) * j + posicionTableroX;
+                posicionCuadraX = (distancia) * i + posicionTableroY;
+                JLabel manzana = crearUnaManzana(posicionCuadraX, posicionCuadraY, longitudCuadra, longitudCuadra);
+                this.zonaDeJuego.add(manzana);
+            }
         }
     }
 
@@ -115,9 +136,9 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         JLabel manzana = new JLabel("");
         ImageIcon icono = new ImageIcon("src/vista/imagenes/manzana.png");
         manzana.setIcon(icono);
-        System.out.println("Posicion en X:" + posX);
-        System.out.println("Posicion en Y:" + posY);
-        System.out.println();
+//        System.out.println("Posicion en X:" + posX);
+//        System.out.println("Posicion en Y:" + posY);
+//        System.out.println();
         manzana.setBounds(posX, posY, ancho, alto);
         return manzana;
     }
@@ -141,7 +162,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
 
     public void girarHacia(String sentido) {
         String direccion = "/vista/imagenes/" + cadena + "/" + cadena + sentido + ".png";
-        System.out.println(direccion);
+//        System.out.println(direccion);
         ImageIcon ii = new ImageIcon(this.getClass().getResource(direccion));
         star = ii.getImage();
     }
