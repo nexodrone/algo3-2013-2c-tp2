@@ -10,7 +10,7 @@ public class Auto2 extends JFrame {
 
     public Auto2() {
 
-        board = new PanelZonaDeJuego(largoDeVentana, anchoDeVentana);
+        board = new PanelZonaDeJuego();
 
         this.setBounds(0, 0, 1000, 1000);
         this.add(board);
