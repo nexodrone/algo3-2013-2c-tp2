@@ -3,12 +3,12 @@ package control;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import vista.Board;
+import vista.PanelZonaDeJuego;
 
 public class MyKeyListener implements KeyListener {
-    Board panel;
+    PanelZonaDeJuego panel;
 
-    public MyKeyListener(Board unPanel) {
+    public MyKeyListener(PanelZonaDeJuego unPanel) {
         panel = unPanel;
     }
 
