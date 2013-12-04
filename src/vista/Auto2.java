@@ -2,6 +2,8 @@ package vista;
 
 import javax.swing.JFrame;
 
+import modelo.Tablero;
+
 public class Auto2 extends JFrame {
 
     PanelZonaDeJuego board;
@@ -10,7 +12,8 @@ public class Auto2 extends JFrame {
 
     public Auto2() {
 
-        board = new PanelZonaDeJuego();
+    	Tablero tablero = new Tablero(20,14);
+        board = new PanelZonaDeJuego(tablero);
         this.setBounds(0, 0,anchoDeVentana,largoDeVentana);
         this.add(board);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
