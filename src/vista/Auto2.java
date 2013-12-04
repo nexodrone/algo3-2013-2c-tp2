@@ -9,7 +9,7 @@ public class Auto2 extends JFrame {
         add(new Board());
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1000, 1000);
+        setSize(500, 500);
         setLocationRelativeTo(null);
         setTitle("Star");
         setResizable(false);
@@ -20,4 +20,5 @@ public class Auto2 extends JFrame {
     public static void main(String[] args) {
         new Auto2();
     }
+
 }
