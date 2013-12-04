@@ -46,18 +46,22 @@ public class Board extends JPanel implements ActionListener {
         int velocidad = 1;
         timer = new Timer(velocidad, this);
         // timer.start();
+        zonaDeJuego.setVisible(false);
         this.add(zonaDeJuego);
+        // this.configurarTablero();
         // this.dibujarTablero();
     }
 
     public void paint(Graphics g) {
+        System.out.println("paint");
+        this.configurarTablero();
+        this.dibujarTablero();
         super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(star, x, y, this);
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
-        this.configurarTablero();
-        this.dibujarTablero();
+
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -73,6 +77,7 @@ public class Board extends JPanel implements ActionListener {
     }
 
     public void dibujarTablero() {
+        zonaDeJuego.setVisible(true);
         int constanteFila = 0;
         int constanteColumna = 1;
         int posicionX = 0;
@@ -94,12 +99,13 @@ public class Board extends JPanel implements ActionListener {
         }
     }
 
-    public void configurarTablero(){
-    	this.zonaDeJuego.setLayout(null);
+    public void configurarTablero() {
+
+        this.zonaDeJuego.setLayout(null);
         this.zonaDeJuego.setBounds(0, 0, anchoDePanel, largoDePanel);
         this.zonaDeJuego.setBackground(Color.black);
     }
-    
+
     public JLabel crearUnaManzana(int posX, int posY, int ancho, int alto) {
         JLabel manzana = new JLabel("");
         ImageIcon icono = new ImageIcon("src/vista/imagenes/manzana.png");
