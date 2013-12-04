@@ -13,7 +13,7 @@ public class ControladorBienvenido extends Controlador {
 
     public ControladorBienvenido() {
         juego = Juego.getInstance();
-        juego.setPathJugadores("src/jugadores/jugadores23.xml");
+        juego.setPathJugadores("src/jugadores/jugadores.xml");
         ventana = new Ventana();
         this.agregarPanelLocal();
         ventana.setVisible(true);
@@ -45,7 +45,8 @@ public class ControladorBienvenido extends Controlador {
     public class EscuchaUsuarioRegistrado implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            ventana.remove(panelBienvenido);
+            ControladorUsuarioRegistrado contolador = new ControladorUsuarioRegistrado();
         }
     }
 
