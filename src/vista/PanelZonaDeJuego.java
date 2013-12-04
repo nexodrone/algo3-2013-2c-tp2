@@ -17,7 +17,7 @@ import javax.swing.Timer;
 import modelo.Tablero;
 import control.MyKeyListener;
 
-public class Board extends JPanel implements ActionListener {
+public class PanelZonaDeJuego extends JPanel implements ActionListener {
 
     Image star;
     Timer timer;
@@ -28,8 +28,9 @@ public class Board extends JPanel implements ActionListener {
     private Tablero tablero = new Tablero(10, 10);
     private JPanel zonaDeJuego = new JPanel();
     private String cadena;
+    private Boolean dibujarTablero = true;
 
-    public Board(int ancho, int largo) {
+    public PanelZonaDeJuego(int ancho, int largo) {
         cadena = "moto";
         this.largoDePanel = largo;
         this.anchoDePanel = ancho;
@@ -55,7 +56,9 @@ public class Board extends JPanel implements ActionListener {
     public void paint(Graphics g) {
         System.out.println("paint");
         this.configurarTablero();
-        this.dibujarTablero();
+        if (dibujarTablero) {
+            this.dibujarTablero();
+        }
         super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(star, x, y, this);
@@ -77,6 +80,8 @@ public class Board extends JPanel implements ActionListener {
     }
 
     public void dibujarTablero() {
+        dibujarTablero = false;
+        System.out.println("dibujarTablero");
         zonaDeJuego.setVisible(true);
         int constanteFila = 0;
         int constanteColumna = 1;
