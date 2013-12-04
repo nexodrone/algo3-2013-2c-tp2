@@ -23,35 +23,27 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     Timer timer;
     int x, y, enX, enY, distancia;
 
-    private int largoDePanel;
-    private int anchoDePanel;
-    private Tablero tablero = new Tablero(10, 10);
+    private int largoDePanel = 570;
+    private int anchoDePanel = 830;
+    private int longitudManzana = 20;
+    private Tablero tablero = new Tablero(20,14);
     private JPanel zonaDeJuego = new JPanel();
     private String cadena;
     private Boolean dibujarTablero = true;
-    int longitudManzana;
+  
 
-    public PanelZonaDeJuego(int ancho, int largo) {
+    public PanelZonaDeJuego() {
         cadena = "moto";
-        this.largoDePanel = largo;
-        this.anchoDePanel = ancho;
         setBackground(Color.BLACK);
         KeyListener listener = new MyKeyListener(this);
         addKeyListener(listener);
-        this.girarHacia("Derecha"); // por defecto el vehiculo siempre empieza mirando hacia la
-                                    // derecha
-
+        this.girarHacia("Derecha"); // por defecto el vehiculo siempre empieza mirando hacia laderecha
         setDoubleBuffered(true);
         setFocusable(true);
-
         x = y = 10;
         int velocidad = 1;
         timer = new Timer(velocidad, this);
-        // timer.start();
-        zonaDeJuego.setVisible(false);
         this.add(zonaDeJuego);
-        // this.configurarTablero();
-        // this.dibujarTablero();
     }
 
     public void paint(Graphics g) {
@@ -82,17 +74,15 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     public void dibujarTablero() {
         dibujarTablero = false;
         System.out.println("dibujarTablero");
-        zonaDeJuego.setVisible(true);
         int constanteFila = 0;
         int constanteColumna = 1;
         int posicionX = 0;
         int posicionY = 0;
-        longitudManzana = 40;
 
         for (int i = 0; i < tablero.getCantidadDeColumnas(); i++) {
             for (int j = 0; j < tablero.getCantidadDeFilas(); j++) {
                 posicionY = longitudManzana * (j + constanteFila);
-                JLabel manzana = crearUnaManzana(posicionX, posicionY/* - 20*/, longitudManzana, longitudManzana);
+                JLabel manzana = crearUnaManzana(posicionX, posicionY, longitudManzana, longitudManzana);
                 this.zonaDeJuego.add(manzana);
                 constanteFila++;
             }
@@ -126,9 +116,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public void configurarTablero() {
-
         this.zonaDeJuego.setLayout(null);
-        this.zonaDeJuego.setBounds(0, 0, anchoDePanel, largoDePanel);
+        this.zonaDeJuego.setBounds(calcularPosicionEnXInicial(),calcularPosicionEnYInicial(), anchoDePanel, largoDePanel);
         this.zonaDeJuego.setBackground(Color.black);
     }
 
@@ -143,15 +132,6 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         return manzana;
     }
 
-    int calcularLargoManzana() {
-        // Tablero tablero = Juego.getInstance().getPartida().getTablero();
-        return largoDePanel / (tablero.getCantidadDeFilas() * 2);
-    }
-
-    public int calcularAnchoManzana() {
-        // Tablero tablero = Juego.getInstance().getPartida().getTablero();
-        return anchoDePanel / (tablero.getCantidadDeColumnas() * 2);
-    }
 
     public void nuevaPosicion(int x, int y) {
         enX = x;
@@ -166,4 +146,14 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         ImageIcon ii = new ImageIcon(this.getClass().getResource(direccion));
         star = ii.getImage();
     }
+    
+    public int calcularPosicionEnXInicial(){
+    	return (this.anchoDePanel-tablero.getCantidadDeColumnas() * this.longitudManzana * 2)/2;
+    }
+  
+    public int calcularPosicionEnYInicial(){
+    	return (this.largoDePanel-tablero.getCantidadDeFilas() * this.longitudManzana * 2)/2;
+    } 
+
 }
+
