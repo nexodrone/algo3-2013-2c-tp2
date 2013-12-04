@@ -13,6 +13,7 @@ import javax.swing.KeyStroke;
 import modelo.Direccion;
 import modelo.Juego;
 import modelo.Jugadores;
+import modelo.Tablero;
 import modelo.excepciones.MovimientoInvalidoExcepcion;
 import modelo.excepciones.NoHayUsuariosCreadosException;
 import modelo.excepciones.PartidaGanadaExcepcion;
@@ -39,7 +40,7 @@ public class ControladorPartida extends Controlador {
     }
 
     private void agregarPanelLocal(String nombre, String dificultad, String vehiculo) {
-        this.panelPartida = new PanelPartida(nombre, vehiculo, dificultad);
+    	this.panelPartida = new PanelPartida(nombre, vehiculo, dificultad,juego.getPartida().getTablero());
         this.panelPartida.inicializarZonaDelJuego(/*juego.getPartida().getTablero().getCantidadDeColumnas(), juego.getPartida().getTablero().getCantidadDeFilas()*/);
         this.panelPartida.agregarEscuchaGuardar(new EscuchaGuardar());
         this.panelPartida.agregarEscuchaVolver(new EscuchaVolver());

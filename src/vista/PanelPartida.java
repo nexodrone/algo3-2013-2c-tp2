@@ -8,6 +8,7 @@ import java.awt.event.KeyListener;
 import javax.swing.*;
 
 import modelo.Juego;
+import modelo.Tablero;
 
 
 public class PanelPartida extends JPanel {
@@ -18,15 +19,16 @@ public class PanelPartida extends JPanel {
 	private JLabel nombreUsuario;
 	private JLabel dificultad;
 	private JLabel vehiculoActual;
-	private PanelZonaDeJuego zonaDelJuego = new PanelZonaDeJuego();
-	private int anchoZonaDelJuego = 850;
-	private int largoZonaDelJuego = 550;
+	private PanelZonaDeJuego panelZonaDelJuego;
+	private int anchoZonaDelJuego = 830;
+	private int largoZonaDelJuego = 570;
 	String nivelSeleccionado;
 
 	
-	public PanelPartida(String nombre, String dificultad, String vehiculo) {
+	public PanelPartida(String nombre, String dificultad, String vehiculo,Tablero tablero) {
 		this.setLayout(null);
 		this.nivelSeleccionado=dificultad;
+		this.panelZonaDelJuego = new PanelZonaDeJuego(tablero);
 		
 		this.nombreUsuario = new JLabel("Jugador: "+nombre);
 		this.dificultad = new JLabel("Dificultad: "+dificultad);
@@ -46,13 +48,13 @@ public class PanelPartida extends JPanel {
 		this.add(this.vehiculoActual);
 		this.add(botonGuardar);
 		this.add(botonVolver);
-		this.add(zonaDelJuego);
+		this.add(panelZonaDelJuego);
 	}
 	
 	public void inicializarZonaDelJuego() {
-		this.zonaDelJuego.setLayout(null);
-		this.zonaDelJuego.setBounds(300, 50,anchoZonaDelJuego,largoZonaDelJuego);
-		this.zonaDelJuego.setBackground(Color.black);
+		this.panelZonaDelJuego.setLayout(null);
+		this.panelZonaDelJuego.setBounds(300, 50,anchoZonaDelJuego,largoZonaDelJuego);
+		this.panelZonaDelJuego.setBackground(Color.black);
 		
 	}
 

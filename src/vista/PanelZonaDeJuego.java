@@ -26,14 +26,15 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     private int largoDePanel = 570;
     private int anchoDePanel = 830;
     private int longitudManzana = 20;
-    private Tablero tablero = new Tablero(10,10);
+    private Tablero tableroActual;
     private JPanel zonaDeJuego = new JPanel();
     private String cadena;
     private Boolean dibujarTablero = true; //PARA QUE EL TABLERO SE DIBUJE SOLO UNA VEZ
   
 
-    public PanelZonaDeJuego() {
-        cadena = "moto";
+    public PanelZonaDeJuego(Tablero tablero) {
+        this.tableroActual = tablero;
+    	cadena = "moto";
         setBackground(Color.BLACK);
         KeyListener listener = new MyKeyListener(this);
         addKeyListener(listener);
@@ -48,7 +49,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
 
     public void paint(Graphics g) {
         //System.out.println("paint");
-        this.configurarTablero();
+        this.configurarTableroEnZonaDeJuego();
         if (dibujarTablero) {
             this.dibujarTablero();
         }
@@ -71,7 +72,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         }
     }
 
-    public void configurarTablero() {
+    public void configurarTableroEnZonaDeJuego() {
         this.zonaDeJuego.setLayout(null);
         this.zonaDeJuego.setBounds(centrarEnX(),centrarEnY(), anchoDePanel, largoDePanel);
         this.zonaDeJuego.setBackground(Color.black);
@@ -84,8 +85,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         int posicionX = 0;
         int posicionY = 0;
 
-        for (int i = 0; i < tablero.getCantidadDeColumnas(); i++) {
-            for (int j = 0; j < tablero.getCantidadDeFilas(); j++) {
+        for (int i = 0; i < tableroActual.getCantidadDeColumnas(); i++) {
+            for (int j = 0; j < tableroActual.getCantidadDeFilas(); j++) {
                 posicionY = longitudManzana * (j + constanteFila);
                 JLabel manzana = crearUnaManzana(posicionX, posicionY, longitudManzana, longitudManzana);
                 this.zonaDeJuego.add(manzana);
@@ -145,11 +146,11 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
     
     public int centrarEnX(){
-    	return (this.anchoDePanel-tablero.getCantidadDeColumnas() * this.longitudManzana * 2)/2;
+    	return (this.anchoDePanel-tableroActual.getCantidadDeColumnas() * this.longitudManzana * 2)/2;
     }
   
     public int centrarEnY(){
-    	return (this.largoDePanel-tablero.getCantidadDeFilas() * this.longitudManzana * 2)/2;
+    	return (this.largoDePanel-tableroActual.getCantidadDeFilas() * this.longitudManzana * 2)/2;
     } 
 
 }
