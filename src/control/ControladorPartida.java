@@ -12,6 +12,7 @@ import javax.swing.KeyStroke;
 
 import modelo.Direccion;
 import modelo.Juego;
+import modelo.Jugadores;
 import modelo.excepciones.MovimientoInvalidoExcepcion;
 import modelo.excepciones.NoHayUsuariosCreadosException;
 import modelo.excepciones.PartidaGanadaExcepcion;
@@ -27,12 +28,14 @@ public class ControladorPartida extends Controlador {
     private static Direccion sur = new Direccion(0, -1);
     private static Direccion este = new Direccion(1, 0);
     private static Direccion oeste = new Direccion(-1, 0);
+    private String path_jugadores;
 
     public ControladorPartida(Ventana ventana, String dificultad, String vehiculo) {
         this.juego = Juego.getInstance();
         this.ventana = ventana;
         this.agregarPanelLocal(juego.getJugadorActual().getNickName(), vehiculo, dificultad);
         this.ventana.setVisible(true);
+        path_jugadores = "src/jugadores/jugadores.xml";
     }
 
     private void agregarPanelLocal(String nombre, String dificultad, String vehiculo) {
@@ -108,7 +111,7 @@ public class ControladorPartida extends Controlador {
             }catch (PartidaGanadaExcepcion ex) {
             	System.out.print("EXCEPCION PARTIDA GANADA ATRAPADA.\n");
             	panelPartida.mostrarMensajePartidaGanada();
-            	cargarPuntaje();
+            	calcularYGuardarPuntaje();
                 ventana.remove(panelPartida);
                 ControladorMenuPrincipal contolador = new ControladorMenuPrincipal();
             }catch (PartidaPerdidaExcepcion ex){
@@ -120,13 +123,31 @@ public class ControladorPartida extends Controlador {
         }
     }
     
-    private void cargarPuntaje() {
+    private void calcularYGuardarPuntaje() {
     	String nombre = juego.getJugadorActual().getNickName();
     	int movRestantes =
     			juego.getPartida().getCantidadDeMovimientosDisponibles() - juego.getVehiculo().getCantidadDeMovimientos();
     	Integer puntaje = movRestantes*juego.getPartida().getDificultad();
 		try {
 			juego.guardarPuntaje(nombre, puntaje);
-		} catch (UsuarioInexistenteException | NoHayUsuariosCreadosException e) {}
+		} catch (UsuarioInexistenteException | NoHayUsuariosCreadosException e) {
+			System.out.print("Usuario Inexistente");
+			panelPartida.mostrarMensajeUsuarioInexistente();
+		}
     }
+    
+//    public void guardarPuntaje(String nombre, Integer puntaje)
+//    		throws UsuarioInexistenteException,
+//    			   NoHayUsuariosCreadosException
+//    {
+//    	Jugadores jugadores = new Jugadores();
+//    	jugadores = Jugadores.recuperar(path_jugadores);
+//
+//    	jugadores.sumarPuntaje(nombre, puntaje);
+//    	try{ 
+//    		jugadores.guardar(path_jugadores);
+//    	}catch(Exception e) {
+//    		System.out.print("Error al guardar los puntajes.\n");
+//    	}
+//    }
 }
