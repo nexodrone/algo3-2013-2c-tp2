@@ -8,8 +8,7 @@ import java.awt.event.KeyListener;
 import javax.swing.*;
 
 import modelo.Juego;
-import modelo.Nivel;
-import modelo.Tablero;
+
 
 public class PanelPartida extends JPanel {
 	
@@ -19,7 +18,7 @@ public class PanelPartida extends JPanel {
 	private JLabel nombreUsuario;
 	private JLabel dificultad;
 	private JLabel vehiculoActual;
-	private JPanel zonaDelJuego = new JPanel();
+	private PanelZonaDeJuego zonaDelJuego = new PanelZonaDeJuego();
 	private int anchoZonaDelJuego = 850;
 	private int largoZonaDelJuego = 550;
 	String nivelSeleccionado;
@@ -50,51 +49,13 @@ public class PanelPartida extends JPanel {
 		this.add(zonaDelJuego);
 	}
 	
-	public void inicializarZonaDelJuego(int tamanioX, int tamanioY) {
+	public void inicializarZonaDelJuego() {
 		this.zonaDelJuego.setLayout(null);
 		this.zonaDelJuego.setBounds(300, 50,anchoZonaDelJuego,largoZonaDelJuego);
 		this.zonaDelJuego.setBackground(Color.black);
 		
-		/*Tablero tablero = Juego.getInstance().getPartida().getTablero();
-		int constanteFila=0;
-		int constanteColumna=1;
-		int posicionX=0;
-		int posicionY=0;
-		int largoManzana = calcularLargoManzana();
-		int anchoManzana = calcularAnchoManzana();
-		
-		for (int i=0;i<tablero.getCantidadDeColumnas();i++){
-			for(int j=0; j< tablero.getCantidadDeFilas(); j++){
-				posicionY= largoManzana *(j+constanteFila);
-				JLabel manzana = crearUnaManzana(posicionX,posicionY,anchoManzana,largoManzana);
-				this.zonaDelJuego.add(manzana);
-				constanteFila++;
-			}
-			constanteColumna++;
-			posicionX=anchoManzana *(i+constanteColumna);
-			posicionY=0;
-			constanteFila=0;
-		}*/	
 	}
 
-	int calcularLargoManzana(){
-		Tablero tablero = Juego.getInstance().getPartida().getTablero();
-		return largoZonaDelJuego/(tablero.getCantidadDeFilas()*2);
-	}
-	
-	public int calcularAnchoManzana(){
-		Tablero tablero = Juego.getInstance().getPartida().getTablero();
-		return anchoZonaDelJuego/(tablero.getCantidadDeColumnas()*2);
-	}
-	
-	public JLabel crearUnaManzana(int posX,int posY,int ancho,int alto){
-		JLabel manzana = new JLabel("");
-		ImageIcon icono = new ImageIcon("src/vista/imagenes/manzana.png");
-		manzana.setIcon(icono);
-		manzana.setBounds(posX, posY, ancho, alto);
-		return manzana;	
-	}
-		
 	public void agregarEscuchaGuardar(ActionListener escuchaGuardar) {
 		this.botonGuardar.addActionListener(escuchaGuardar);
 	}

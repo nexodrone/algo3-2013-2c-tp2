@@ -19,7 +19,7 @@ import control.MyKeyListener;
 
 public class PanelZonaDeJuego extends JPanel implements ActionListener {
 
-    Image star;
+	private Image star;
     Timer timer;
     int x, y, enX, enY, distancia;
 
@@ -71,6 +71,12 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         }
     }
 
+    public void configurarTablero() {
+        this.zonaDeJuego.setLayout(null);
+        this.zonaDeJuego.setBounds(centrarEnX(),centrarEnY(), anchoDePanel, largoDePanel);
+        this.zonaDeJuego.setBackground(Color.black);
+    }
+    
     public void dibujarTablero() {
         dibujarTablero = false;
         int constanteFila = 0;
@@ -115,12 +121,6 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         }
     }*/
 
-    public void configurarTablero() {
-        this.zonaDeJuego.setLayout(null);
-        this.zonaDeJuego.setBounds(calcularPosicionEnXInicial(),calcularPosicionEnYInicial(), anchoDePanel, largoDePanel);
-        this.zonaDeJuego.setBackground(Color.black);
-    }
-
     public JLabel crearUnaManzana(int posX, int posY, int ancho, int alto) {
         JLabel manzana = new JLabel("");
         ImageIcon icono = new ImageIcon("src/vista/imagenes/manzana.png");
@@ -140,15 +140,15 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     public void girarHacia(String sentido) {
         String direccion = "/vista/imagenes/" + cadena + "/" + cadena + sentido + ".png";
 //        System.out.println(direccion);
-        ImageIcon ii = new ImageIcon(this.getClass().getResource(direccion));
-        star = ii.getImage();
+        ImageIcon imagenVehiculo = new ImageIcon(this.getClass().getResource(direccion));
+        star = imagenVehiculo.getImage();
     }
     
-    public int calcularPosicionEnXInicial(){
+    public int centrarEnX(){
     	return (this.anchoDePanel-tablero.getCantidadDeColumnas() * this.longitudManzana * 2)/2;
     }
   
-    public int calcularPosicionEnYInicial(){
+    public int centrarEnY(){
     	return (this.largoDePanel-tablero.getCantidadDeFilas() * this.longitudManzana * 2)/2;
     } 
 
