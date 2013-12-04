@@ -24,8 +24,14 @@ public class Board extends JPanel implements ActionListener {
     Timer timer;
     int x, y, enX, enY, distancia;
 
-    public Board() {
-        setBackground(Color.BLACK);
+    private int largoDePanel;
+    private int anchoDePanel;
+    private JPanel zonaDeJuego = new JPanel();
+    
+    public Board(int ancho,int largo) {
+        this.largoDePanel=largo;
+        this.anchoDePanel=ancho;
+    	setBackground(Color.BLACK);
         KeyListener listener = new MyKeyListener(this);
         addKeyListener(listener);
         ImageIcon ii = new ImageIcon(this.getClass().getResource("dibujo_moto.png"));
@@ -37,6 +43,7 @@ public class Board extends JPanel implements ActionListener {
         int velocidad = 60;
         timer = new Timer(velocidad, this);
         timer.start();
+        this.add(zonaDeJuego);
     }
 
     public void paint(Graphics g) {
@@ -61,6 +68,10 @@ public class Board extends JPanel implements ActionListener {
     }
 
     public void dibujarTablero() {
+    	this.zonaDeJuego.setLayout(null);
+    	this.zonaDeJuego.setBounds(0, 0,anchoDePanel,largoDePanel);
+		this.zonaDeJuego.setBackground(Color.black);
+		
         Tablero tablero = Juego.getInstance().getPartida().getTablero();
         int constanteFila = 0;
         int constanteColumna = 1;
@@ -73,7 +84,7 @@ public class Board extends JPanel implements ActionListener {
             for (int j = 0; j < tablero.getCantidadDeFilas(); j++) {
                 posicionY = largoManzana * (j + constanteFila);
                 JLabel manzana = crearUnaManzana(posicionX, posicionY, anchoManzana, largoManzana);
-                this.add(manzana);
+                this.zonaDeJuego.add(manzana);
                 constanteFila++;
             }
             constanteColumna++;
@@ -93,12 +104,12 @@ public class Board extends JPanel implements ActionListener {
 
     int calcularLargoManzana() {
         Tablero tablero = Juego.getInstance().getPartida().getTablero();
-        return 750 / (tablero.getCantidadDeFilas() * 2);
+        return largoDePanel/ (tablero.getCantidadDeFilas() * 2);
     }
 
     public int calcularAnchoManzana() {
         Tablero tablero = Juego.getInstance().getPartida().getTablero();
-        return 750 / (tablero.getCantidadDeColumnas() * 2);
+        return anchoDePanel / (tablero.getCantidadDeColumnas() * 2);
     }
 
     public void nuevaPosicion(int x, int y) {
