@@ -23,6 +23,18 @@ public class Juego {
     	}
     }
     
+    public void inicializarPuntajesCon(String nombre) {
+    	Jugadores jugadoresVacio = new Jugadores();
+    	try{
+    		jugadoresVacio.guardar(path_jugadores);
+    	}catch(Exception e) {
+    		System.out.print("Error al creaar puntajes.\n");
+    	}
+    	try{
+    		crearUsuario(nombre);
+    	}catch(NoHayUsuariosCreadosException | UsuarioExistenteException ex) {}
+    }
+    
     public void setPathJugadores(String path) {
     	path_jugadores = path;
     }

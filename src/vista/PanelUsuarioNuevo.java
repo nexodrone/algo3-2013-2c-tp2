@@ -53,5 +53,9 @@ public class PanelUsuarioNuevo extends JPanel {
 	public void mostrarMensajeNombreNoDisponible() {
 		JOptionPane.showMessageDialog(this, "Ya existe un usuario con ese nombre, por favor eliga otro.", "Nombre no disponible", JOptionPane.WARNING_MESSAGE);
 	}
+
+	public void mostrarMensajeNoExisteArchivoDePuntajes() {
+		JOptionPane.showMessageDialog(this, "No se encontro la lista de jugadores. Se creara una lista nueva.", "Archivo de jugadores inexistente", JOptionPane.WARNING_MESSAGE);
+	}
 	
 }
