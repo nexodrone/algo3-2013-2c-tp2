@@ -4,9 +4,14 @@ import javax.swing.JFrame;
 
 public class Auto2 extends JFrame {
 
-    public Auto2() {
+	Board board;
+	public Auto2() {
 
-        add(new Board());
+    	board= new Board();
+  
+    	this.setBounds(0, 0, 500,500);
+    	this.add(board);
+       
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(500, 500);
