@@ -27,23 +27,27 @@ public class Board extends JPanel implements ActionListener {
     private int anchoDePanel;
     private Tablero tablero = new Tablero(10, 10);
     private JPanel zonaDeJuego = new JPanel();
+    private String cadena;
 
     public Board(int ancho, int largo) {
+        cadena = "moto";
         this.largoDePanel = largo;
         this.anchoDePanel = ancho;
         setBackground(Color.BLACK);
         KeyListener listener = new MyKeyListener(this);
         addKeyListener(listener);
-        ImageIcon ii = new ImageIcon(this.getClass().getResource("dibujo_moto.png"));
-        star = ii.getImage();
+        this.girarHacia("Derecha"); // por defecto el vehiculo siempre empieza mirando hacia la
+                                    // derecha
+
         setDoubleBuffered(true);
         setFocusable(true);
 
         x = y = 10;
-        int velocidad = 60;
+        int velocidad = 1;
         timer = new Timer(velocidad, this);
         // timer.start();
         this.add(zonaDeJuego);
+        // this.dibujarTablero();
     }
 
     public void paint(Graphics g) {
@@ -52,16 +56,16 @@ public class Board extends JPanel implements ActionListener {
         g2d.drawImage(star, x, y, this);
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
-        this.dibujarTablero();
+        // this.dibujarTablero();
     }
 
     public void actionPerformed(ActionEvent e) {
-        if (distancia < 20) {
-            x = x + enX;
-            y = y + enY;
+        if (distancia < 10) {
+            x = (x + 3 * enX) + enX;
+            y = (y + 3 * enY) + enY;
             distancia = distancia + 1;
             repaint();
-
+            this.dibujarTablero();
             System.out.print("pintando");
         } else {
             timer.stop(); // paro de dibujar
@@ -120,4 +124,10 @@ public class Board extends JPanel implements ActionListener {
         timer.start();
     }
 
+    public void girarHacia(String sentido) {
+        String direccion = "/vista/imagenes/" + cadena + "/" + cadena + sentido + ".png";
+        System.out.println(direccion);
+        ImageIcon ii = new ImageIcon(this.getClass().getResource(direccion));
+        star = ii.getImage();
+    }
 }
