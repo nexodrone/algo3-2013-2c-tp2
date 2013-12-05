@@ -48,7 +48,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public void paint(Graphics g) {
-        //System.out.println("paint");
+        System.out.println("paint");
         this.configurarTableroEnZonaDeJuego();
         if (dibujarTablero) {
             this.dibujarTablero();
@@ -74,8 +74,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
 
     public void configurarTableroEnZonaDeJuego() {
         this.zonaDeJuego.setLayout(null);
-        this.zonaDeJuego.setBounds(centrarEnX(),centrarEnY(), anchoDePanel, largoDePanel);
-        this.zonaDeJuego.setBackground(Color.black);
+        this.zonaDeJuego.setBounds(centrarEnX(),centrarEnY(), this.calcularAnchoPanelZonaDeJuego(), this.calcularLargoPanelZonaDeJuego());
+        this.zonaDeJuego.setBackground(Color.green);
     }
     
     public void dibujarTablero() {
@@ -169,5 +169,13 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     	int posicionInicialVehiculoEnY = this.posicionDeVehiculo.y();
     	return longitudManzana + posicionInicialVehiculoEnY * 2 * longitudManzana;
     }    
+    
+    public int calcularAnchoPanelZonaDeJuego(){
+    	return this.tableroActual.getCantidadDeColumnas() * this.longitudManzana * 2;
+    }
+    
+    public int calcularLargoPanelZonaDeJuego(){
+    	return this.tableroActual.getCantidadDeFilas() * this.longitudManzana * 2;
+    }
 }
 
