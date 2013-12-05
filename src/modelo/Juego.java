@@ -134,14 +134,18 @@ public class Juego {
     	}
     }
 
-    public ArrayList<Jugador> getPuntajesOrdenados() throws Exception{
+    public ArrayList<Jugador> getPuntajesOrdenados()
+    		throws ErrorArchivoJugadoresException, NoHayUsuariosCreadosException
+    {
     	Jugadores jugadores = new Jugadores();
     	try{
     		jugadores = Jugadores.recuperar(path_jugadores);
     	}catch(Exception e) {
     		System.out.print("No hay jugadores creados.\n");
-    		throw new Exception();
+    		throw new ErrorArchivoJugadoresException();
     	}
+    	if( jugadores.getPuntajesOrdenados().isEmpty() )
+    		throw new NoHayUsuariosCreadosException();
         return jugadores.getPuntajesOrdenados();
     }
 

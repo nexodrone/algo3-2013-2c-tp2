@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import control.ControladorBienvenido.EscuchaNuevoUsuario;
@@ -38,6 +39,14 @@ public class PanelBienvenido extends JPanel {
 	
 	public void agregarEscuchaSalir(ActionListener escuchaSalir) {
 		this.botonSalir.addActionListener(escuchaSalir);
+	}
+	
+	public void mostrarMensajeErrorArchivoJugadores() {
+		JOptionPane.showMessageDialog(this, "No se encontro el archivo de jugadores, cree un nuevo usuario para poder jugar.", "Error: Archivo de Jugadores", JOptionPane.ERROR_MESSAGE);
+	}
+	
+	public void mostrarMensajeNoHayUsuariosCreados() {
+		JOptionPane.showMessageDialog(this, "No hay usuarios creados, cree un nuevo usuario para poder jugar.", "Lista de usuarios vacia", JOptionPane.WARNING_MESSAGE);
 	}
 	
 }

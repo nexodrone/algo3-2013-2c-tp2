@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import modelo.Juego;
+import modelo.excepciones.ErrorArchivoJugadoresException;
+import modelo.excepciones.NoHayUsuariosCreadosException;
 import vista.PanelBienvenido;
 import vista.Ventana;
 
@@ -45,8 +47,20 @@ public class ControladorBienvenido extends Controlador {
     public class EscuchaUsuarioRegistrado implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            ventana.remove(panelBienvenido);
-            ControladorUsuarioRegistrado contolador = new ControladorUsuarioRegistrado();
+        	boolean completo = true;            
+            try{
+            	juego.getPuntajesOrdenados();
+            }catch( ErrorArchivoJugadoresException e1 ){
+            	panelBienvenido.mostrarMensajeErrorArchivoJugadores();
+            	completo = false;
+            }catch( NoHayUsuariosCreadosException e2 ){
+            	panelBienvenido.mostrarMensajeNoHayUsuariosCreados();
+            	completo = false;
+            }
+            if (completo){
+            	ventana.remove(panelBienvenido);
+            	ControladorUsuarioRegistrado contolador = new ControladorUsuarioRegistrado();
+            }
         }
     }
 
@@ -57,5 +71,7 @@ public class ControladorBienvenido extends Controlador {
             /*ventana.dispose();*/
         }
     }
+    
+    
 
 }
