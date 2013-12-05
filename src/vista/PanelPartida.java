@@ -28,7 +28,7 @@ public class PanelPartida extends JPanel {
 	public PanelPartida(String nombre, String dificultad, String vehiculo,Tablero tablero) {
 		this.setLayout(null);
 		this.nivelSeleccionado=dificultad;
-		this.panelZonaDelJuego = new PanelZonaDeJuego(tablero);
+		this.panelZonaDelJuego = new PanelZonaDeJuego(tablero,vehiculo);
 		
 		this.nombreUsuario = new JLabel("Jugador: "+nombre);
 		this.dificultad = new JLabel("Dificultad: "+dificultad);
