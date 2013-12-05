@@ -18,6 +18,7 @@ import modelo.excepciones.PartidaGanadaExcepcion;
 import modelo.excepciones.PartidaPerdidaExcepcion;
 import modelo.excepciones.UsuarioInexistenteException;
 import vista.PanelPartida;
+import vista.PanelZonaDeJuego;
 import vista.Ventana;
 
 public class ControladorPartida extends Controlador {
@@ -39,7 +40,7 @@ public class ControladorPartida extends Controlador {
 
     private void agregarPanelLocal(String nombre, String dificultad, String vehiculo) {
     	this.panelPartida = new PanelPartida(nombre, vehiculo, dificultad,juego.getPartida().getTablero());
-        this.panelPartida.inicializarZonaDelJuego(/*juego.getPartida().getTablero().getCantidadDeColumnas(), juego.getPartida().getTablero().getCantidadDeFilas()*/);
+        this.panelPartida.inicializarZonaDelJuego();
         this.panelPartida.agregarEscuchaGuardar(new EscuchaGuardar());
         this.panelPartida.agregarEscuchaVolver(new EscuchaVolver());
         this.agregarEscuchaFlechas();
@@ -81,7 +82,7 @@ public class ControladorPartida extends Controlador {
         mapaDeAcciones.put("DownArrow", new EscuchaFlechas("DownArrow"));
     }
 
-    public class EscuchaFlechas extends AbstractAction {
+    	public class EscuchaFlechas extends AbstractAction {
         private String accion;
 
         public EscuchaFlechas(String accion) {
@@ -90,19 +91,28 @@ public class ControladorPartida extends Controlador {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            try {
+            PanelZonaDeJuego panel = panelPartida.getPanelZonaDeJuego();
+        	try {
                 switch (accion) {
                     case "UpArrow": // System.out.println("The up arrow was pressed!");
                         juego.realizarJugadaEnDireccion(norte);
+                        panel.girarHacia("Arriba");
+                        panel.nuevaPosicion(0, -1);
                         break;
                     case "DownArrow": // System.out.println("The down arrow was pressed!");
                         juego.realizarJugadaEnDireccion(sur);
+                        panel.girarHacia("Abajo");
+                        panel.nuevaPosicion(0, 1);
                         break;
                     case "LeftArrow": // System.out.println("The left arrow was pressed!");
                         juego.realizarJugadaEnDireccion(oeste);
+                        panel.girarHacia("Izquierda");
+                        panel.nuevaPosicion(-1, 0);
                         break;
                     case "RightArrow": // System.out.println("The right arrow was pressed!");
                         juego.realizarJugadaEnDireccion(este);
+                        panel.girarHacia("Derecha");
+                        panel.nuevaPosicion(1, 0);
                         break;
                 }
             } catch (MovimientoInvalidoExcepcion ex) {
