@@ -39,17 +39,15 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         this.girarHacia("Derecha"); // por defecto el vehiculo siempre empieza mirando hacia
                                     // laderecha
 
-        // this.addMouseListener(this.zonaDeJuego);
         setDoubleBuffered(true);
         setFocusable(true);
         int posicionDelTableroX = (anchoDePanel - this.calcularAnchoPanelZonaDeJuego()) / 2;
         int posicionDelTableroY = (largoDePanel - this.calcularLargoPanelZonaDeJuego()) / 2;
         x = this.posicionInicialVehiculoEnX() + posicionDelTableroX + 2;
-        y = largoDePanel - posicionDelTableroY - this.posicionInicialVehiculoEnY() - 2;
+        y = largoDePanel - posicionDelTableroY - this.posicionInicialVehiculoEnY();
 
-        // System.out.println("Posicion del vehiculo:("this.);
         paso = 2; // que cada pasa se mueva 2 pixeles
-        distancia = 26; // distancia = anchoManzana
+        distancia = 40; // distancia = anchoManzana
         cantidad = (distancia / paso);
         int velocidad = 1;
         timer = new Timer(velocidad, this);
@@ -65,7 +63,6 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         }
         super.paint(g);
         Graphics2D grafico2D = (Graphics2D) g;
-        System.out.println("Posicion que llega en paint:" + x + "," + y);
         grafico2D.drawImage(star, x, y, this.zonaDeJuego);
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
@@ -73,8 +70,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (cantidadDePasos < cantidad) {
-            x = (x + 2 * enX);
-            y = (y + 2 * enY);
+            x = (x + 2 * enX); // (enX = 1) (0,38) cantidadDePasos = 19
+            y = (y + 2 * enY); // (enY = 0)
             cantidadDePasos = cantidadDePasos + 1;
             repaint();
             System.out.print("pintando");
@@ -85,8 +82,6 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
 
     public void configurarTableroEnZonaDeJuego() {
         this.zonaDeJuego.setLayout(null);
-        System.out.print("Centra el tablero:" + centrarEnX() + "," + centrarEnY());
-        // System.out.print(centrarEnX()+","+);
         this.zonaDeJuego.setBounds(centrarEnX(), centrarEnY(), this.calcularAnchoPanelZonaDeJuego(), this.calcularLargoPanelZonaDeJuego());
         this.zonaDeJuego.setBackground(Color.green);
     }
@@ -102,7 +97,6 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         for (int i = 0; i < tableroActual.getCantidadDeColumnas(); i++) {
             for (int j = 0; j < tableroActual.getCantidadDeFilas(); j++) {
                 posicionY = longitudManzana * (j + constanteFila);
-                System.out.println("Posicion Manzana:" + posicionX + "," + posicionY);
                 JLabel manzana = crearUnaManzana(posicionX, posicionY);
                 this.zonaDeJuego.add(manzana);
                 constanteFila++;
@@ -114,19 +108,6 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         }
     }
 
-    /*
-     * ESTE METODO ANDA MAL public void dibujarTablero2() { dibujarTablero = false;
-     * System.out.println("dibujarTablero"); zonaDeJuego.setVisible(true); int posicionCuadraX = 0;
-     * int posicionCuadraY = 0; int posicionTableroX = 0; int posicionTableroY = 0; int
-     * longitudCuadra = 60; int anchoCalle = 30; int distancia = longitudCuadra + anchoCalle;
-     * 
-     * for (int i = 0; i < tablero.getCantidadDeColumnas(); i++) { for (int j = 0; j <
-     * tablero.getCantidadDeFilas(); j++) { posicionCuadraY = (distancia) * j + posicionTableroX;
-     * posicionCuadraX = (distancia) * i + posicionTableroY; JLabel manzana =
-     * crearUnaManzana(posicionCuadraX, posicionCuadraY, longitudCuadra, longitudCuadra);
-     * this.zonaDeJuego.add(manzana); } } }
-     */
-
     public JLabel crearUnaManzana(int posX, int posY) {
         JLabel manzana = new JLabel("");
         ImageIcon icono = new ImageIcon("src/vista/imagenes/manzana.png");
@@ -136,7 +117,6 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public void nuevaPosicion(int x, int y) {
-        System.out.println("nuevaPosicion");
         enX = x;
         enY = y;
         cantidadDePasos = 0;
@@ -145,7 +125,6 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
 
     public void girarHacia(String sentido) {
         String direccion = "/vista/imagenes/" + vehiculo + "/" + vehiculo + sentido + ".png";
-        System.out.print(direccion);
         ImageIcon imagenVehiculo = new ImageIcon(this.getClass().getResource(direccion));
         star = imagenVehiculo.getImage();
         star = star.getScaledInstance(15, 15, 1);
@@ -169,39 +148,24 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
 
     public int posicionInicialVehiculoEnX() {
         int posicionInicialVehiculoEnX = this.posicionDeVehiculo.x();
-        // int posicionInicialVehiculoEnX = 0;
-        System.out.print("Posicion en X:");
-        System.out.print(posicionInicialVehiculoEnX);
         int nuevaPosicionX = longitudManzana + posicionInicialVehiculoEnX * 2 * longitudManzana;
-        System.out.print("posicion vehiculo vista en x:");
-        x = nuevaPosicionX;
-        System.out.println(nuevaPosicionX);
         return nuevaPosicionX;
 
     }
 
     public int posicionInicialVehiculoEnY() {
         int posicionInicialVehiculoEnY = this.posicionDeVehiculo.y();
-        // int posicionInicialVehiculoEnY = 0;
-        System.out.println("Posicion en Y:");
-        System.out.print(posicionInicialVehiculoEnY);
         int nuevaPosicionY = longitudManzana + posicionInicialVehiculoEnY * 2 * longitudManzana;
-        System.out.print("posicion vehiculo vista en y:");
-        System.out.println(nuevaPosicionY);
-        // y = nuevaPosicionY;
-        // nuevaPosicionY = this.largoDePanel - nuevaPosicionY;
         return nuevaPosicionY;
     }
 
     public int calcularAnchoPanelZonaDeJuego() {
         int algo = this.tableroActual.getCantidadDeColumnas() * this.longitudManzana * 2;
-        System.out.println("Tamanio de la zona Juego x:" + algo);
         return algo;
     }
 
     public int calcularLargoPanelZonaDeJuego() {
         int algo = this.tableroActual.getCantidadDeFilas() * this.longitudManzana * 2;
-        System.out.println("Tamanio de la zona Juego y:" + algo);
         return algo;
     }
 }
