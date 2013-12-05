@@ -44,12 +44,12 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         setFocusable(true);
         int posicionDelTableroX = (anchoDePanel - this.calcularAnchoPanelZonaDeJuego()) / 2;
         int posicionDelTableroY = (largoDePanel - this.calcularLargoPanelZonaDeJuego()) / 2;
-        x = this.posicionInicialVehiculoEnX() + posicionDelTableroX;
-        y = largoDePanel - posicionDelTableroY - this.posicionInicialVehiculoEnY();
+        x = this.posicionInicialVehiculoEnX() + posicionDelTableroX + 2;
+        y = largoDePanel - posicionDelTableroY - this.posicionInicialVehiculoEnY() - 2;
 
         // System.out.println("Posicion del vehiculo:("this.);
         paso = 2; // que cada pasa se mueva 2 pixeles
-        distancia = 20; // distancia = anchoManzana
+        distancia = 26; // distancia = anchoManzana
         cantidad = (distancia / paso);
         int velocidad = 1;
         timer = new Timer(velocidad, this);
@@ -61,6 +61,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         this.configurarTableroEnZonaDeJuego();
         if (dibujarTablero) {
             this.dibujarTablero();
+            actionPerformed(null);
         }
         super.paint(g);
         Graphics2D grafico2D = (Graphics2D) g;
@@ -135,9 +136,10 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public void nuevaPosicion(int x, int y) {
+        System.out.println("nuevaPosicion");
         enX = x;
         enY = y;
-        distancia = 0;
+        cantidadDePasos = 0;
         timer.start();
     }
 
@@ -166,8 +168,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public int posicionInicialVehiculoEnX() {
-        // int posicionInicialVehiculoEnX = this.posicionDeVehiculo.x();
-        int posicionInicialVehiculoEnX = 0;
+        int posicionInicialVehiculoEnX = this.posicionDeVehiculo.x();
+        // int posicionInicialVehiculoEnX = 0;
         System.out.print("Posicion en X:");
         System.out.print(posicionInicialVehiculoEnX);
         int nuevaPosicionX = longitudManzana + posicionInicialVehiculoEnX * 2 * longitudManzana;
@@ -179,8 +181,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public int posicionInicialVehiculoEnY() {
-        // int posicionInicialVehiculoEnY = this.posicionDeVehiculo.y();
-        int posicionInicialVehiculoEnY = 0;
+        int posicionInicialVehiculoEnY = this.posicionDeVehiculo.y();
+        // int posicionInicialVehiculoEnY = 0;
         System.out.println("Posicion en Y:");
         System.out.print(posicionInicialVehiculoEnY);
         int nuevaPosicionY = longitudManzana + posicionInicialVehiculoEnY * 2 * longitudManzana;
