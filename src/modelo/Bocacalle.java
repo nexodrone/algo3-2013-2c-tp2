@@ -4,7 +4,7 @@ import org.simpleframework.xml.*;
 
 @Root (name = "Bocacalle")
 public class Bocacalle {
-
+/*asdadasffgsdg*/
 	@Element
     private Calle calleNorte, calleSur, calleEste, calleOeste;
 	
