@@ -1,10 +1,10 @@
 <ListaDeJugadores>
    <jugadores>
       <jugador nombre="Chango">
-         <puntaje>45</puntaje>
+         <puntaje>99</puntaje>
       </jugador>
       <jugador nombre="Matori">
-         <puntaje>32</puntaje>
+         <puntaje>105</puntaje>
       </jugador>
       <jugador nombre="Jedi">
          <puntaje>110</puntaje>
