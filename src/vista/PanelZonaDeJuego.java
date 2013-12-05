@@ -7,15 +7,12 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import modelo.Tablero;
-import control.MyKeyListener;
 
 public class PanelZonaDeJuego extends JPanel implements ActionListener {
 
@@ -36,8 +33,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         this.tableroActual = tablero;
     	cadena = "moto";
         setBackground(Color.BLACK);
-        KeyListener listener = new MyKeyListener(this);
-        addKeyListener(listener);
+        /*KeyListener listener = new MyKeyListener(this);
+        addKeyListener(listener);*/
         this.girarHacia("Derecha"); // por defecto el vehiculo siempre empieza mirando hacia laderecha
         setDoubleBuffered(true);
         setFocusable(true);

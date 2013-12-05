@@ -33,14 +33,12 @@ public class PanelPartida extends JPanel {
 		this.nombreUsuario = new JLabel("Jugador: "+nombre);
 		this.dificultad = new JLabel("Dificultad: "+dificultad);
 		this.vehiculoActual = new JLabel("Vehiculo: "+vehiculo);
-			
 		this.nombreUsuario.setBounds(10, 10, 200, 20);
 		this.dificultad.setBounds(10, 30, 200, 20);
 		this.vehiculoActual.setBounds(10, 50, 200, 20);
 		this.botonGuardar.setBounds(10, 550, 200, 30);
 		this.botonVolver.setBounds(10, 600, 200, 30);
 		this.nota.setBounds(10, 750, 500, 20);
-		
 		
 		this.add(nota);
 		this.add(this.nombreUsuario);
@@ -55,7 +53,6 @@ public class PanelPartida extends JPanel {
 		this.panelZonaDelJuego.setLayout(null);
 		this.panelZonaDelJuego.setBounds(300, 50,anchoZonaDelJuego,largoZonaDelJuego);
 		this.panelZonaDelJuego.setBackground(Color.black);
-		
 	}
 
 	public void agregarEscuchaGuardar(ActionListener escuchaGuardar) {
@@ -64,6 +61,10 @@ public class PanelPartida extends JPanel {
 
 	public void agregarEscuchaVolver(ActionListener escuchaVolver) {
 		this.botonVolver.addActionListener(escuchaVolver);
+	}
+	
+	public PanelZonaDeJuego getPanelZonaDeJuego(){
+		return this.panelZonaDelJuego;
 	}
 	
 	public void agregarEscuchaFlechas(KeyListener escuchaFlechas) {
