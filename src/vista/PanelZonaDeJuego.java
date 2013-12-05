@@ -55,7 +55,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         }
         super.paint(g);
         Graphics2D grafico2D = (Graphics2D) g;
-        grafico2D.drawImage(star, x, y, this);
+        grafico2D.drawImage(star, x, y, this.zonaDeJuego);
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
     }
@@ -88,7 +88,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         for (int i = 0; i < tableroActual.getCantidadDeColumnas(); i++) {
             for (int j = 0; j < tableroActual.getCantidadDeFilas(); j++) {
                 posicionY = longitudManzana * (j + constanteFila);
-                JLabel manzana = crearUnaManzana(posicionX, posicionY, longitudManzana, longitudManzana);
+                JLabel manzana = crearUnaManzana(posicionX, posicionY);
                 this.zonaDeJuego.add(manzana);
                 constanteFila++;
             }
@@ -122,11 +122,11 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         }
     }*/
 
-    public JLabel crearUnaManzana(int posX, int posY, int ancho, int alto) {
+    public JLabel crearUnaManzana(int posX, int posY) {
         JLabel manzana = new JLabel("");
         ImageIcon icono = new ImageIcon("src/vista/imagenes/manzana.png");
         manzana.setIcon(icono);
-        manzana.setBounds(posX, posY, ancho, alto);
+        manzana.setBounds(posX, posY,longitudManzana,longitudManzana);
         return manzana;
     }
 
@@ -158,10 +158,6 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     	}else {
     		return (this.largoDePanel-tableroActual.getCantidadDeFilas() * this.longitudManzana * 2)/2;
     	}   		
-    }
-    
-    public void dibujarVehiculoEnPosicion(){
-    	
     }
     
     public int posicionInicialVehiculoEnX(){
