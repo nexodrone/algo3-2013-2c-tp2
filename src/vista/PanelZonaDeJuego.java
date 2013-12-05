@@ -7,11 +7,13 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import modelo.Posicion;
 import modelo.Tablero;
 
 public class PanelZonaDeJuego extends JPanel implements ActionListener {
@@ -26,17 +28,20 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     private Tablero tableroActual;
     private JPanel zonaDeJuego = new JPanel();
     private String vehiculo;
+    private Posicion posicionDeVehiculo;
     private Boolean dibujarTablero = true; //PARA QUE EL TABLERO SE DIBUJE SOLO UNA VEZ
   
 
-    public PanelZonaDeJuego(Tablero tablero,String vehiculoSeleccionado) {
+    public PanelZonaDeJuego(Tablero tablero,String vehiculoSeleccionado,Posicion posicion) {
         this.tableroActual = tablero;
+        this.posicionDeVehiculo=posicion;
     	vehiculo =vehiculoSeleccionado;
         setBackground(Color.BLACK);
         this.girarHacia("Derecha"); // por defecto el vehiculo siempre empieza mirando hacia laderecha
         setDoubleBuffered(true);
         setFocusable(true);
-        x = y = 10;
+        x = this.posicionInicialVehiculoEnX();
+        y = this.posicionInicialVehiculoEnY();
         int velocidad = 1;
         timer = new Timer(velocidad, this);
         this.add(zonaDeJuego);
@@ -159,5 +164,14 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     	
     }
     
+    public int posicionInicialVehiculoEnX(){
+    	int posicionInicialVehiculoEnX = this.posicionDeVehiculo.x(); 
+    	return longitudManzana + posicionInicialVehiculoEnX * 2 * longitudManzana;
+    }
+    
+    public int posicionInicialVehiculoEnY(){
+    	int posicionInicialVehiculoEnY = this.posicionDeVehiculo.y();
+    	return longitudManzana + posicionInicialVehiculoEnY * 2 * longitudManzana;
+    }    
 }
 

@@ -8,6 +8,7 @@ import java.awt.event.KeyListener;
 import javax.swing.*;
 
 import modelo.Juego;
+import modelo.Posicion;
 import modelo.Tablero;
 
 
@@ -25,10 +26,10 @@ public class PanelPartida extends JPanel {
 	String nivelSeleccionado;
 
 	
-	public PanelPartida(String nombre, String dificultad, String vehiculo,Tablero tablero) {
+	public PanelPartida(String nombre, String dificultad, String vehiculo,Tablero tablero,Posicion posicion) {
 		this.setLayout(null);
 		this.nivelSeleccionado=dificultad;
-		this.panelZonaDelJuego = new PanelZonaDeJuego(tablero,vehiculo);
+		this.panelZonaDelJuego = new PanelZonaDeJuego(tablero,vehiculo,posicion);
 		
 		this.nombreUsuario = new JLabel("Jugador: "+nombre);
 		this.dificultad = new JLabel("Dificultad: "+dificultad);
