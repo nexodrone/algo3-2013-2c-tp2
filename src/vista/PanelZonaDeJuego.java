@@ -25,16 +25,14 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     private int longitudManzana = 20;
     private Tablero tableroActual;
     private JPanel zonaDeJuego = new JPanel();
-    private String cadena;
+    private String vehiculo;
     private Boolean dibujarTablero = true; //PARA QUE EL TABLERO SE DIBUJE SOLO UNA VEZ
   
 
-    public PanelZonaDeJuego(Tablero tablero) {
+    public PanelZonaDeJuego(Tablero tablero,String vehiculoSeleccionado) {
         this.tableroActual = tablero;
-    	cadena = "moto";
+    	vehiculo =vehiculoSeleccionado;
         setBackground(Color.BLACK);
-        /*KeyListener listener = new MyKeyListener(this);
-        addKeyListener(listener);*/
         this.girarHacia("Derecha"); // por defecto el vehiculo siempre empieza mirando hacia laderecha
         setDoubleBuffered(true);
         setFocusable(true);
@@ -51,8 +49,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
             this.dibujarTablero();
         }
         super.paint(g);
-        Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(star, x, y, this);
+        Graphics2D grafico2D = (Graphics2D) g;
+        grafico2D.drawImage(star, x, y, this);
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
     }
@@ -136,8 +134,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public void girarHacia(String sentido) {
-        String direccion = "/vista/imagenes/" + cadena + "/" + cadena + sentido + ".png";
-//        System.out.println(direccion);
+        String direccion = "/vista/imagenes/" + vehiculo + "/" + vehiculo + sentido + ".png";
         ImageIcon imagenVehiculo = new ImageIcon(this.getClass().getResource(direccion));
         star = imagenVehiculo.getImage();
     }
@@ -157,7 +154,10 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     		return (this.largoDePanel-tableroActual.getCantidadDeFilas() * this.longitudManzana * 2)/2;
     	}   		
     }
- 
+    
+    public void dibujarVehiculoEnPosicion(){
+    	
+    }
     
 }
 
