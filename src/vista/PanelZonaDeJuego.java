@@ -45,7 +45,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         int posicionDelTableroY = (largoDePanel - this.calcularLargoPanelZonaDeJuego()) / 2;
         x = this.posicionInicialVehiculoEnX() + posicionDelTableroX + 2;
         y = largoDePanel - posicionDelTableroY - this.posicionInicialVehiculoEnY();
-
+        cantidadDePasos = 0;
         paso = 2; // que cada pasa se mueva 2 pixeles
         distancia = 40; // distancia = anchoManzana
         cantidad = (distancia / paso);
@@ -60,6 +60,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         if (dibujarTablero) {
             this.dibujarTablero();
             actionPerformed(null);
+            cantidadDePasos = 0;
         }
         super.paint(g);
         Graphics2D grafico2D = (Graphics2D) g;
@@ -70,13 +71,15 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (cantidadDePasos < cantidad) {
-            x = (x + 2 * enX); // (enX = 1) (0,38) cantidadDePasos = 19
-            y = (y + 2 * enY); // (enY = 0)
+            x = (x + 2 * enX);
+            y = (y + 2 * enY);
             cantidadDePasos = cantidadDePasos + 1;
+
             repaint();
             System.out.print("pintando");
         } else {
             timer.stop(); // paro de dibujar
+            cantidadDePasos = 0;
         }
     }
 
@@ -117,17 +120,32 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public void nuevaPosicion(int x, int y) {
-        enX = x;
-        enY = y;
-        cantidadDePasos = 0;
-        timer.start();
+        System.out.println("cantidadDePasos:" + cantidadDePasos);
+        System.out.println("nuevaPosicion");
+        if (!this.seEstaMoviendo()) {
+            enX = x;
+            enY = y;
+            cantidadDePasos = 0;
+            timer.start();
+        }
+
     }
 
     public void girarHacia(String sentido) {
-        String direccion = "/vista/imagenes/" + vehiculo + "/" + vehiculo + sentido + ".png";
-        ImageIcon imagenVehiculo = new ImageIcon(this.getClass().getResource(direccion));
-        star = imagenVehiculo.getImage();
-        star = star.getScaledInstance(15, 15, 1);
+        if (!this.seEstaMoviendo()) {
+            String direccion = "/vista/imagenes/" + vehiculo + "/" + vehiculo + sentido + ".png";
+            ImageIcon imagenVehiculo = new ImageIcon(this.getClass().getResource(direccion));
+            star = imagenVehiculo.getImage();
+            star = star.getScaledInstance(18, 18, 1);
+        }
+
+    }
+
+    private boolean seEstaMoviendo() {
+        if (cantidadDePasos == 13 || cantidadDePasos == 0) {
+            return false;
+        }
+        return true;
     }
 
     public int centrarEnX() {
