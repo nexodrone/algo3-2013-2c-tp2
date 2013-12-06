@@ -4,9 +4,12 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.Area;
+import java.awt.geom.Ellipse2D;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -20,13 +23,15 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
 
     private Image star;
     Timer timer;
-    int x, y, enX, enY, paso, distancia, cantidad, cantidadDePasos;
+    int  enX, enY, paso, distancia, cantidad, cantidadDePasos;
 
+    private int x, y;
+    private int radioClip = 60;
     private int largoDePanel = 570;
     private int anchoDePanel = 830;
     private int longitudManzana = 20;
     private Tablero tableroActual;
-    private JPanel zonaDeJuego = new JPanel();
+    private TransparentPanel zonaDeJuego;
     private String vehiculo;
     private Posicion posicionDeVehiculo;
     private Boolean dibujarTablero = true; // PARA QUE EL TABLERO SE DIBUJE SOLO UNA VEZ
@@ -51,6 +56,10 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         cantidad = (distancia / paso);
         int velocidad = 1;
         timer = new Timer(velocidad, this);
+        
+        
+        
+        zonaDeJuego = new TransparentPanel(radioClip);
         this.add(zonaDeJuego);
     }
 
@@ -74,9 +83,9 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
             x = (x + 2 * enX);
             y = (y + 2 * enY);
             cantidadDePasos = cantidadDePasos + 1;
-
+            zonaDeJuego.setClipPos(x-centrarEnX(), y-centrarEnY());
             repaint();
-            System.out.print("pintando");
+            //System.out.print("pintando");
         } else {
             timer.stop(); // paro de dibujar
             cantidadDePasos = 0;
@@ -86,7 +95,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     public void configurarTableroEnZonaDeJuego() {
         this.zonaDeJuego.setLayout(null);
         this.zonaDeJuego.setBounds(centrarEnX(), centrarEnY(), this.calcularAnchoPanelZonaDeJuego(), this.calcularLargoPanelZonaDeJuego());
-        this.zonaDeJuego.setBackground(Color.green);
+        this.zonaDeJuego.setBackground(Color.lightGray);
     }
 
     public void dibujarTablero() {
@@ -128,7 +137,6 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
             cantidadDePasos = 0;
             timer.start();
         }
-
     }
 
     public void girarHacia(String sentido) {
@@ -138,7 +146,6 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
             star = imagenVehiculo.getImage();
             star = star.getScaledInstance(18, 18, 1);
         }
-
     }
 
     private boolean seEstaMoviendo() {
@@ -168,7 +175,6 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         int posicionInicialVehiculoEnX = this.posicionDeVehiculo.x();
         int nuevaPosicionX = longitudManzana + posicionInicialVehiculoEnX * 2 * longitudManzana;
         return nuevaPosicionX;
-
     }
 
     public int posicionInicialVehiculoEnY() {
@@ -185,5 +191,34 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     public int calcularLargoPanelZonaDeJuego() {
         int algo = this.tableroActual.getCantidadDeFilas() * this.longitudManzana * 2;
         return algo;
+    }
+    
+    //CLASE PARA EL CIRCULO CLIP
+    public class TransparentPanel extends JPanel {
+    	
+    	private int x,y;
+    	int radioClip;
+    	
+        public TransparentPanel(int radioClip) {
+            setDoubleBuffered(true);
+            setFocusable(true);
+        	this.radioClip = radioClip;
+        }
+        
+        public void setClipPos(int x, int y) {
+        	this.x = x;
+        	this.y = y;
+        }
+        
+        public void paint(Graphics g) {        	
+        	Graphics2D grafico2D = (Graphics2D) g;
+        	int centroX = x-radioClip+9;
+        	int centroY = y-radioClip+9;
+        	Ellipse2D zona = new Ellipse2D.Double(centroX, centroY, radioClip*2, radioClip*2);
+            grafico2D.setClip(new Area(zona));
+            super.paint(g);
+            g.dispose();
+            grafico2D.dispose();
+        }
     }
 }
