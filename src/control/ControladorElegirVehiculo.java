@@ -16,7 +16,8 @@ public class ControladorElegirVehiculo extends Controlador{
 	
 	public ControladorElegirVehiculo(String nivelSeleccionado){
 		 this.agregarPanelLocal(nivelSeleccionado);
-	     ventana.setVisible(true);
+	     ventana.pack();
+	     ventana.repaint();
 	}
 	
 	private void agregarPanelLocal(String nivelSeleccionado) {

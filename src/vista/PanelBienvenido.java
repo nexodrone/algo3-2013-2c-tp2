@@ -1,5 +1,7 @@
 package vista;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
@@ -18,11 +20,12 @@ public class PanelBienvenido extends JPanel {
 	
 	public PanelBienvenido() {
 		this.setLayout(null);
-		this.bienvenido.setBounds(510,50,200,30);
-		this.botonNuevoUsuario.setBounds(500,100,200,30);
-		this.botonUsuarioRegistrado.setBounds(500,150,200,30);
-		this.botonSalir.setBounds(500, 200, 200, 30);
-		
+		this.setPreferredSize(new Dimension(300,400));
+		this.bienvenido.setBounds(60,50,200,30);
+		this.botonNuevoUsuario.setBounds(50,100,200,30);
+		this.botonUsuarioRegistrado.setBounds(50,150,200,30);
+		this.botonSalir.setBounds(50, 200, 200, 30);
+		this.setBackground(new Color(0,0,0,25));
 		this.add(bienvenido);
 		this.add(botonNuevoUsuario);
 		this.add(botonUsuarioRegistrado);

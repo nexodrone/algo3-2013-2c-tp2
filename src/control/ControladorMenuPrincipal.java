@@ -13,7 +13,8 @@ public class ControladorMenuPrincipal extends Controlador {
 
     public ControladorMenuPrincipal() {
         this.agregarPanelLocal();
-        ventana.setVisible(true);
+        ventana.pack();
+        ventana.repaint();
     }
 
     private void agregarPanelLocal() {

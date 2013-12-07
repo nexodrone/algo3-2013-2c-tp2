@@ -1,5 +1,7 @@
 package vista;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 
@@ -29,18 +31,22 @@ public class PanelElegirVehiculo extends JPanel {
 
 	public PanelElegirVehiculo(String nivelSeleccionado) {
 		this.setLayout(null);
-		this.nivel= nivelSeleccionado;
-		this.etiqueta.setBounds(530, 60, 220, 10);
-		this.vehiculoAuto=obtenerImagenDeVehiculo(200,100,"src/vista/imagenes/vehiculoAuto.jpg");
-		this.vehiculoMoto=obtenerImagenDeVehiculo(490,100,"src/vista/imagenes/vehiculoMoto.jpg");
-		this.vehiculo4x4=obtenerImagenDeVehiculo(780,100,"src/vista/imagenes/vehiculo4x4.jpg");
-	
-		this.botonAuto.setBounds(300,370,80,30);
-		this.botonMoto.setBounds(590,370, 100, 30);
-		this.boton4x4.setBounds(860,370,80,30);
 		
-		this.botonAceptar.setBounds(500,430,200,30);
-		this.botonVolver.setBounds(500,480,200, 30);
+		this.setPreferredSize(new Dimension(1000,600));
+		this.setBackground(new Color(0,0,0,25));
+		
+		this.nivel= nivelSeleccionado;
+		this.etiqueta.setBounds(430, 60, 220, 10);
+		this.vehiculoAuto=obtenerImagenDeVehiculo(100,100,"src/vista/imagenes/vehiculoAuto.jpg");
+		this.vehiculoMoto=obtenerImagenDeVehiculo(390,100,"src/vista/imagenes/vehiculoMoto.jpg");
+		this.vehiculo4x4=obtenerImagenDeVehiculo(680,100,"src/vista/imagenes/vehiculo4x4.jpg");
+	
+		this.botonAuto.setBounds(200,370,80,30);
+		this.botonMoto.setBounds(490,370, 100, 30);
+		this.boton4x4.setBounds(760,370,80,30);
+		
+		this.botonAceptar.setBounds(400,430,200,30);
+		this.botonVolver.setBounds(400,480,200, 30);
 		this.bgroup.add(botonAuto);
 		this.bgroup.add(botonMoto);
 		this.bgroup.add(boton4x4);

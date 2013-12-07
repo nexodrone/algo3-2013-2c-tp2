@@ -32,7 +32,8 @@ public class ControladorPartida extends Controlador {
 
     public ControladorPartida(Ventana ventana, String dificultad, String vehiculo) {
         this.agregarPanelLocal(juego.getJugadorActual().getNickName(), vehiculo, dificultad);
-        this.ventana.setVisible(true);
+        ventana.pack();
+        ventana.repaint();
         path_jugadores = "src/jugadores/jugadores.xml";
     }
 

@@ -14,7 +14,8 @@ public class ControladorElegirNivel extends Controlador{
 	
 	public ControladorElegirNivel(){
 		 this.agregarPanelLocal();
-	     ventana.setVisible(true);
+	     ventana.pack();
+	     ventana.repaint();
 	}
 		
 	private void agregarPanelLocal() {

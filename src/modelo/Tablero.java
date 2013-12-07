@@ -1,10 +1,9 @@
 package modelo;
 
-import java.io.File;
 import java.util.ArrayList;
-
-import org.simpleframework.xml.*;
-import org.simpleframework.xml.core.Persister;
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.ElementList;
+import org.simpleframework.xml.Root;
 
 @Root(name = "Tablero")
 public class Tablero {
@@ -38,12 +37,12 @@ public class Tablero {
         Direccion este = new Direccion(1,0);
         Direccion norte = new Direccion(0,1);
         for (int i=1; i<cantidadDeColumnas; i++) {
-            for (int j=0; j<cantidadDeFilas; j++) { // unificar calles horizontales
+            for (int j=0; j<cantidadDeFilas; j++) { /* unificar calles horizontales */
                 this.bocacalles.get(i).get(j).setCalleOeste(this.bocacalles.get(i-1).get(j).getCalleEnDireccion(este));
             }
         }
         for (int i=0; i<cantidadDeColumnas; i++) {
-            for (int j=1; j<cantidadDeFilas; j++) { // unificar calles verticales
+            for (int j=1; j<cantidadDeFilas; j++) { /* unificar calles verticales */
                 this.bocacalles.get(i).get(j).setCalleSur(this.bocacalles.get(i).get(j-1).getCalleEnDireccion(norte));
             }
         }
@@ -70,15 +69,4 @@ public class Tablero {
         return true;
     }
 
-//    public void guardar(String path) throws Exception {
-//    	Serializer serializador = new Persister();
-//    	File resultado = new File(path);
-//    	serializador.write(this, resultado);
-//    }
-//    
-//    public static Tablero recuperar(String path) throws Exception{
-//    Serializer deserializador = new Persister();
-//    File src = new File(path);
-//    return deserializador.read(Tablero.class, src);
-//    }
 }

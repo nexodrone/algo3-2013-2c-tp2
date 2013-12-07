@@ -1,5 +1,7 @@
 package vista;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
@@ -16,6 +18,7 @@ public class PanelUsuarioRegistrado extends JPanel {
 	
 	public PanelUsuarioRegistrado() {
 		setLayout(null);
+		this.setPreferredSize(new Dimension(400,400));
 		checks_grupo = new ButtonGroup();
 		
 		aceptar = new JButton("Aceptar");
@@ -24,7 +27,8 @@ public class PanelUsuarioRegistrado extends JPanel {
 		
 		volver = new JButton("Volver");
 		volver.setBounds(this.WIDTH + 50, 80, 100, 25);
-		this.add(volver);	
+		this.setBackground(new Color(0,0,0,25));
+		this.add(volver);
 	}
 
 	public void agregarJugador(int index, String nombre) {

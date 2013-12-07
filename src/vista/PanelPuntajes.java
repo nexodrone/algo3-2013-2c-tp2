@@ -2,6 +2,7 @@ package vista;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,11 +34,12 @@ public class PanelPuntajes extends JPanel {
 		nombre = new JLabel("Nombre");		
 		puntaje = new JLabel("Puntaje");
 		
-		nombre.setBounds(130, 10, 100, 40);
-		puntaje.setBounds(220, 10, 100, 40);
-		table.setBounds(100, 40, 200, puntajesOrdenados.size()*16);
-		volver.setBounds(150, puntajesOrdenados.size()*16 + 50, 80, 30);
-		
+		nombre.setBounds(80, 10, 100, 40);
+		puntaje.setBounds(170, 10, 100, 40);
+		table.setBounds(50, 40, 200, puntajesOrdenados.size()*16);
+		volver.setBounds(100, puntajesOrdenados.size()*16 + 50, 80, 30);
+		this.setPreferredSize(new Dimension(300,400));
+		this.setBackground(new Color(0,0,0,25));
 		this.add(volver);
 		this.add(table);
 		this.add(nombre);

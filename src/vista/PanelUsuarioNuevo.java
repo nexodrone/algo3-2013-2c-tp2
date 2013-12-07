@@ -1,5 +1,7 @@
 package vista;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 
@@ -18,12 +20,12 @@ public class PanelUsuarioNuevo extends JPanel {
 	
 	public PanelUsuarioNuevo() {
 		this.setLayout(null);
-	
-		this.etiqueta.setBounds(510, 60, 200, 20);
-		this.nombre.setBounds(500, 100, 200, 20);
-		this.botonGuardar.setBounds(500, 150, 200, 30);
-		this.botonVolver.setBounds(500, 200, 200, 30);
-		
+		this.setPreferredSize(new Dimension(300,400));
+		this.etiqueta.setBounds(60, 60, 200, 20);
+		this.nombre.setBounds(50, 100, 200, 20);
+		this.botonGuardar.setBounds(50, 150, 200, 30);
+		this.botonVolver.setBounds(50, 200, 200, 30);
+		this.setBackground(new Color(0,0,0,25));
 		this.add(etiqueta);
 		this.add(nombre);
 		this.add(botonGuardar);
