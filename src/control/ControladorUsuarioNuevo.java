@@ -42,12 +42,13 @@ public class ControladorUsuarioNuevo extends Controlador {
         @Override
         public void actionPerformed(ActionEvent e) {
         	completo = true;
-            if (panelUsuarioNuevo.getNombreDelCampo().isEmpty()) {
+        	String nombre = panelUsuarioNuevo.getNombreDelCampo().trim();
+            if (nombre.isEmpty()) {
                 panelUsuarioNuevo.mostrarMensajeCampoVacio();
             } else {
-                juego.setJugadorActual(new Jugador(panelUsuarioNuevo.getNombreDelCampo()));
+                juego.setJugadorActual(new Jugador(nombre));
                 try {
-					juego.crearUsuario(panelUsuarioNuevo.getNombreDelCampo());
+					juego.crearUsuario(nombre);
 				} catch (UsuarioExistenteException e1) {
 					System.out.print("Usuario existente.");
 					panelUsuarioNuevo.mostrarMensajeNombreNoDisponible();
@@ -55,7 +56,7 @@ public class ControladorUsuarioNuevo extends Controlador {
 				} catch (NoHayUsuariosCreadosException e1) {
 					System.out.print("No existe archivo de puntajes.");
 					panelUsuarioNuevo.mostrarMensajeNoExisteArchivoDePuntajes();
-					juego.inicializarPuntajesCon(panelUsuarioNuevo.getNombreDelCampo());
+					juego.inicializarPuntajesCon(nombre);
 				}
                 
                 if ( completo ) {
@@ -78,12 +79,13 @@ public class ControladorUsuarioNuevo extends Controlador {
         public void keyReleased(KeyEvent e) {
         	completo = true;
             if (e.getKeyChar() == KeyEvent.VK_ENTER) {
-                if (panelUsuarioNuevo.getNombreDelCampo().isEmpty()) {
+            	String nombre = panelUsuarioNuevo.getNombreDelCampo().trim();
+                if (nombre.isEmpty()) {
                     panelUsuarioNuevo.mostrarMensajeCampoVacio();
                 } else {
-                    juego.setJugadorActual(new Jugador(panelUsuarioNuevo.getNombreDelCampo()));
+                    juego.setJugadorActual(new Jugador(nombre));
                     try {
-    					juego.crearUsuario(panelUsuarioNuevo.getNombreDelCampo());
+    					juego.crearUsuario(nombre);
     				} catch (UsuarioExistenteException e1) {
     					System.out.print("Usuario existente.\n");
     					panelUsuarioNuevo.mostrarMensajeNombreNoDisponible();
