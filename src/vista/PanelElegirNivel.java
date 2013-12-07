@@ -1,7 +1,11 @@
 package vista;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
+
+
 
 
 import javax.swing.ButtonGroup;
@@ -24,23 +28,24 @@ public class PanelElegirNivel extends JPanel {
 	private JLabel tableroFacil;
 	private JLabel tableroIntermedio;
 	private JLabel tableroDificil;
-	
-
 
 	public PanelElegirNivel() {
 		this.setLayout(null);
 		
-		this.etiqueta.setBounds(530, 60, 220, 10);
-		this.tableroFacil=obtenerImagenTablero(200,100,"src/vista/imagenes/nivelFacil.png");
-		this.tableroIntermedio=obtenerImagenTablero(490,100,"src/vista/imagenes/nivelIntermedio.png");
-		this.tableroDificil=obtenerImagenTablero(780,100,"src/vista/imagenes/nivelDificil.png");
-	
-		this.botonFacil.setBounds(300,370,80,30);
-		this.botonIntermedio.setBounds(590,370, 100, 30);
-		this.botonDificil.setBounds(860,370,80,30);
+		this.setPreferredSize(new Dimension(1000,600));
+		this.setBackground(new Color(0,0,0,25));
 		
-		this.botonAceptar.setBounds(500,430,200,30);
-		this.botonVolver.setBounds(500,480,200, 30);
+		this.etiqueta.setBounds(470, 60, 220, 10);
+		this.tableroFacil=obtenerImagenTablero(100,100,"src/vista/imagenes/nivelFacil.png");
+		this.tableroIntermedio=obtenerImagenTablero(390,100,"src/vista/imagenes/nivelIntermedio.png");
+		this.tableroDificil=obtenerImagenTablero(680,100,"src/vista/imagenes/nivelDificil.png");
+	
+		this.botonFacil.setBounds(200,370,80,30);
+		this.botonIntermedio.setBounds(490,370, 100, 30);
+		this.botonDificil.setBounds(760,370,80,30);
+		
+		this.botonAceptar.setBounds(400,430,200,30);
+		this.botonVolver.setBounds(400,480,200, 30);
 		this.bgroup.add(botonFacil);
 		this.bgroup.add(botonIntermedio);
 		this.bgroup.add(botonDificil);

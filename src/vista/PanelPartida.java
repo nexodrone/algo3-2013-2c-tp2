@@ -1,6 +1,7 @@
 package vista;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -30,6 +31,9 @@ public class PanelPartida extends JPanel {
 		this.setLayout(null);
 		this.nivelSeleccionado=dificultad;
 		this.panelZonaDelJuego = new PanelZonaDeJuego(tablero,vehiculo,posicion);
+		
+		this.setPreferredSize(new Dimension(1180,680));
+		this.setBackground(new Color(0,0,0,25));
 		
 		this.nombreUsuario = new JLabel("Jugador: "+nombre);
 		this.dificultad = new JLabel("Dificultad: "+dificultad);

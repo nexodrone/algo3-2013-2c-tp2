@@ -1,5 +1,7 @@
 package vista;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
@@ -18,15 +20,15 @@ public class PanelMenuPrincipal extends JPanel {
 	
 	public PanelMenuPrincipal(String nombre) {
 		this.setLayout(null);
-		
+		this.setPreferredSize(new Dimension(300,400));
 		this.nombre = nombre;
 		this.nombreUsuario = new JLabel("Hola "+nombre); 
-		this.nombreUsuario.setBounds(570, 60, 200, 20);
-		this.botonComenzarPartida.setBounds(500, 100, 200,30);
-		this.botonRetomarPartida.setBounds(500, 150, 200,30);
-		this.botonVerPuntajes.setBounds(500, 200, 200, 30);
-		this.botonSalir.setBounds(500, 250, 200, 30);
-		
+		this.nombreUsuario.setBounds(50, 60, 200, 20);
+		this.botonComenzarPartida.setBounds(50, 100, 200, 30);
+		this.botonRetomarPartida.setBounds(50, 150, 200, 30);
+		this.botonVerPuntajes.setBounds(50, 200, 200, 30);
+		this.botonSalir.setBounds(50, 250, 200, 30);
+		this.setBackground(new Color(0,0,0,25));
 		this.add(nombreUsuario);
 		this.add(botonComenzarPartida);
 		this.add(botonRetomarPartida);

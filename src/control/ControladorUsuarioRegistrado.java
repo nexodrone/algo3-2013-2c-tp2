@@ -11,14 +11,13 @@ public class ControladorUsuarioRegistrado extends Controlador{
 	private PanelUsuarioRegistrado panelUsuarioRegistrado;
 	
 	public ControladorUsuarioRegistrado() {
-		agregarPanelJugadores();
-		panelUsuarioRegistrado.agregarEscuchadorAceptar(new EscuchaAceptar());
-		panelUsuarioRegistrado.agregarEscuchadorVolver(new EscuchaVolver());
-		ventana.setVisible(true);
+		this.agregarPanelLocal();
+        ventana.pack();
+        ventana.repaint();
 	}
 	
-	private void agregarPanelJugadores() {
-		panelUsuarioRegistrado = new PanelUsuarioRegistrado();
+	private void agregarPanelLocal() {
+		this.panelUsuarioRegistrado = new PanelUsuarioRegistrado();
 		int i = 1;
 		ArrayList<Jugador> lista = new ArrayList<>();
 		try{
@@ -32,6 +31,8 @@ public class ControladorUsuarioRegistrado extends Controlador{
 			panelUsuarioRegistrado.agregarJugador(i, nombre);
 			i++;
 		}
+		this.panelUsuarioRegistrado.agregarEscuchadorAceptar(new EscuchaAceptar());
+		this.panelUsuarioRegistrado.agregarEscuchadorVolver(new EscuchaVolver());
 		ventana.add(panelUsuarioRegistrado);
 	}
 

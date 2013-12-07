@@ -3,6 +3,9 @@ package control;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 import modelo.Juego;
 import modelo.excepciones.ErrorArchivoJugadoresException;
 import modelo.excepciones.NoHayUsuariosCreadosException;
@@ -18,14 +21,16 @@ public class ControladorBienvenido extends Controlador {
         juego.setPathJugadores("src/jugadores/jugadores.xml");
         ventana = new Ventana();
         this.agregarPanelLocal();
-        ventana.setVisible(true);
+        ventana.pack();
+        ventana.repaint();
     }
 
     public ControladorBienvenido(String volver){
     	juego = Juego.getInstance();
         juego.setPathJugadores("src/jugadores/jugadores.xml");
         this.agregarPanelLocal();
-        ventana.setVisible(true);
+        ventana.pack();
+        ventana.repaint();
     }
     
     private void agregarPanelLocal() {
@@ -68,7 +73,7 @@ public class ControladorBienvenido extends Controlador {
         @Override
         public void actionPerformed(ActionEvent e) {
             ventana.setVisible(false);
-            /*ventana.dispose();*/
+            ventana.dispose();
         }
     }
     

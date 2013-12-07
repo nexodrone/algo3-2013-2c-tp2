@@ -16,7 +16,8 @@ public class ControladorUsuarioNuevo extends Controlador {
 
     public ControladorUsuarioNuevo() {
         this.agregarPanelLocal();
-        ventana.setVisible(true);
+        ventana.pack();
+        ventana.repaint();
     }
 
     private void agregarPanelLocal() {
