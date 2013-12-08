@@ -21,7 +21,7 @@ public class PanelUsuarioNuevo extends JPanel {
 	public PanelUsuarioNuevo() {
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		this.setPreferredSize(new Dimension(300,400));
-		this.setBackground(new Color(255,255,255,150));
+		this.setBackground(new Color(255,255,255,200));
 		
 		this.introNom.setAlignmentX(CENTER_ALIGNMENT);
 		this.nombre.setMaximumSize(new Dimension(200,20));

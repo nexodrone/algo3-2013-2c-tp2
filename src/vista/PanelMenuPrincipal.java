@@ -3,36 +3,41 @@ package vista;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class PanelMenuPrincipal extends JPanel {
 	
-	private JButton botonComenzarPartida= new JButton("Comenzar partida");
-	private JButton botonRetomarPartida = new JButton("Retomar partida guardada");
-	private JButton botonVerPuntajes = new JButton("Ver puntajes");
-	private JButton botonSalir = new JButton("Salir");
+	private Boton botonComenzarPartida= new Boton("Comenzar partida");
+	private Boton botonRetomarPartida = new Boton("Retomar partida guardada");
+	private Boton botonVerPuntajes = new Boton("Ver puntajes");
+	private Boton botonSalir = new Boton("Salir");
 	private JLabel nombreUsuario;
-	private String nombre;
 	
 	public PanelMenuPrincipal(String nombre) {
-		this.setLayout(null);
+		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		this.setPreferredSize(new Dimension(300,400));
-		this.nombre = nombre;
+		this.setBackground(new Color(255,255,255,200));
+		
 		this.nombreUsuario = new JLabel("Hola "+nombre); 
-		this.nombreUsuario.setBounds(50, 60, 200, 20);
-		this.botonComenzarPartida.setBounds(50, 100, 200, 30);
-		this.botonRetomarPartida.setBounds(50, 150, 200, 30);
-		this.botonVerPuntajes.setBounds(50, 200, 200, 30);
-		this.botonSalir.setBounds(50, 250, 200, 30);
-		this.setBackground(new Color(255,255,255,150));
+		this.nombreUsuario.setAlignmentX(CENTER_ALIGNMENT);
+		this.botonComenzarPartida.setAlignmentX(CENTER_ALIGNMENT);
+		this.botonRetomarPartida.setAlignmentX(CENTER_ALIGNMENT);
+		this.botonVerPuntajes.setAlignmentX(CENTER_ALIGNMENT);
+		this.botonSalir.setAlignmentX(CENTER_ALIGNMENT);
+
+		this.add(Box.createVerticalStrut(15));
 		this.add(nombreUsuario);
+		this.add(Box.createVerticalStrut(70));
 		this.add(botonComenzarPartida);
+		this.add(Box.createVerticalStrut(20));
 		this.add(botonRetomarPartida);
+		this.add(Box.createVerticalStrut(20));
 		this.add(botonVerPuntajes);
+		this.add(Box.createVerticalStrut(20));
 		this.add(botonSalir);
 	}
 	
@@ -50,10 +55,6 @@ public class PanelMenuPrincipal extends JPanel {
 	
 	public void agregarEscuchaSalir(ActionListener escuchaSalir) {
 		this.botonSalir.addActionListener(escuchaSalir);
-	}
-
-	public String getNombreUsuario(){
-		return nombre;
 	}
 	
 	public void mostrarMensajeNoHayPartida() {

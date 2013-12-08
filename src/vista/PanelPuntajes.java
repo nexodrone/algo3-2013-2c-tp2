@@ -15,41 +15,37 @@ import modelo.Jugador;
 
 public class PanelPuntajes extends JPanel {
 	
-	JTable table;
-	JButton volver;
-	JLabel nombre;
-	JLabel puntaje;
+	private JTable tabla;
+	private Boton botonVolver = new Boton("Volver");
+	private JLabel etiqueta = new JLabel("Puntajes de jugadores registrados");
 
 	public PanelPuntajes(ArrayList<Jugador> puntajesOrdenados) {
-		this.setLayout(null);
+		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+		this.setPreferredSize(new Dimension(300,600));
+		this.setBackground(new Color(255,255,255,200));
+		
+		this.etiqueta.setAlignmentX(CENTER_ALIGNMENT);
+		this.botonVolver.setAlignmentX(CENTER_ALIGNMENT);
 		TablaDePuntajes tablaModelo = new TablaDePuntajes(puntajesOrdenados);
-		table = new JTable(tablaModelo);
-		
+		this.tabla = new JTable(tablaModelo);
         Render render = new Render();
-        table.getColumnModel().getColumn(0).setCellRenderer(render);
-        table.getColumnModel().getColumn(1).setCellRenderer(render);        
-		
-		volver = new JButton("Volver");
-		
-		nombre = new JLabel("Nombre");		
-		puntaje = new JLabel("Puntaje");
-		
-		nombre.setBounds(80, 10, 100, 40);
-		puntaje.setBounds(170, 10, 100, 40);
-		table.setBounds(50, 40, 200, puntajesOrdenados.size()*16);
-		volver.setBounds(100, puntajesOrdenados.size()*16 + 50, 80, 30);
-		this.setPreferredSize(new Dimension(300,400));
-		this.setBackground(new Color(255,255,255,150));
-		this.add(volver);
-		this.add(table);
-		this.add(nombre);
-		this.add(puntaje);
+        this.tabla.getColumnModel().getColumn(0).setCellRenderer(render);
+        this.tabla.getColumnModel().getColumn(1).setCellRenderer(render);
+        this.tabla.getColumnModel().getColumn(1).setMaxWidth(50);
+        this.tabla.setAlignmentX(CENTER_ALIGNMENT);
+
+		this.add(Box.createVerticalStrut(15));
+		this.add(etiqueta);
+		this.add(Box.createVerticalStrut(20));
+		this.add(botonVolver);
+		this.add(Box.createVerticalStrut(20));
+		this.add(tabla);
 	}
 	
 	public PanelPuntajes() {}
 	
 	public void agregarVolverListener(ActionListener volverListener) {
-		volver.addActionListener(volverListener);
+		botonVolver.addActionListener(volverListener);
 	}
 	
 	class Render implements TableCellRenderer {
@@ -58,9 +54,9 @@ public class PanelPuntajes extends JPanel {
             //Si values es nulo dara problemas de renderizado, por lo tanto se pone como vacio
             JLabel lbl = new JLabel(value == null? "": value.toString());
             lbl.setHorizontalAlignment(SwingConstants.CENTER); //alina a laizquierda
-            lbl.setForeground(Color.BLUE);  //fuente azul
+            lbl.setForeground(Color.BLACK);  //fuente azul
             lbl.setOpaque(true);
-            lbl.setBackground(Color.YELLOW);
+            lbl.setBackground(Color.WHITE);
             return lbl;
         }
     };
