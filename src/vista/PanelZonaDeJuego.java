@@ -16,7 +16,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import modelo.Bocacalle;
+import modelo.Direccion;
+import modelo.Obstaculo;
 import modelo.Posicion;
+import modelo.Sorpresa;
 import modelo.Tablero;
 
 public class PanelZonaDeJuego extends JPanel implements ActionListener {
@@ -117,8 +121,157 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
             constanteFila = 0;
         }
     }
+    
+    public void dibujarTableroConObstaculosYSorpresas(){
+    	for (int i = 0; i < tableroActual.getCantidadDeColumnas();i++){
+    		for (int j = 0; j < tableroActual.getCantidadDeFilas();j++){
+    			Posicion posicionActual = new Posicion(i,j);
+    			Bocacalle bocacalleActual = tableroActual.getBocacalleEnPosicion(posicionActual);
+    			this.dibujarSorpresasYObstaculosEn(bocacalleActual,posicionActual);
+    		}
+    	}
+    }
+    
+    private void dibujarSorpresasYObstaculosEn(Bocacalle bocacalleActual,Posicion posicionActual) {
+    	Direccion norte = new Direccion(0, 1);
+        Direccion sur = new Direccion(0, -1);
+        Direccion este = new Direccion(1, 0);
+        Direccion oeste = new Direccion(-1, 0);
+    	
+        Sorpresa sorpresaSur = bocacalleActual.getCalleEnDireccion(sur).getSorpresa();
+    	Obstaculo obstaculoSur = bocacalleActual.getCalleEnDireccion(sur).getObstaculo();
+    		if (sorpresaSur != null){
+    		       int posicionSorpresaSurX = longitudManzana + posicionActual.x() * 2 * longitudManzana;
+    		       int posicionSorpresaSurY = longitudManzana + posicionActual.y() * 2 * longitudManzana + 28;
+    		       switch (sorpresaSur.toString()){
+    		       		case "SorpresaCambioDeVehiculo":
+    		       			this.crearUnaSorpresaCambioDeVehiculo(posicionSorpresaSurX, posicionSorpresaSurY);
+    		       			break;
+    		       		case "SorpresaFavorable":
+    		       			this.crearUnaSorpresaFavorable(posicionSorpresaSurX, posicionSorpresaSurY);
+    		       			break;
+    		       		case "SorpresaDesfavorable":
+    		       			this.crearUnaSorpresaDesfavorable(posicionSorpresaSurX, posicionSorpresaSurY);
+    		       			break;
+    		       }
+    		}
+    		if (obstaculoSur != null){
+    			  int posicionObstaculoSurX = longitudManzana + posicionActual.x() * 2 * longitudManzana;
+    			  int posicionObstaculoSurY = longitudManzana + posicionActual.y() * 2 * longitudManzana + 32;
+    			  switch (obstaculoSur.toString()){
+    			  		case "ObstaculoControlPolicial":
+    			  				this.crearObstaculoControlPolicial(posicionObstaculoSurX, posicionObstaculoSurY);
+    			  				break;
+    			  		case "ObstaculoPozo":
+    			  				this.crearObstaculoPozo(posicionObstaculoSurX, posicionObstaculoSurY);
+    			  				break;
+    			  		case "ObstaculoPiquete":
+    			  				this.crearObstaculoPiquete(posicionObstaculoSurX, posicionObstaculoSurY);
+    			  				break;
+    			  }
+    			
+    		}
+    	Sorpresa sorpresaEste = bocacalleActual.getCalleEnDireccion(este).getSorpresa();
+    	Obstaculo obstaculoEste = bocacalleActual.getCalleEnDireccion(este).getObstaculo();
+  			if (sorpresaEste != null){
+		       int posicionSorpresaEsteX = longitudManzana + posicionActual.x() * 2 * longitudManzana + 22;
+		       int posicionSorpresaEsteY = longitudManzana + posicionActual.y() * 2 * longitudManzana;
+		       switch (sorpresaEste.toString()){
+		       		case "SorpresaCambioDeVehiculo":
+		       			this.crearUnaSorpresaCambioDeVehiculo(posicionSorpresaEsteX, posicionSorpresaEsteY);
+		       			break;
+		       		case "SorpresaFavorable":
+		       			this.crearUnaSorpresaFavorable(posicionSorpresaEsteX, posicionSorpresaEsteY);
+		       			break;
+		       		case "SorpresaDesfavorable":
+		       			this.crearUnaSorpresaDesfavorable(posicionSorpresaEsteX, posicionSorpresaEsteY);
+		       			break;
+		       }
+  			}
+  			if (obstaculoEste != null){
+  				int posicionObstaculoEsteX = longitudManzana + posicionActual.x() * 2 * longitudManzana + 30;
+  				int posicionObstaculoEsteY = longitudManzana + posicionActual.y() * 2 * longitudManzana;
+  				switch (obstaculoEste.toString()){
+  			  		case "ObstaculoControlPolicial":
+  			  				this.crearObstaculoControlPolicial(posicionObstaculoEsteX,posicionObstaculoEsteY);
+  			  				break;
+  			  		case "ObstaculoPozo":
+  			  				this.crearObstaculoPozo(posicionObstaculoEsteX,posicionObstaculoEsteY);
+  			  				break;
+  			  		case "ObstaculoPiquete":
+  			  				this.crearObstaculoPiquete(posicionObstaculoEsteX,posicionObstaculoEsteY);
+  			  				break;
+  			  }	
+  			}
+    	Sorpresa sorpresaNorte =bocacalleActual.getCalleEnDireccion(norte).getSorpresa();
+        if(sorpresaNorte != null){
+    		int posicionSorpresaNorteX = longitudManzana + posicionActual.x() * 2 * longitudManzana;
+    		int posicionSorpresaNorteY = longitudManzana + posicionActual.y() * 2 * longitudManzana - 5;
+    		switch (sorpresaNorte.toString()){
+	       		case "SorpresaCambioDeVehiculo":
+	       			this.crearUnaSorpresaCambioDeVehiculo( posicionSorpresaNorteX, posicionSorpresaNorteY);
+	       			break;
+	       		case "SorpresaFavorable":
+	       			this.crearUnaSorpresaFavorable( posicionSorpresaNorteX, posicionSorpresaNorteY);
+	       			break;
+	       		case "SorpresaDesfavorable":
+	       			this.crearUnaSorpresaDesfavorable( posicionSorpresaNorteX, posicionSorpresaNorteY);
+	       			break;
+	       }
+        }
+    	Obstaculo obstaculoNorte =bocacalleActual.getCalleEnDireccion(norte).getObstaculo();
+    	if (obstaculoNorte != null){
+    		int posicionObstaculoNorteX = longitudManzana + posicionActual.x() * 2 * longitudManzana;
+    		int posicionObstaculoNorteY = longitudManzana + posicionActual.y() * 2 * longitudManzana - 12;
+			switch (obstaculoNorte.toString()){
+			  		case "ObstaculoControlPolicial":
+			  				this.crearObstaculoControlPolicial(posicionObstaculoNorteX,posicionObstaculoNorteY);
+			  				break;
+			  		case "ObstaculoPozo":
+			  				this.crearObstaculoPozo(posicionObstaculoNorteX,posicionObstaculoNorteY);
+			  				break;
+			  		case "ObstaculoPiquete":
+			  				this.crearObstaculoPiquete(posicionObstaculoNorteX,posicionObstaculoNorteY);
+			  				break;
+			  }	
+    		
+    	}
+    	Sorpresa sorpresaOeste = bocacalleActual.getCalleEnDireccion(oeste).getSorpresa();
+    	if (sorpresaOeste!=null){
+    		 int posicionSorpresaOesteX = longitudManzana + posicionActual.x() * 2 * longitudManzana - 18;
+		     int posicionSorpresaOesteY = longitudManzana + posicionActual.y() * 2 * longitudManzana;
+		     switch (sorpresaOeste.toString()){
+		       		case "SorpresaCambioDeVehiculo":
+		       			this.crearUnaSorpresaCambioDeVehiculo(posicionSorpresaOesteX, posicionSorpresaOesteY);
+		       			break;
+		       		case "SorpresaFavorable":
+		       			this.crearUnaSorpresaFavorable(posicionSorpresaOesteX,posicionSorpresaOesteY);
+		       			break;
+		       		case "SorpresaDesfavorable":
+		       			this.crearUnaSorpresaDesfavorable(posicionSorpresaOesteX,posicionSorpresaOesteY);
+		       			break;
+		     }
+    	}
+    	Obstaculo obstaculoOeste =bocacalleActual.getCalleEnDireccion(oeste).getObstaculo();
+    	if (obstaculoOeste!=null){
+   		 	int posicionObstaculoOesteX = longitudManzana + posicionActual.x() * 2 * longitudManzana - 9;
+   		 	int posicionObstaculoOesteY = longitudManzana + posicionActual.y() * 2 * longitudManzana;
+			switch (obstaculoOeste.toString()){
+			  		case "ObstaculoControlPolicial":
+			  				this.crearObstaculoControlPolicial(posicionObstaculoOesteX,posicionObstaculoOesteY);
+			  				break;
+			  		case "ObstaculoPozo":
+			  				this.crearObstaculoPozo(posicionObstaculoOesteX,posicionObstaculoOesteY);
+			  				break;
+			  		case "ObstaculoPiquete":
+			  				this.crearObstaculoPiquete(posicionObstaculoOesteX,posicionObstaculoOesteY);
+			  				break;
+			  }	
+    		
+    	}
+	}
 
-    public JLabel crearUnaManzana(int posX, int posY) {
+	public JLabel crearUnaManzana(int posX, int posY) {
         JLabel manzana = new JLabel("");
         ImageIcon icono = new ImageIcon("src/vista/imagenes/manzana.png");
         manzana.setIcon(icono);
@@ -130,7 +283,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     	JLabel sorpresa = new JLabel();
     	ImageIcon icono = new ImageIcon("src/vista/imagenes/sorpresa.png");
     	sorpresa.setIcon(icono);
-    	sorpresa.setBounds(posX,posY,longitudManzana-2,longitudManzana-2);
+    	sorpresa.setBounds(posX,posY,longitudManzana-9,longitudManzana-9);
     	return sorpresa;
     }
     
@@ -138,7 +291,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     	JLabel sorpresa = new JLabel();
     	ImageIcon icono = new ImageIcon("src/vista/imagenes/sorpresa.png");
     	sorpresa.setIcon(icono);
-    	sorpresa.setBounds(posX,posY,longitudManzana-2,longitudManzana-2);
+    	sorpresa.setBounds(posX,posY,longitudManzana-9,longitudManzana-9);
     	return sorpresa;
     }
     
@@ -146,7 +299,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     	JLabel sorpresa = new JLabel();
     	ImageIcon icono = new ImageIcon("src/vista/imagenes/sorpresa.png");
     	sorpresa.setIcon(icono);
-    	sorpresa.setBounds(posX,posY,longitudManzana-2,longitudManzana-2);
+    	sorpresa.setBounds(posX,posY,longitudManzana-9,longitudManzana-9);
     	return sorpresa;
     }
     
@@ -154,7 +307,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     	JLabel obstaculo = new JLabel();
     	ImageIcon icono = new ImageIcon("src/vista/imagenes/obstaculoControlPolicial.png");
     	obstaculo.setIcon(icono);
-    	obstaculo.setBounds(posX,posY,longitudManzana-2,longitudManzana-2);
+    	obstaculo.setBounds(posX,posY,longitudManzana-9,longitudManzana-9);
     	return obstaculo;
     }
     
@@ -162,7 +315,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     	JLabel obstaculo = new JLabel();
     	ImageIcon icono = new ImageIcon("src/vista/imagenes/obstaculoPozo.png");
     	obstaculo.setIcon(icono);
-    	obstaculo.setBounds(posX,posY,longitudManzana-2,longitudManzana-2);
+    	obstaculo.setBounds(posX,posY,longitudManzana-9,longitudManzana-9);
     	return obstaculo;
     }
     
@@ -170,7 +323,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     	JLabel obstaculo = new JLabel();
     	ImageIcon icono = new ImageIcon("src/vista/imagenes/obstaculoPiquete.png");
     	obstaculo.setIcon(icono);
-    	obstaculo.setBounds(posX,posY,longitudManzana-2,longitudManzana-2);
+    	obstaculo.setBounds(posX,posY,longitudManzana-9,longitudManzana-9);
     	return obstaculo;
     }
     
