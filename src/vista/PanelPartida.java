@@ -22,8 +22,8 @@ public class PanelPartida extends JPanel {
 	private JLabel dificultad;
 	private JLabel vehiculoActual;
 	private PanelZonaDeJuego panelZonaDelJuego;
-	private int anchoZonaDelJuego = 830;
-	private int largoZonaDelJuego = 570;
+	private int anchoZonaDelJuego = 870;
+	private int largoZonaDelJuego = 610;
 	String nivelSeleccionado;
 
 	
