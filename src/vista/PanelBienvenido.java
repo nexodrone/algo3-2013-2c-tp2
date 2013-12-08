@@ -3,12 +3,10 @@ package vista;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
 import control.ControladorBienvenido.EscuchaNuevoUsuario;
 
 public class PanelBienvenido extends JPanel {
@@ -25,7 +23,7 @@ public class PanelBienvenido extends JPanel {
 		this.botonNuevoUsuario.setBounds(50,100,200,30);
 		this.botonUsuarioRegistrado.setBounds(50,150,200,30);
 		this.botonSalir.setBounds(50, 200, 200, 30);
-		this.setBackground(new Color(0,0,0,25));
+		this.setBackground(new Color(255,255,255,150));
 		this.add(bienvenido);
 		this.add(botonNuevoUsuario);
 		this.add(botonUsuarioRegistrado);

@@ -27,7 +27,7 @@ public class PanelUsuarioRegistrado extends JPanel {
 		
 		volver = new JButton("Volver");
 		volver.setBounds(this.WIDTH + 50, 80, 100, 25);
-		this.setBackground(new Color(0,0,0,25));
+		this.setBackground(new Color(255,255,255,150));
 		this.add(volver);
 	}
 

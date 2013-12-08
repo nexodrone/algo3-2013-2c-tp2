@@ -25,7 +25,7 @@ public class PanelUsuarioNuevo extends JPanel {
 		this.nombre.setBounds(50, 100, 200, 20);
 		this.botonGuardar.setBounds(50, 150, 200, 30);
 		this.botonVolver.setBounds(50, 200, 200, 30);
-		this.setBackground(new Color(0,0,0,25));
+		this.setBackground(new Color(255,255,255,150));
 		this.add(etiqueta);
 		this.add(nombre);
 		this.add(botonGuardar);

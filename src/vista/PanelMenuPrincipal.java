@@ -28,7 +28,7 @@ public class PanelMenuPrincipal extends JPanel {
 		this.botonRetomarPartida.setBounds(50, 150, 200, 30);
 		this.botonVerPuntajes.setBounds(50, 200, 200, 30);
 		this.botonSalir.setBounds(50, 250, 200, 30);
-		this.setBackground(new Color(0,0,0,25));
+		this.setBackground(new Color(255,255,255,150));
 		this.add(nombreUsuario);
 		this.add(botonComenzarPartida);
 		this.add(botonRetomarPartida);
