@@ -92,14 +92,15 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         System.out.println("paint");
         this.configurarTableroEnZonaDeJuego();
         if (dibujarTablero) {
-            this.dibujarTablero();
+            this.dibujarTodosObstaculosYSorpresas();
+        	this.dibujarTablero();
             actionPerformed(null);
             cantidadDePasos = 0;
-            System.out.println("Posicion Inicial:" + x + "," + y);
         }
+    
         super.paint(g);
         Graphics2D grafico2D = (Graphics2D) g;
-        grafico2D.drawImage(star, x, y, this);
+        grafico2D.drawImage(star, x, y, this.zonaDeJuego);
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
     }
@@ -145,14 +146,14 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
             constanteFila = 0;
         }
     }
-
-    public void dibujarTableroConObstaculosYSorpresas() {
-        for (int i = 0; i <= tableroActual.getCantidadDeColumnas(); i++) {
-            for (int j = 0; j <= tableroActual.getCantidadDeFilas(); j++) {
-                Posicion posicionActual = new Posicion(i, j);
-                dibujarSorpresasYObstaculosDesde(posicionActual);
-            }
-        }
+    
+    public void dibujarTodosObstaculosYSorpresas(){
+    	for (int i = 0; i < tableroActual.getCantidadDeColumnas();i++){
+    		for (int j = 0; j < tableroActual.getCantidadDeFilas();j++){
+    			Posicion posicionActual = new Posicion(i,j);
+    			dibujarSorpresasYObstaculosDesde(posicionActual);
+    		}
+    	}
     }
 
     private void dibujarSorpresasYObstaculosDesde(Posicion posicionActual) {
