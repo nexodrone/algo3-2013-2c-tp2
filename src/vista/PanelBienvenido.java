@@ -21,7 +21,7 @@ public class PanelBienvenido extends JPanel {
 	public PanelBienvenido() {
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		this.setPreferredSize(new Dimension(300,400));
-		this.setBackground(new Color(255,255,255,150));
+		this.setBackground(new Color(255,255,255,200));
 
 		this.bienvenido.setAlignmentX(CENTER_ALIGNMENT);
 		this.botonNuevoUsuario.setAlignmentX(CENTER_ALIGNMENT);

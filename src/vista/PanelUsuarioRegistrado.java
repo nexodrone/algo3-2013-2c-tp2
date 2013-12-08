@@ -17,15 +17,21 @@ public class PanelUsuarioRegistrado extends JPanel {
 	private ButtonGroup checks_grupo = new ButtonGroup();
 	private Boton botonAceptar = new Boton("Aceptar");
 	private Boton botonVolver = new Boton("Volver");
+	private JPanel panelJugadores = new JPanel();
 	
 	public PanelUsuarioRegistrado() {
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-		this.setPreferredSize(new Dimension(300,500));
-		this.setBackground(new Color(255,255,255,150));
+		this.setPreferredSize(new Dimension(300,600));
+		this.setBackground(new Color(255,255,255,200));
 
 		this.seleNom.setAlignmentX(CENTER_ALIGNMENT);
 		this.botonAceptar.setAlignmentX(CENTER_ALIGNMENT);
 		this.botonVolver.setAlignmentX(CENTER_ALIGNMENT);
+
+		this.panelJugadores.setLayout(new BoxLayout(panelJugadores, BoxLayout.PAGE_AXIS));
+		this.panelJugadores.setAlignmentX(CENTER_ALIGNMENT);
+		this.panelJugadores.setBackground(Color.WHITE);
+		this.panelJugadores.setMaximumSize(new Dimension(250,400));
 
 		this.add(Box.createVerticalStrut(15));
 		this.add(seleNom);
@@ -34,14 +40,16 @@ public class PanelUsuarioRegistrado extends JPanel {
 		this.add(Box.createVerticalStrut(20));
 		this.add(botonVolver);
 		this.add(Box.createVerticalStrut(20));
+		this.add(panelJugadores);
 	}
 
 	public void agregarJugador(int index, String nombre) {
 		JRadioButton check = new JRadioButton(nombre);
 		check.setAlignmentX(CENTER_ALIGNMENT);
 		check.setActionCommand(nombre);
-		this.add(check);
-		this.add(Box.createVerticalStrut(5));
+		check.setBackground(Color.WHITE);
+		this.panelJugadores.add(check);
+		this.panelJugadores.add(Box.createVerticalStrut(5));
 		this.checks_grupo.add(check);
 	}
 	
