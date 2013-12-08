@@ -93,11 +93,11 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         this.configurarTableroEnZonaDeJuego();
         if (dibujarTablero) {
             this.dibujarTodosObstaculosYSorpresas();
-        	this.dibujarTablero();
+            this.dibujarTablero();
             actionPerformed(null);
             cantidadDePasos = 0;
         }
-    
+
         super.paint(g);
         Graphics2D grafico2D = (Graphics2D) g;
         grafico2D.drawImage(star, x, y, this.zonaDeJuego);
@@ -106,6 +106,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
+        System.out.println("actionPerformed");
         if (cantidadDePasos < cantidad) {
             x = (x + 2 * enX);
             y = (y + 2 * enY);
@@ -120,12 +121,15 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public void configurarTableroEnZonaDeJuego() {
+        System.out.println("configurarTableroEnZonaDeJuego");
         this.zonaDeJuego.setLayout(null);
         this.zonaDeJuego.setBounds(centrarEnX(), centrarEnY(), this.calcularAnchoPanelZonaDeJuego(), this.calcularLargoPanelZonaDeJuego());
         this.zonaDeJuego.setBackground(Color.lightGray);
     }
 
     public void dibujarTablero() {
+        System.out.println("dibujarTablero");
+
         dibujarTablero = false;
         int constanteFila = 0;
         int constanteColumna = 1;
@@ -146,17 +150,21 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
             constanteFila = 0;
         }
     }
-    
-    public void dibujarTodosObstaculosYSorpresas(){
-    	for (int i = 0; i < tableroActual.getCantidadDeColumnas();i++){
-    		for (int j = 0; j < tableroActual.getCantidadDeFilas();j++){
-    			Posicion posicionActual = new Posicion(i,j);
-    			dibujarSorpresasYObstaculosDesde(posicionActual);
-    		}
-    	}
+
+    public void dibujarTodosObstaculosYSorpresas() {
+        System.out.println("dibujarTodosObstaculosYSorpresas");
+
+        for (int i = 0; i < tableroActual.getCantidadDeColumnas(); i++) {
+            for (int j = 0; j < tableroActual.getCantidadDeFilas(); j++) {
+                Posicion posicionActual = new Posicion(i, j);
+                dibujarSorpresasYObstaculosDesde(posicionActual);
+            }
+        }
     }
 
     private void dibujarSorpresasYObstaculosDesde(Posicion posicionActual) {
+        System.out.println("dibujarSorpresasYObstaculosDesde");
+
         Direccion norte = new Direccion(0, 1);
         Direccion sur = new Direccion(0, -1);
         Direccion este = new Direccion(1, 0);
@@ -190,6 +198,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     private void dibujarObstaculosEnDireccion(Posicion posicionActual, Direccion direccion, int corrimientoEnX, int corrimientoEnY) {
+        System.out.println("dibujarObstaculosEnDireccion");
+
         int posicionObstaculoSurX = longitudManzana + posicionActual.x() * 2 * longitudManzana + corrimientoEnX;
         int posicionObstaculoSurY = longitudManzana + posicionActual.y() * 2 * longitudManzana + corrimientoEnY;
         Bocacalle bocacalleActual = this.tableroActual.getBocacalleEnPosicion(posicionActual);
@@ -210,6 +220,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     private void dibujarSorpresaEnDireccion(Posicion posicionActual, String direccion) {
+        System.out.println("dibujarSorpresaEnDireccion");
+
         switch (direccion) {
             case "sur":
                 int posicionSorpresaSurX = longitudManzana + posicionActual.x() * 2 * longitudManzana;
@@ -239,6 +251,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public JLabel crearUnaManzana(int posX, int posY) {
+        System.out.println("crearUnaManzana");
+
         JLabel manzana = new JLabel("");
         ImageIcon icono = new ImageIcon("src/vista/imagenes/manzana.png");
         manzana.setIcon(icono);
@@ -247,6 +261,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public JLabel crearSorpresa(int posX, int posY) {
+        System.out.println("crearSorpresa");
+
         JLabel sorpresa = new JLabel("");
         ImageIcon icono = new ImageIcon("src/vista/imagenes/sorpresa.png");
         sorpresa.setIcon(icono);
@@ -255,6 +271,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public JLabel crearObstaculoControlPolicial(int posX, int posY) {
+        System.out.println("crearObstaculoControlPolicial");
+
         JLabel obstaculo = new JLabel("");
         ImageIcon icono = new ImageIcon("src/vista/imagenes/obstaculoControlPolicial.png");
         obstaculo.setIcon(icono);
@@ -263,6 +281,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public JLabel crearObstaculoPozo(int posX, int posY) {
+        System.out.println("crearObstaculoPozo");
+
         JLabel obstaculo = new JLabel("");
         ImageIcon icono = new ImageIcon("src/vista/imagenes/obstaculoPozo.png");
         obstaculo.setIcon(icono);
@@ -271,6 +291,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public JLabel crearObstaculoPiquete(int posX, int posY) {
+        System.out.println("crearObstaculoPiquete");
+
         JLabel obstaculo = new JLabel("");
         ImageIcon icono = new ImageIcon("src/vista/imagenes/obstaculoPiquete.png");
         obstaculo.setIcon(icono);
@@ -279,6 +301,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public void nuevaPosicion(int x, int y) {
+        System.out.println("nuevaPosicion");
+
         System.out.println("cantidadDePasos:" + cantidadDePasos);
         System.out.println("nuevaPosicion");
         if (!this.seEstaMoviendo()) {
@@ -290,6 +314,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public void girarHacia(String sentido) {
+        System.out.println("girarHacia");
         if (!this.seEstaMoviendo()) {
             String direccion = "/vista/imagenes/" + vehiculo + "/" + vehiculo + sentido + ".png";
             ImageIcon imagenVehiculo = new ImageIcon(this.getClass().getResource(direccion));
@@ -299,6 +324,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     private boolean seEstaMoviendo() {
+        System.out.println("seEstaMoviendo");
+
         if (cantidadDePasos == 13 || cantidadDePasos == 0) {
             return false;
         }
@@ -306,6 +333,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public int centrarEnX() {
+        System.out.println("centrarEnX");
         if (((anchoDePanel - (tableroActual.getCantidadDeColumnas() + 1) * longitudManzana * 2) / 2) < 0) {
             return 0;
         } else {
@@ -314,6 +342,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public int centrarEnY() {
+        System.out.println("centrarEnY");
+
         if (((largoDePanel - (tableroActual.getCantidadDeFilas() + 1) * longitudManzana * 2) / 2) < 0) {
             return 0;
         } else {
@@ -322,28 +352,36 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public int posicionInicialVehiculoEnX() {
+        System.out.println("posicionInicialVehiculoEnX");
+
         int posicionInicialVehiculoEnX = this.posicionDeVehiculo.x();
         int nuevaPosicionX = longitudManzana + posicionInicialVehiculoEnX * 2 * longitudManzana;
         return nuevaPosicionX;
     }
 
     public int posicionInicialVehiculoEnY() {
+        System.out.println("posicionInicialVehiculoEnY");
+
         int posicionInicialVehiculoEnY = this.posicionDeVehiculo.y();
         int nuevaPosicionY = longitudManzana + posicionInicialVehiculoEnY * 2 * longitudManzana;
         return nuevaPosicionY;
     }
 
     public int calcularAnchoPanelZonaDeJuego() {
+        System.out.println("calcularAnchoPanelZonaDeJuego");
+
         int algo = this.tableroActual.getCantidadDeColumnas() * this.longitudManzana * 2 + longitudManzana;
         return algo;
     }
 
     public int calcularLargoPanelZonaDeJuego() {
+        System.out.println("calcularLargoPanelZonaDeJuego");
         int algo = this.tableroActual.getCantidadDeFilas() * this.longitudManzana * 2 + longitudManzana;
         return algo;
     }
 
     public void calcularPosicionVehiculoVista() {
+        System.out.println("calcularPosicionVehiculoVista");
         int posicionDelTableroX = (anchoDePanel - this.calcularAnchoPanelZonaDeJuego()) / 2;
         int posicionDelTableroY = (largoDePanel - this.calcularLargoPanelZonaDeJuego()) / 2;
         x = this.posicionInicialVehiculoEnX() + posicionDelTableroX + 2;
@@ -351,6 +389,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public void asignarValoresInicialesMovimientos() {
+        System.out.println("asignarValoresInicialesMovimientos");
+
         cantidadDePasos = 0;
         paso = 2; // que cada pasa se mueva 2 pixeles
         distancia = 40; // distancia = anchoManzana
