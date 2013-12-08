@@ -21,14 +21,16 @@ public class PanelBienvenido extends JPanel {
 	public PanelBienvenido() {
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		this.setPreferredSize(new Dimension(300,400));
+		this.setBackground(new Color(255,255,255,150));
+
 		this.bienvenido.setAlignmentX(CENTER_ALIGNMENT);
 		this.botonNuevoUsuario.setAlignmentX(CENTER_ALIGNMENT);
 		this.botonUsuarioRegistrado.setAlignmentX(CENTER_ALIGNMENT);
 		this.botonSalir.setAlignmentX(CENTER_ALIGNMENT);
-		this.setBackground(new Color(255,255,255,150));
+
 		this.add(Box.createVerticalStrut(15));
 		this.add(bienvenido);
-		this.add(Box.createVerticalStrut(20));
+		this.add(Box.createVerticalStrut(70));
 		this.add(botonNuevoUsuario);
 		this.add(Box.createVerticalStrut(20));
 		this.add(botonUsuarioRegistrado);

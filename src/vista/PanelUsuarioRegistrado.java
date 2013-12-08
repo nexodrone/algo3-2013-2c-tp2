@@ -3,40 +3,46 @@ package vista;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
-
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
-import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 public class PanelUsuarioRegistrado extends JPanel {
 	
-	ButtonGroup checks_grupo;
-	JButton aceptar;
-	JButton volver;
+	private JLabel seleNom = new JLabel("Por favor seleccione usuario");
+	private ButtonGroup checks_grupo = new ButtonGroup();
+	private Boton botonAceptar = new Boton("Aceptar");
+	private Boton botonVolver = new Boton("Volver");
 	
 	public PanelUsuarioRegistrado() {
-		setLayout(null);
-		this.setPreferredSize(new Dimension(400,400));
-		checks_grupo = new ButtonGroup();
-		
-		aceptar = new JButton("Aceptar");
-		aceptar.setBounds(this.WIDTH + 50, 50, 100, 25);
-		this.add(aceptar);
-		
-		volver = new JButton("Volver");
-		volver.setBounds(this.WIDTH + 50, 80, 100, 25);
+		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+		this.setPreferredSize(new Dimension(300,500));
 		this.setBackground(new Color(255,255,255,150));
-		this.add(volver);
+
+		this.seleNom.setAlignmentX(CENTER_ALIGNMENT);
+		this.botonAceptar.setAlignmentX(CENTER_ALIGNMENT);
+		this.botonVolver.setAlignmentX(CENTER_ALIGNMENT);
+
+		this.add(Box.createVerticalStrut(15));
+		this.add(seleNom);
+		this.add(Box.createVerticalStrut(20));
+		this.add(botonAceptar);
+		this.add(Box.createVerticalStrut(20));
+		this.add(botonVolver);
+		this.add(Box.createVerticalStrut(20));
 	}
 
 	public void agregarJugador(int index, String nombre) {
 		JRadioButton check = new JRadioButton(nombre);
-		check.setBounds(200, index*25, 150, 20);
+		check.setAlignmentX(CENTER_ALIGNMENT);
 		check.setActionCommand(nombre);
 		this.add(check);
-		checks_grupo.add(check);
+		this.add(Box.createVerticalStrut(5));
+		this.checks_grupo.add(check);
 	}
 	
 	public String getSeleccion() {
@@ -48,11 +54,11 @@ public class PanelUsuarioRegistrado extends JPanel {
 	}
 	
 	public void agregarEscuchadorAceptar(ActionListener escuchaAceptar) {
-		aceptar.addActionListener(escuchaAceptar);
+		this.botonAceptar.addActionListener(escuchaAceptar);
 	}
 	
 	public void agregarEscuchadorVolver(ActionListener escuchaVolver) {
-		volver.addActionListener(escuchaVolver);
+		this.botonVolver.addActionListener(escuchaVolver);
 	}	
 	
 	public void mostrarMensajeNoHaySeleccionado() {

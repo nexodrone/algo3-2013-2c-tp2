@@ -4,8 +4,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
-
-import javax.swing.JButton;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -13,22 +13,29 @@ import javax.swing.JTextField;
 
 public class PanelUsuarioNuevo extends JPanel {
 
-	private JLabel etiqueta = new JLabel("Por favor introduzca su nombre");
-	private JButton botonVolver = new JButton("Volver");
-	private JButton botonGuardar = new JButton("Guardar");
+	private JLabel introNom = new JLabel("Por favor introduzca su nombre");
+	private Boton botonVolver = new Boton("Volver");
+	private Boton botonGuardar = new Boton("Guardar");
 	private JTextField nombre = new JTextField();
 	
 	public PanelUsuarioNuevo() {
-		this.setLayout(null);
+		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		this.setPreferredSize(new Dimension(300,400));
-		this.etiqueta.setBounds(60, 60, 200, 20);
-		this.nombre.setBounds(50, 100, 200, 20);
-		this.botonGuardar.setBounds(50, 150, 200, 30);
-		this.botonVolver.setBounds(50, 200, 200, 30);
 		this.setBackground(new Color(255,255,255,150));
-		this.add(etiqueta);
+		
+		this.introNom.setAlignmentX(CENTER_ALIGNMENT);
+		this.nombre.setMaximumSize(new Dimension(200,20));
+		this.nombre.setAlignmentX(CENTER_ALIGNMENT);
+		this.botonGuardar.setAlignmentX(CENTER_ALIGNMENT);
+		this.botonVolver.setAlignmentX(CENTER_ALIGNMENT);
+
+		this.add(Box.createVerticalStrut(15));
+		this.add(introNom);
+		this.add(Box.createVerticalStrut(30));
 		this.add(nombre);
+		this.add(Box.createVerticalStrut(20));
 		this.add(botonGuardar);
+		this.add(Box.createVerticalStrut(20));
 		this.add(botonVolver);
 	}
 	
