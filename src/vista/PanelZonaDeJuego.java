@@ -27,8 +27,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
 
     private int x, y;
     private int radioClip = 60;
-    private int largoDePanel = 570;
-    private int anchoDePanel = 830;
+    private int largoDePanel = 610;
+    private int anchoDePanel = 870;
     private int longitudManzana = 20;
     private Tablero tableroActual;
     private TransparentPanel zonaDeJuego;
@@ -106,8 +106,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         int posicionY = 0;
         System.out.println("Tamanio del tablero:" + tableroActual.getCantidadDeColumnas() + "," + tableroActual.getCantidadDeFilas());
 
-        for (int i = 0; i < tableroActual.getCantidadDeColumnas(); i++) {
-            for (int j = 0; j < tableroActual.getCantidadDeFilas(); j++) {
+        for (int i = 0; i < tableroActual.getCantidadDeColumnas() + 1; i++) {
+            for (int j = 0; j < tableroActual.getCantidadDeFilas() + 1; j++) {
                 posicionY = longitudManzana * (j + constanteFila);
                 JLabel manzana = crearUnaManzana(posicionX, posicionY);
                 this.zonaDeJuego.add(manzana);
