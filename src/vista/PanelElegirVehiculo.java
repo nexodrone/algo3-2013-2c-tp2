@@ -33,7 +33,7 @@ public class PanelElegirVehiculo extends JPanel {
 		this.setLayout(null);
 		
 		this.setPreferredSize(new Dimension(1000,600));
-		this.setBackground(new Color(0,0,0,25));
+		this.setBackground(new Color(255,255,255,150));
 		
 		this.nivel= nivelSeleccionado;
 		this.etiqueta.setBounds(430, 60, 220, 10);

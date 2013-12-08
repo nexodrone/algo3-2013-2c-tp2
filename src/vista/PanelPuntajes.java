@@ -39,7 +39,7 @@ public class PanelPuntajes extends JPanel {
 		table.setBounds(50, 40, 200, puntajesOrdenados.size()*16);
 		volver.setBounds(100, puntajesOrdenados.size()*16 + 50, 80, 30);
 		this.setPreferredSize(new Dimension(300,400));
-		this.setBackground(new Color(0,0,0,25));
+		this.setBackground(new Color(255,255,255,150));
 		this.add(volver);
 		this.add(table);
 		this.add(nombre);

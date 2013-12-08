@@ -17,7 +17,7 @@ public class Ventana extends JFrame {
         this.setLocation(100,100);	/* dibuja a 100px de distancia del monitor */
       	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(1200, 700);
-		this.setContentPane(new JLabel(new ImageIcon("src/vista/imagenes/bkgrd.png")));
+		this.setContentPane(new JLabel(new ImageIcon("src/vista/imagenes/bkgrd.jpg")));
 		this.setLayout(new FlowLayout());
 		this.setIconImage(new ImageIcon(getClass().getResource("imagenes/gps.png")).getImage());
         this.setVisible(true);

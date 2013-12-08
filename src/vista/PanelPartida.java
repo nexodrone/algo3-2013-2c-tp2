@@ -33,7 +33,7 @@ public class PanelPartida extends JPanel {
 		this.panelZonaDelJuego = new PanelZonaDeJuego(tablero,vehiculo,posicion);
 		
 		this.setPreferredSize(new Dimension(1180,680));
-		this.setBackground(new Color(0,0,0,25));
+		this.setBackground(new Color(255,255,255,150));
 		
 		this.nombreUsuario = new JLabel("Jugador: "+nombre);
 		this.dificultad = new JLabel("Dificultad: "+dificultad);

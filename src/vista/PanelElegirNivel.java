@@ -33,7 +33,7 @@ public class PanelElegirNivel extends JPanel {
 		this.setLayout(null);
 		
 		this.setPreferredSize(new Dimension(1000,600));
-		this.setBackground(new Color(0,0,0,25));
+		this.setBackground(new Color(255,255,255,150));
 		
 		this.etiqueta.setBounds(470, 60, 220, 10);
 		this.tableroFacil=obtenerImagenTablero(100,100,"src/vista/imagenes/nivelFacil.png");
@@ -43,6 +43,10 @@ public class PanelElegirNivel extends JPanel {
 		this.botonFacil.setBounds(200,370,80,30);
 		this.botonIntermedio.setBounds(490,370, 100, 30);
 		this.botonDificil.setBounds(760,370,80,30);
+		
+		this.botonFacil.setOpaque(false);
+		this.botonIntermedio.setOpaque(false);
+		this.botonDificil.setOpaque(false);
 		
 		this.botonAceptar.setBounds(400,430,200,30);
 		this.botonVolver.setBounds(400,480,200, 30);
