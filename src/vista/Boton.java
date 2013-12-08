@@ -1,18 +1,14 @@
 package vista;
 
-import javax.swing.ImageIcon;
+import java.awt.Dimension;
 import javax.swing.JButton;
 
 public class Boton extends JButton {
 
-  
-	int tamX = 218;
-    int tamY = 54;
+	private Dimension dimension = new Dimension(200,30);
 
-    public Boton(int posX, int posY, String direccionIm) {
-        super();
-        ImageIcon icono = new ImageIcon(direccionIm);
-        this.setIcon(icono);
-        this.setBounds(posX, posY, tamX, tamY);
+    public Boton(String texto) {
+        super(texto);
+        this.setMaximumSize(dimension);
     }
 }
