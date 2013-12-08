@@ -49,14 +49,9 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
 
         setDoubleBuffered(true);
         // setFocusable(true);
-        int posicionDelTableroX = (anchoDePanel - this.calcularAnchoPanelZonaDeJuego()) / 2;
-        int posicionDelTableroY = (largoDePanel - this.calcularLargoPanelZonaDeJuego()) / 2;
-        x = this.posicionInicialVehiculoEnX() + posicionDelTableroX + 2;
-        y = largoDePanel - posicionDelTableroY - this.posicionInicialVehiculoEnY();
-        cantidadDePasos = 0;
-        paso = 2; // que cada pasa se mueva 2 pixeles
-        distancia = 40; // distancia = anchoManzana
-        cantidad = (distancia / paso);
+        this.calcularPosicionVehiculoVista();
+        this.asignarValoresInicialesMovimientos();
+
         int velocidad = 1;
         timer = new Timer(velocidad, this);
 
@@ -345,6 +340,20 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     public int calcularLargoPanelZonaDeJuego() {
         int algo = this.tableroActual.getCantidadDeFilas() * this.longitudManzana * 2 + longitudManzana;
         return algo;
+    }
+
+    public void calcularPosicionVehiculoVista() {
+        int posicionDelTableroX = (anchoDePanel - this.calcularAnchoPanelZonaDeJuego()) / 2;
+        int posicionDelTableroY = (largoDePanel - this.calcularLargoPanelZonaDeJuego()) / 2;
+        x = this.posicionInicialVehiculoEnX() + posicionDelTableroX + 2;
+        y = largoDePanel - posicionDelTableroY - this.posicionInicialVehiculoEnY();
+    }
+
+    public void asignarValoresInicialesMovimientos() {
+        cantidadDePasos = 0;
+        paso = 2; // que cada pasa se mueva 2 pixeles
+        distancia = 40; // distancia = anchoManzana
+        cantidad = (distancia / paso);
     }
 
     // CLASE PARA EL CIRCULO CLIP
