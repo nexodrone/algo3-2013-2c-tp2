@@ -56,9 +56,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         cantidad = (distancia / paso);
         int velocidad = 1;
         timer = new Timer(velocidad, this);
-        
-        
-        
+       
         zonaDeJuego = new TransparentPanel(radioClip);
         this.add(zonaDeJuego);
     }
@@ -128,6 +126,54 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         return manzana;
     }
 
+    public JLabel crearUnaSorpresaCambioDeVehiculo(int posX,int posY){
+    	JLabel sorpresa = new JLabel();
+    	ImageIcon icono = new ImageIcon("src/vista/imagenes/sorpresa.png");
+    	sorpresa.setIcon(icono);
+    	sorpresa.setBounds(posX,posY,longitudManzana-2,longitudManzana-2);
+    	return sorpresa;
+    }
+    
+    public JLabel crearUnaSorpresaFavorable(int posX,int posY){
+    	JLabel sorpresa = new JLabel();
+    	ImageIcon icono = new ImageIcon("src/vista/imagenes/sorpresa.png");
+    	sorpresa.setIcon(icono);
+    	sorpresa.setBounds(posX,posY,longitudManzana-2,longitudManzana-2);
+    	return sorpresa;
+    }
+    
+    public JLabel crearUnaSorpresaDesfavorable(int posX,int posY){
+    	JLabel sorpresa = new JLabel();
+    	ImageIcon icono = new ImageIcon("src/vista/imagenes/sorpresa.png");
+    	sorpresa.setIcon(icono);
+    	sorpresa.setBounds(posX,posY,longitudManzana-2,longitudManzana-2);
+    	return sorpresa;
+    }
+    
+    public JLabel crearObstaculoControlPolicial(int posX,int posY){
+    	JLabel obstaculo = new JLabel();
+    	ImageIcon icono = new ImageIcon("src/vista/imagenes/obstaculoControlPolicial.png");
+    	obstaculo.setIcon(icono);
+    	obstaculo.setBounds(posX,posY,longitudManzana-2,longitudManzana-2);
+    	return obstaculo;
+    }
+    
+    public JLabel crearObstaculoPozo(int posX,int posY){
+    	JLabel obstaculo = new JLabel();
+    	ImageIcon icono = new ImageIcon("src/vista/imagenes/obstaculoPozo.png");
+    	obstaculo.setIcon(icono);
+    	obstaculo.setBounds(posX,posY,longitudManzana-2,longitudManzana-2);
+    	return obstaculo;
+    }
+    
+    public JLabel crearObstaculoPiquete(int posX,int posY){
+    	JLabel obstaculo = new JLabel();
+    	ImageIcon icono = new ImageIcon("src/vista/imagenes/obstaculoPiquete.png");
+    	obstaculo.setIcon(icono);
+    	obstaculo.setBounds(posX,posY,longitudManzana-2,longitudManzana-2);
+    	return obstaculo;
+    }
+    
     public void nuevaPosicion(int x, int y) {
         System.out.println("cantidadDePasos:" + cantidadDePasos);
         System.out.println("nuevaPosicion");
@@ -156,18 +202,18 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public int centrarEnX() {
-        if (((anchoDePanel - tableroActual.getCantidadDeColumnas() * longitudManzana * 2) / 2) < 0) {
+        if (((anchoDePanel - (tableroActual.getCantidadDeColumnas() + 1) * longitudManzana * 2) / 2) < 0) {
             return 0;
         } else {
-            return (anchoDePanel - tableroActual.getCantidadDeColumnas() * longitudManzana * 2) / 2;
+            return (anchoDePanel - (tableroActual.getCantidadDeColumnas() + 1) * longitudManzana * 2) / 2;
         }
     }
 
     public int centrarEnY() {
-        if (((largoDePanel - tableroActual.getCantidadDeFilas() * longitudManzana * 2 - longitudManzana * 2) / 2) < 0) {
+        if (((largoDePanel - (tableroActual.getCantidadDeFilas() + 1) * longitudManzana * 2) / 2) < 0) {
             return 0;
         } else {
-            return (this.largoDePanel - tableroActual.getCantidadDeFilas() * this.longitudManzana * 2 - longitudManzana * 2) / 2;
+            return (this.largoDePanel - (tableroActual.getCantidadDeFilas() + 1)  * this.longitudManzana * 2) / 2;
         }
     }
 
