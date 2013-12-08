@@ -100,10 +100,11 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
             this.dibujarTablero();
             actionPerformed(null);
             cantidadDePasos = 0;
+            System.out.println("Posicion Inicial:" + x + "," + y);
         }
         super.paint(g);
         Graphics2D grafico2D = (Graphics2D) g;
-        grafico2D.drawImage(star, x, y, this.zonaDeJuego);
+        grafico2D.drawImage(star, x, y, this);
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
     }
