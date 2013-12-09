@@ -183,14 +183,14 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
             		   JLabel sorpresaOeste = crearSorpresaEnDireccion(posicionActual,"oeste");
             		   this.zonaDeJuego.add(sorpresaOeste);
             	   }
-               }
+               	}
              }
             constanteColumna++;
             posicionX = longitudManzana * (i + constanteColumna);
             posicionY = 0;
             constanteFila = 0;
         }
-      JLabel meta = this.obtenerImagen(this.posicionInicialEnX(this.posicionDeLlegada),this.posicionInicialEnY(this.posicionDeLlegada),"meta");
+      JLabel meta = this.obtenerImagen(this.posicionInicialDeVehiculoEnX(this.posicionDeLlegada),this.pocionDeUnObjetoEnTableroY(this.posicionDeLlegada),"meta");
       this.zonaDeJuego.add(meta);
     }
 
@@ -198,7 +198,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         int posicionObstaculoSurX = longitudManzana + posicionActual.x() * 2 * longitudManzana + corrimientoEnX;
         int posicionObstaculoSurY = longitudManzana + posicionActual.y() * 2 * longitudManzana + corrimientoEnY;
         Bocacalle bocacalleActual = this.tableroActual.getBocacalleEnPosicion(posicionActual);
-        switch (bocacalleActual.getCalleEnDireccion(direccion).getObstaculo().toString()) {
+        switch (bocacalleActual.getCalleEnDireccion(direccion).getObstaculo().getClass().getName()) {
             case "ObstaculoControlPolicial":
                 JLabel obstaculoControlPolicial = obtenerImagen(posicionObstaculoSurX, posicionObstaculoSurY, "obstaculoControlPolicial");
                 return obstaculoControlPolicial;
@@ -243,7 +243,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public JLabel obtenerImagen(int posX, int posY, String figura) {
-        // S//ystem.out.println("crearObstaculoPozo");
+         System.out.println("CREANDO IMAGEN "+ figura);
         JLabel obstaculo = new JLabel("");
         ImageIcon icono = new ImageIcon("src/vista/imagenes/" + figura + ".png");
         obstaculo.setIcon(icono);
@@ -313,7 +313,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         }
     }
 
-    public int posicionInicialEnX(Posicion posicion) {
+    public int posicionInicialDeVehiculoEnX(Posicion posicion) {
         // System.out.println("posicionInicialVehiculoEnX");
         // System.out.println("pos X en el modelo:" + posicionDeVehiculo.x());
         int posicionInicialVehiculoEnX = posicion.x();
@@ -323,15 +323,18 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         return nuevaPosicionX;
     }
 
-    public int posicionInicialEnY(Posicion posicion) {
+    public int posicionInicialDeVehiculoEnY(Posicion posicion) {
         // System.out.println("posicionInicialVehiculoEnY");
         // System.out.println("pos Y en el modelo:" + posicionDeVehiculo.y());
 
         int posicionInicialVehiculoEnY = posicion.y();
         int nuevaPosicionY = longitudManzana + posicionInicialVehiculoEnY * 2 * longitudManzana;
         // System.out.println("posicion Y :" + nuevaPosicionY);
-
         return nuevaPosicionY;
+    }
+    
+    public int pocionDeUnObjetoEnTableroY(Posicion posicion){
+    	return (longitudManzana + (this.tableroActual.getCantidadDeFilas()-1-posicion.y()) * 2 * longitudManzana);
     }
 
     public int calcularAnchoPanelZonaDeJuego() {
@@ -355,8 +358,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         // int posicionTableroY = posicionDelTableroY;
         // System.out.println("posicionDelTablero X:" + posicionDelTableroX);
         // System.out.println("posicionDelTablero Y:" + posicionDelTableroY);
-        x = this.posicionInicialEnX(this.posicionDeVehiculo) + posicionDelTableroX + 1;
-        y = largoDePanel - posicionDelTableroY - this.posicionInicialEnY(this.posicionDeVehiculo) - 18 - longitudManzana - 1;
+        x = this.posicionInicialDeVehiculoEnX(this.posicionDeVehiculo) + posicionDelTableroX + 1;
+        y = largoDePanel - posicionDelTableroY - this.posicionInicialDeVehiculoEnY(this.posicionDeVehiculo) - 18 - longitudManzana - 1;
     }
 
     public void asignarValoresInicialesMovimientos() {
