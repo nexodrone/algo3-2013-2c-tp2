@@ -2,12 +2,13 @@ package vista;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
-
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -15,105 +16,181 @@ import javax.swing.JRadioButton;
 
 public class PanelElegirVehiculo extends JPanel {
 	
-	private JButton botonAceptar = new JButton("Aceptar");
-	private JButton botonVolver = new JButton("Volver");
+	private Boton botonAceptar = new Boton("Aceptar");
+	private Boton botonVolver = new Boton("Volver");
 	private JLabel etiqueta = new JLabel("Por favor seleccione vehiculo");
-	private JRadioButton botonAuto = new JRadioButton("Auto");
-	private JRadioButton botonMoto = new JRadioButton("Moto");
-	private JRadioButton boton4x4 = new JRadioButton("4x4");
-	private ButtonGroup bgroup = new ButtonGroup();
-	private JLabel vehiculoAuto;
-	private JLabel vehiculoMoto;
-	private JLabel vehiculo4x4;
+	private PanelImgBtn panelConImagenesYBotones = new PanelImgBtn();
 	private String nivel;
 	
-
-
 	public PanelElegirVehiculo(String nivelSeleccionado) {
-		this.setLayout(null);
-		
+		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		this.setPreferredSize(new Dimension(1000,600));
-		this.setBackground(new Color(255,255,255,150));
+		this.setBackground(new Color(255,255,255,200));
+		this.nivel = nivelSeleccionado;
 		
-		this.nivel= nivelSeleccionado;
-		this.etiqueta.setBounds(430, 60, 220, 10);
-		this.vehiculoAuto=obtenerImagenDeVehiculo(100,100,"src/vista/imagenes/vehiculoAuto.jpg");
-		this.vehiculoMoto=obtenerImagenDeVehiculo(390,100,"src/vista/imagenes/vehiculoMoto.jpg");
-		this.vehiculo4x4=obtenerImagenDeVehiculo(680,100,"src/vista/imagenes/vehiculo4x4.jpg");
-	
-		this.botonAuto.setBounds(200,370,80,30);
-		this.botonMoto.setBounds(490,370, 100, 30);
-		this.boton4x4.setBounds(760,370,80,30);
-		
-		this.botonAceptar.setBounds(400,430,200,30);
-		this.botonVolver.setBounds(400,480,200, 30);
-		this.bgroup.add(botonAuto);
-		this.bgroup.add(botonMoto);
-		this.bgroup.add(boton4x4);
-		
+		this.etiqueta.setAlignmentX(CENTER_ALIGNMENT);
+		this.panelConImagenesYBotones.setAlignmentX(CENTER_ALIGNMENT);
+		this.botonAceptar.setAlignmentX(CENTER_ALIGNMENT);
+		this.botonVolver.setAlignmentX(CENTER_ALIGNMENT);
+
+		this.add(Box.createVerticalStrut(15));
 		this.add(etiqueta);
-		this.add(vehiculoAuto);
-		this.add(vehiculoMoto);
-		this.add(vehiculo4x4);
-		this.add(botonAuto);
-		this.add(botonMoto);
-		this.add(boton4x4);
+		this.add(Box.createVerticalStrut(20));
+		this.add(panelConImagenesYBotones);
+		this.add(Box.createVerticalStrut(20));
 		this.add(botonAceptar);
+		this.add(Box.createVerticalStrut(20));
 		this.add(botonVolver);
 	}
-	
+
 	public void agregarEscuchaAceptar(ActionListener escuchaAceptar){
 		this.botonAceptar.addActionListener(escuchaAceptar);
 	}
-		
+
 	public void agregarEscuchaVolver(ActionListener escuchaVolver){
 		this.botonVolver.addActionListener(escuchaVolver);
 	}
-	
+
+	public void mostrarMensajeNadaSeleccionado() {
+		JOptionPane.showMessageDialog(this, "Por favor seleccione un vehiculo.", "Vehiculo no seleccionado", JOptionPane.WARNING_MESSAGE);
+	}
+
 	public void mostrarMensajeError() {
 		JOptionPane.showMessageDialog(this, "Error! Se cargara nivel por defecto.", "Error", JOptionPane.ERROR_MESSAGE);
 	}
-	
-	public JLabel obtenerImagenDeVehiculo(int posX,int posY,String direccion){
-		JLabel imagen = new JLabel("");
-		ImageIcon icono = new ImageIcon(direccion);
-		imagen.setIcon(icono);
-		imagen.setBounds(posX, posY, 250, 250);
-		return imagen;
-	}
 
-	public String obtenerVehiculoSeleccionado(){
-		if (botonAuto.isSelected()){
+	public String obtenerVehiculoSeleccionado() {
+		if (this.panelConImagenesYBotones.botonAuto.isSelected()){
 			return "Auto";
-		}else if (boton4x4.isSelected()){
+		}else if (this.panelConImagenesYBotones.boton4x4.isSelected()){
 			return "4x4";
 		}else{
 			return "Moto";
 		}
 	}
-	
-	public boolean ningunCampoSeleccionado(){
-		if (botonAuto.isSelected() == false && 
-			boton4x4.isSelected() == false && 
-			botonMoto.isSelected()==false){
-			return true;
-		} else return false;
+
+	public boolean ningunCampoSeleccionado() {
+		return (panelConImagenesYBotones.bgroup.getSelection() == null);
 	}
-	
-	public void mostrarMensajeCampoVacio() {
-		JOptionPane.showMessageDialog(this, "Por favor seleccione un vehiculo.", "Vehiculo no seleccionado", JOptionPane.WARNING_MESSAGE);
-	}
-	
+
 	public String obtenerNivelSeleccionado(){
 		return nivel;
 	}
 	
-	public void agregarEscuchaEnter(KeyListener escuchaEnter) {
-		this.botonAuto.addKeyListener(escuchaEnter);
-		this.botonMoto.addKeyListener(escuchaEnter);
-		this.boton4x4.addKeyListener(escuchaEnter);
-	}
-	
-	
-}
+	private class PanelImgBtn extends JPanel {
+		
+		public JPanel panelAuto = new JPanel();
+		public JPanel panelMoto = new JPanel();
+		public JPanel panel4x4 = new JPanel();
+		public JLabel imagenAuto = new JLabel();
+		public JLabel imagenMoto = new JLabel();
+		public JLabel imagen4x4 = new JLabel();
+		private ButtonGroup bgroup = new ButtonGroup();
+		public JRadioButton botonAuto = new JRadioButton("Auto");
+		public JRadioButton botonMoto = new JRadioButton("Moto");
+		public JRadioButton boton4x4 = new JRadioButton("4x4");
+		
+		public PanelImgBtn() {
+			
+			this.setLayout(new FlowLayout());
+			this.setAlignmentX(CENTER_ALIGNMENT);
+			this.setBackground(new Color(0,0,0,0));
+			this.setMaximumSize(new Dimension(900,400));
 
+			this.agregarPanelConAuto();
+			this.add(Box.createHorizontalStrut(20));
+			this.agregarPanelConMoto();
+			this.add(Box.createHorizontalStrut(20));
+			this.agregarPanelCon4x4();
+		}
+
+		private void agregarPanelConAuto() {
+			prepararPanelConVehiculo(panelAuto);
+			prepararImagenIlustrativa(imagenAuto, "src/vista/imagenes/MenuAuto.jpg");
+			prepararBoton(botonAuto);
+			
+			JLabel texto1 = new JLabel("Pozo: penaliza 3 movimientos.");
+			JLabel texto2 = new JLabel("Piquete: no puede pasar.");
+			JLabel texto3 = new JLabel("Control: penaliza 3, chanse: 50%.");
+			JLabel texto4 = new JLabel("Cambio de vehiculo: a 4x4.");
+			texto1.setAlignmentX(CENTER_ALIGNMENT);
+			texto2.setAlignmentX(CENTER_ALIGNMENT);
+			texto3.setAlignmentX(CENTER_ALIGNMENT);
+			texto4.setAlignmentX(CENTER_ALIGNMENT);
+			
+			agregarComponentes(panelAuto, imagenAuto, texto1, texto2, texto3, texto4, botonAuto);
+
+			this.add(panelAuto);
+		}
+		
+		private void agregarPanelConMoto() {
+			prepararPanelConVehiculo(panelMoto);
+			prepararImagenIlustrativa(imagenMoto, "src/vista/imagenes/MenuMoto.jpg");
+			prepararBoton(botonMoto);
+			
+			JLabel texto1 = new JLabel("Pozo: penaliza 3 movimientos.");
+			JLabel texto2 = new JLabel("Piquete: penaliza 2 movimientos.");
+			JLabel texto3 = new JLabel("Control: penaliza 3, chanse: 80%.");
+			JLabel texto4 = new JLabel("Cambio de vehiculo: a Auto.");
+			texto1.setAlignmentX(CENTER_ALIGNMENT);
+			texto2.setAlignmentX(CENTER_ALIGNMENT);
+			texto3.setAlignmentX(CENTER_ALIGNMENT);
+			texto4.setAlignmentX(CENTER_ALIGNMENT);
+			
+			agregarComponentes(panelMoto, imagenMoto, texto1, texto2, texto3, texto4, botonMoto);
+			
+			this.add(panelMoto);
+		}
+		
+		private void agregarPanelCon4x4() {
+			prepararPanelConVehiculo(panel4x4);
+			prepararImagenIlustrativa(imagen4x4, "src/vista/imagenes/Menu4x4.jpg");
+			prepararBoton(boton4x4);
+			
+			JLabel texto1 = new JLabel("Pozo: no penaliza.");
+			JLabel texto2 = new JLabel("Piquete: no puede pasar.");
+			JLabel texto3 = new JLabel("Control: penaliza 3, chanse: 30%.");
+			JLabel texto4 = new JLabel("Cambio de vehiculo: a Moto.");
+			texto1.setAlignmentX(CENTER_ALIGNMENT);
+			texto2.setAlignmentX(CENTER_ALIGNMENT);
+			texto3.setAlignmentX(CENTER_ALIGNMENT);
+			texto4.setAlignmentX(CENTER_ALIGNMENT);
+			
+			agregarComponentes(panel4x4, imagen4x4, texto1, texto2, texto3, texto4, boton4x4);
+			
+			this.add(panel4x4);
+		}
+		
+		private void prepararPanelConVehiculo(JPanel panel) {
+			panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+			panel.setPreferredSize(new Dimension(250,400));
+			panel.setBackground(Color.WHITE);
+		}
+		
+		private void prepararImagenIlustrativa(JLabel label, String ruta) {
+			ImageIcon icono = new ImageIcon(ruta);
+			label.setIcon(icono);
+			label.setPreferredSize(new Dimension(250,250));
+			label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+			label.setAlignmentX(CENTER_ALIGNMENT);
+		}
+		
+		private void prepararBoton(JRadioButton boton) {
+			boton.setAlignmentX(CENTER_ALIGNMENT);
+			boton.setBackground(Color.WHITE);
+			this.bgroup.add(boton);
+		}
+		
+		private void agregarComponentes(JPanel panel, JLabel imagen, JLabel label1, JLabel label2, JLabel label3, JLabel label4, JRadioButton boton) {
+			panel.add(imagen);
+			panel.add(Box.createVerticalStrut(20));
+			panel.add(label1);
+			panel.add(label2);
+			panel.add(label3);
+			panel.add(label4);
+			panel.add(Box.createVerticalStrut(20));
+			panel.add(boton);
+		}
+	}
+
+}
