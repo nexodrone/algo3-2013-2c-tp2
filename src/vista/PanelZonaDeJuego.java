@@ -106,9 +106,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         // this.configurarTableroEnZonaDeJuego();
 
         if (dibujarTablero) {
-
             this.dibujarTablero();
-            this.dibujarTodosObstaculosYSorpresas();
             actionPerformed(null);
             cantidadDePasos = 0;
         }
@@ -149,6 +147,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     public void dibujarTablero() {
         // System.out.println("dibujarTablero");
         dibujarTablero = false;
+        Direccion sur = new Direccion(0, -1);
+        Direccion oeste = new Direccion(-1, 0);
         int constanteFila = 0;
         int constanteColumna = 1;
         int posicionX = 0;
@@ -158,67 +158,42 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
 
         for (int i = 0; i < tableroActual.getCantidadDeColumnas() + 1; i++) {
             for (int j = 0; j < tableroActual.getCantidadDeFilas() + 1; j++) {
-                posicionY = longitudManzana * (j + constanteFila);
+               //DIBUJA MANZANAS
+            	posicionY = longitudManzana * (j + constanteFila);
                 JLabel manzana = crearUnaManzana(posicionX, posicionY);
                 this.zonaDeJuego.add(manzana);
                 constanteFila++;
-            }
+                //DIBUJA SORPRESAS Y OBSTACULOS SIEMPRE QUE ESTEMOS EN UNA POSICION VALIDA
+               if (i < tableroActual.getCantidadDeColumnas() && j < tableroActual.getCantidadDeFilas()){
+            	   Posicion posicionActual = new Posicion(i,j);
+            	   if(this.tableroActual.getBocacalleEnPosicion(posicionActual).getCalleEnDireccion(sur).getObstaculo()!=null){
+            		   JLabel obstaculoSur = crearObstaculoEnDireccion(posicionActual,sur,0,32);
+            		   this.zonaDeJuego.add(obstaculoSur);
+            	   }
+            	   if(this.tableroActual.getBocacalleEnPosicion(posicionActual).getCalleEnDireccion(oeste).getObstaculo()!=null){
+            		   JLabel obstaculoOeste = crearObstaculoEnDireccion(posicionActual,oeste,-9,0);
+            		   this.zonaDeJuego.add(obstaculoOeste);
+            	   }
+            	   if(this.tableroActual.getBocacalleEnPosicion(posicionActual).getCalleEnDireccion(sur).getSorpresa()!=null){
+            		   JLabel sorpresaSur = crearSorpresaEnDireccion(posicionActual,"sur");
+            		   this.zonaDeJuego.add(sorpresaSur);
+            	   }
+            	   if(this.tableroActual.getBocacalleEnPosicion(posicionActual).getCalleEnDireccion(oeste).getSorpresa()!=null){
+            		   JLabel sorpresaOeste = crearSorpresaEnDireccion(posicionActual,"oeste");
+            		   this.zonaDeJuego.add(sorpresaOeste);
+            	   }
+               }
+             }
             constanteColumna++;
             posicionX = longitudManzana * (i + constanteColumna);
             posicionY = 0;
             constanteFila = 0;
         }
-      JLabel meta = this.obtenerImagen(this.posicionInicialVehiculoEnX(),this.posicionInicialVehiculoEnY(),"meta");
+      JLabel meta = this.obtenerImagen(this.posicionInicialEnX(this.posicionDeLlegada),this.posicionInicialEnY(this.posicionDeLlegada),"meta");
       this.zonaDeJuego.add(meta);
     }
 
-    public void dibujarTodosObstaculosYSorpresas() {
-        Direccion norte = new Direccion(0, 1);
-        Direccion sur = new Direccion(0, -1);
-        Direccion este = new Direccion(1, 0);
-        Direccion oeste = new Direccion(-1, 0);
-
-        for (int i = 0; i < tableroActual.getCantidadDeColumnas(); i++) {
-            for (int j = 0; j < tableroActual.getCantidadDeFilas(); j++) {
-                Posicion posicionActual = new Posicion(i, j);
-                Bocacalle bocacalleActual = tableroActual.getBocacalleEnPosicion(posicionActual);
-                if (bocacalleActual.getCalleEnDireccion(sur).getSorpresa() != null) {
-                    JLabel sorpresaSur = dibujarSorpresaEnDireccion(posicionActual, "sur");
-                    this.add(sorpresaSur);
-                }
-                if (bocacalleActual.getCalleEnDireccion(norte).getSorpresa() != null) {
-                    JLabel sorpresaNorte = dibujarSorpresaEnDireccion(posicionActual, "norte");
-                    this.add(sorpresaNorte);
-                }
-                if (bocacalleActual.getCalleEnDireccion(oeste).getSorpresa() != null) {
-                    JLabel sorpresaOeste = dibujarSorpresaEnDireccion(posicionActual, "oeste");
-                    this.add(sorpresaOeste);
-                }
-                if (bocacalleActual.getCalleEnDireccion(este).getSorpresa() != null) {
-                    JLabel sorpresaEste = dibujarSorpresaEnDireccion(posicionActual, "este");
-                    this.add(sorpresaEste);
-                }
-                if (bocacalleActual.getCalleEnDireccion(sur).getObstaculo() != null) {
-                    JLabel obstaculoSur = dibujarObstaculosEnDireccion(posicionActual, sur, 0, 32);
-                    this.add(obstaculoSur);
-                }
-                if (bocacalleActual.getCalleEnDireccion(este).getObstaculo() != null) {
-                    JLabel obstaculoEste = dibujarObstaculosEnDireccion(posicionActual, este, 30, 0);
-                    this.zonaDeJuego.add(obstaculoEste);
-                }
-                if (bocacalleActual.getCalleEnDireccion(norte).getObstaculo() != null) {
-                    JLabel obstaculoNorte = dibujarObstaculosEnDireccion(posicionActual, norte, 0, -12);
-                    this.zonaDeJuego.add(obstaculoNorte);
-                }
-                if (bocacalleActual.getCalleEnDireccion(oeste).getObstaculo() != null) {
-                    JLabel obstaculoOeste = dibujarObstaculosEnDireccion(posicionActual, oeste, -9, 0);
-                    this.zonaDeJuego.add(obstaculoOeste);
-                }
-            }
-        }
-    }
-
-    private JLabel dibujarObstaculosEnDireccion(Posicion posicionActual, Direccion direccion, int corrimientoEnX, int corrimientoEnY) {
+    private JLabel crearObstaculoEnDireccion(Posicion posicionActual, Direccion direccion, int corrimientoEnX, int corrimientoEnY) {
         int posicionObstaculoSurX = longitudManzana + posicionActual.x() * 2 * longitudManzana + corrimientoEnX;
         int posicionObstaculoSurY = longitudManzana + posicionActual.y() * 2 * longitudManzana + corrimientoEnY;
         Bocacalle bocacalleActual = this.tableroActual.getBocacalleEnPosicion(posicionActual);
@@ -235,7 +210,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         }
     }
 
-    private JLabel dibujarSorpresaEnDireccion(Posicion posicionActual, String direccion) {
+    private JLabel crearSorpresaEnDireccion(Posicion posicionActual, String direccion) {
         switch (direccion) {
             case "sur":
                 int posicionSorpresaSurX = longitudManzana + posicionActual.x() * 2 * longitudManzana;
@@ -271,7 +246,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         JLabel obstaculo = new JLabel("");
         ImageIcon icono = new ImageIcon("src/vista/imagenes/" + figura + ".png");
         obstaculo.setIcon(icono);
-        obstaculo.setBounds(posX, posY, longitudManzana - 9, longitudManzana - 9);
+        obstaculo.setBounds(posX, posY, longitudManzana - 5, longitudManzana - 5);
         return obstaculo;
     }
 
@@ -337,21 +312,21 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         }
     }
 
-    public int posicionInicialVehiculoEnX() {
+    public int posicionInicialEnX(Posicion posicion) {
         // System.out.println("posicionInicialVehiculoEnX");
         // System.out.println("pos X en el modelo:" + posicionDeVehiculo.x());
-        int posicionInicialVehiculoEnX = posicionDeVehiculo.x();
+        int posicionInicialVehiculoEnX = posicion.x();
         int nuevaPosicionX = longitudManzana + posicionInicialVehiculoEnX * 2 * longitudManzana;
         // System.out.println("posicion X :" + nuevaPosicionX);
 
         return nuevaPosicionX;
     }
 
-    public int posicionInicialVehiculoEnY() {
+    public int posicionInicialEnY(Posicion posicion) {
         // System.out.println("posicionInicialVehiculoEnY");
         // System.out.println("pos Y en el modelo:" + posicionDeVehiculo.y());
 
-        int posicionInicialVehiculoEnY = posicionDeVehiculo.y();
+        int posicionInicialVehiculoEnY = posicion.y();
         int nuevaPosicionY = longitudManzana + posicionInicialVehiculoEnY * 2 * longitudManzana;
         // System.out.println("posicion Y :" + nuevaPosicionY);
 
@@ -379,8 +354,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         // int posicionTableroY = posicionDelTableroY;
         // System.out.println("posicionDelTablero X:" + posicionDelTableroX);
         // System.out.println("posicionDelTablero Y:" + posicionDelTableroY);
-        x = this.posicionInicialVehiculoEnX() + posicionDelTableroX + 1;
-        y = largoDePanel - posicionDelTableroY - this.posicionInicialVehiculoEnY() - 18 - longitudManzana - 1;
+        x = this.posicionInicialEnX(this.posicionDeVehiculo) + posicionDelTableroX + 1;
+        y = largoDePanel - posicionDelTableroY - this.posicionInicialEnY(this.posicionDeVehiculo) - 18 - longitudManzana - 1;
     }
 
     public void asignarValoresInicialesMovimientos() {

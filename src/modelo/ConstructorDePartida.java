@@ -5,10 +5,10 @@ public class ConstructorDePartida {
 	
 	public static Posicion generarPosicionValida(Nivel nivel){
 		Random rnd = new Random();
-		int columnas = rnd.nextInt(nivel.tablero.getCantidadDeColumnas());		
-		int filas = rnd.nextInt(nivel.tablero.getCantidadDeFilas());
+		int columna = rnd.nextInt(nivel.tablero.getCantidadDeColumnas());		
+		int fila = rnd.nextInt(nivel.tablero.getCantidadDeFilas());
 		
-		return new Posicion(columnas,filas);
+		return new Posicion(columna,fila);
 	}
 	
 
