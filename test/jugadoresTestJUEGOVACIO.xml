@@ -1,0 +1,19 @@
+<ListaDeJugadores>
+   <jugadores>
+      <jugador nombre="Chango">
+         <puntaje>0</puntaje>
+      </jugador>
+      <jugador nombre="Matori">
+         <puntaje>0</puntaje>
+      </jugador>
+      <jugador nombre="Jedi">
+         <puntaje>0</puntaje>
+      </jugador>
+      <jugador nombre="Ciriaso">
+         <puntaje>0</puntaje>
+      </jugador>
+      <jugador nombre="Carolo">
+         <puntaje>0</puntaje>
+      </jugador>
+   </jugadores>
+</ListaDeJugadores>
