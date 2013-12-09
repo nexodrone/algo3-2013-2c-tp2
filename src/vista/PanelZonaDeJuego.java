@@ -89,7 +89,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public void paint(Graphics g) {
-        System.out.println("paint");
+        // System.out.println("paint");
         this.configurarTableroEnZonaDeJuego();
         if (dibujarTablero) {
             this.dibujarTodosObstaculosYSorpresas();
@@ -106,7 +106,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        System.out.println("actionPerformed");
+        // System.out.println("actionPerformed");
         if (cantidadDePasos < cantidad) {
             x = (x + 2 * enX);
             y = (y + 2 * enY);
@@ -289,9 +289,9 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public void nuevaPosicion(int x, int y) {
-        System.out.println("nuevaPosicion");
-        System.out.println("cantidadDePasos:" + cantidadDePasos);
-        System.out.println("nuevaPosicion");
+        // System.out.println("nuevaPosicion");
+        // System.out.println("cantidadDePasos:" + cantidadDePasos);
+        // System.out.println("nuevaPosicion");
         if (!this.seEstaMoviendo()) {
             enX = x;
             enY = y;
@@ -324,7 +324,9 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         if (((anchoDePanel - (tableroActual.getCantidadDeColumnas() + 1) * longitudManzana * 2) / 2) < 0) {
             return 0;
         } else {
-            return (anchoDePanel - (tableroActual.getCantidadDeColumnas() + 1) * longitudManzana * 2) / 2;
+            int algo = (anchoDePanel - (tableroActual.getCantidadDeColumnas() + 1) * longitudManzana * 2) / 2;
+            // System.out.println("algo:" + algo);
+            return algo;
         }
     }
 
@@ -334,27 +336,30 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         if (((largoDePanel - (tableroActual.getCantidadDeFilas() + 1) * longitudManzana * 2) / 2) < 0) {
             return 0;
         } else {
-            return (this.largoDePanel - (tableroActual.getCantidadDeFilas() + 1) * this.longitudManzana * 2) / 2;
+            int algo = (this.largoDePanel - (tableroActual.getCantidadDeFilas() + 1) * this.longitudManzana * 2) / 2;
+            // System.out.println("algo:" + algo);
+
+            return algo;
         }
     }
 
     public int posicionInicialVehiculoEnX() {
-        System.out.println("posicionInicialVehiculoEnX");
-        System.out.println("pos X en el modelo:" + posicionDeVehiculo.x());
-        int posicionInicialVehiculoEnX = this.posicionDeVehiculo.x();
+        // System.out.println("posicionInicialVehiculoEnX");
+        // System.out.println("pos X en el modelo:" + posicionDeVehiculo.x());
+        int posicionInicialVehiculoEnX = posicionDeVehiculo.x();
         int nuevaPosicionX = longitudManzana + posicionInicialVehiculoEnX * 2 * longitudManzana;
-        System.out.println("posicion X :" + nuevaPosicionX);
+        // System.out.println("posicion X :" + nuevaPosicionX);
 
         return nuevaPosicionX;
     }
 
     public int posicionInicialVehiculoEnY() {
-        System.out.println("posicionInicialVehiculoEnY");
-        System.out.println("pos Y en el modelo:" + posicionDeVehiculo.y());
+        // System.out.println("posicionInicialVehiculoEnY");
+        // System.out.println("pos Y en el modelo:" + posicionDeVehiculo.y());
 
-        int posicionInicialVehiculoEnY = this.posicionDeVehiculo.y();
+        int posicionInicialVehiculoEnY = posicionDeVehiculo.y();
         int nuevaPosicionY = longitudManzana + posicionInicialVehiculoEnY * 2 * longitudManzana;
-        System.out.println("posicion Y :" + nuevaPosicionY);
+        // System.out.println("posicion Y :" + nuevaPosicionY);
 
         return nuevaPosicionY;
     }
@@ -374,10 +379,14 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
 
     public void calcularPosicionVehiculoVista() {
         // System.out.println("calcularPosicionVehiculoVista");
-        int posicionDelTableroX = (anchoDePanel - this.calcularAnchoPanelZonaDeJuego()) / 2;
-        int posicionDelTableroY = (largoDePanel - this.calcularLargoPanelZonaDeJuego()) / 2;
-        x = this.posicionInicialVehiculoEnX() + posicionDelTableroX + 2;
-        y = largoDePanel - posicionDelTableroY - this.posicionInicialVehiculoEnY();
+        // int posicionDelTableroX = (anchoDePanel - this.calcularAnchoPanelZonaDeJuego()) / 2;
+        int posicionDelTableroX = centrarEnX();
+        // int posicionDelTableroY = (largoDePanel - this.calcularLargoPanelZonaDeJuego()) / 2;
+        int posicionDelTableroY = centrarEnY();
+        // System.out.println("posicionDelTablero X:" + posicionDelTableroX);
+        // System.out.println("posicionDelTablero Y:" + posicionDelTableroY);
+        x = this.posicionInicialVehiculoEnX() + posicionDelTableroX + 1;
+        y = largoDePanel - posicionDelTableroY - this.posicionInicialVehiculoEnY() - 18 - longitudManzana - 1;
     }
 
     public void asignarValoresInicialesMovimientos() {
