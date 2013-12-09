@@ -10,7 +10,6 @@ public class Boton extends JButton {
     public Boton(String texto) {
         super(texto);
         this.setMaximumSize(dimension);
-        this.setPreferredSize(dimension);
         this.setMinimumSize(dimension);
     }
 }
