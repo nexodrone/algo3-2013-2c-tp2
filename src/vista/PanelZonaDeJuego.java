@@ -166,6 +166,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
                 //DIBUJA SORPRESAS Y OBSTACULOS SIEMPRE QUE ESTEMOS EN UNA POSICION VALIDA
                if (i < tableroActual.getCantidadDeColumnas() && j < tableroActual.getCantidadDeFilas()){
             	   Posicion posicionActual = new Posicion(i,j);
+            	  
             	   if(this.tableroActual.getBocacalleEnPosicion(posicionActual).getCalleEnDireccion(sur).getObstaculo()!=null){
             		   JLabel obstaculoSur = crearObstaculoEnDireccion(posicionActual,sur,0,32);
             		   this.zonaDeJuego.add(obstaculoSur);

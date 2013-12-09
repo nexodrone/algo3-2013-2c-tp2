@@ -104,7 +104,7 @@ public class EditorDeNiveles {
         
         Nivel nivel = new Nivel();
 		nivel.tablero =  new Tablero(21,14);
-		nivel.movimientosDisponibles = 25;
+		nivel.movimientosDisponibles = 100;
 		
 		nivel.tablero.getBocacalleEnPosicion(new Posicion(0,0)).getCalleEnDireccion(sur).setObstaculo(new ObstaculoPozo());
 		nivel.tablero.getBocacalleEnPosicion(new Posicion(1,0)).getCalleEnDireccion(este).setSorpresa(new SorpresaDesfavorable());
