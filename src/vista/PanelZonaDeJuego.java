@@ -33,6 +33,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     private int largoDePanel = 610;
     private int anchoDePanel = 870;
     private int longitudManzana = 20;
+    private int posicionDelTableroX; // = this.centrarEnX();
+    private int posicionDelTableroY;// = this.centrarEnY();
     private Tablero tableroActual;
     private TransparentPanel zonaDeJuego;
     private String vehiculo;
@@ -49,6 +51,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
 
         setDoubleBuffered(true);
         // setFocusable(true);
+        posicionDelTableroX = this.centrarEnX();
+        posicionDelTableroY = this.centrarEnY();
         this.calcularPosicionVehiculoVista();
         this.asignarValoresInicialesMovimientos();
 
@@ -56,6 +60,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         timer = new Timer(velocidad, this);
 
         zonaDeJuego = new TransparentPanel(radioClip);
+        this.configurarTableroEnZonaDeJuego();
         MouseListener ml = new MouseListener() {
 
             @Override
@@ -90,7 +95,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
 
     public void paint(Graphics g) {
         // System.out.println("paint");
-        this.configurarTableroEnZonaDeJuego();
+        // this.configurarTableroEnZonaDeJuego();
+
         if (dibujarTablero) {
             this.dibujarTodosObstaculosYSorpresas();
             this.dibujarTablero();
@@ -111,7 +117,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
             x = (x + 2 * enX);
             y = (y + 2 * enY);
             cantidadDePasos = cantidadDePasos + 1;
-            zonaDeJuego.setClipPos(x - centrarEnX(), y - centrarEnY());
+            zonaDeJuego.setClipPos(x - posicionDelTableroX, y - posicionDelTableroY);
             repaint();
             // System.out.print("pintando");
         } else {
@@ -121,9 +127,9 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public void configurarTableroEnZonaDeJuego() {
-        // System.out.println("configurarTableroEnZonaDeJuego");
+        System.out.println("configurarTableroEnZonaDeJuego");
         this.zonaDeJuego.setLayout(null);
-        this.zonaDeJuego.setBounds(centrarEnX(), centrarEnY(), this.calcularAnchoPanelZonaDeJuego(), this.calcularLargoPanelZonaDeJuego());
+        this.zonaDeJuego.setBounds(posicionDelTableroX, posicionDelTableroY, this.calcularAnchoPanelZonaDeJuego(), this.calcularLargoPanelZonaDeJuego());
         this.zonaDeJuego.setBackground(Color.lightGray);
     }
 
@@ -335,7 +341,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
 
     public int centrarEnY() {
         // System.out.println("centrarEnY");
-
+        System.out.println("Tamaño del tablero:" + tableroActual.getCantidadDeColumnas() + "," + tableroActual.getCantidadDeFilas());
         if (((largoDePanel - (tableroActual.getCantidadDeFilas() + 1) * longitudManzana * 2) / 2) < 0) {
             return 0;
         } else {
@@ -383,9 +389,9 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     public void calcularPosicionVehiculoVista() {
         // System.out.println("calcularPosicionVehiculoVista");
         // int posicionDelTableroX = (anchoDePanel - this.calcularAnchoPanelZonaDeJuego()) / 2;
-        int posicionDelTableroX = centrarEnX();
+        // int posicionTableroX = posicionDelTableroX;
         // int posicionDelTableroY = (largoDePanel - this.calcularLargoPanelZonaDeJuego()) / 2;
-        int posicionDelTableroY = centrarEnY();
+        // int posicionTableroY = posicionDelTableroY;
         // System.out.println("posicionDelTablero X:" + posicionDelTableroX);
         // System.out.println("posicionDelTablero Y:" + posicionDelTableroY);
         x = this.posicionInicialVehiculoEnX() + posicionDelTableroX + 1;
