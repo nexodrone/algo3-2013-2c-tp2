@@ -1,0 +1,10 @@
+<ListaDeJugadores>
+   <jugadores>
+      <jugador nombre="Carloncho">
+         <puntaje>30</puntaje>
+      </jugador>
+      <jugador nombre="Roberto">
+         <puntaje>40</puntaje>
+      </jugador>
+   </jugadores>
+</ListaDeJugadores>

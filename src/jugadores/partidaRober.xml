@@ -1,4 +1,4 @@
-<Partida CantidadDeMovimientosDisponibles="100">
+<Partida CantidadDeMovimientosDisponibles="100" Dificultad="0">
    <Tablero cantidadDeColumnas="4" cantidadDeFilas="6">
       <Bocacalles>
          <columnaDeBocacalles>

@@ -1,0 +1,19 @@
+<ListaDeJugadores>
+   <jugadores>
+      <jugador nombre="Chango">
+         <puntaje>45</puntaje>
+      </jugador>
+      <jugador nombre="Matori">
+         <puntaje>32</puntaje>
+      </jugador>
+      <jugador nombre="Jedi">
+         <puntaje>110</puntaje>
+      </jugador>
+      <jugador nombre="Ciriaso">
+         <puntaje>39</puntaje>
+      </jugador>
+      <jugador nombre="Carolo">
+         <puntaje>160</puntaje>
+      </jugador>
+   </jugadores>
+</ListaDeJugadores>
