@@ -36,7 +36,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     private int posicionDelTableroX; // = this.centrarEnX();
     private int posicionDelTableroY;// = this.centrarEnY();
     private Tablero tableroActual;
-    private TransparentPanel zonaDeJuego;
+    private JPanel zonaDeJuego;
     private String vehiculo;
     private Posicion posicionDeVehiculo;
     private Boolean dibujarTablero = true; // PARA QUE EL TABLERO SE DIBUJE SOLO UNA VEZ
@@ -44,6 +44,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     public PanelZonaDeJuego(Tablero tablero, String vehiculoSeleccionado, Posicion posicion) {
         this.tableroActual = tablero;
         this.posicionDeVehiculo = posicion;
+        System.out.println("Posicion del Vehiculo:" + posicion.asString());
         vehiculo = vehiculoSeleccionado;
         setBackground(Color.BLACK);
         this.girarHacia("Derecha"); // por defecto el vehiculo siempre empieza mirando hacia
@@ -59,7 +60,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         int velocidad = 1;
         timer = new Timer(velocidad, this);
 
-        zonaDeJuego = new TransparentPanel(radioClip);
+        // zonaDeJuego = new TransparentPanel(radioClip);
+        zonaDeJuego = new JPanel();
         this.configurarTableroEnZonaDeJuego();
         MouseListener ml = new MouseListener() {
 
@@ -117,7 +119,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
             x = (x + 2 * enX);
             y = (y + 2 * enY);
             cantidadDePasos = cantidadDePasos + 1;
-            zonaDeJuego.setClipPos(x - posicionDelTableroX, y - posicionDelTableroY);
+            // zonaDeJuego.setClipPos(x - posicionDelTableroX, y - posicionDelTableroY);
             repaint();
             // System.out.print("pintando");
         } else {
@@ -127,7 +129,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public void configurarTableroEnZonaDeJuego() {
-        System.out.println("configurarTableroEnZonaDeJuego");
+        // System.out.println("configurarTableroEnZonaDeJuego");
         this.zonaDeJuego.setLayout(null);
         this.zonaDeJuego.setBounds(posicionDelTableroX, posicionDelTableroY, this.calcularAnchoPanelZonaDeJuego(), this.calcularLargoPanelZonaDeJuego());
         this.zonaDeJuego.setBackground(Color.lightGray);
