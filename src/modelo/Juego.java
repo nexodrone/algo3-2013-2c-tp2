@@ -2,7 +2,6 @@ package modelo;
 
 import java.util.ArrayList;
 
-import modelo.excepciones.CalleBloqueadaPorPiqueteExcepcion;
 import modelo.excepciones.ErrorArchivoJugadoresException;
 import modelo.excepciones.MovimientoInvalidoExcepcion;
 import modelo.excepciones.NoHayUsuariosCreadosException;
@@ -99,15 +98,16 @@ public class Juego {
         if (partidaActual.getTablero().posicionValida(nuevaPosicion)) {
             Bocacalle bocacalleActual = partidaActual.getTablero().getBocacalleEnPosicion(partidaActual.getVehiculo().getPosicion());
             Calle calleATransitar = bocacalleActual.getCalleEnDireccion(direccion);
-            try {
-                partidaActual.getVehiculo().moverEnDireccion(direccion, calleATransitar);
-            } catch (CalleBloqueadaPorPiqueteExcepcion e) {
-                System.out.print("Imposible mover en esa direccion. \n");
-            }
+            // try {
+            partidaActual.getVehiculo().moverEnDireccion(direccion, calleATransitar);
+            // } //catch (CalleBloqueadaPorPiqueteExcepcion e) {
+            // System.out.print("Imposible mover en esa direccion. \n");
+            // }
             verificarEstadoDelJugador();
         } else
             throw new MovimientoInvalidoExcepcion();
         System.out.println("Posicion del vehiculo despues de moverse:" + partidaActual.getVehiculo().getPosicion().asString());
+        System.out.println("--------------------------------------------------");
     }
 
     public void crearUsuario(String nombre) throws UsuarioExistenteException, NoHayUsuariosCreadosException {
