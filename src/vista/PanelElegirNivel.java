@@ -72,9 +72,9 @@ public class PanelElegirNivel extends JPanel {
 		public JPanel panelFacil = new JPanel();
 		public JPanel panelIntermedio = new JPanel();
 		public JPanel panelDificil = new JPanel();
-		public JLabel tableroFacil = new JLabel();
-		public JLabel tableroIntermedio = new JLabel();
-		public JLabel tableroDificil = new JLabel();
+		public JLabel imagenFacil = new JLabel();
+		public JLabel imagenIntermedio = new JLabel();
+		public JLabel imagenDificil = new JLabel();
 		private ButtonGroup bgroup = new ButtonGroup();
 		public JRadioButton botonFacil = new JRadioButton("Facil");
 		public JRadioButton botonIntermedio = new JRadioButton("Intermedio");
@@ -96,7 +96,7 @@ public class PanelElegirNivel extends JPanel {
 
 		private void agregarPanelConNivelFacil() {
 			prepararPanelConNivel(panelFacil);
-			prepararImagenIlustrativa(tableroFacil, "src/vista/imagenes/nivelFacil.png");
+			prepararImagenIlustrativa(imagenFacil, "src/vista/imagenes/nivelFacil.png");
 			prepararBoton(botonFacil);
 			
 			JLabel textoDescriptivo1 = new JLabel("Tablero chico.");
@@ -104,14 +104,14 @@ public class PanelElegirNivel extends JPanel {
 			textoDescriptivo1.setAlignmentX(CENTER_ALIGNMENT);
 			textoDescriptivo2.setAlignmentX(CENTER_ALIGNMENT);
 			
-			agregarComponentes(panelFacil, tableroFacil, textoDescriptivo1, textoDescriptivo2, botonFacil);
+			agregarComponentes(panelFacil, imagenFacil, textoDescriptivo1, textoDescriptivo2, botonFacil);
 
 			this.add(panelFacil);
 		}
 		
 		private void agregarPanelConNivelIntermedio() {
 			prepararPanelConNivel(panelIntermedio);
-			prepararImagenIlustrativa(tableroIntermedio, "src/vista/imagenes/nivelIntermedio.png");
+			prepararImagenIlustrativa(imagenIntermedio, "src/vista/imagenes/nivelIntermedio.png");
 			prepararBoton(botonIntermedio);
 			
 			JLabel textoDescriptivo1 = new JLabel("Tablero intermedio.");
@@ -119,14 +119,14 @@ public class PanelElegirNivel extends JPanel {
 			textoDescriptivo1.setAlignmentX(CENTER_ALIGNMENT);
 			textoDescriptivo2.setAlignmentX(CENTER_ALIGNMENT);
 			
-			agregarComponentes(panelIntermedio, tableroIntermedio, textoDescriptivo1, textoDescriptivo2, botonIntermedio);
+			agregarComponentes(panelIntermedio, imagenIntermedio, textoDescriptivo1, textoDescriptivo2, botonIntermedio);
 			
 			this.add(panelIntermedio);
 		}
 		
 		private void agregarPanelConNivelDificil() {
 			prepararPanelConNivel(panelDificil);
-			prepararImagenIlustrativa(tableroDificil, "src/vista/imagenes/nivelDificil.png");
+			prepararImagenIlustrativa(imagenDificil, "src/vista/imagenes/nivelDificil.png");
 			prepararBoton(botonDificil);
 			
 			JLabel textoDescriptivo1 = new JLabel("Tablero grande.");
@@ -134,7 +134,7 @@ public class PanelElegirNivel extends JPanel {
 			textoDescriptivo1.setAlignmentX(CENTER_ALIGNMENT);
 			textoDescriptivo2.setAlignmentX(CENTER_ALIGNMENT);
 			
-			agregarComponentes(panelDificil, tableroDificil, textoDescriptivo1, textoDescriptivo2, botonDificil);
+			agregarComponentes(panelDificil, imagenDificil, textoDescriptivo1, textoDescriptivo2, botonDificil);
 			
 			this.add(panelDificil);
 		}
