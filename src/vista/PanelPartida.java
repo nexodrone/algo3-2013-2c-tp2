@@ -31,10 +31,10 @@ public class PanelPartida extends JPanel {
     private int largoZonaDelJuego = 610;
     String nivelSeleccionado;
 
-    public PanelPartida(String nombre, String dificultad, String vehiculo, Tablero tablero, Posicion posicion) {
+    public PanelPartida(String nombre, String dificultad, String vehiculo, Tablero tablero, Posicion posicionVehiculo, Posicion posicionLlegada) {
         this.setLayout(null);
         this.nivelSeleccionado = dificultad;
-        this.panelZonaDelJuego = new PanelZonaDeJuego(tablero, vehiculo, posicion);
+        this.panelZonaDelJuego = new PanelZonaDeJuego(tablero, vehiculo, posicionVehiculo,posicionLlegada);
 
         this.setPreferredSize(new Dimension(1180, 680));
         this.setBackground(new Color(255, 255, 255, 150));

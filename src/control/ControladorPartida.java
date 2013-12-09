@@ -38,7 +38,7 @@ public class ControladorPartida extends Controlador {
     }
 
     private void agregarPanelLocal(String nombre, String dificultad, String vehiculo) {
-        this.panelPartida = new PanelPartida(nombre, vehiculo, dificultad, juego.getPartida().getTablero(), juego.getInstance().getVehiculo().getPosicion());
+        this.panelPartida = new PanelPartida(nombre, vehiculo, dificultad, juego.getPartida().getTablero(), juego.getInstance().getVehiculo().getPosicion(),juego.getInstance().getPartida().getPosicionGanadora());
         this.panelPartida.inicializarZonaDelJuego();
         this.panelPartida.agregarEscuchaGuardar(new EscuchaGuardar());
         this.panelPartida.agregarEscuchaVolver(new EscuchaVolver());
