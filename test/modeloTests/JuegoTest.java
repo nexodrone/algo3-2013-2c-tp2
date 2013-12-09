@@ -225,14 +225,15 @@ public class JuegoTest {
         tablero.getBocacalleEnPosicion(new Posicion(3, 4)).getCalleEnDireccion(oeste).setSorpresa(new SorpresaFavorable());
 
         unJuego.realizarJugadaEnDireccion(este);
+        unJuego.realizarJugadaEnDireccion(este);
         unJuego.realizarJugadaEnDireccion(norte);
-        assertEquals(vehiculo.getCantidadDeMovimientos(), 1);
+        assertEquals(vehiculo.getCantidadDeMovimientos(), 3);
 
         unJuego.realizarJugadaEnDireccion(este);
-        unJuego.realizarJugadaEnDireccion(este);
         unJuego.realizarJugadaEnDireccion(norte);
-        assertTrue(vehiculo.getPosicion().equals(new Posicion(3, 1)));
-        assertEquals(vehiculo.getCantidadDeMovimientos(), 4);
+        unJuego.realizarJugadaEnDireccion(norte);
+        assertTrue(vehiculo.getPosicion().equals(new Posicion(3, 3)));
+        assertEquals(vehiculo.getCantidadDeMovimientos(), 6);
         unJuego.realizarJugadaEnDireccion(norte);
         unJuego.realizarJugadaEnDireccion(oeste);
         unJuego.realizarJugadaEnDireccion(norte);
@@ -269,6 +270,7 @@ public class JuegoTest {
         Direccion norte = new Direccion(0, 1);
         Direccion sur = new Direccion(0, -1);
         Direccion oeste = new Direccion(-1, 0);
+        Direccion este = new Direccion(1,0);
 
         tablero.getBocacalleEnPosicion(new Posicion(3, 0)).getCalleEnDireccion(norte).setObstaculo(new ObstaculoPiquete());
         tablero.getBocacalleEnPosicion(new Posicion(2, 0)).getCalleEnDireccion(norte).setObstaculo(new ObstaculoPiquete());
@@ -283,17 +285,19 @@ public class JuegoTest {
         assertEquals(unJuego.getPartida().getVehiculo().getCantidadDeMovimientos(), 2);
         assertEquals(unJuego.getPartida().getVehiculo().getPosicion().asString(), "3,1");
 
+        unJuego.realizarJugadaEnDireccion(oeste);
         unJuego.realizarJugadaEnDireccion(sur);
-        assertEquals(unJuego.getPartida().getVehiculo().getCantidadDeMovimientos(), 2);
-        assertEquals(unJuego.getPartida().getVehiculo().getPosicion().asString(), "3,1");
+        unJuego.realizarJugadaEnDireccion(este);
+        assertEquals(unJuego.getPartida().getVehiculo().getCantidadDeMovimientos(), 6);
+        assertEquals(unJuego.getPartida().getVehiculo().getPosicion().asString(), "3,0");
 
         unJuego.realizarJugadaEnDireccion(oeste);
         assertEquals(unJuego.getPartida().getVehiculo().getClass(), (new VehiculoMoto()).getClass());
-        assertTrue(unJuego.getPartida().getVehiculo().getPosicion().equals(new Posicion(2, 1)));
-
-        unJuego.realizarJugadaEnDireccion(sur);
         assertTrue(unJuego.getPartida().getVehiculo().getPosicion().equals(new Posicion(2, 0)));
-        assertEquals(unJuego.getPartida().getVehiculo().getCantidadDeMovimientos(), 6);
+
+        unJuego.realizarJugadaEnDireccion(norte);
+        assertTrue(unJuego.getPartida().getVehiculo().getPosicion().equals(new Posicion(2, 1)));
+        assertEquals(unJuego.getPartida().getVehiculo().getCantidadDeMovimientos(), 10);
 
         unJuego.realizarJugadaEnDireccion(oeste);
         unJuego.realizarJugadaEnDireccion(norte);
@@ -302,7 +306,7 @@ public class JuegoTest {
 
         unJuego.realizarJugadaEnDireccion(sur);
         unJuego.realizarJugadaEnDireccion(oeste);
-        assertEquals(unJuego.getPartida().getVehiculo().getCantidadDeMovimientos(), 10);
+        assertEquals(unJuego.getPartida().getVehiculo().getCantidadDeMovimientos(), 14);
         assertTrue(unJuego.getPartida().getVehiculo().getPosicion().equals(new Posicion(1, 1)));
         /* se comprueba que una vez perdida la partida no se mueva el vehiculo */
     }
