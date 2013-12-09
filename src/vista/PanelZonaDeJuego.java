@@ -255,7 +255,6 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
 
     public JLabel obtenerImagen(int posX, int posY,String figura) {
         // S//ystem.out.println("crearObstaculoPozo");
-
         JLabel obstaculo = new JLabel("");
         ImageIcon icono = new ImageIcon("src/vista/imagenes/" + figura + ".png");
         obstaculo.setIcon(icono);
