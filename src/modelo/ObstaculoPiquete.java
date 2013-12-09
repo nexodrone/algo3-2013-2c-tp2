@@ -13,6 +13,7 @@ public class ObstaculoPiquete extends Obstaculo {
     }
 
     public void interactuarCon(VehiculoAuto auto) {
+        System.out.println("no se puede mover por el piquete");
         throw new CalleBloqueadaPorPiqueteExcepcion();
     }
 
