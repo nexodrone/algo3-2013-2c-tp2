@@ -25,6 +25,7 @@ import modelo.Tablero;
 public class PanelZonaDeJuego extends JPanel implements ActionListener {
 
     private Image star;
+    private Image prueba;
     Timer timer;
     int enX, enY, paso, distancia, cantidad, cantidadDePasos;
 
@@ -35,6 +36,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     private int longitudManzana = 20;
     private int posicionDelTableroX; // = this.centrarEnX();
     private int posicionDelTableroY;// = this.centrarEnY();
+    private int cantidadAAA = 0;
     private Tablero tableroActual;
     private JPanel zonaDeJuego;
     private String vehiculo;
@@ -52,6 +54,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         this.girarHacia("Derecha"); // por defecto el vehiculo siempre empieza mirando hacia
                                     // laderecha
 
+        this.cantidadAAA = 0;
+        this.prueba();
         setDoubleBuffered(true);
         // setFocusable(true);
         posicionDelTableroX = this.centrarEnX();
@@ -102,15 +106,20 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         // this.configurarTableroEnZonaDeJuego();
 
         if (dibujarTablero) {
-            this.dibujarTodosObstaculosYSorpresas();
+
             this.dibujarTablero();
+            this.dibujarTodosObstaculosYSorpresas();
             actionPerformed(null);
             cantidadDePasos = 0;
         }
 
         super.paint(g);
         Graphics2D grafico2D = (Graphics2D) g;
+        if (this.cantidadAAA % 2 == 0) {
+            grafico2D.drawImage(prueba, 200, 200, this);
+        }
         grafico2D.drawImage(star, x, y, this);
+
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
     }
@@ -175,23 +184,23 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
                 Bocacalle bocacalleActual = tableroActual.getBocacalleEnPosicion(posicionActual);
                 if (bocacalleActual.getCalleEnDireccion(sur).getSorpresa() != null) {
                     JLabel sorpresaSur = dibujarSorpresaEnDireccion(posicionActual, "sur");
-                    this.zonaDeJuego.add(sorpresaSur);
+                    this.add(sorpresaSur);
                 }
                 if (bocacalleActual.getCalleEnDireccion(norte).getSorpresa() != null) {
                     JLabel sorpresaNorte = dibujarSorpresaEnDireccion(posicionActual, "norte");
-                    this.zonaDeJuego.add(sorpresaNorte);
+                    this.add(sorpresaNorte);
                 }
                 if (bocacalleActual.getCalleEnDireccion(oeste).getSorpresa() != null) {
                     JLabel sorpresaOeste = dibujarSorpresaEnDireccion(posicionActual, "oeste");
-                    this.zonaDeJuego.add(sorpresaOeste);
+                    this.add(sorpresaOeste);
                 }
                 if (bocacalleActual.getCalleEnDireccion(este).getSorpresa() != null) {
                     JLabel sorpresaEste = dibujarSorpresaEnDireccion(posicionActual, "este");
-                    this.zonaDeJuego.add(sorpresaEste);
+                    this.add(sorpresaEste);
                 }
                 if (bocacalleActual.getCalleEnDireccion(sur).getObstaculo() != null) {
                     JLabel obstaculoSur = dibujarObstaculosEnDireccion(posicionActual, sur, 0, 32);
-                    this.zonaDeJuego.add(obstaculoSur);
+                    this.add(obstaculoSur);
                 }
                 if (bocacalleActual.getCalleEnDireccion(este).getObstaculo() != null) {
                     JLabel obstaculoEste = dibujarObstaculosEnDireccion(posicionActual, este, 30, 0);
@@ -215,13 +224,13 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         Bocacalle bocacalleActual = this.tableroActual.getBocacalleEnPosicion(posicionActual);
         switch (bocacalleActual.getCalleEnDireccion(direccion).getObstaculo().toString()) {
             case "ObstaculoControlPolicial":
-                JLabel obstaculoControlPolicial = obtenerImagen(posicionObstaculoSurX, posicionObstaculoSurY,"obstaculoControlPolicial");
+                JLabel obstaculoControlPolicial = obtenerImagen(posicionObstaculoSurX, posicionObstaculoSurY, "obstaculoControlPolicial");
                 return obstaculoControlPolicial;
             case "ObstaculoPozo":
-                JLabel obstaculoPozo = obtenerImagen(posicionObstaculoSurX, posicionObstaculoSurY,"obstaculoPozo");
+                JLabel obstaculoPozo = obtenerImagen(posicionObstaculoSurX, posicionObstaculoSurY, "obstaculoPozo");
                 return obstaculoPozo;
             default:
-                JLabel obstaculoPiquete = obtenerImagen(posicionObstaculoSurX, posicionObstaculoSurY,"obstaculoPiquete");
+                JLabel obstaculoPiquete = obtenerImagen(posicionObstaculoSurX, posicionObstaculoSurY, "obstaculoPiquete");
                 return obstaculoPiquete;
         }
     }
@@ -231,22 +240,22 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
             case "sur":
                 int posicionSorpresaSurX = longitudManzana + posicionActual.x() * 2 * longitudManzana;
                 int posicionSorpresaSurY = longitudManzana + posicionActual.y() * 2 * longitudManzana + 28;
-                JLabel sorpresaSur = obtenerImagen(posicionSorpresaSurX, posicionSorpresaSurY,"sorpresa");
+                JLabel sorpresaSur = obtenerImagen(posicionSorpresaSurX, posicionSorpresaSurY, "sorpresa");
                 return sorpresaSur;
             case "norte":
                 int posicionSorpresaNorteX = longitudManzana + posicionActual.x() * 2 * longitudManzana;
                 int posicionSorpresaNorteY = longitudManzana + posicionActual.y() * 2 * longitudManzana - 5;
-                JLabel sorpresaNorte = obtenerImagen(posicionSorpresaNorteX, posicionSorpresaNorteY,"sorpresa");
+                JLabel sorpresaNorte = obtenerImagen(posicionSorpresaNorteX, posicionSorpresaNorteY, "sorpresa");
                 return sorpresaNorte;
             case "este":
                 int posicionSorpresaEsteX = longitudManzana + posicionActual.x() * 2 * longitudManzana + 22;
                 int posicionSorpresaEsteY = longitudManzana + posicionActual.y() * 2 * longitudManzana;
-                JLabel sorpresaEste = obtenerImagen(posicionSorpresaEsteX, posicionSorpresaEsteY,"sorpresa");
+                JLabel sorpresaEste = obtenerImagen(posicionSorpresaEsteX, posicionSorpresaEsteY, "sorpresa");
                 return sorpresaEste;
             default:
                 int posicionSorpresaOesteX = longitudManzana + posicionActual.x() * 2 * longitudManzana - 18;
                 int posicionSorpresaOesteY = longitudManzana + posicionActual.y() * 2 * longitudManzana;
-                JLabel sorpresaOeste = obtenerImagen(posicionSorpresaOesteX, posicionSorpresaOesteY,"sorpresa");
+                JLabel sorpresaOeste = obtenerImagen(posicionSorpresaOesteX, posicionSorpresaOesteY, "sorpresa");
                 return sorpresaOeste;
         }
     }
@@ -257,7 +266,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         return manzana;
     }
 
-    public JLabel obtenerImagen(int posX, int posY,String figura) {
+    public JLabel obtenerImagen(int posX, int posY, String figura) {
         // S//ystem.out.println("crearObstaculoPozo");
         JLabel obstaculo = new JLabel("");
         ImageIcon icono = new ImageIcon("src/vista/imagenes/" + figura + ".png");
@@ -276,6 +285,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
             cantidadDePasos = 0;
             timer.start();
         }
+        this.cantidadAAA++;
     }
 
     public void girarHacia(String sentido) {
@@ -286,6 +296,13 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
             star = imagenVehiculo.getImage();
             star = star.getScaledInstance(18, 18, 1);
         }
+    }
+
+    public void prueba() {
+        String direccion = "/vista/imagenes/sorpresa.png";
+        ImageIcon imagenVehiculo = new ImageIcon(this.getClass().getResource(direccion));
+        prueba = imagenVehiculo.getImage().getScaledInstance(10, 10, 1);
+
     }
 
     private boolean seEstaMoviendo() {
