@@ -6,7 +6,14 @@ public class Manzana extends VistaEventoColicion {
 
     public Manzana(int posX, int posY) {
         super(direccion, posX, posY, longitud, longitud);
-
+    }
+    
+    public void setLongitudManzana(int tamanio){
+    	longitud = tamanio;
+    }
+    
+    public int getLongitudManzana(){
+    	return longitud;
     }
 
 }
