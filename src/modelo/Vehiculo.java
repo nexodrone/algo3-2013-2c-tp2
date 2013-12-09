@@ -30,11 +30,12 @@ public abstract class Vehiculo {
     }
 
     public abstract String asString();
-    
+
     public void moverEnDireccion(Direccion unaDireccion, Calle calleAPasar) throws CalleBloqueadaPorPiqueteExcepcion {
         direccion = unaDireccion;
         pasarPorCalle(calleAPasar);
         this.setPosicion(this.calcularSiguientePosicion());
+        System.out.println("la nueva Posicion es:" + this.calcularSiguientePosicion().asString());
     }
 
     public Posicion calcularSiguientePosicion() {
@@ -68,13 +69,18 @@ public abstract class Vehiculo {
     }
 
     public void setPosicion(Posicion unaPosicion) {
+        System.out.println("setPosicion");
         posicion = unaPosicion;
     }
 
     public Posicion calcularSiguientePosicion(Direccion unaDireccion) {
         Posicion nuevaPosicion = this.posicion.copy();
+        System.out.println("calcularSiguientePosicion");
+        System.out.println("Posicion actual" + posicion.asString());
+        System.out.println("Direccion" + unaDireccion.x() + "," + unaDireccion.y());
         nuevaPosicion.incrementarY(unaDireccion.y());
         nuevaPosicion.incrementarX(unaDireccion.x());
+        System.out.println("Nueva posicion" + nuevaPosicion.asString());
         return nuevaPosicion;
     }
 
