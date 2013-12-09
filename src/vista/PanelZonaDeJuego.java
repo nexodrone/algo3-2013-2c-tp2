@@ -134,7 +134,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         int constanteColumna = 1;
         int posicionX = 0;
         int posicionY = 0;
-        System.out.println("Tamanio del tablero:" + tableroActual.getCantidadDeColumnas() + "," + tableroActual.getCantidadDeFilas());
+        // System.out.println("Tamanio del tablero:" + tableroActual.getCantidadDeColumnas() + "," +
+        // tableroActual.getCantidadDeFilas());
 
         for (int i = 0; i < tableroActual.getCantidadDeColumnas() + 1; i++) {
             for (int j = 0; j < tableroActual.getCantidadDeFilas() + 1; j++) {
@@ -241,11 +242,13 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     public JLabel crearUnaManzana(int posX, int posY) {
         // System.out.println("crearUnaManzana");
 
-        JLabel manzana = new JLabel("");
-        ImageIcon icono = new ImageIcon("src/vista/imagenes/manzana.png");
-        manzana.setIcon(icono);
-        manzana.setBounds(posX, posY, longitudManzana, longitudManzana);
+        // JLabel manzana = new JLabel("");
+        // ImageIcon icono = new ImageIcon("src/vista/imagenes/manzana.png");
+        // manzana.setIcon(icono);
+        // manzana.setBounds(posX, posY, longitudManzana, longitudManzana);
+        JLabel manzana = new Manzana(posX, posY);
         return manzana;
+        // return manzana;
     }
 
     public JLabel crearSorpresa(int posX, int posY) {
