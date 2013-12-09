@@ -7,7 +7,6 @@ public class ConstructorDePartida {
 		Random rnd = new Random();
 		int columna = rnd.nextInt(nivel.tablero.getCantidadDeColumnas());		
 		int fila = rnd.nextInt(nivel.tablero.getCantidadDeFilas());
-		
 		return new Posicion(columna,fila);
 	}
 	
