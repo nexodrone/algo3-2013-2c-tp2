@@ -39,12 +39,14 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     private JPanel zonaDeJuego;
     private String vehiculo;
     private Posicion posicionDeVehiculo;
+    private Posicion posicionDeLlegada;
     private Boolean dibujarTablero = true; // PARA QUE EL TABLERO SE DIBUJE SOLO UNA VEZ
 
-    public PanelZonaDeJuego(Tablero tablero, String vehiculoSeleccionado, Posicion posicion) {
+    public PanelZonaDeJuego(Tablero tablero, String vehiculoSeleccionado, Posicion posicionInicialDeVehiculo, Posicion meta) {
         this.tableroActual = tablero;
-        this.posicionDeVehiculo = posicion;
-        System.out.println("Posicion del Vehiculo:" + posicion.asString());
+        this.posicionDeLlegada = meta;
+        this.posicionDeVehiculo = posicionInicialDeVehiculo;
+        System.out.println("Posicion del Vehiculo:" + posicionInicialDeVehiculo.asString());
         vehiculo = vehiculoSeleccionado;
         setBackground(Color.BLACK);
         this.girarHacia("Derecha"); // por defecto el vehiculo siempre empieza mirando hacia
@@ -157,6 +159,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
             posicionY = 0;
             constanteFila = 0;
         }
+      JLabel meta = this.obtenerImagen(this.posicionInicialVehiculoEnX(),this.posicionInicialVehiculoEnY(),"meta");
+      this.zonaDeJuego.add(meta);
     }
 
     public void dibujarTodosObstaculosYSorpresas() {
