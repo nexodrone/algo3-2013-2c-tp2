@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
 import modelo.Direccion;
-import modelo.Juego;
+import modelo.excepciones.CalleBloqueadaPorPiqueteExcepcion;
 import modelo.excepciones.MovimientoInvalidoExcepcion;
 import modelo.excepciones.NoHayUsuariosCreadosException;
 import modelo.excepciones.PartidaGanadaExcepcion;
@@ -38,7 +38,7 @@ public class ControladorPartida extends Controlador {
     }
 
     private void agregarPanelLocal(String nombre, String dificultad, String vehiculo) {
-    	this.panelPartida = new PanelPartida(nombre, vehiculo, dificultad,juego.getPartida().getTablero(),juego.getInstance().getVehiculo().getPosicion());
+        this.panelPartida = new PanelPartida(nombre, vehiculo, dificultad, juego.getPartida().getTablero(), juego.getInstance().getVehiculo().getPosicion());
         this.panelPartida.inicializarZonaDelJuego();
         this.panelPartida.agregarEscuchaGuardar(new EscuchaGuardar());
         this.panelPartida.agregarEscuchaVolver(new EscuchaVolver());
@@ -81,7 +81,7 @@ public class ControladorPartida extends Controlador {
         mapaDeAcciones.put("DownArrow", new EscuchaFlechas("DownArrow"));
     }
 
-    	public class EscuchaFlechas extends AbstractAction {
+    public class EscuchaFlechas extends AbstractAction {
         private String accion;
 
         public EscuchaFlechas(String accion) {
@@ -91,7 +91,7 @@ public class ControladorPartida extends Controlador {
         @Override
         public void actionPerformed(ActionEvent e) {
             PanelZonaDeJuego panel = panelPartida.getPanelZonaDeJuego();
-        	try {
+            try {
                 switch (accion) {
                     case "UpArrow": // System.out.println("The up arrow was pressed!");
                         juego.realizarJugadaEnDireccion(norte);
@@ -116,46 +116,47 @@ public class ControladorPartida extends Controlador {
                 }
             } catch (MovimientoInvalidoExcepcion ex) {
                 panelPartida.mostrarMensajeMovimientoInvalido();
-            }catch (PartidaGanadaExcepcion ex) {
-            	System.out.print("EXCEPCION PARTIDA GANADA ATRAPADA.\n");
-            	panelPartida.mostrarMensajePartidaGanada();
-            	calcularYGuardarPuntaje();
+            } catch (PartidaGanadaExcepcion ex) {
+                System.out.print("EXCEPCION PARTIDA GANADA ATRAPADA.\n");
+                panelPartida.mostrarMensajePartidaGanada();
+                calcularYGuardarPuntaje();
                 ventana.remove(panelPartida);
                 ControladorMenuPrincipal contolador = new ControladorMenuPrincipal();
-            }catch (PartidaPerdidaExcepcion ex){
-            	System.out.print("EXCEPCION PARTIDA PERDIDA ATRAPADA.\n");
-            	panelPartida.mostrarMensajePartidaPerdida();
+            } catch (PartidaPerdidaExcepcion ex) {
+                System.out.print("EXCEPCION PARTIDA PERDIDA ATRAPADA.\n");
+                panelPartida.mostrarMensajePartidaPerdida();
                 ventana.remove(panelPartida);
                 ControladorMenuPrincipal contolador = new ControladorMenuPrincipal();
-            }            
+            } catch (CalleBloqueadaPorPiqueteExcepcion error) {
+                panelPartida.mostrarMensajeNoPodesMoverte();
+            }
         }
     }
-    
+
     private void calcularYGuardarPuntaje() {
-    	String nombre = juego.getJugadorActual().getNickName();
-    	int movRestantes =
-    			juego.getPartida().getCantidadDeMovimientosDisponibles() - juego.getVehiculo().getCantidadDeMovimientos();
-    	Integer puntaje = movRestantes*juego.getPartida().getDificultad();
-		try {
-			juego.guardarPuntaje(nombre, puntaje);
-		} catch (UsuarioInexistenteException | NoHayUsuariosCreadosException e) {
-			System.out.print("Usuario Inexistente");
-			panelPartida.mostrarMensajeUsuarioInexistente();
-		}
+        String nombre = juego.getJugadorActual().getNickName();
+        int movRestantes = juego.getPartida().getCantidadDeMovimientosDisponibles() - juego.getVehiculo().getCantidadDeMovimientos();
+        Integer puntaje = movRestantes * juego.getPartida().getDificultad();
+        try {
+            juego.guardarPuntaje(nombre, puntaje);
+        } catch (UsuarioInexistenteException | NoHayUsuariosCreadosException e) {
+            System.out.print("Usuario Inexistente");
+            panelPartida.mostrarMensajeUsuarioInexistente();
+        }
     }
-    
-//    public void guardarPuntaje(String nombre, Integer puntaje)
-//    		throws UsuarioInexistenteException,
-//    			   NoHayUsuariosCreadosException
-//    {
-//    	Jugadores jugadores = new Jugadores();
-//    	jugadores = Jugadores.recuperar(path_jugadores);
-//
-//    	jugadores.sumarPuntaje(nombre, puntaje);
-//    	try{ 
-//    		jugadores.guardar(path_jugadores);
-//    	}catch(Exception e) {
-//    		System.out.print("Error al guardar los puntajes.\n");
-//    	}
-//    }
+
+    // public void guardarPuntaje(String nombre, Integer puntaje)
+    // throws UsuarioInexistenteException,
+    // NoHayUsuariosCreadosException
+    // {
+    // Jugadores jugadores = new Jugadores();
+    // jugadores = Jugadores.recuperar(path_jugadores);
+    //
+    // jugadores.sumarPuntaje(nombre, puntaje);
+    // try{
+    // jugadores.guardar(path_jugadores);
+    // }catch(Exception e) {
+    // System.out.print("Error al guardar los puntajes.\n");
+    // }
+    // }
 }
