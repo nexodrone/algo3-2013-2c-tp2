@@ -11,11 +11,11 @@ import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
 import modelo.Direccion;
+import modelo.avisos.PartidaGanadaAviso;
+import modelo.avisos.PartidaPerdidaAviso;
 import modelo.excepciones.CalleBloqueadaPorPiqueteExcepcion;
 import modelo.excepciones.MovimientoInvalidoExcepcion;
 import modelo.excepciones.NoHayUsuariosCreadosException;
-import modelo.excepciones.PartidaGanadaExcepcion;
-import modelo.excepciones.PartidaPerdidaExcepcion;
 import modelo.excepciones.UsuarioInexistenteException;
 import vista.PanelPartida;
 import vista.PanelZonaDeJuego;
@@ -116,13 +116,13 @@ public class ControladorPartida extends Controlador {
                 }
             } catch (MovimientoInvalidoExcepcion ex) {
                 panelPartida.mostrarMensajeMovimientoInvalido();
-            } catch (PartidaGanadaExcepcion ex) {
+            } catch (PartidaGanadaAviso ex) {
                 System.out.print("EXCEPCION PARTIDA GANADA ATRAPADA.\n");
                 panelPartida.mostrarMensajePartidaGanada();
                 calcularYGuardarPuntaje();
                 ventana.remove(panelPartida);
                 ControladorMenuPrincipal contolador = new ControladorMenuPrincipal();
-            } catch (PartidaPerdidaExcepcion ex) {
+            } catch (PartidaPerdidaAviso ex) {
                 System.out.print("EXCEPCION PARTIDA PERDIDA ATRAPADA.\n");
                 panelPartida.mostrarMensajePartidaPerdida();
                 ventana.remove(panelPartida);

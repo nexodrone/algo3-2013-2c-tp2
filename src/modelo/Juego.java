@@ -2,11 +2,11 @@ package modelo;
 
 import java.util.ArrayList;
 
+import modelo.avisos.PartidaGanadaAviso;
+import modelo.avisos.PartidaPerdidaAviso;
 import modelo.excepciones.ErrorArchivoJugadoresException;
 import modelo.excepciones.MovimientoInvalidoExcepcion;
 import modelo.excepciones.NoHayUsuariosCreadosException;
-import modelo.excepciones.PartidaGanadaExcepcion;
-import modelo.excepciones.PartidaPerdidaExcepcion;
 import modelo.excepciones.UsuarioExistenteException;
 import modelo.excepciones.UsuarioInexistenteException;
 
@@ -73,25 +73,25 @@ public class Juego {
         return this.partidaActual;
     }
 
-    public void verificarEstadoDelJugador() throws PartidaGanadaExcepcion, PartidaPerdidaExcepcion {
+    public void verificarEstadoDelJugador() throws PartidaGanadaAviso, PartidaPerdidaAviso {
         if (partidaActual.esGanada()) {
             System.out.print("Jugador gano el nivel. \n");
-            throw new PartidaGanadaExcepcion();
+            throw new PartidaGanadaAviso();
         }
         if (partidaActual.esPerdida()) {
             System.out.print("Jugador pi{erde el nivel. \n");
-            throw new PartidaPerdidaExcepcion();
+            throw new PartidaPerdidaAviso();
         }
     }
 
-    public void realizarJugadaEnDireccion(Direccion direccion) throws MovimientoInvalidoExcepcion, PartidaGanadaExcepcion, PartidaPerdidaExcepcion {
+    public void realizarJugadaEnDireccion(Direccion direccion) throws MovimientoInvalidoExcepcion, PartidaGanadaAviso, PartidaPerdidaAviso {
         if (this.partidaActual.esGanada() || this.partidaActual.esPerdida())
             System.out.print("Se termino la partida. \n");
         else
             jugarEnDireccion(direccion);
     }
 
-    private void jugarEnDireccion(Direccion direccion) throws MovimientoInvalidoExcepcion, PartidaGanadaExcepcion, PartidaPerdidaExcepcion {
+    private void jugarEnDireccion(Direccion direccion) throws MovimientoInvalidoExcepcion, PartidaGanadaAviso, PartidaPerdidaAviso {
         Posicion nuevaPosicion = partidaActual.getVehiculo().calcularSiguientePosicion(direccion);
         System.out.println("jugarEnDireccion");
         System.out.println(nuevaPosicion.asString());
