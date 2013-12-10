@@ -25,8 +25,6 @@ public class PanelUsuarioRegistrado extends JPanel {
 		this.setBackground(new Color(255,255,255,200));
 
 		this.seleNom.setAlignmentX(CENTER_ALIGNMENT);
-		this.botonAceptar.setAlignmentX(CENTER_ALIGNMENT);
-		this.botonVolver.setAlignmentX(CENTER_ALIGNMENT);
 
 		this.panelJugadores.setLayout(new BoxLayout(panelJugadores, BoxLayout.PAGE_AXIS));
 		this.panelJugadores.setAlignmentX(CENTER_ALIGNMENT);

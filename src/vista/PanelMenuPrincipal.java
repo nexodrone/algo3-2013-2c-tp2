@@ -24,10 +24,6 @@ public class PanelMenuPrincipal extends JPanel {
 		
 		this.nombreUsuario = new JLabel("Hola "+nombre); 
 		this.nombreUsuario.setAlignmentX(CENTER_ALIGNMENT);
-		this.botonComenzarPartida.setAlignmentX(CENTER_ALIGNMENT);
-		this.botonRetomarPartida.setAlignmentX(CENTER_ALIGNMENT);
-		this.botonVerPuntajes.setAlignmentX(CENTER_ALIGNMENT);
-		this.botonSalir.setAlignmentX(CENTER_ALIGNMENT);
 
 		this.add(Box.createVerticalStrut(15));
 		this.add(nombreUsuario);

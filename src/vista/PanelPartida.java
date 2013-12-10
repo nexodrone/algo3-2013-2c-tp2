@@ -52,9 +52,6 @@ public class PanelPartida extends JPanel {
         this.panelZonaDelJuego = new PanelZonaDeJuego(tablero, vehiculo, posicionVehiculo, posicionLlegada);
         this.panelZonaDelJuego.setPreferredSize(new Dimension(anchoZonaDelJuego,largoZonaDelJuego));
 
-        this.botonGuardar.setAlignmentX(CENTER_ALIGNMENT);
-        this.botonVolver.setAlignmentX(CENTER_ALIGNMENT);
-
         this.panelInfo.add(Box.createVerticalStrut(10));
         this.panelInfo.add(this.nombreUsuario);
         this.panelInfo.add(Box.createVerticalStrut(10));

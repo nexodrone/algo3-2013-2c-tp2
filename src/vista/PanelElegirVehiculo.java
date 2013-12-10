@@ -30,8 +30,6 @@ public class PanelElegirVehiculo extends JPanel {
 		
 		this.etiqueta.setAlignmentX(CENTER_ALIGNMENT);
 		this.panelConImagenesYBotones.setAlignmentX(CENTER_ALIGNMENT);
-		this.botonAceptar.setAlignmentX(CENTER_ALIGNMENT);
-		this.botonVolver.setAlignmentX(CENTER_ALIGNMENT);
 
 		this.add(Box.createVerticalStrut(15));
 		this.add(etiqueta);

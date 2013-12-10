@@ -26,8 +26,6 @@ public class PanelUsuarioNuevo extends JPanel {
 		this.introNom.setAlignmentX(CENTER_ALIGNMENT);
 		this.nombre.setMaximumSize(new Dimension(200,20));
 		this.nombre.setAlignmentX(CENTER_ALIGNMENT);
-		this.botonGuardar.setAlignmentX(CENTER_ALIGNMENT);
-		this.botonVolver.setAlignmentX(CENTER_ALIGNMENT);
 
 		this.add(Box.createVerticalStrut(15));
 		this.add(introNom);
