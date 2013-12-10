@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -26,7 +27,7 @@ import modelo.Tablero;
 public class PanelZonaDeJuego extends JPanel implements ActionListener {
 
     private Image star;
-    private Image prueba;
+    // private Image prueba;
     Timer timer;
     int enX, enY, paso, distancia, cantidad, cantidadDePasos;
 
@@ -44,19 +45,22 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     private Posicion posicionDeVehiculo;
     private Posicion posicionDeLlegada;
     private Boolean dibujarTablero = true; // PARA QUE EL TABLERO SE DIBUJE SOLO UNA VEZ
+    private ArrayList<Image> listaDeImagenes = new ArrayList<Image>();
+    private ArrayList<Image> listaDeObstaculos = new ArrayList<Image>();
 
     public PanelZonaDeJuego(Partida partidaActual) {
         this.tableroActual = partidaActual.getTablero();
         this.posicionDeLlegada = partidaActual.getPosicionGanadora();
         this.posicionDeVehiculo = partidaActual.getVehiculo().getPosicion();
-        //System.out.println("Posicion del Vehiculo:" + posicionDeVehiculo.asString());
+        // System.out.println("Posicion del Vehiculo:" + posicionDeVehiculo.asString());
         vehiculo = partidaActual.getVehiculo().asString();
         setBackground(Color.BLACK);
         this.girarHacia("Derecha"); // por defecto el vehiculo siempre empieza mirando hacia
                                     // laderecha
 
         this.cantidadAAA = 0;
-        this.prueba();
+        Image algo = this.prueba();
+        this.listaDeImagenes.add(algo);
         setDoubleBuffered(true);
         // setFocusable(true);
         posicionDelTableroX = this.centrarEnX();
@@ -114,8 +118,9 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
 
         super.paint(g);
         Graphics2D grafico2D = (Graphics2D) g;
-        if (this.cantidadAAA % 2 == 0) {
-            grafico2D.drawImage(prueba, 200, 200, this);
+        for (int i = 0; i < this.listaDeImagenes.size(); i++) {
+            Image algo = listaDeImagenes.get(i);
+            grafico2D.drawImage(algo, 200, 200, this);
         }
         grafico2D.drawImage(star, x, y, this);
 
@@ -170,6 +175,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
                     System.out.println("Posicion Actual:" + posicionActual.asString());
                     if (this.tableroActual.getBocacalleEnPosicion(posicionActual).getCalleEnDireccion(sur).getObstaculo() != null) {
                         JLabel obstaculoSur = crearObstaculoEnDireccion(posicionActual, sur, 0, 20);
+
                         this.zonaDeJuego.add(obstaculoSur);
                     }
                     if (this.tableroActual.getBocacalleEnPosicion(posicionActual).getCalleEnDireccion(oeste).getObstaculo() != null) {
@@ -275,19 +281,19 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         }
     }
 
-   /*public void verificarSiHuboCambioDeVehiculo(String vehiculoEnPartida,String sentido){
-	   if(vehiculo != vehiculoEnPartida){
-		   String direccion = "/vista/imagenes/" + vehiculoEnPartida+ "/" + vehiculoEnPartida + sentido + ".png";
-           ImageIcon imagenVehiculo = new ImageIcon(this.getClass().getResource(direccion));
-           star = imagenVehiculo.getImage();
-           star = star.getScaledInstance(18, 18, 1);
-	   }
-   }*/
+    /*
+     * public void verificarSiHuboCambioDeVehiculo(String vehiculoEnPartida,String sentido){
+     * if(vehiculo != vehiculoEnPartida){ String direccion = "/vista/imagenes/" + vehiculoEnPartida+
+     * "/" + vehiculoEnPartida + sentido + ".png"; ImageIcon imagenVehiculo = new
+     * ImageIcon(this.getClass().getResource(direccion)); star = imagenVehiculo.getImage(); star =
+     * star.getScaledInstance(18, 18, 1); } }
+     */
 
-    public void prueba() {
+    public Image prueba() {
         String direccion = "/vista/imagenes/sorpresa.png";
         ImageIcon imagenVehiculo = new ImageIcon(this.getClass().getResource(direccion));
-        prueba = imagenVehiculo.getImage().getScaledInstance(10, 10, 1);
+        Image prueba = imagenVehiculo.getImage().getScaledInstance(10, 10, 1);
+        return prueba;
 
     }
 
