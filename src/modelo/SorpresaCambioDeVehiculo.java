@@ -18,7 +18,7 @@ public class SorpresaCambioDeVehiculo extends Sorpresa {
         Vehiculo nuevoVehiculo = VehiculoAuto.nuevoVehiculo(vehiculo);
         this.actualizarMovimiento(nuevoVehiculo, vehiculo);
         observador.cambiarVehiculo(nuevoVehiculo);
-        Logger.instance.log("Cambio de Vehiculo! Ahora estas usando una moto...");
+        Logger.instance.log("Cambio de Vehiculo! Ahora estas usando un auto...");
     }
 
     public void interactuarCon(VehiculoAuto vehiculo) {
@@ -34,7 +34,7 @@ public class SorpresaCambioDeVehiculo extends Sorpresa {
         Vehiculo nuevoVehiculo = VehiculoMoto.nuevoVehiculo(vehiculo);
         this.actualizarMovimiento(nuevoVehiculo, vehiculo);
         observador.cambiarVehiculo(nuevoVehiculo);
-        Logger.instance.log("Cambio de Vehiculo! Ahora estas usando un auto...");
+        Logger.instance.log("Cambio de Vehiculo! Ahora estas usando una moto...");
     }
 
     // Metodos privados

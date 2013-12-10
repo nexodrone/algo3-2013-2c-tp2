@@ -94,7 +94,7 @@ public abstract class Vehiculo {
         };
         Sorpresa sorpresa = calleAPasar.getSorpresa();
         if (sorpresa != null) {
-        	Logger.instance.log("Obstaculo:");
+        	Logger.instance.log("Sorpresa:");
             this.aplicarEvento(sorpresa);
             calleAPasar.setSorpresa(null);
         };

@@ -56,6 +56,7 @@ public class PanelPartida extends JPanel {
         this.dificultad.setAlignmentX(CENTER_ALIGNMENT);
         this.vehiculoActual = new JLabel("Vehiculo:   " + partida.getVehiculo().asString());
         this.vehiculoActual.setAlignmentX(CENTER_ALIGNMENT);
+        this.vehiculoActual.setBackground(Color.WHITE);
         
         this.movimientosRestantes = new JLabel("Movmientos Restantes: " + cantDeMovimientosIniciales);
         
@@ -129,6 +130,11 @@ public class PanelPartida extends JPanel {
     	Integer aRestar = cantDeMovimientosIniciales - cantMovimientosActuales;
     	movimientosRestantes.setText("Movmientos Restantes: " + aRestar);
     }
+    
+	public void actualizarLabelVechiulo(String vehiculoDespuesDeMover) {
+		vehiculoActual.setText("Vehiculo:   " + vehiculoDespuesDeMover);
+		vehiculoActual.validate();
+	}
     
     private String recuperarStringDeDificultad(int dificultad) {
     	switch (dificultad) {
