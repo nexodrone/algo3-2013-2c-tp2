@@ -46,7 +46,7 @@ public class PanelPartida extends JPanel {
         this.setPreferredSize(new Dimension(1180, 680));
         this.setBackground(new Color(255, 255, 255, 200));
         this.nivelSeleccionado = recuperarStringDeDificultad(partida.dificultad);
-        this.cantDeMovimientosIniciales = partida.getCantidadDeMovimientosDisponibles();
+        this.cantDeMovimientosIniciales = partida.getCantidadDeMovimientosDisponibles() - partida.getVehiculo().getCantidadDeMovimientos();
         
         this.panelInfo.setPreferredSize(new Dimension(250,610));
         this.panelInfo.setLayout(new BoxLayout(panelInfo, BoxLayout.PAGE_AXIS));
