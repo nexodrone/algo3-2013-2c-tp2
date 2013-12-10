@@ -24,9 +24,6 @@ public class PanelBienvenido extends JPanel {
 		this.setBackground(new Color(255,255,255,200));
 
 		this.bienvenido.setAlignmentX(CENTER_ALIGNMENT);
-		this.botonNuevoUsuario.setAlignmentX(CENTER_ALIGNMENT);
-		this.botonUsuarioRegistrado.setAlignmentX(CENTER_ALIGNMENT);
-		this.botonSalir.setAlignmentX(CENTER_ALIGNMENT);
 
 		this.add(Box.createVerticalStrut(15));
 		this.add(bienvenido);

@@ -21,6 +21,7 @@ public class Boton extends JButton {
         this.setPressedIcon(iconoPress);
         
         this.setBorderPainted(false);
+        this.setAlignmentX(CENTER_ALIGNMENT);
         
         this.setHorizontalTextPosition(JButton.CENTER);
         this.setVerticalTextPosition(JButton.CENTER);
