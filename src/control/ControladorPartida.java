@@ -152,7 +152,7 @@ public class ControladorPartida extends Controlador {
                 //panelPartida.escribirEnElLog("Cuidado! Calle bloqueada por Castells...");
             }
             if ( restarMovimientosDelPanel )
-            	panelPartida.actualizarMovimientosDelPanel(juego.getVehiculo().getCantidadDeMovimientos());
+            	panelPartida.actualizarMovimientosDelPanel(juego.getPartida().getVehiculo().getCantidadDeMovimientos(), juego.getPartida().dificultad);
            
            String vehiculoDespuesDeMover = juego.getPartida().getVehiculo().asString();
            if ( vehiculoAntesDeMover.compareTo(vehiculoDespuesDeMover) == 0) {
