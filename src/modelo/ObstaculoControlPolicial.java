@@ -38,4 +38,7 @@ public class ObstaculoControlPolicial extends Obstaculo {
 			Logger.instance.log("Te paro la gorra pero te dio negativo, tuviste suerte! No perdiste ningun movimiento!");
 	}
 
+	public String asString(){
+		return "ObstaculoControlPolicial";
+	}
 }
