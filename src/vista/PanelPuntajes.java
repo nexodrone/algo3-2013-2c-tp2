@@ -33,7 +33,7 @@ public class PanelPuntajes extends JPanel {
         this.tabla.getColumnModel().getColumn(1).setCellRenderer(render);
         this.tabla.getColumnModel().getColumn(1).setMaxWidth(50);
         this.tabla.setAlignmentX(CENTER_ALIGNMENT);
-        this.tabla.setOpaque(false);
+        this.tabla.setBackground(Color.white);
         this.tabla.setShowVerticalLines(false);
         this.tabla.setGridColor(Color.CYAN);
 

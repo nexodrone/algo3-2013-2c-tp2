@@ -1,4 +1,4 @@
-<Partida CantidadDeMovimientosDisponibles="25" Dificultad="3">
+<Partida CantidadDeMovimientosDisponibles="100" Dificultad="3">
    <Tablero cantidadDeColumnas="21" cantidadDeFilas="14">
       <Bocacalles>
          <columnaDeBocacalles>
@@ -152,7 +152,9 @@
                <Bocacalle>
                   <calleNorte/>
                   <calleSur/>
-                  <calleEste/>
+                  <calleEste>
+                     <Sopresa class="modelo.SorpresaFavorable"/>
+                  </calleEste>
                   <calleOeste/>
                </Bocacalle>
                <Bocacalle>
@@ -259,7 +261,9 @@
                   <calleNorte/>
                   <calleSur/>
                   <calleEste/>
-                  <calleOeste/>
+                  <calleOeste>
+                     <Sopresa class="modelo.SorpresaFavorable"/>
+                  </calleOeste>
                </Bocacalle>
                <Bocacalle>
                   <calleNorte/>
@@ -570,9 +574,7 @@
                <Bocacalle>
                   <calleNorte/>
                   <calleSur/>
-                  <calleEste>
-                     <Sopresa class="modelo.SorpresaCambioDeVehiculo"/>
-                  </calleEste>
+                  <calleEste/>
                   <calleOeste/>
                </Bocacalle>
                <Bocacalle>
@@ -675,9 +677,7 @@
                   <calleNorte/>
                   <calleSur/>
                   <calleEste/>
-                  <calleOeste>
-                     <Sopresa class="modelo.SorpresaCambioDeVehiculo"/>
-                  </calleOeste>
+                  <calleOeste/>
                </Bocacalle>
                <Bocacalle>
                   <calleNorte/>
@@ -718,18 +718,14 @@
                   <calleOeste/>
                </Bocacalle>
                <Bocacalle>
-                  <calleNorte>
-                     <Sopresa class="modelo.SorpresaDesfavorable"/>
-                  </calleNorte>
+                  <calleNorte/>
                   <calleSur/>
                   <calleEste/>
                   <calleOeste/>
                </Bocacalle>
                <Bocacalle>
                   <calleNorte/>
-                  <calleSur>
-                     <Sopresa class="modelo.SorpresaDesfavorable"/>
-                  </calleSur>
+                  <calleSur/>
                   <calleEste/>
                   <calleOeste/>
                </Bocacalle>
@@ -793,9 +789,7 @@
                   <calleNorte/>
                   <calleSur/>
                   <calleEste/>
-                  <calleOeste>
-                     <Sopresa class="modelo.SorpresaFavorable"/>
-                  </calleOeste>
+                  <calleOeste/>
                </Bocacalle>
                <Bocacalle>
                   <calleNorte/>
@@ -908,9 +902,7 @@
                   <calleOeste/>
                </Bocacalle>
                <Bocacalle>
-                  <calleNorte>
-                     <Sopresa class="modelo.SorpresaCambioDeVehiculo"/>
-                  </calleNorte>
+                  <calleNorte/>
                   <calleSur/>
                   <calleEste>
                      <Obstaculo class="modelo.ObstaculoControlPolicial"/>
@@ -919,9 +911,7 @@
                </Bocacalle>
                <Bocacalle>
                   <calleNorte/>
-                  <calleSur>
-                     <Sopresa class="modelo.SorpresaCambioDeVehiculo"/>
-                  </calleSur>
+                  <calleSur/>
                   <calleEste/>
                   <calleOeste/>
                </Bocacalle>
@@ -1524,7 +1514,9 @@
                <Bocacalle>
                   <calleNorte/>
                   <calleSur/>
-                  <calleEste/>
+                  <calleEste>
+                     <Sopresa class="modelo.SorpresaFavorable"/>
+                  </calleEste>
                   <calleOeste/>
                </Bocacalle>
                <Bocacalle>
@@ -2191,12 +2183,12 @@
          </columnaDeBocacalles>
       </Bocacalles>
    </Tablero>
-   <Vehiculo class="modelo.Vehiculo4x4" cantidadDeMovimientos="24">
+   <Vehiculo class="modelo.VehiculoAuto" cantidadDeMovimientos="16">
       <posicionActual>
-         <coordenadas X="20" Y="13"/>
+         <coordenadas X="7" Y="13"/>
       </posicionActual>
    </Vehiculo>
    <PosicionGanadora>
-      <coordenadas X="8" Y="2"/>
+      <coordenadas X="0" Y="2"/>
    </PosicionGanadora>
 </Partida>
