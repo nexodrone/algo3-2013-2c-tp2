@@ -2,6 +2,8 @@ package modelo;
 
 import org.simpleframework.xml.Root;
 
+import control.Logger;
+
 @Root(name = "SopresaCambioDeVehiculo")
 public class SorpresaCambioDeVehiculo extends Sorpresa {
     Observador observador;
@@ -16,6 +18,7 @@ public class SorpresaCambioDeVehiculo extends Sorpresa {
         Vehiculo nuevoVehiculo = VehiculoAuto.nuevoVehiculo(vehiculo);
         this.actualizarMovimiento(nuevoVehiculo, vehiculo);
         observador.cambiarVehiculo(nuevoVehiculo);
+        Logger.instance.log("Cambio de Vehiculo! Ahora estas usando una moto...");
     }
 
     public void interactuarCon(VehiculoAuto vehiculo) {
@@ -23,6 +26,7 @@ public class SorpresaCambioDeVehiculo extends Sorpresa {
         Vehiculo nuevoVehiculo = Vehiculo4x4.nuevoVehiculo(vehiculo);
         this.actualizarMovimiento(nuevoVehiculo, vehiculo);
         observador.cambiarVehiculo(nuevoVehiculo);
+        Logger.instance.log("Cambio de Vehiculo! Ahora estas usando una 4x4...");
     }
 
     public void interactuarCon(Vehiculo4x4 vehiculo) {
@@ -30,6 +34,7 @@ public class SorpresaCambioDeVehiculo extends Sorpresa {
         Vehiculo nuevoVehiculo = VehiculoMoto.nuevoVehiculo(vehiculo);
         this.actualizarMovimiento(nuevoVehiculo, vehiculo);
         observador.cambiarVehiculo(nuevoVehiculo);
+        Logger.instance.log("Cambio de Vehiculo! Ahora estas usando un auto...");
     }
 
     // Metodos privados
