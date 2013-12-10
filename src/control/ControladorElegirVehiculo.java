@@ -50,7 +50,7 @@ public class ControladorElegirVehiculo extends Controlador{
 				Partida partida = construirPartidaSeleccionada(vehiculoSeleccionado, nivel);
 				juego.setPartida(partida);
 				ventana.remove(panelElegirVehiculo);
-				ControladorPartida controlador = new ControladorPartida(ventana, nivelSeleccionado, vehiculoSeleccionado);
+				ControladorPartida controlador = new ControladorPartida();
 			}
 		}
 	}

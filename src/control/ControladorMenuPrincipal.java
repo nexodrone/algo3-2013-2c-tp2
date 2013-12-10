@@ -42,24 +42,13 @@ public class ControladorMenuPrincipal extends Controlador {
 	            juego.setJugadorActual(new Jugador(juego.getJugadorActual().getNickName()));
 	            juego.setPartida(partida);
 	            ventana.remove(panelMenuPrincipal);
-	            String vehiculoSeleccionado = partida.getVehiculo().asString();
-	            String nivelSeleccionado = recuperarStringDeDificultad(partida.dificultad);
-	            ControladorPartida controlador = new ControladorPartida(ventana, nivelSeleccionado, vehiculoSeleccionado);
+	            ControladorPartida controlador = new ControladorPartida();
 			} catch (PartidaInexistente e1) {	
 				panelMenuPrincipal.mostrarMensajeNoHayPartida();	
 			}
 		}
     	
     }
-    
-    private String recuperarStringDeDificultad(int dificultad) {
-    	switch (dificultad) {
-    	case 1:	return "Facil";
-    	case 2: return "Intermedio";
-    	default: return "Dificil";
-    	}
-    }
-    
     
     public class EscuchaSalir implements ActionListener {
         @Override

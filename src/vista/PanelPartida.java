@@ -14,7 +14,6 @@ import javax.swing.InputMap;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.KeyStroke;
@@ -22,8 +21,7 @@ import javax.swing.KeyStroke;
 import control.Listener;
 import control.Logger;
 import modelo.Juego;
-import modelo.Posicion;
-import modelo.Tablero;
+import modelo.Partida;
 
 public class PanelPartida extends JPanel {
 
@@ -42,28 +40,27 @@ public class PanelPartida extends JPanel {
     String nivelSeleccionado;
     Integer cantDeMovimientosIniciales;
 
-    public PanelPartida(String nombre, String dificultad, String vehiculo,
-    					Tablero tablero, Posicion posicionVehiculo, Posicion posicionLlegada,
-    					int cantDeMovimientosIniciales) {
+    public PanelPartida(String nombre, Partida partida) {
         this.setLayout(new FlowLayout());
         this.setPreferredSize(new Dimension(1180, 680));
         this.setBackground(new Color(255, 255, 255, 200));
-        this.nivelSeleccionado = dificultad;
-        this.cantDeMovimientosIniciales = cantDeMovimientosIniciales;
+        this.nivelSeleccionado = recuperarStringDeDificultad(partida.dificultad);
+        this.cantDeMovimientosIniciales = partida.getCantidadDeMovimientosDisponibles();
         
         this.panelInfo.setPreferredSize(new Dimension(250,610));
         this.panelInfo.setLayout(new BoxLayout(panelInfo, BoxLayout.PAGE_AXIS));
         this.panelInfo.setBackground(new Color(0,0,0,0));
         this.nombreUsuario = new JLabel("Jugador:   " + nombre);
         this.nombreUsuario.setAlignmentX(CENTER_ALIGNMENT);
-        this.dificultad = new JLabel("Dificultad:   " + dificultad);
+        this.dificultad = new JLabel("Dificultad:   " + recuperarStringDeDificultad(partida.dificultad));
         this.dificultad.setAlignmentX(CENTER_ALIGNMENT);
-        this.vehiculoActual = new JLabel("Vehiculo:   " + vehiculo);
+        this.vehiculoActual = new JLabel("Vehiculo:   " + partida.getVehiculo().asString());
         this.vehiculoActual.setAlignmentX(CENTER_ALIGNMENT);
         
         this.movimientosRestantes = new JLabel("Movmientos Restantes: " + cantDeMovimientosIniciales);
         
-        this.panelZonaDelJuego = new PanelZonaDeJuego(tablero, vehiculo, posicionVehiculo, posicionLlegada);
+		this.panelZonaDelJuego = new PanelZonaDeJuego(partida.getTablero(), partida.getVehiculo().asString(),
+														partida.getVehiculo().getPosicion(), partida.getPosicionGanadora());
         this.panelZonaDelJuego.setPreferredSize(new Dimension(anchoZonaDelJuego,largoZonaDelJuego));
 
         this.botonGuardar.setAlignmentX(CENTER_ALIGNMENT);
@@ -137,6 +134,14 @@ public class PanelPartida extends JPanel {
     	this.logPartida.setBackground(new Color(255, 255, 100, 255));
     }
     
+    private String recuperarStringDeDificultad(int dificultad) {
+    	switch (dificultad) {
+    	case 1:	return "Facil";
+    	case 2: return "Intermedio";
+    	default: return "Dificil";
+    	}
+    }
+    
     public void mostrarMensajePartidaGuardada() {
         JOptionPane.showMessageDialog(this, "Su partida es guardada exitosamente.", "Partida guardada", JOptionPane.INFORMATION_MESSAGE);
     }
@@ -174,8 +179,6 @@ public class PanelPartida extends JPanel {
     	public void log(String mensaje) {
     		this.append(mensaje + "\n");
     	}
-}
-    
-    
+    }
 
 }
