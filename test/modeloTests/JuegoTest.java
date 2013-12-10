@@ -381,43 +381,6 @@ public class JuegoTest {
     }
 
     @Test
-    public void testGuardarYCargarCorrectamenteUnaPartida() throws Exception {
-        Tablero tablero = new Tablero(4, 6);
-        Vehiculo vehiculo = new VehiculoAuto(new Posicion(0, 0));
-        vehiculo.setCantidadDeMovimientos(0);
-        Posicion posicionGanadora = new Posicion(3, 4);
-        int movimientosDisponibles = 100;
-
-        Partida unaPartida = new Partida(tablero, vehiculo, posicionGanadora, movimientosDisponibles);
-        Jugador unJugador = new Jugador("Rober");
-
-        Juego unJuego = Juego.getInstance();
-        unJuego.setPartida(unaPartida);
-        unJuego.setJugadorActual(unJugador);
-        // vehiculo.setJuegoActual(unJuego);
-
-        Direccion norte = new Direccion(0, 1);
-        Direccion sur = new Direccion(0, -1);
-        Direccion este = new Direccion(1, 0);
-        Direccion oeste = new Direccion(-1, 0);
-
-        tablero.getBocacalleEnPosicion(new Posicion(1, 0)).getCalleEnDireccion(norte).setObstaculo(new ObstaculoPiquete());
-        tablero.getBocacalleEnPosicion(new Posicion(2, 3)).getCalleEnDireccion(sur).setObstaculo(new ObstaculoPozo());
-        tablero.getBocacalleEnPosicion(new Posicion(1, 4)).getCalleEnDireccion(este).setSorpresa(new SorpresaDesfavorable());
-        tablero.getBocacalleEnPosicion(new Posicion(3, 4)).getCalleEnDireccion(oeste).setSorpresa(new SorpresaFavorable());
-
-        unJuego.guardarPartida();
-
-        Juego otroJuego = Juego.getInstance();
-        otroJuego.setJugadorActual(unJugador);
-
-        otroJuego.cargarPartida();
-
-        assertEquals(otroJuego.getPartida().getVehiculo().getCantidadDeMovimientos(), vehiculo.getCantidadDeMovimientos());
-        assertEquals(otroJuego.getPartida().getPosicionGanadora().asString(), posicionGanadora.asString());
-    }
-
-    @Test
     public void testCrearUsuariosCorrectamente()
     		throws Exception, NoHayUsuariosCreadosException
     {
