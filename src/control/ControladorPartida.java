@@ -3,6 +3,7 @@ package control;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.EventListener;
 
 import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
@@ -38,7 +39,12 @@ public class ControladorPartida extends Controlador {
     }
 
     private void agregarPanelLocal(String nombre, String dificultad, String vehiculo) {
-        this.panelPartida = new PanelPartida(nombre, vehiculo, dificultad, juego.getPartida().getTablero(), juego.getInstance().getVehiculo().getPosicion(),juego.getInstance().getPartida().getPosicionGanadora());
+        this.panelPartida =
+        		new PanelPartida(nombre, vehiculo, dificultad,
+        						 juego.getPartida().getTablero(),
+        						 juego.getInstance().getVehiculo().getPosicion(),
+        						 juego.getInstance().getPartida().getPosicionGanadora(),
+        						 juego.getInstance().getPartida().getCantidadDeMovimientosDisponibles());
         this.panelPartida.inicializarZonaDelJuego();
         this.panelPartida.agregarEscuchaGuardar(new EscuchaGuardar());
         this.panelPartida.agregarEscuchaVolver(new EscuchaVolver());
@@ -65,7 +71,7 @@ public class ControladorPartida extends Controlador {
             ControladorMenuPrincipal contolador = new ControladorMenuPrincipal();
         }
     }
-
+    
     private void agregarEscuchaFlechas() {
         InputMap mapaDeEntrada = this.panelPartida.getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW);
         ActionMap mapaDeAcciones = this.panelPartida.getActionMap();
@@ -91,6 +97,7 @@ public class ControladorPartida extends Controlador {
         @Override
         public void actionPerformed(ActionEvent e) {
             PanelZonaDeJuego panel = panelPartida.getPanelZonaDeJuego();
+            boolean restarMovimientosDelPanel = true;
             try {
                 switch (accion) {
                     case "UpArrow": // System.out.println("The up arrow was pressed!");
@@ -115,6 +122,7 @@ public class ControladorPartida extends Controlador {
                         break;
                 }
             } catch (MovimientoInvalidoExcepcion ex) {
+            	restarMovimientosDelPanel = false;
                 panelPartida.mostrarMensajeMovimientoInvalido();
             } catch (PartidaGanadaAviso ex) {
                 System.out.print("EXCEPCION PARTIDA GANADA ATRAPADA.\n");
@@ -128,8 +136,12 @@ public class ControladorPartida extends Controlador {
                 ventana.remove(panelPartida);
                 ControladorMenuPrincipal contolador = new ControladorMenuPrincipal();
             } catch (CalleBloqueadaPorPiqueteExcepcion error) {
+            	restarMovimientosDelPanel = false;
                 panelPartida.mostrarMensajeNoPodesMoverte();
+                //panelPartida.escribirEnElLog("Cuidado! Calle bloqueada por Castells...");
             }
+            if ( restarMovimientosDelPanel )
+            	panelPartida.restarMovimientosDelPanel(juego.getInstance().getVehiculo().getCantidadDeMovimientos());
         }
     }
 
