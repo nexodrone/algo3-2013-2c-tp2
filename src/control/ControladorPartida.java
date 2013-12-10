@@ -95,24 +95,28 @@ public class ControladorPartida extends Controlador {
             boolean restarMovimientosDelPanel = true;
             try {
                 switch (accion) {
-                    case "UpArrow": // System.out.println("The up arrow was pressed!");
+                    case "UpArrow": 
                         juego.realizarJugadaEnDireccion(norte);
                         panel.girarHacia("Arriba");
+                        //panel.verificarSiHuboCambioDeVehiculo(juego.getInstance().getPartida().getVehiculo().asString(), "Arriba");
                         panel.nuevaPosicion(0, -1);
                         break;
-                    case "DownArrow": // System.out.println("The down arrow was pressed!");
+                    case "DownArrow": 
                         juego.realizarJugadaEnDireccion(sur);
                         panel.girarHacia("Abajo");
+                        //panel.verificarSiHuboCambioDeVehiculo(juego.getInstance().getPartida().getVehiculo().asString(), "Abajo");
                         panel.nuevaPosicion(0, 1);
                         break;
-                    case "LeftArrow": // System.out.println("The left arrow was pressed!");
+                    case "LeftArrow": 
                         juego.realizarJugadaEnDireccion(oeste);
                         panel.girarHacia("Izquierda");
+                        //panel.verificarSiHuboCambioDeVehiculo(juego.getInstance().getPartida().getVehiculo().asString(), "Izquirda");
                         panel.nuevaPosicion(-1, 0);
                         break;
-                    case "RightArrow": // System.out.println("The right arrow was pressed!");
+                    case "RightArrow": 
                         juego.realizarJugadaEnDireccion(este);
                         panel.girarHacia("Derecha");
+                        //panel.verificarSiHuboCambioDeVehiculo(juego.getInstance().getPartida().getVehiculo().asString(), "Derecha");
                         panel.nuevaPosicion(1, 0);
                         break;
                 }
@@ -121,13 +125,13 @@ public class ControladorPartida extends Controlador {
             	Logger.instance.log("A donde queres ir " + juego.getJugadorActual().getNickName() +" ?");
                 panelPartida.mostrarMensajeMovimientoInvalido();
             } catch (PartidaGanadaAviso ex) {
-                System.out.print("EXCEPCION PARTIDA GANADA ATRAPADA.\n");
+                //System.out.print("EXCEPCION PARTIDA GANADA ATRAPADA.\n");
                 panelPartida.mostrarMensajePartidaGanada();
                 calcularYGuardarPuntaje();
                 ventana.remove(panelPartida);
                 ControladorMenuPrincipal contolador = new ControladorMenuPrincipal();
             } catch (PartidaPerdidaAviso ex) {
-                System.out.print("EXCEPCION PARTIDA PERDIDA ATRAPADA.\n");
+                //System.out.print("EXCEPCION PARTIDA PERDIDA ATRAPADA.\n");
                 panelPartida.mostrarMensajePartidaPerdida();
                 ventana.remove(panelPartida);
                 ControladorMenuPrincipal contolador = new ControladorMenuPrincipal();

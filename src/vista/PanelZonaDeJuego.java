@@ -275,6 +275,15 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         }
     }
 
+   /*public void verificarSiHuboCambioDeVehiculo(String vehiculoEnPartida,String sentido){
+	   if(vehiculo != vehiculoEnPartida){
+		   String direccion = "/vista/imagenes/" + vehiculoEnPartida+ "/" + vehiculoEnPartida + sentido + ".png";
+           ImageIcon imagenVehiculo = new ImageIcon(this.getClass().getResource(direccion));
+           star = imagenVehiculo.getImage();
+           star = star.getScaledInstance(18, 18, 1);
+	   }
+   }*/
+
     public void prueba() {
         String direccion = "/vista/imagenes/sorpresa.png";
         ImageIcon imagenVehiculo = new ImageIcon(this.getClass().getResource(direccion));
