@@ -14,6 +14,7 @@ import javax.swing.InputMap;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.KeyStroke;
 
 import modelo.Juego;
@@ -27,17 +28,24 @@ public class PanelPartida extends JPanel {
     private JLabel nombreUsuario;
     private JLabel dificultad;
     private JLabel vehiculoActual;
+    private JLabel movimientosRestantes;
     private PanelZonaDeJuego panelZonaDelJuego;
     private JPanel panelInfo = new JPanel();
+    //private PanelLogPartida panelLog = new PanelLogPartida();
+    private JTextArea logPartida = new JTextArea();
     private int anchoZonaDelJuego = 870; //ideal = 860
     private int largoZonaDelJuego = 610; //ideal = 580
     String nivelSeleccionado;
+    Integer cantDeMovimientosIniciales;
 
-    public PanelPartida(String nombre, String dificultad, String vehiculo, Tablero tablero, Posicion posicionVehiculo, Posicion posicionLlegada) {
+    public PanelPartida(String nombre, String dificultad, String vehiculo,
+    					Tablero tablero, Posicion posicionVehiculo, Posicion posicionLlegada,
+    					int cantDeMovimientosIniciales) {
         this.setLayout(new FlowLayout());
         this.setPreferredSize(new Dimension(1180, 680));
         this.setBackground(new Color(255, 255, 255, 200));
         this.nivelSeleccionado = dificultad;
+        this.cantDeMovimientosIniciales = cantDeMovimientosIniciales;
         
         this.panelInfo.setPreferredSize(new Dimension(250,610));
         this.panelInfo.setLayout(new BoxLayout(panelInfo, BoxLayout.PAGE_AXIS));
@@ -49,21 +57,36 @@ public class PanelPartida extends JPanel {
         this.vehiculoActual = new JLabel("Vehiculo:   " + vehiculo);
         this.vehiculoActual.setAlignmentX(CENTER_ALIGNMENT);
         
+        this.movimientosRestantes = new JLabel("Movmientos Restantes: " + cantDeMovimientosIniciales);
+        
         this.panelZonaDelJuego = new PanelZonaDeJuego(tablero, vehiculo, posicionVehiculo, posicionLlegada);
         this.panelZonaDelJuego.setPreferredSize(new Dimension(anchoZonaDelJuego,largoZonaDelJuego));
 
+        this.botonGuardar.setAlignmentX(CENTER_ALIGNMENT);
+        this.botonVolver.setAlignmentX(CENTER_ALIGNMENT);
+        this.movimientosRestantes.setAlignmentX(CENTER_ALIGNMENT);
+        
+        this.logPartida.setAlignmentX(CENTER_ALIGNMENT);
+        this.logPartida.setBackground(new Color(255, 255, 100, 255));
+        this.logPartida.setFocusable(false);
+        this.logPartida.setEditable(false);
+        
         this.panelInfo.add(Box.createVerticalStrut(10));
         this.panelInfo.add(this.nombreUsuario);
         this.panelInfo.add(Box.createVerticalStrut(10));
         this.panelInfo.add(this.dificultad);
         this.panelInfo.add(Box.createVerticalStrut(10));
         this.panelInfo.add(this.vehiculoActual);
-        this.panelInfo.add(Box.createVerticalStrut(50));
+        this.panelInfo.add(Box.createVerticalStrut(10));       
+        this.panelInfo.add(this.movimientosRestantes);
+        
+        this.panelInfo.add(Box.createVerticalStrut(20));
+        this.panelInfo.add(logPartida);
+        this.panelInfo.add(Box.createVerticalStrut(20));
         this.panelInfo.add(botonGuardar);
         this.panelInfo.add(Box.createVerticalStrut(20));
         this.panelInfo.add(botonVolver);
 
-        
         this.add(panelInfo);
         this.add(Box.createHorizontalStrut(20));
         this.add(panelZonaDelJuego);
@@ -86,6 +109,10 @@ public class PanelPartida extends JPanel {
     public PanelZonaDeJuego getPanelZonaDeJuego() {
         return this.panelZonaDelJuego;
     }
+    
+//    public void agregarEscuchaInteraccionSopresaYObstaculos(EventListener escuchaInteraccion) {
+//    	this.panelLog.add;
+//    }
 
     public void agregarEscuchaFlechas(KeyListener escuchaFlechas) {
         InputMap mapaDeEntrada = this.getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW);
@@ -98,7 +125,13 @@ public class PanelPartida extends JPanel {
 
         this.addKeyListener(escuchaFlechas);
     }
-
+    
+    public void restarMovimientosDelPanel(int cantMovimientosActuales) {
+    	Integer aRestar = cantDeMovimientosIniciales - cantMovimientosActuales;
+    	movimientosRestantes.setText("Movmientos Restantes: " + aRestar);
+    	this.logPartida.setBackground(new Color(255, 255, 100, 255));
+    }
+    
     public void mostrarMensajePartidaGuardada() {
         JOptionPane.showMessageDialog(this, "Su partida es guardada exitosamente.", "Partida guardada", JOptionPane.INFORMATION_MESSAGE);
     }
@@ -130,5 +163,7 @@ public class PanelPartida extends JPanel {
         JOptionPane.showMessageDialog(this, "Hay piquete", "Aaaaa", JOptionPane.ERROR_MESSAGE);
 
     }
+    
+    
 
 }

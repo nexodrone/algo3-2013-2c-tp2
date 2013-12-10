@@ -32,6 +32,9 @@ public class PanelPuntajes extends JPanel {
         this.tabla.getColumnModel().getColumn(1).setCellRenderer(render);
         this.tabla.getColumnModel().getColumn(1).setMaxWidth(50);
         this.tabla.setAlignmentX(CENTER_ALIGNMENT);
+        this.tabla.setOpaque(false);
+        this.tabla.setShowVerticalLines(false);
+        this.tabla.setGridColor(Color.CYAN);
 
 		this.add(Box.createVerticalStrut(15));
 		this.add(etiqueta);
@@ -54,8 +57,7 @@ public class PanelPuntajes extends JPanel {
             JLabel lbl = new JLabel(value == null? "": value.toString());
             lbl.setHorizontalAlignment(SwingConstants.CENTER); //alina a laizquierda
             lbl.setForeground(Color.BLACK);  //fuente azul
-            lbl.setOpaque(true);
-            lbl.setBackground(Color.WHITE);
+            lbl.setOpaque(false);
             return lbl;
         }
     };
