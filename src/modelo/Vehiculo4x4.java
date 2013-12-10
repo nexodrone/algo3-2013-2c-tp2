@@ -1,5 +1,6 @@
 package modelo;
 
+import control.Logger;
 import org.simpleframework.xml.Root;
 
 @Root(name = "4x4")
