@@ -146,16 +146,6 @@ public class Juego {
         return jugadores.getPuntajesOrdenados();
     }
 
-    public void guardarPartida() throws Exception {
-        String path = "src/jugadores/partida" + jugadorActual.getNickName() + ".xml";
-        partidaActual.guardarPartida(path);
-    }
-
-    public void cargarPartida() throws Exception {
-        String path = "src/jugadores/partida" + jugadorActual.getNickName() + ".xml";
-        this.partidaActual = Partida.cargarPartida(path);
-    }
-
     public void setVehiculo(Vehiculo vehiculo) {
         partidaActual.setVehiculo(vehiculo);
 
