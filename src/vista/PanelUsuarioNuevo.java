@@ -62,7 +62,7 @@ public class PanelUsuarioNuevo extends JPanel {
 	}
 
 	public void mostrarMensajeNoExisteArchivoDePuntajes() {
-		JOptionPane.showMessageDialog(this, "No se encontro la lista de jugadores. Se creara una lista nueva.", "Archivo de jugadores inexistente", JOptionPane.WARNING_MESSAGE);
+		JOptionPane.showMessageDialog(this, "No se encontro la lista de jugadores. Se creara una lista nueva.", "Archivo de jugadores inexistente", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 }
