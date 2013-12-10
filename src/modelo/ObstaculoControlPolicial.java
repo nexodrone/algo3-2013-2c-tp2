@@ -16,8 +16,8 @@ public class ObstaculoControlPolicial extends Obstaculo {
 		if (probabilidad<=0.5) { 
 			auto.sumarMovimientos(penalizacion);
 			Logger.instance.log("Te paro la gorra y te salto el alcoholemia, perdiste 3 movimientos...");
-		};
-		Logger.instance.log("Te paro la gorra pero te dio negativo, tuviste suerte! No perdiste ningun movimiento!");
+		}else
+			Logger.instance.log("Te paro la gorra pero te dio negativo, tuviste suerte! No perdiste ningun movimiento!");
 	}
 
 	public void interactuarCon(Vehiculo4x4 todoterreno) {
@@ -25,8 +25,8 @@ public class ObstaculoControlPolicial extends Obstaculo {
 		if (probabilidad<=0.3) { 
 			todoterreno.sumarMovimientos(penalizacion);
 			Logger.instance.log("Te paro la gorra y te salto el alcoholemia, perdiste 3 movimientos...");			
-		};
-		Logger.instance.log("Te paro la gorra pero te dio negativo, tuviste suerte! No perdiste ningun movimiento!");
+		}else
+			Logger.instance.log("Te paro la gorra pero te dio negativo, tuviste suerte! No perdiste ningun movimiento!");
 	}
 
 	public void interactuarCon(VehiculoMoto moto) {
@@ -34,8 +34,8 @@ public class ObstaculoControlPolicial extends Obstaculo {
 		if (probabilidad<=0.8) { 
 			moto.sumarMovimientos(penalizacion);
 			Logger.instance.log("Te paro la gorra y te salto el alcoholemia, perdiste 3 movimientos...");
-		};
-		Logger.instance.log("Te paro la gorra pero te dio negativo, tuviste suerte! No perdiste ningun movimiento!");
+		}else
+			Logger.instance.log("Te paro la gorra pero te dio negativo, tuviste suerte! No perdiste ningun movimiento!");
 	}
 
 }

@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
 import modelo.Direccion;
+import modelo.Juego;
 import modelo.avisos.PartidaGanadaAviso;
 import modelo.avisos.PartidaPerdidaAviso;
 import modelo.excepciones.CalleBloqueadaPorPiqueteExcepcion;
@@ -92,6 +93,7 @@ public class ControladorPartida extends Controlador {
         @Override
         public void actionPerformed(ActionEvent e) {
             PanelZonaDeJuego panel = panelPartida.getPanelZonaDeJuego();
+            String vehiculoAntesDeMover = Juego.getInstance().getPartida().getVehiculo().asString();
             boolean restarMovimientosDelPanel = true;
             try {
                 switch (accion) {
@@ -151,6 +153,11 @@ public class ControladorPartida extends Controlador {
             }
             if ( restarMovimientosDelPanel )
             	panelPartida.restarMovimientosDelPanel(juego.getVehiculo().getCantidadDeMovimientos());
+           
+           String vehiculoDespuesDeMover = juego.getPartida().getVehiculo().asString();
+           if ( vehiculoAntesDeMover.compareTo(vehiculoDespuesDeMover) == 0) {
+        	   panelPartida.actualizarLabelVechiulo(vehiculoDespuesDeMover);
+           }
         }
     }
 
@@ -165,19 +172,4 @@ public class ControladorPartida extends Controlador {
             panelPartida.mostrarMensajeUsuarioInexistente();
         }
     }
-
-    // public void guardarPuntaje(String nombre, Integer puntaje)
-    // throws UsuarioInexistenteException,
-    // NoHayUsuariosCreadosException
-    // {
-    // Jugadores jugadores = new Jugadores();
-    // jugadores = Jugadores.recuperar(path_jugadores);
-    //
-    // jugadores.sumarPuntaje(nombre, puntaje);
-    // try{
-    // jugadores.guardar(path_jugadores);
-    // }catch(Exception e) {
-    // System.out.print("Error al guardar los puntajes.\n");
-    // }
-    // }
 }
