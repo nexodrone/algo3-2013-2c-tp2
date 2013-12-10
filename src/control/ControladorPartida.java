@@ -31,20 +31,15 @@ public class ControladorPartida extends Controlador {
     private static Direccion oeste = new Direccion(-1, 0);
     private String path_jugadores;
 
-    public ControladorPartida(Ventana ventana, String dificultad, String vehiculo) {
-        this.agregarPanelLocal(juego.getJugadorActual().getNickName(), vehiculo, dificultad);
+    public ControladorPartida() {
+        this.agregarPanelLocal();
         ventana.pack();
         ventana.repaint();
         path_jugadores = "src/jugadores/jugadores.xml";
     }
 
-    private void agregarPanelLocal(String nombre, String dificultad, String vehiculo) {
-        this.panelPartida =
-        		new PanelPartida(nombre, vehiculo, dificultad,
-        						 juego.getPartida().getTablero(),
-        						 juego.getInstance().getVehiculo().getPosicion(),
-        						 juego.getInstance().getPartida().getPosicionGanadora(),
-        						 juego.getInstance().getPartida().getCantidadDeMovimientosDisponibles());
+    private void agregarPanelLocal() {
+        this.panelPartida = new PanelPartida(juego.getJugadorActual().getNickName(), juego.getPartida());
         this.panelPartida.inicializarZonaDelJuego();
         this.panelPartida.agregarEscuchaGuardar(new EscuchaGuardar());
         this.panelPartida.agregarEscuchaVolver(new EscuchaVolver());
@@ -123,7 +118,7 @@ public class ControladorPartida extends Controlador {
                 }
             } catch (MovimientoInvalidoExcepcion ex) {
             	restarMovimientosDelPanel = false;
-            	Logger.instance.log("A donde queres ir " + juego.getInstance().getJugadorActual().getNickName() +" ?");
+            	Logger.instance.log("A donde queres ir " + juego.getJugadorActual().getNickName() +" ?");
                 panelPartida.mostrarMensajeMovimientoInvalido();
             } catch (PartidaGanadaAviso ex) {
                 System.out.print("EXCEPCION PARTIDA GANADA ATRAPADA.\n");
@@ -142,7 +137,7 @@ public class ControladorPartida extends Controlador {
                 //panelPartida.escribirEnElLog("Cuidado! Calle bloqueada por Castells...");
             }
             if ( restarMovimientosDelPanel )
-            	panelPartida.restarMovimientosDelPanel(juego.getInstance().getVehiculo().getCantidadDeMovimientos());
+            	panelPartida.restarMovimientosDelPanel(juego.getVehiculo().getCantidadDeMovimientos());
         }
     }
 
