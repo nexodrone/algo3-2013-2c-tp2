@@ -29,5 +29,9 @@ public class ObstaculoPiquete extends Obstaculo {
     	Logger.instance.log("Pudiste atravesar el piquete! Aunque se te descontaran 2 movimientos...");
         moto.sumarMovimientos(penalizacionMoto);
     }
+    
+	public String asString(){
+		return "ObstaculoPiquete";
+	}
 
 }

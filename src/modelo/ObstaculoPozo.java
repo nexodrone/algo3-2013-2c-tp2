@@ -26,4 +26,8 @@ public class ObstaculoPozo extends Obstaculo {
 		Logger.instance.log("Guarda los baches! Estas usando una moto, no una 4x4! Perdiste 3 movimientos...");
 	}
 
+	public String asString(){
+		return "ObstaculoPozo";
+	}
+	
 }
