@@ -44,6 +44,7 @@ public class ControladorElegirVehiculo extends Controlador{
 				Nivel nivel = new Nivel();
 				try {
 					nivel = Nivel.cargarNivel("src/niveles/Nivel" + nivelSeleccionado + ".xml");
+					nivel.tablero.unificarCalles();
 				} catch (Exception e1) {
 					panelElegirVehiculo.mostrarMensajeError();
 				};
