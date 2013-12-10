@@ -113,12 +113,12 @@ public class PanelPartida extends JPanel {
 
     public void mostrarMensajePartidaGanada() {
         String nombre = Juego.getInstance().getJugadorActual().getNickName();
-        JOptionPane.showMessageDialog(this, "�Felicitaciones " + nombre + ", has ganado el nivel. Eres el puto amo!", "�Bien ahi Papote!", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Felicitaciones " + nombre + ", ganaste el nivel!", "Partida ganada", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public void mostrarMensajePartidaPerdida() {
         String nombre = Juego.getInstance().getJugadorActual().getNickName();
-        JOptionPane.showMessageDialog(this, nombre + ", te has quedado sin movimientos. Volve a intertarlo muerto!", "�JA fracasado!", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, nombre + ", te has quedado sin movimientos.", "Partida perdida", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public void mostrarMensajeUsuarioInexistente() {
