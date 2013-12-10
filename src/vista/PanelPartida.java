@@ -31,6 +31,7 @@ public class PanelPartida extends JPanel {
     private JLabel dificultad;
     private JLabel vehiculoActual;
     private JLabel movimientosRestantes;
+    private JLabel movimientosTotales;
     private PanelZonaDeJuego panelZonaDelJuego;
     private JPanel panelInfo = new JPanel();
     private LogPartida logPartida = new LogPartida();
@@ -50,25 +51,33 @@ public class PanelPartida extends JPanel {
         this.panelInfo.setPreferredSize(new Dimension(250,610));
         this.panelInfo.setLayout(new BoxLayout(panelInfo, BoxLayout.PAGE_AXIS));
         this.panelInfo.setBackground(new Color(255,255,255,255));
+        
         this.nombreUsuario = new JLabel("Jugador:   " + nombre);
         this.nombreUsuario.setAlignmentX(CENTER_ALIGNMENT);
+        
         this.dificultad = new JLabel("Dificultad:   " + recuperarStringDeDificultad(partida.dificultad));
         this.dificultad.setAlignmentX(CENTER_ALIGNMENT);
+        
         this.vehiculoActual = new JLabel("Vehiculo:   " + partida.getVehiculo().asString());
         this.vehiculoActual.setAlignmentX(CENTER_ALIGNMENT);
         this.vehiculoActual.setBackground(Color.WHITE);
         
-        this.movimientosRestantes = new JLabel("Movmientos Restantes: " + cantDeMovimientosIniciales);
+        this.movimientosTotales = new JLabel("Movimientos Realizados:  0");
+        this.movimientosTotales.setAlignmentX(CENTER_ALIGNMENT);
+        this.movimientosTotales.setBackground(Color.WHITE);
+        
+        this.movimientosRestantes = new JLabel("Movimientos Restantes:  " + cantDeMovimientosIniciales);
+        this.movimientosRestantes.setAlignmentX(CENTER_ALIGNMENT);
+        this.movimientosRestantes.setBackground(Color.WHITE);
         
 		this.panelZonaDelJuego = new PanelZonaDeJuego(partida);
         this.panelZonaDelJuego.setPreferredSize(new Dimension(anchoZonaDelJuego,largoZonaDelJuego));
 
         this.botonGuardar.setAlignmentX(CENTER_ALIGNMENT);
         this.botonGuardar.setBackground(Color.WHITE);
+        
         this.botonVolver.setAlignmentX(CENTER_ALIGNMENT);
         this.botonVolver.setBackground(Color.WHITE);
-        this.movimientosRestantes.setAlignmentX(CENTER_ALIGNMENT);
-        this.movimientosRestantes.setBackground(Color.WHITE);
         
         this.logPartida.setAlignmentX(CENTER_ALIGNMENT);
         
@@ -81,6 +90,8 @@ public class PanelPartida extends JPanel {
         this.panelInfo.add(this.dificultad);
         this.panelInfo.add(Box.createVerticalStrut(10));
         this.panelInfo.add(this.vehiculoActual);
+//        this.panelInfo.add(Box.createVerticalStrut(10));       
+//        this.panelInfo.add(this.movimientosTotales);
         this.panelInfo.add(Box.createVerticalStrut(10));       
         this.panelInfo.add(this.movimientosRestantes);
         
@@ -126,9 +137,10 @@ public class PanelPartida extends JPanel {
         this.addKeyListener(escuchaFlechas);
     }
     
-    public void restarMovimientosDelPanel(int cantMovimientosActuales) {
+    public void actualizarMovimientosDelPanel(int cantMovimientosActuales) {
     	Integer aRestar = cantDeMovimientosIniciales - cantMovimientosActuales;
-    	movimientosRestantes.setText("Movmientos Restantes: " + aRestar);
+    	movimientosRestantes.setText("Movimientos Restantes:  " + aRestar);
+    	movimientosTotales.setText("Movimientos Realizados:  "+ cantMovimientosActuales);
     }
     
 	public void actualizarLabelVechiulo(String vehiculoDespuesDeMover) {
