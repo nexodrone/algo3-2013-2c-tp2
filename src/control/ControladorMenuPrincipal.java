@@ -39,6 +39,7 @@ public class ControladorMenuPrincipal extends Controlador {
 		public void actionPerformed(ActionEvent e) {
 			try {
 				Partida partida = Partida.cargarPartida("src/jugadores/partida" + juego.getJugadorActual().getNickName() + ".xml");
+				partida.getTablero().unificarCalles();
 	            juego.setJugadorActual(new Jugador(juego.getJugadorActual().getNickName()));
 	            juego.setPartida(partida);
 	            ventana.remove(panelMenuPrincipal);

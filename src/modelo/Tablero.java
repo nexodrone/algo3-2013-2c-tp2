@@ -34,7 +34,7 @@ public class Tablero {
         this.bocacalles = new ArrayList<ColumnaDeBocacalles>();
     };
 
-    private void unificarCalles() {
+    public void unificarCalles() {
         Direccion este = new Direccion(1, 0);
         Direccion norte = new Direccion(0, 1);
         for (int i = 1; i < cantidadDeColumnas; i++) {
