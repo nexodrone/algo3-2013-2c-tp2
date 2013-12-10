@@ -19,6 +19,7 @@ import javax.swing.Timer;
 
 import modelo.Bocacalle;
 import modelo.Direccion;
+import modelo.Partida;
 import modelo.Posicion;
 import modelo.Tablero;
 
@@ -44,12 +45,12 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     private Posicion posicionDeLlegada;
     private Boolean dibujarTablero = true; // PARA QUE EL TABLERO SE DIBUJE SOLO UNA VEZ
 
-    public PanelZonaDeJuego(Tablero tablero, String vehiculoSeleccionado, Posicion posicionInicialDeVehiculo, Posicion meta) {
-        this.tableroActual = tablero;
-        this.posicionDeLlegada = meta;
-        this.posicionDeVehiculo = posicionInicialDeVehiculo;
-        System.out.println("Posicion del Vehiculo:" + posicionInicialDeVehiculo.asString());
-        vehiculo = vehiculoSeleccionado;
+    public PanelZonaDeJuego(Partida partidaActual) {
+        this.tableroActual = partidaActual.getTablero();
+        this.posicionDeLlegada = partidaActual.getPosicionGanadora();
+        this.posicionDeVehiculo = partidaActual.getVehiculo().getPosicion();
+        //System.out.println("Posicion del Vehiculo:" + posicionDeVehiculo.asString());
+        vehiculo = partidaActual.getVehiculo().asString();
         setBackground(Color.BLACK);
         this.girarHacia("Derecha"); // por defecto el vehiculo siempre empieza mirando hacia
                                     // laderecha
@@ -168,11 +169,11 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
                     Posicion posicionActual = new Posicion(i, j);
                     System.out.println("Posicion Actual:" + posicionActual.asString());
                     if (this.tableroActual.getBocacalleEnPosicion(posicionActual).getCalleEnDireccion(sur).getObstaculo() != null) {
-                        JLabel obstaculoSur = crearObstaculoEnDireccion(posicionActual, sur, 0, 32);
+                        JLabel obstaculoSur = crearObstaculoEnDireccion(posicionActual, sur, 0, 20);
                         this.zonaDeJuego.add(obstaculoSur);
                     }
                     if (this.tableroActual.getBocacalleEnPosicion(posicionActual).getCalleEnDireccion(oeste).getObstaculo() != null) {
-                        JLabel obstaculoOeste = crearObstaculoEnDireccion(posicionActual, oeste, -9, 0);
+                        JLabel obstaculoOeste = crearObstaculoEnDireccion(posicionActual, oeste, -10, 0);
                         this.zonaDeJuego.add(obstaculoOeste);
                     }
                     if (this.tableroActual.getBocacalleEnPosicion(posicionActual).getCalleEnDireccion(sur).getSorpresa() != null) {
@@ -215,23 +216,23 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         switch (direccion) {
             case "sur":
                 int posicionSorpresaSurX = longitudManzana + posicionActual.x() * 2 * longitudManzana;
-                int posicionSorpresaSurY = this.posicionDeUnObjetoEnY(posicionActual) + 28;
-                JLabel sorpresaSur = obtenerImagen(posicionSorpresaSurX, posicionSorpresaSurY, "sorpresa", 5, 5);
+                int posicionSorpresaSurY = this.posicionDeUnObjetoEnY(posicionActual) + 30;
+                JLabel sorpresaSur = obtenerImagen(posicionSorpresaSurX, posicionSorpresaSurY, "sorpresa", 10, 10);
                 return sorpresaSur;
             case "norte":
                 int posicionSorpresaNorteX = longitudManzana + posicionActual.x() * 2 * longitudManzana;
-                int posicionSorpresaNorteY = this.posicionDeUnObjetoEnY(posicionActual) - 5;
-                JLabel sorpresaNorte = obtenerImagen(posicionSorpresaNorteX, posicionSorpresaNorteY, "sorpresa", 5, 5);
+                int posicionSorpresaNorteY = this.posicionDeUnObjetoEnY(posicionActual) - 10;
+                JLabel sorpresaNorte = obtenerImagen(posicionSorpresaNorteX, posicionSorpresaNorteY, "sorpresa", 10, 10);
                 return sorpresaNorte;
             case "este":
-                int posicionSorpresaEsteX = longitudManzana + posicionActual.x() * 2 * longitudManzana + 22;
+                int posicionSorpresaEsteX = longitudManzana + posicionActual.x() * 2 * longitudManzana + 20;
                 int posicionSorpresaEsteY = this.posicionDeUnObjetoEnY(posicionActual);
-                JLabel sorpresaEste = obtenerImagen(posicionSorpresaEsteX, posicionSorpresaEsteY, "sorpresa", 5, 5);
+                JLabel sorpresaEste = obtenerImagen(posicionSorpresaEsteX, posicionSorpresaEsteY, "sorpresa", 10, 10);
                 return sorpresaEste;
             default:
-                int posicionSorpresaOesteX = longitudManzana + posicionActual.x() * 2 * longitudManzana - 18;
+                int posicionSorpresaOesteX = longitudManzana + posicionActual.x() * 2 * longitudManzana - 10;
                 int posicionSorpresaOesteY = this.posicionDeUnObjetoEnY(posicionActual);
-                JLabel sorpresaOeste = obtenerImagen(posicionSorpresaOesteX, posicionSorpresaOesteY, "sorpresa", 5, 5);
+                JLabel sorpresaOeste = obtenerImagen(posicionSorpresaOesteX, posicionSorpresaOesteY, "sorpresa", 10, 10);
                 return sorpresaOeste;
         }
     }

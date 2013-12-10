@@ -59,8 +59,7 @@ public class PanelPartida extends JPanel {
         
         this.movimientosRestantes = new JLabel("Movmientos Restantes: " + cantDeMovimientosIniciales);
         
-		this.panelZonaDelJuego = new PanelZonaDeJuego(partida.getTablero(), partida.getVehiculo().asString(),
-														partida.getVehiculo().getPosicion(), partida.getPosicionGanadora());
+		this.panelZonaDelJuego = new PanelZonaDeJuego(partida);
         this.panelZonaDelJuego.setPreferredSize(new Dimension(anchoZonaDelJuego,largoZonaDelJuego));
 
         this.botonGuardar.setAlignmentX(CENTER_ALIGNMENT);
