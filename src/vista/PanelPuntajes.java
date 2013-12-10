@@ -25,6 +25,7 @@ public class PanelPuntajes extends JPanel {
 		this.setBackground(new Color(255,255,255,200));
 		
 		this.etiqueta.setAlignmentX(CENTER_ALIGNMENT);
+		this.botonVolver.setAlignmentX(CENTER_ALIGNMENT);
 		TablaDePuntajes tablaModelo = new TablaDePuntajes(puntajesOrdenados);
 		this.tabla = new JTable(tablaModelo);
         Render render = new Render();

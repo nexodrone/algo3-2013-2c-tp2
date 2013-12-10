@@ -14,9 +14,13 @@ import javax.swing.InputMap;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.KeyStroke;
 
+import control.Listener;
+import control.Logger;
 import modelo.Juego;
 import modelo.Posicion;
 import modelo.Tablero;
@@ -31,8 +35,8 @@ public class PanelPartida extends JPanel {
     private JLabel movimientosRestantes;
     private PanelZonaDeJuego panelZonaDelJuego;
     private JPanel panelInfo = new JPanel();
-    //private PanelLogPartida panelLog = new PanelLogPartida();
-    private JTextArea logPartida = new JTextArea();
+    private PanelLog logPartida = new PanelLog();
+    private JScrollPane scroll;
     private int anchoZonaDelJuego = 870; //ideal = 860
     private int largoZonaDelJuego = 610; //ideal = 580
     String nivelSeleccionado;
@@ -69,7 +73,8 @@ public class PanelPartida extends JPanel {
         this.logPartida.setAlignmentX(CENTER_ALIGNMENT);
         this.logPartida.setBackground(new Color(255, 255, 100, 255));
         this.logPartida.setFocusable(false);
-        this.logPartida.setEditable(false);
+        Logger.instance.addListener(logPartida);
+        scroll = new JScrollPane(logPartida);
         
         this.panelInfo.add(Box.createVerticalStrut(10));
         this.panelInfo.add(this.nombreUsuario);
@@ -81,7 +86,7 @@ public class PanelPartida extends JPanel {
         this.panelInfo.add(this.movimientosRestantes);
         
         this.panelInfo.add(Box.createVerticalStrut(20));
-        this.panelInfo.add(logPartida);
+        this.panelInfo.add(scroll);
         this.panelInfo.add(Box.createVerticalStrut(20));
         this.panelInfo.add(botonGuardar);
         this.panelInfo.add(Box.createVerticalStrut(20));
@@ -163,6 +168,13 @@ public class PanelPartida extends JPanel {
         JOptionPane.showMessageDialog(this, "Hay piquete", "Aaaaa", JOptionPane.ERROR_MESSAGE);
 
     }
+    
+    class PanelLog extends JTextArea implements Listener {
+	
+    	public void log(String mensaje) {
+    		this.append(mensaje + "\n");
+    	}
+}
     
     
 

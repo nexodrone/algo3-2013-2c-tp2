@@ -84,14 +84,18 @@ public class Juego {
         }
     }
 
-    public void realizarJugadaEnDireccion(Direccion direccion) throws MovimientoInvalidoExcepcion, PartidaGanadaAviso, PartidaPerdidaAviso {
+    public void realizarJugadaEnDireccion(Direccion direccion)
+    		throws MovimientoInvalidoExcepcion, PartidaGanadaAviso, PartidaPerdidaAviso {
+    	
         if (this.partidaActual.esGanada() || this.partidaActual.esPerdida())
             System.out.print("Se termino la partida. \n");
         else
             jugarEnDireccion(direccion);
     }
 
-    private void jugarEnDireccion(Direccion direccion) throws MovimientoInvalidoExcepcion, PartidaGanadaAviso, PartidaPerdidaAviso {
+    private void jugarEnDireccion(Direccion direccion)
+    		throws MovimientoInvalidoExcepcion, PartidaGanadaAviso, PartidaPerdidaAviso {
+    	
         Posicion nuevaPosicion = partidaActual.getVehiculo().calcularSiguientePosicion(direccion);
         System.out.println("jugarEnDireccion");
         System.out.println(nuevaPosicion.asString());

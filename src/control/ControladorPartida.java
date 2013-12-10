@@ -123,6 +123,7 @@ public class ControladorPartida extends Controlador {
                 }
             } catch (MovimientoInvalidoExcepcion ex) {
             	restarMovimientosDelPanel = false;
+            	Logger.instance.log("A donde queres ir " + juego.getInstance().getJugadorActual().getNickName() +" ?");
                 panelPartida.mostrarMensajeMovimientoInvalido();
             } catch (PartidaGanadaAviso ex) {
                 System.out.print("EXCEPCION PARTIDA GANADA ATRAPADA.\n");
