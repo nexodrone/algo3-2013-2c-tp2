@@ -45,7 +45,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     private Posicion posicionDeVehiculo;
     private Posicion posicionDeLlegada;
     private Boolean dibujarTablero = true; // PARA QUE EL TABLERO SE DIBUJE SOLO UNA VEZ
-    private ArrayList<Image> listaDeImagenes = new ArrayList<Image>();
+    private ArrayList<ElementoDeTablero> listaDeSorpresas = new ArrayList<ElementoDeTablero>();
     private ArrayList<Image> listaDeObstaculos = new ArrayList<Image>();
 
     public PanelZonaDeJuego(Partida partidaActual) {
@@ -59,8 +59,10 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
                                     // laderecha
 
         this.cantidadAAA = 0;
-        Image algo = this.prueba();
-        this.listaDeImagenes.add(algo);
+        agregarTodasLasSorpresasALista();
+        //agregarTodosLosObstaculosALista();
+        //Image algo = this.prueba();
+        //this.listaDeSorpresas.add(algo);
         setDoubleBuffered(true);
         // setFocusable(true);
         posicionDelTableroX = this.centrarEnX();
@@ -118,9 +120,12 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
 
         super.paint(g);
         Graphics2D grafico2D = (Graphics2D) g;
-        for (int i = 0; i < this.listaDeImagenes.size(); i++) {
-            Image algo = listaDeImagenes.get(i);
-            grafico2D.drawImage(algo, 200, 200, this);
+        for (int i = 0; i < this.listaDeSorpresas.size(); i++) {
+            ElementoDeTablero unElementoDeTablero = listaDeSorpresas.get(i);
+            Image imagen = unElementoDeTablero.getImagen();
+            Posicion posicionDeElemento = unElementoDeTablero.getPosicion();
+            String direccion = unElementoDeTablero.getDireccion();
+            grafico2D.drawImage(imagen, this.calcularPosicionDeElementoEnX(posicionDeElemento,direccion), this.calcularPosicionDeELementoEnY(posicionDeElemento, direccion), this);
         }
         grafico2D.drawImage(star, x, y, this);
 
@@ -175,7 +180,6 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
                     System.out.println("Posicion Actual:" + posicionActual.asString());
                     if (this.tableroActual.getBocacalleEnPosicion(posicionActual).getCalleEnDireccion(sur).getObstaculo() != null) {
                         JLabel obstaculoSur = crearObstaculoEnDireccion(posicionActual, sur, 0, 20);
-
                         this.zonaDeJuego.add(obstaculoSur);
                     }
                     if (this.tableroActual.getBocacalleEnPosicion(posicionActual).getCalleEnDireccion(oeste).getObstaculo() != null) {
@@ -225,16 +229,6 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
                 int posicionSorpresaSurY = this.posicionDeUnObjetoEnY(posicionActual) + 30;
                 JLabel sorpresaSur = obtenerImagen(posicionSorpresaSurX, posicionSorpresaSurY, "sorpresa", 10, 10);
                 return sorpresaSur;
-            case "norte":
-                int posicionSorpresaNorteX = longitudManzana + posicionActual.x() * 2 * longitudManzana;
-                int posicionSorpresaNorteY = this.posicionDeUnObjetoEnY(posicionActual) - 10;
-                JLabel sorpresaNorte = obtenerImagen(posicionSorpresaNorteX, posicionSorpresaNorteY, "sorpresa", 10, 10);
-                return sorpresaNorte;
-            case "este":
-                int posicionSorpresaEsteX = longitudManzana + posicionActual.x() * 2 * longitudManzana + 20;
-                int posicionSorpresaEsteY = this.posicionDeUnObjetoEnY(posicionActual);
-                JLabel sorpresaEste = obtenerImagen(posicionSorpresaEsteX, posicionSorpresaEsteY, "sorpresa", 10, 10);
-                return sorpresaEste;
             default:
                 int posicionSorpresaOesteX = longitudManzana + posicionActual.x() * 2 * longitudManzana - 10;
                 int posicionSorpresaOesteY = this.posicionDeUnObjetoEnY(posicionActual);
@@ -242,7 +236,48 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
                 return sorpresaOeste;
         }
     }
+    
+    public void  agregarTodasLasSorpresasALista(){
+        Direccion sur = new Direccion(0, -1);
+        Direccion oeste = new Direccion(-1, 0);
+    	for(int i=0; i < this.tableroActual.getCantidadDeColumnas();i++){
+    		for(int j=0; j < this.tableroActual.getCantidadDeFilas();j++){
+    			Posicion posicionActual = new Posicion(i,j);  
+    			if (this.tableroActual.getBocacalleEnPosicion(posicionActual).getCalleEnDireccion(sur).getSorpresa() != null) {
+    				 Image imagenSorpresaSur = this.obtenerImagenSorpresa();
+    				 ElementoDeTablero unElementoDeTablero = new ElementoDeTablero(imagenSorpresaSur,posicionActual,"sur");
+    				 this.listaDeSorpresas.add(unElementoDeTablero);
+                  	}
+    			if (this.tableroActual.getBocacalleEnPosicion(posicionActual).getCalleEnDireccion(oeste).getSorpresa() != null) {
+    				 Image imagenSorpresaOeste = this.obtenerImagenSorpresa();
+    				 ElementoDeTablero otroElementoDeTablero = new ElementoDeTablero(imagenSorpresaOeste,posicionActual,"oeste");
+    				 this.listaDeSorpresas.add(otroElementoDeTablero);
+                	}    			
+    		}
+    	}
+    }
 
+    public int calcularPosicionDeElementoEnX(Posicion posicion, String direccion){
+    	if(direccion == "sur"){
+    		int posicionSorpresaSurX = longitudManzana + posicion.x() * 2 * longitudManzana + this.centrarEnX();
+    		return posicionSorpresaSurX;
+    	}else{
+    		 int posicionSorpresaOesteX = longitudManzana + posicion.x() * 2 * longitudManzana - 10 + this.centrarEnX();
+    		 return posicionSorpresaOesteX;
+    	}
+    }
+    
+    public int calcularPosicionDeELementoEnY(Posicion posicion, String direccion){
+    	if(direccion == "sur"){
+    		int posicionSorpresaSurY = this.posicionDeUnObjetoEnY(posicion) + 30 + this.centrarEnY();
+    		return posicionSorpresaSurY;
+    	}else{
+    		int posicionSorpresaOesteY = this.posicionDeUnObjetoEnY(posicion) + this.centrarEnY();
+    		return posicionSorpresaOesteY;
+    	}
+    	
+    }
+    
     public JLabel crearUnaManzana(int posX, int posY) {
         // System.out.println("crearUnaManzana");
         JLabel manzana = new Manzana(posX, posY);
@@ -289,7 +324,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
      * star.getScaledInstance(18, 18, 1); } }
      */
 
-    public Image prueba() {
+    public Image obtenerImagenSorpresa() {
         String direccion = "/vista/imagenes/sorpresa.png";
         ImageIcon imagenVehiculo = new ImageIcon(this.getClass().getResource(direccion));
         Image prueba = imagenVehiculo.getImage().getScaledInstance(10, 10, 1);
