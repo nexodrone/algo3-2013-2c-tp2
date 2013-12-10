@@ -96,28 +96,37 @@ public class ControladorPartida extends Controlador {
             try {
                 switch (accion) {
                     case "UpArrow": 
-                        juego.realizarJugadaEnDireccion(norte);
+                       if(panel.vehiculoMoviendose()==false){
+                    	juego.realizarJugadaEnDireccion(norte);
                         panel.girarHacia("Arriba");
                         //panel.verificarSiHuboCambioDeVehiculo(juego.getInstance().getPartida().getVehiculo().asString(), "Arriba");
                         panel.nuevaPosicion(0, -1);
+                       	}
                         break;
+                       
                     case "DownArrow": 
-                        juego.realizarJugadaEnDireccion(sur);
+                        if(panel.vehiculoMoviendose()==false){
+                    	juego.realizarJugadaEnDireccion(sur);
                         panel.girarHacia("Abajo");
                         //panel.verificarSiHuboCambioDeVehiculo(juego.getInstance().getPartida().getVehiculo().asString(), "Abajo");
                         panel.nuevaPosicion(0, 1);
+                        }
                         break;
                     case "LeftArrow": 
-                        juego.realizarJugadaEnDireccion(oeste);
+                        if(panel.vehiculoMoviendose()==false){
+                    	juego.realizarJugadaEnDireccion(oeste);
                         panel.girarHacia("Izquierda");
                         //panel.verificarSiHuboCambioDeVehiculo(juego.getInstance().getPartida().getVehiculo().asString(), "Izquirda");
                         panel.nuevaPosicion(-1, 0);
+                        }
                         break;
                     case "RightArrow": 
-                        juego.realizarJugadaEnDireccion(este);
+                    	if(panel.vehiculoMoviendose()==false){
+                    	juego.realizarJugadaEnDireccion(este);
                         panel.girarHacia("Derecha");
                         //panel.verificarSiHuboCambioDeVehiculo(juego.getInstance().getPartida().getVehiculo().asString(), "Derecha");
                         panel.nuevaPosicion(1, 0);
+                    	}
                         break;
                 }
             } catch (MovimientoInvalidoExcepcion ex) {
