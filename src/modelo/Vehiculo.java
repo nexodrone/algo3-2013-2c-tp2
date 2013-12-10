@@ -5,6 +5,8 @@ import modelo.excepciones.CalleBloqueadaPorPiqueteExcepcion;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 
+import control.Logger;
+
 public abstract class Vehiculo {
 
     @Element(name = "posicionActual")
@@ -87,10 +89,12 @@ public abstract class Vehiculo {
     public void pasarPorCalle(Calle calleAPasar) {
         Obstaculo obstaculo = calleAPasar.getObstaculo();
         if (obstaculo != null) {
+        	Logger.instance.log("Obstaculo:");
             this.aplicarEvento(obstaculo);
         };
         Sorpresa sorpresa = calleAPasar.getSorpresa();
         if (sorpresa != null) {
+        	Logger.instance.log("Obstaculo:");
             this.aplicarEvento(sorpresa);
             calleAPasar.setSorpresa(null);
         };
