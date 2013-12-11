@@ -124,7 +124,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
             	Image imagen = unElementoDeTablero.getImagen();
             	Posicion posicionDeElemento = unElementoDeTablero.getPosicion();
             	String direccion = unElementoDeTablero.getDireccion();
-            	grafico2D.drawImage(imagen, this.calcularPosicionDeElementoEnX(posicionDeElemento,direccion,0), this.calcularPosicionDeELementoEnY(posicionDeElemento, direccion,0), this.zonaDeJuego);
+            	grafico2D.drawImage(imagen, this.calcularPosicionDeElementoEnX(posicionDeElemento,direccion,0), this.calcularPosicionDeELementoEnY(posicionDeElemento, direccion,0), this);
         }
         //SE DIBUJA LOS OBSTACULOS EN TABLERO
         for (int j = 0; j < this.listaDeObstaculos.size(); j++) {
@@ -132,7 +132,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         	Image imagenObstaculo = unElementoDeTablero.getImagen();
         	Posicion posicionDeObstaculo = unElementoDeTablero.getPosicion();
         	String direccion = unElementoDeTablero.getDireccion();
-        	grafico2D.drawImage(imagenObstaculo, this.calcularPosicionDeElementoEnX(posicionDeObstaculo,direccion,-10), this.calcularPosicionDeELementoEnY(posicionDeObstaculo, direccion,-10), this.zonaDeJuego);
+        	grafico2D.drawImage(imagenObstaculo, this.calcularPosicionDeElementoEnX(posicionDeObstaculo,direccion,-10), this.calcularPosicionDeELementoEnY(posicionDeObstaculo, direccion,-10), this);
     }
         
         
