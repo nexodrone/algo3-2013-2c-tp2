@@ -64,9 +64,9 @@ public class ControladorMenuPrincipal extends Controlador {
         public void actionPerformed(ActionEvent e) {
             try{
             	ControladorPuntajes controlador = new ControladorPuntajes();
-            	panelMenuPrincipal.setVisible(false);
             	ventana.remove(panelMenuPrincipal);
             }catch(Exception ex){
+            	/* probablemente nunca se va a dar, pues en panelPuntajes entra un usuario registrado */
             	panelMenuPrincipal.mostrarMensajePuntajesInexistentes();
             }
         }

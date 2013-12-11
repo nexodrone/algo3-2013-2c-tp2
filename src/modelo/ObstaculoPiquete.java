@@ -15,17 +15,17 @@ public class ObstaculoPiquete extends Obstaculo {
     }
 
     public void interactuarCon(VehiculoAuto auto) {
-        Logger.instance.log("Piquete. No se puede pasar!");
+        Logger.instance.log("Piquete. No se puede pasar!\n");
         throw new CalleBloqueadaPorPiqueteExcepcion();
     }
 
     public void interactuarCon(Vehiculo4x4 todoterreno) {
-    	Logger.instance.log("Piquete. No se puede pasar!");
+    	Logger.instance.log("Piquete. No se puede pasar!\n");
         throw new CalleBloqueadaPorPiqueteExcepcion();
     }
 
     public void interactuarCon(VehiculoMoto moto) {
-    	Logger.instance.log("Piquete. Penalizacion: 2 movimientos.");
+    	Logger.instance.log("Piquete. Penalizacion: 2 movimientos.\n");
         moto.sumarMovimientos(penalizacionMoto);
     }
     

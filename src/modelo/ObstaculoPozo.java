@@ -14,16 +14,16 @@ public class ObstaculoPozo extends Obstaculo {
 	
 	public void interactuarCon(VehiculoAuto auto) {
 		auto.sumarMovimientos(penalizacionAuto);
-		Logger.instance.log("Pozo. Penalizacion: 3 movimientos.");
+		Logger.instance.log("Pozo. Penalizacion: 3 movimientos.\n");
 	}
 
 	public void interactuarCon(Vehiculo4x4 todoterreno) {
-		Logger.instance.log("Pozo. Usted esta en 4x4: no penalizacion.");
+		Logger.instance.log("Pozo. Usted esta en 4x4: no penalizacion.\n");
 	}
 
 	public void interactuarCon(VehiculoMoto moto) {
 		moto.sumarMovimientos(penalizacionMoto);
-		Logger.instance.log("Pozo. Penalizacion: 3 movimientos.");
+		Logger.instance.log("Pozo. Penalizacion: 3 movimientos.\n");
 	}
 
 	public String asString(){
