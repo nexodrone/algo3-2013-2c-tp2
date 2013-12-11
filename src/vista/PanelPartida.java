@@ -59,11 +59,13 @@ public class PanelPartida extends JPanel {
         
         this.movimientosLimites = partida.getCantidadDeMovimientosDisponibles();
         this.movimientosLimitesLabel = new JLabel("Movimientos limites:  " + movimientosLimites);
+        this.movimientosLimitesLabel.setForeground(Color.RED);
         this.movimientosLimitesLabel.setAlignmentX(CENTER_ALIGNMENT);
         
         this.movimientosActualesLabel = new JLabel();
         this.movimientosActualesLabel.setAlignmentX(CENTER_ALIGNMENT);
         this.puntajeLabel = new JLabel();
+        this.puntajeLabel.setForeground(Color.GREEN);
         this.puntajeLabel.setAlignmentX(CENTER_ALIGNMENT);
         this.actualizarMovimientosDelPanel(partida.getVehiculo().getCantidadDeMovimientos(), partida.dificultad);
         
@@ -182,17 +184,17 @@ public class PanelPartida extends JPanel {
     }
 
     public void mostrarMensajePartidaGanada() {
-        String nombre = Juego.getInstance().getJugadorActual().getNickName();
+        String nombre = Juego.getInstance().getJugadorActual().getNombre();
         JOptionPane.showMessageDialog(this, "Felicitaciones " + nombre + ", ganaste el nivel!", "Partida ganada", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public void mostrarMensajePartidaPerdida() {
-        String nombre = Juego.getInstance().getJugadorActual().getNickName();
+        String nombre = Juego.getInstance().getJugadorActual().getNombre();
         JOptionPane.showMessageDialog(this, nombre + ", te has quedado sin movimientos.", "Partida perdida", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public void mostrarMensajeUsuarioInexistente() {
-        String nombre = Juego.getInstance().getJugadorActual().getNickName();
+        String nombre = Juego.getInstance().getJugadorActual().getNombre();
         JOptionPane.showMessageDialog(this, "El usuario '" + nombre + "' no existe. No se guardara el puntaje.", "Error", JOptionPane.ERROR_MESSAGE);
     }
 

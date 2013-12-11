@@ -22,7 +22,7 @@ public class JugadorTest {
     @Test
     public void testDeberiaDevolverNombre() {
         Jugador unJugador = new Jugador("Juansito");
-        assertEquals(unJugador.getNickName(),"Juansito");
+        assertEquals(unJugador.getNombre(),"Juansito");
     }
     
     @Test
@@ -37,6 +37,6 @@ public class JugadorTest {
         	System.out.print("No se pudo deserializar el objeto.\n");
         }
 
-        assertEquals(otroJugador.getNickName(), "Chango");  
+        assertEquals(otroJugador.getNombre(), "Chango");  
     }    
 }

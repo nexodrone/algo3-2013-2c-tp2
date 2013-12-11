@@ -27,7 +27,7 @@ public class ControladorUsuarioRegistrado extends Controlador{
 		Iterator<Jugador> it = lista.iterator();
 		
 		while ( it.hasNext() ) {
-			String nombre = it.next().getNickName();
+			String nombre = it.next().getNombre();
 			panelUsuarioRegistrado.agregarJugador(i, nombre);
 			i++;
 		}

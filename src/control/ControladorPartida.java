@@ -29,17 +29,15 @@ public class ControladorPartida extends Controlador {
     private static Direccion sur = new Direccion(0, -1);
     private static Direccion este = new Direccion(1, 0);
     private static Direccion oeste = new Direccion(-1, 0);
-    private String path_jugadores;
 
     public ControladorPartida() {
         this.agregarPanelLocal();
         ventana.pack();
         ventana.repaint();
-        path_jugadores = "src/jugadores/jugadores.xml";
     }
 
     private void agregarPanelLocal() {
-        this.panelPartida = new PanelPartida(juego.getJugadorActual().getNickName(), juego.getPartida());
+        this.panelPartida = new PanelPartida(juego.getJugadorActual().getNombre(), juego.getPartida());
         this.panelPartida.agregarEscuchaGuardar(new EscuchaGuardar());
         this.panelPartida.agregarEscuchaVolver(new EscuchaVolver());
         this.agregarEscuchaFlechas();
@@ -50,7 +48,7 @@ public class ControladorPartida extends Controlador {
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
-                juego.getPartida().guardarPartida("src/jugadores/partida" + juego.getJugadorActual().getNickName() + ".xml");
+                juego.getPartida().guardarPartida("src/jugadores/partida" + juego.getJugadorActual().getNombre() + ".xml");
                 panelPartida.mostrarMensajePartidaGuardada();
             } catch (Exception e1) {
                 panelPartida.mostrarMensajeError();
@@ -101,7 +99,7 @@ public class ControladorPartida extends Controlador {
                             juego.realizarJugadaEnDireccion(norte);
                             panel.girarHacia("Arriba");
                             if (panel.vehiculoMoviendose() == false) {
-                                panel.verificarSiHuboCambioDeVehiculo(juego.getInstance().getPartida().getVehiculo().asString(), "Arriba");
+                                panel.verificarSiHuboCambioDeVehiculo(juego.getPartida().getVehiculo().asString(), "Arriba");
                             }
                             panel.nuevaPosicion(0, -1);
                         }
@@ -113,7 +111,7 @@ public class ControladorPartida extends Controlador {
                             juego.realizarJugadaEnDireccion(sur);
                             panel.girarHacia("Abajo");
                             if (panel.vehiculoMoviendose() == false) {
-                                panel.verificarSiHuboCambioDeVehiculo(juego.getInstance().getPartida().getVehiculo().asString(), "Abajo");
+                                panel.verificarSiHuboCambioDeVehiculo(juego.getPartida().getVehiculo().asString(), "Abajo");
                             }
                             panel.nuevaPosicion(0, 1);
                         }
@@ -125,7 +123,7 @@ public class ControladorPartida extends Controlador {
                             juego.realizarJugadaEnDireccion(oeste);
                             panel.girarHacia("Izquierda");
                             if (panel.vehiculoMoviendose() == false) {
-                                panel.verificarSiHuboCambioDeVehiculo(juego.getInstance().getPartida().getVehiculo().asString(), "Izquierda");
+                                panel.verificarSiHuboCambioDeVehiculo(juego.getPartida().getVehiculo().asString(), "Izquierda");
                             }
                             panel.nuevaPosicion(-1, 0);
                         }
@@ -137,7 +135,7 @@ public class ControladorPartida extends Controlador {
                             panel.girarHacia("Derecha");
 
                             if (panel.vehiculoMoviendose() == false) {
-                                panel.verificarSiHuboCambioDeVehiculo(juego.getInstance().getPartida().getVehiculo().asString(), "Derecha");
+                                panel.verificarSiHuboCambioDeVehiculo(juego.getPartida().getVehiculo().asString(), "Derecha");
                             }
                             panel.nuevaPosicion(1, 0);
                         }
@@ -145,7 +143,7 @@ public class ControladorPartida extends Controlador {
                 }
             } catch (MovimientoInvalidoExcepcion ex) {
                 restarMovimientosDelPanel = false;
-                Logger.instance.log("A donde queres ir " + juego.getJugadorActual().getNickName() + " ?");
+                Logger.instance.log("A donde queres ir " + juego.getJugadorActual().getNombre() + " ?");
                 panelPartida.mostrarMensajeMovimientoInvalido();
             } catch (PartidaGanadaAviso ex) {
                 // System.out.print("EXCEPCION PARTIDA GANADA ATRAPADA.\n");
@@ -174,7 +172,7 @@ public class ControladorPartida extends Controlador {
     }
 
     private void calcularYGuardarPuntaje() {
-        String nombre = juego.getJugadorActual().getNickName();
+        String nombre = juego.getJugadorActual().getNombre();
         int movRestantes = juego.getPartida().getCantidadDeMovimientosDisponibles() - juego.getVehiculo().getCantidadDeMovimientos();
         Integer puntaje = movRestantes * juego.getPartida().getDificultad();
         try {

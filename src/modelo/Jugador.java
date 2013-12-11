@@ -1,8 +1,6 @@
 package modelo;
 
 import java.io.File;
-import java.util.*;
-
 import org.simpleframework.xml.*;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
@@ -26,7 +24,7 @@ public class Jugador {
         this.puntaje = puntaje;
     }
     
-    public String getNickName() {
+    public String getNombre() {
         return this.nombre;
     }
     
@@ -36,10 +34,6 @@ public class Jugador {
 	
 	public void sumarPuntaje(int puntaje) {
 		this.puntaje += puntaje;
-	}
-
-	public String getNombre(){
-		return this.nombre;
 	}
 	
 	public int getPuntaje(){
