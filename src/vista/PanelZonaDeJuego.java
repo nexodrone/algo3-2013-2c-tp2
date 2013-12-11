@@ -57,10 +57,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         this.posicionDeLlegada = partidaActual.getPosicionGanadora();
         this.posicionDeVehiculo = partidaActual.getVehiculo().getPosicion();
 
-        // System.out.println("Posicion del Vehiculo:" + posicionDeVehiculo.asString());
         vehiculo = partidaActual.getVehiculo().asString();
-        this.girarHacia("Derecha"); // por defecto el vehiculo siempre empieza mirando hacia
-                                    // laderecha
+        this.girarHacia("Derecha"); 
 
         this.cantidadAAA = 0;
         agregarTodasLasSorpresasALista();
@@ -77,41 +75,10 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
 
         zonaDeJuego = new TransparentPanel(radioClip);
         this.configurarTableroEnZonaDeJuego();
-        MouseListener ml = new MouseListener() {
-
-            @Override
-            public void mouseReleased(MouseEvent arg0) {
-                // area.append("Solto la etiqueta\n");
-            }
-
-            @Override
-            public void mousePressed(MouseEvent arg0) {
-                // area.append("Pulso la etiqueta\n");
-            }
-
-            @Override
-            public void mouseExited(MouseEvent arg0) {
-                // area.append("Salio de la etiqueta\n");
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent arg0) {
-                // area.append("Entro a la etiqueta\n");
-            }
-
-            @Override
-            public void mouseClicked(MouseEvent arg0) {
-                System.out.println("Posicion click:" + arg0.getX() + "," + arg0.getY());
-            }
-        };
-        this.addMouseListener(ml);
-
         this.add(zonaDeJuego);
     }
 
     public void paint(Graphics g) {
-        // System.out.println("paint");
-        // this.configurarTableroEnZonaDeJuego();
         if (dibujarTablero) {
             this.dibujarTablero();
             actionPerformed(null);
@@ -155,36 +122,30 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-        // System.out.println("actionPerformed");
         if (cantidadDePasos < cantidad) {
             x = (x + 2 * enX);
             y = (y + 2 * enY);
             cantidadDePasos = cantidadDePasos + 1;
             zonaDeJuego.setClipPos(x - posicionDelTableroX, y - posicionDelTableroY);
             repaint();
-            // System.out.print("pintando");
         } else {
-            timer.stop(); // paro de dibujar
+            timer.stop();
             cantidadDePasos = 0;
         }
     }
 
     public void configurarTableroEnZonaDeJuego() {
-        // System.out.println("configurarTableroEnZonaDeJuego");
         this.zonaDeJuego.setLayout(null);
         this.zonaDeJuego.setBounds(posicionDelTableroX, posicionDelTableroY, this.calcularAnchoPanelZonaDeJuego(), this.calcularLargoPanelZonaDeJuego());
         this.zonaDeJuego.setBackground(Color.lightGray);
     }
 
     public void dibujarTablero() {
-        // System.out.println("dibujarTablero");
         dibujarTablero = false;
         int constanteFila = 0;
         int constanteColumna = 1;
         int posicionX = 0;
         int posicionY = 0;
-        // System.out.println("Tamanio del tablero:" + tableroActual.getCantidadDeColumnas() + "," +
-        // tableroActual.getCantidadDeFilas());
 
         for (int i = 0; i < tableroActual.getCantidadDeColumnas() + 1; i++) {
             for (int j = 0; j < tableroActual.getCantidadDeFilas() + 1; j++) {
@@ -265,13 +226,11 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public JLabel crearUnaManzana(int posX, int posY) {
-        // System.out.println("crearUnaManzana");
         JLabel manzana = new Manzana(posX, posY);
         return manzana;
     }
 
     public JLabel obtenerImagen(int posX, int posY, String figura, int valorEnX, int valorEnY) {
-        // System.out.println("CREANDO IMAGEN " + figura);
         JLabel obstaculo = new JLabel("");
         ImageIcon icono = new ImageIcon("src/vista/imagenes/" + figura + ".png");
         obstaculo.setIcon(icono);
@@ -280,33 +239,23 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public void nuevaPosicion(int x, int y) {
-        // System.out.println("nuevaPosicion");
-        // System.out.println("cantidadDePasos:" + cantidadDePasos);
-        // System.out.println("nuevaPosicion");
         if (this.seEstaMoviendo() == false) {
             enX = x;
             enY = y;
-            // cantidadDePasos = 0;
             timer.start();
         }
         this.cantidadAAA++;
     }
 
     public void girarHacia(String sentido) {
-        // System.out.println("girarHacia");
         if (!this.seEstaMoviendo()) {
-            System.out.println("-------------------------------");
             String direccion = "/vista/imagenes/" + vehiculo + "/" + vehiculo + sentido + ".png";
             ImageIcon imagenVehiculo = new ImageIcon(this.getClass().getResource(direccion));
             star = imagenVehiculo.getImage();
             star = star.getScaledInstance(18, 18, 1);
             Posicion posicion = Juego.getInstance().getVehiculo().getPosicion();
-            System.out.println("Posicion en el modelo:" + posicion.asString());
-            System.out.println("sentido de giro" + sentido);
             Posicion unaPosicion = this.obtenerPosicionAnterior(sentido);
-            System.out.println("lo que tiro posicion anterior" + unaPosicion.asString());
             String unaDireccion = this.pasarSentidoADireccion(sentido);
-            System.out.println("la direccion" + unaDireccion);
             this.sacarSorpresa(unaPosicion, unaDireccion);
         }
     }
@@ -361,57 +310,39 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     private boolean seEstaMoviendo() {
-        // System.out.println("seEstaMoviendo");
-        // System.out.println("cantidad de paso" + cantidadDePasos);
         if (cantidadDePasos < cantidad && cantidadDePasos > 0) {
-            // System.out.println("Si se esta moviendo");
             return true;
         }
         return false;
     }
 
     public int centrarEnX() {
-        // System.out.println("centrarEnX");
         if (((anchoDePanel - (tableroActual.getCantidadDeColumnas() + 1) * longitudManzana * 2) / 2) < 0) {
             return 0;
         } else {
             int algo = (anchoDePanel - (tableroActual.getCantidadDeColumnas() + 1) * longitudManzana * 2) / 2;
-            // System.out.println("algo:" + algo);
             return algo;
         }
     }
 
     public int centrarEnY() {
-        // System.out.println("centrarEnY");
-        // System.out.println("Tamaño del tablero:" + tableroActual.getCantidadDeColumnas() + "," +
-        // tableroActual.getCantidadDeFilas());
         if (((largoDePanel - (tableroActual.getCantidadDeFilas() + 1) * longitudManzana * 2) / 2) < 0) {
             return 0;
         } else {
             int algo = (this.largoDePanel - (tableroActual.getCantidadDeFilas() + 1) * this.longitudManzana * 2) / 2;
-            // System.out.println("algo:" + algo);
-
             return algo;
         }
     }
 
     public int posicionInicialDeVehiculoEnX(Posicion posicion) {
-        // System.out.println("posicionInicialVehiculoEnX");
-        // System.out.println("pos X en el modelo:" + posicionDeVehiculo.x());
         int posicionInicialVehiculoEnX = posicion.x();
         int nuevaPosicionX = longitudManzana + posicionInicialVehiculoEnX * 2 * longitudManzana;
-        // System.out.println("posicion X :" + nuevaPosicionX);
-
         return nuevaPosicionX;
     }
 
     public int posicionInicialDeVehiculoEnY(Posicion posicion) {
-        // System.out.println("posicionInicialVehiculoEnY");
-        // System.out.println("pos Y en el modelo:" + posicionDeVehiculo.y());
-
         int posicionInicialVehiculoEnY = posicion.y();
         int nuevaPosicionY = longitudManzana + posicionInicialVehiculoEnY * 2 * longitudManzana;
-        // System.out.println("posicion Y :" + nuevaPosicionY);
         return nuevaPosicionY;
     }
 
@@ -420,37 +351,25 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public int calcularAnchoPanelZonaDeJuego() {
-        // System.out.println("calcularAnchoPanelZonaDeJuego");
-
         int algo = this.tableroActual.getCantidadDeColumnas() * this.longitudManzana * 2 + longitudManzana;
         return algo;
     }
 
     public int calcularLargoPanelZonaDeJuego() {
-        // System.out.println("calcularLargoPanelZonaDeJuego");
         int algo = this.tableroActual.getCantidadDeFilas() * this.longitudManzana * 2 + longitudManzana;
         return algo;
     }
 
     public void calcularPosicionVehiculoVista() {
-        // System.out.println("calcularPosicionVehiculoVista");
-        // int posicionDelTableroX = (anchoDePanel - this.calcularAnchoPanelZonaDeJuego()) / 2;
-        // int posicionTableroX = posicionDelTableroX;
-        // int posicionDelTableroY = (largoDePanel - this.calcularLargoPanelZonaDeJuego()) / 2;
-        // int posicionTableroY = posicionDelTableroY;
-        // System.out.println("posicionDelTablero X:" + posicionDelTableroX);
-        // System.out.println("posicionDelTablero Y:" + posicionDelTableroY);
         System.out.println("PosicionDeVehiculo" + this.posicionDeVehiculo.asString());
         x = this.posicionInicialDeVehiculoEnX(this.posicionDeVehiculo) + posicionDelTableroX + 1;
         y = largoDePanel - posicionDelTableroY - this.posicionInicialDeVehiculoEnY(this.posicionDeVehiculo) - 18 - longitudManzana - 1;
     }
 
     public void asignarValoresInicialesMovimientos() {
-        // System.out.println("asignarValoresInicialesMovimientos");
-
         cantidadDePasos = 0;
-        paso = 2; // que cada pasa se mueva 2 pixeles
-        distancia = 40; // distancia = anchoManzana
+        paso = 2; 
+        distancia = 40; 
         cantidad = (distancia / paso);
     }
 
@@ -465,7 +384,6 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
                 listaDeSorpresas.remove(i);
             }
         }
-
     }
 
     public void sacarSorpresa(Posicion posicion, String sentido) {
