@@ -25,7 +25,6 @@ public class Juego {
         try {
             jugadoresVacio.guardar(path_jugadores);
         } catch (Exception e) {
-            System.out.print("Error al creaar puntajes.\n");
         }
     }
 
@@ -75,11 +74,9 @@ public class Juego {
 
     public void verificarEstadoDelJugador() throws PartidaGanadaAviso, PartidaPerdidaAviso {
         if (partidaActual.esGanada()) {
-            System.out.print("Jugador gano el nivel. \n");
             throw new PartidaGanadaAviso();
         }
         if (partidaActual.esPerdida()) {
-            System.out.print("Jugador pi{erde el nivel. \n");
             throw new PartidaPerdidaAviso();
         }
     }
@@ -97,8 +94,6 @@ public class Juego {
     		throws MovimientoInvalidoExcepcion, PartidaGanadaAviso, PartidaPerdidaAviso {
     	
         Posicion nuevaPosicion = partidaActual.getVehiculo().calcularSiguientePosicion(direccion);
-        System.out.println("jugarEnDireccion");
-        System.out.println(nuevaPosicion.asString());
         if (partidaActual.getTablero().posicionValida(nuevaPosicion)) {
             Bocacalle bocacalleActual = partidaActual.getTablero().getBocacalleEnPosicion(partidaActual.getVehiculo().getPosicion());
             Calle calleATransitar = bocacalleActual.getCalleEnDireccion(direccion);
