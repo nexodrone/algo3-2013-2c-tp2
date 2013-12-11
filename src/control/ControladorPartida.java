@@ -3,7 +3,6 @@ package control;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.util.EventListener;
 
 import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
@@ -13,6 +12,7 @@ import javax.swing.KeyStroke;
 
 import modelo.Direccion;
 import modelo.Juego;
+import modelo.Posicion;
 import modelo.avisos.PartidaGanadaAviso;
 import modelo.avisos.PartidaPerdidaAviso;
 import modelo.excepciones.CalleBloqueadaPorPiqueteExcepcion;
@@ -21,7 +21,6 @@ import modelo.excepciones.NoHayUsuariosCreadosException;
 import modelo.excepciones.UsuarioInexistenteException;
 import vista.PanelPartida;
 import vista.PanelZonaDeJuego;
-import vista.Ventana;
 
 public class ControladorPartida extends Controlador {
 
@@ -66,7 +65,7 @@ public class ControladorPartida extends Controlador {
             ControladorMenuPrincipal contolador = new ControladorMenuPrincipal();
         }
     }
-    
+
     private void agregarEscuchaFlechas() {
         InputMap mapaDeEntrada = this.panelPartida.getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW);
         ActionMap mapaDeAcciones = this.panelPartida.getActionMap();
@@ -95,76 +94,82 @@ public class ControladorPartida extends Controlador {
             String vehiculoAntesDeMover = Juego.getInstance().getPartida().getVehiculo().asString();
             boolean restarMovimientosDelPanel = true;
             try {
-            	 switch (accion) {
-                 case "UpArrow": 
-                    if(panel.vehiculoMoviendose()==false){
-                 	juego.realizarJugadaEnDireccion(norte);
-                     panel.girarHacia("Arriba");
-                     if (panel.vehiculoMoviendose()==false){
-                     panel.verificarSiHuboCambioDeVehiculo(juego.getInstance().getPartida().getVehiculo().asString(), "Arriba");
-                     }
-                     panel.nuevaPosicion(0, -1);
-                    	}
-                     break;
-                    
-                 case "DownArrow": 
-                     if(panel.vehiculoMoviendose()==false){
-                 	juego.realizarJugadaEnDireccion(sur);
-                     panel.girarHacia("Abajo");
-                     if (panel.vehiculoMoviendose()==false){
-                     panel.verificarSiHuboCambioDeVehiculo(juego.getInstance().getPartida().getVehiculo().asString(), "Abajo");
-                     }
-                     panel.nuevaPosicion(0, 1);
-                     }
-                     break;
-                 case "LeftArrow": 
-                     if(panel.vehiculoMoviendose()==false){
-                 	juego.realizarJugadaEnDireccion(oeste);
-                     panel.girarHacia("Izquierda");
-                    if (panel.vehiculoMoviendose()==false){
-                     panel.verificarSiHuboCambioDeVehiculo(juego.getInstance().getPartida().getVehiculo().asString(), "Izquierda");
-                    }
-                     panel.nuevaPosicion(-1, 0);
-                     }
-                     break;
-                 case "RightArrow": 
-                 	if(panel.vehiculoMoviendose() == false){
-                 	juego.realizarJugadaEnDireccion(este);
-                     panel.girarHacia("Derecha");
-                     if (panel.vehiculoMoviendose()==false){
-                     panel.verificarSiHuboCambioDeVehiculo(juego.getInstance().getPartida().getVehiculo().asString(), "Derecha");
-                     }
-                     panel.nuevaPosicion(1, 0);
-                 	}
-                     break;
-             }
+                switch (accion) {
+                    case "UpArrow":
+                        if (panel.vehiculoMoviendose() == false) {
+                            System.out.println("Posicion antes de moverse" + juego.getVehiculo().getPosicion().asString());
+                            juego.realizarJugadaEnDireccion(norte);
+                            panel.girarHacia("Arriba");
+                            if (panel.vehiculoMoviendose() == false) {
+                                panel.verificarSiHuboCambioDeVehiculo(juego.getInstance().getPartida().getVehiculo().asString(), "Arriba");
+                            }
+                            panel.nuevaPosicion(0, -1);
+                        }
+                        break;
+
+                    case "DownArrow":
+                        if (panel.vehiculoMoviendose() == false) {
+                            System.out.println("Posicion antes de moverse" + juego.getVehiculo().getPosicion().asString());
+                            juego.realizarJugadaEnDireccion(sur);
+                            panel.girarHacia("Abajo");
+                            if (panel.vehiculoMoviendose() == false) {
+                                panel.verificarSiHuboCambioDeVehiculo(juego.getInstance().getPartida().getVehiculo().asString(), "Abajo");
+                            }
+                            panel.nuevaPosicion(0, 1);
+                        }
+                        break;
+                    case "LeftArrow":
+                        if (panel.vehiculoMoviendose() == false) {
+                            System.out.println("Posicion antes de moverse" + juego.getVehiculo().getPosicion().asString());
+                            Posicion posicion = juego.getVehiculo().getPosicion();
+                            juego.realizarJugadaEnDireccion(oeste);
+                            panel.girarHacia("Izquierda");
+                            if (panel.vehiculoMoviendose() == false) {
+                                panel.verificarSiHuboCambioDeVehiculo(juego.getInstance().getPartida().getVehiculo().asString(), "Izquierda");
+                            }
+                            panel.nuevaPosicion(-1, 0);
+                        }
+                        break;
+                    case "RightArrow":
+                        if (panel.vehiculoMoviendose() == false) {
+                            System.out.println("Posicion antes de moverse" + juego.getVehiculo().getPosicion().asString());
+                            juego.realizarJugadaEnDireccion(este);
+                            panel.girarHacia("Derecha");
+
+                            if (panel.vehiculoMoviendose() == false) {
+                                panel.verificarSiHuboCambioDeVehiculo(juego.getInstance().getPartida().getVehiculo().asString(), "Derecha");
+                            }
+                            panel.nuevaPosicion(1, 0);
+                        }
+                        break;
+                }
             } catch (MovimientoInvalidoExcepcion ex) {
-            	restarMovimientosDelPanel = false;
-            	Logger.instance.log("A donde queres ir " + juego.getJugadorActual().getNickName() +" ?");
+                restarMovimientosDelPanel = false;
+                Logger.instance.log("A donde queres ir " + juego.getJugadorActual().getNickName() + " ?");
                 panelPartida.mostrarMensajeMovimientoInvalido();
             } catch (PartidaGanadaAviso ex) {
-                //System.out.print("EXCEPCION PARTIDA GANADA ATRAPADA.\n");
+                // System.out.print("EXCEPCION PARTIDA GANADA ATRAPADA.\n");
                 panelPartida.mostrarMensajePartidaGanada();
                 calcularYGuardarPuntaje();
                 ventana.remove(panelPartida);
                 ControladorMenuPrincipal contolador = new ControladorMenuPrincipal();
             } catch (PartidaPerdidaAviso ex) {
-                //System.out.print("EXCEPCION PARTIDA PERDIDA ATRAPADA.\n");
+                // System.out.print("EXCEPCION PARTIDA PERDIDA ATRAPADA.\n");
                 panelPartida.mostrarMensajePartidaPerdida();
                 ventana.remove(panelPartida);
                 ControladorMenuPrincipal contolador = new ControladorMenuPrincipal();
             } catch (CalleBloqueadaPorPiqueteExcepcion error) {
-            	restarMovimientosDelPanel = false;
+                restarMovimientosDelPanel = false;
                 panelPartida.mostrarMensajeNoPodesMoverte();
-                //panelPartida.escribirEnElLog("Cuidado! Calle bloqueada por Castells...");
+                // panelPartida.escribirEnElLog("Cuidado! Calle bloqueada por Castells...");
             }
-            if ( restarMovimientosDelPanel )
-            	panelPartida.actualizarMovimientosDelPanel(juego.getPartida().getVehiculo().getCantidadDeMovimientos(), juego.getPartida().dificultad);
-           
-           String vehiculoDespuesDeMover = juego.getPartida().getVehiculo().asString();
-           if ( vehiculoAntesDeMover.compareTo(vehiculoDespuesDeMover) == 0) {
-        	   panelPartida.actualizarLabelVechiulo(vehiculoDespuesDeMover);
-           }
+            if (restarMovimientosDelPanel)
+                panelPartida.actualizarMovimientosDelPanel(juego.getPartida().getVehiculo().getCantidadDeMovimientos(), juego.getPartida().dificultad);
+
+            String vehiculoDespuesDeMover = juego.getPartida().getVehiculo().asString();
+            if (vehiculoAntesDeMover.compareTo(vehiculoDespuesDeMover) == 0) {
+                panelPartida.actualizarLabelVechiulo(vehiculoDespuesDeMover);
+            }
         }
     }
 
