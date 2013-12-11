@@ -18,7 +18,7 @@ public class ControladorElegirVehiculo extends Controlador {
 	}
 	
 	private void agregarPanelLocal(String nivelSeleccionado) {
-		this.panelElegirVehiculo = new PanelElegirVehiculo(nivelSeleccionado, juego.getJugadorActual().getNombre());
+		this.panelElegirVehiculo = new PanelElegirVehiculo(nivelSeleccionado);
 		this.panelElegirVehiculo.agregarEscuchaVolver(new EscuchaVolver());
 		this.panelElegirVehiculo.agregarEscuchaAceptar(new EscuchaComenzarPartida());
 		ventana.add(panelElegirVehiculo);

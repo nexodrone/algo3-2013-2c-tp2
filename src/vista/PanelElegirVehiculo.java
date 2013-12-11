@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
+
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -14,6 +15,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
+import modelo.Juego;
+
 public class PanelElegirVehiculo extends JPanel {
 	
 	private Boton botonAceptar = new Boton("Aceptar");
@@ -21,13 +24,13 @@ public class PanelElegirVehiculo extends JPanel {
 	private PanelImgBtn panelConImagenesYBotones = new PanelImgBtn();
 	private String nivel;
 	
-	public PanelElegirVehiculo(String nivelSeleccionado, String nombre) {
+	public PanelElegirVehiculo(String nivelSeleccionado) {
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		this.setPreferredSize(new Dimension(1000,650));
 		this.setBackground(new Color(255,255,255,200));
 		this.nivel = nivelSeleccionado;
 		
-		JLabel nombreUsuario = new JLabel(nombre);
+		JLabel nombreUsuario = new JLabel(Juego.getInstance().getJugadorActual().getNombre());
 		nombreUsuario.setAlignmentX(CENTER_ALIGNMENT);
 		JLabel seleVeh = new JLabel("Por favor seleccione vehiculo");
 		seleVeh.setAlignmentX(CENTER_ALIGNMENT);

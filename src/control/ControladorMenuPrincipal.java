@@ -18,7 +18,7 @@ public class ControladorMenuPrincipal extends Controlador {
     }
 
     private void agregarPanelLocal() {
-        this.panelMenuPrincipal = new PanelMenuPrincipal(juego.getJugadorActual().getNombre());
+        this.panelMenuPrincipal = new PanelMenuPrincipal();
         this.panelMenuPrincipal.agregarEscuchaComenzarPartida(new EscuchaComenzarPartida());
         this.panelMenuPrincipal.agregarEscuchaSalir(new EscuchaSalir());
         this.panelMenuPrincipal.agregarEscuchaVerPuntajes(new EscuchaPuntajes());

@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
+
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -14,18 +15,20 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
+import modelo.Juego;
+
 public class PanelElegirNivel extends JPanel {
 
 	private Boton botonAceptar = new Boton("Aceptar");
 	private Boton botonVolver = new Boton("Volver");
 	private PanelImgBtn panelConImagenesYBotones = new PanelImgBtn();
 
-	public PanelElegirNivel(String nombre) {
+	public PanelElegirNivel() {
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		this.setPreferredSize(new Dimension(1000,650));
 		this.setBackground(new Color(255,255,255,200));
 		
-		JLabel nombreUsuario = new JLabel(nombre);
+		JLabel nombreUsuario = new JLabel(Juego.getInstance().getJugadorActual().getNombre());
 		nombreUsuario.setAlignmentX(CENTER_ALIGNMENT);
 		JLabel seleDif = new JLabel("Por favor seleccione dificultad");
 		seleDif.setAlignmentX(CENTER_ALIGNMENT);

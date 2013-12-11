@@ -88,11 +88,11 @@ public class ControladorUsuarioNuevo extends Controlador {
                     try {
     					juego.crearUsuario(nombre);
     				} catch (UsuarioExistenteException e1) {
-    					System.out.print("Usuario existente.\n");
+    					//System.out.print("Usuario existente.\n");
     					panelUsuarioNuevo.mostrarMensajeNombreNoDisponible();
     					completo = false;
     				} catch (NoHayUsuariosCreadosException e1) {
-    					System.out.print("No existe archivo de puntajes.\n");
+    					//System.out.print("No existe archivo de puntajes.\n");
     					juego.inicializarPuntajes();
     					panelUsuarioNuevo.mostrarMensajeNoExisteArchivoDePuntajes();
     					completo = false;

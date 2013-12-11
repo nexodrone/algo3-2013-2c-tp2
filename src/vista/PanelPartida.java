@@ -43,12 +43,12 @@ public class PanelPartida extends JPanel {
     private int anchoZonaDelJuego = 870; //ideal = 860
     private int largoZonaDelJuego = 610; //ideal = 580
 
-    public PanelPartida(String nombre, Partida partida) {
+    public PanelPartida(Partida partida) {
         this.setLayout(new FlowLayout());
         this.setPreferredSize(new Dimension(1180, 680));
         this.setBackground(new Color(255, 255, 255, 200));
         
-        JLabel nombreUsuario = new JLabel("Jugador:  " + nombre);
+        JLabel nombreUsuario = new JLabel("Jugador:  " + Juego.getInstance().getJugadorActual().getNombre());
         nombreUsuario.setAlignmentX(CENTER_ALIGNMENT);
         
         JLabel dificultad = new JLabel("Dificultad:  " + recuperarStringDeDificultad(partida.dificultad));
