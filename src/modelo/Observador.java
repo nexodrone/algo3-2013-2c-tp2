@@ -4,7 +4,7 @@ public class Observador {
     private static Observador INSTANCE = null;
     private Juego juego;
 
-    // Private constructor suppresses
+    /* Private constructor suppresses */
     private Observador() {
         juego = Juego.getInstance();
     }

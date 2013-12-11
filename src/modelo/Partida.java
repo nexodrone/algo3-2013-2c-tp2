@@ -33,10 +33,6 @@ public class Partida {
 	public Tablero getTablero() {
 		return this.tablero;
 	}
-	
-	public int getDificultad() {
-		return dificultad;
-	}
 
 	public Vehiculo getVehiculo() {
 		return this.vehiculo;

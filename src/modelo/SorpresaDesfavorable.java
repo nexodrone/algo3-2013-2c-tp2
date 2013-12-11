@@ -10,17 +10,17 @@ public class SorpresaDesfavorable extends Sorpresa {
 
     public void interactuarCon(Vehiculo4x4 vehiculo) {
         vehiculo.aplicarPorcentajeAMovimientos(porcentaje);
-        Logger.instance.log("Desfavorable! Se te sumaron el %25 de tus movimientos realizados...");
+        Logger.instance.log("Desfavorable! +%25 a los movimientos.");
     }
 
     public void interactuarCon(VehiculoAuto vehiculo) {
         vehiculo.aplicarPorcentajeAMovimientos(porcentaje);
-        Logger.instance.log("Desfavorable! Se te sumaron el %25 de tus movimientos realizados...");
+        Logger.instance.log("Desfavorable! +%25 a los movimientos.");
     }
 
     public void interactuarCon(VehiculoMoto vehiculo) {
         vehiculo.aplicarPorcentajeAMovimientos(porcentaje);
-        Logger.instance.log("Desfavorable! Se te sumaron el %25 de tus movimientos realizados...");
+        Logger.instance.log("Desfavorable! +%25 a los movimientos.");
     }
 
 }
