@@ -53,8 +53,7 @@ public class PanelPuntajes extends JPanel {
 	
 	class Render implements TableCellRenderer {
         public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
-                boolean hasFocus, int row, int column) {
-            /* Si values es nulo dara problemas de renderizado, por lo tanto se pone como vacio */
+            boolean hasFocus, int row, int column) {
             JLabel lbl = new JLabel(value == null? "": value.toString());
             lbl.setHorizontalAlignment(SwingConstants.CENTER);
             lbl.setForeground(Color.BLACK);

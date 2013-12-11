@@ -10,7 +10,6 @@ public class SorpresaCambioDeVehiculo extends Sorpresa {
 
     public SorpresaCambioDeVehiculo() {
         observador = Observador.getInstance();
-
     }
 
     public void interactuarCon(VehiculoMoto vehiculo) {
