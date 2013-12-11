@@ -17,14 +17,14 @@ public class PanelPuntajes extends JPanel {
 	
 	private JTable tabla;
 	private Boton botonVolver = new Boton("Volver");
-	private JLabel etiqueta = new JLabel("Puntajes de jugadores registrados");
 
 	public PanelPuntajes(ArrayList<Jugador> puntajesOrdenados) {
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		this.setPreferredSize(new Dimension(300,600));
 		this.setBackground(new Color(255,255,255,200));
 		
-		this.etiqueta.setAlignmentX(CENTER_ALIGNMENT);
+		JLabel etiqueta = new JLabel("Puntajes de jugadores registrados");
+		etiqueta.setAlignmentX(CENTER_ALIGNMENT);
 		this.botonVolver.setAlignmentX(CENTER_ALIGNMENT);
 		TablaDePuntajes tablaModelo = new TablaDePuntajes(puntajesOrdenados);
 		this.tabla = new JTable(tablaModelo);
@@ -54,10 +54,10 @@ public class PanelPuntajes extends JPanel {
 	class Render implements TableCellRenderer {
         public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
                 boolean hasFocus, int row, int column) {
-            //Si values es nulo dara problemas de renderizado, por lo tanto se pone como vacio
+            /* Si values es nulo dara problemas de renderizado, por lo tanto se pone como vacio */
             JLabel lbl = new JLabel(value == null? "": value.toString());
-            lbl.setHorizontalAlignment(SwingConstants.CENTER); //alina a laizquierda
-            lbl.setForeground(Color.BLACK);  //fuente azul
+            lbl.setHorizontalAlignment(SwingConstants.CENTER);
+            lbl.setForeground(Color.BLACK);
             lbl.setOpaque(false);
             return lbl;
         }

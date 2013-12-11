@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import javax.swing.ActionMap;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -16,10 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.KeyStroke;
 
-import control.Listener;
 import control.Logger;
 import modelo.Juego;
 import modelo.Partida;
@@ -28,9 +25,6 @@ public class PanelPartida extends JPanel {
 
     private Boton botonGuardar = new Boton("Guardar");
     private Boton botonVolver = new Boton("Volver");
-
-    private JLabel nombreUsuario;
-    private JLabel dificultad;
 
     private JLabel vehiculoActual = new JLabel();
     private int movimientosLimites;
@@ -51,11 +45,11 @@ public class PanelPartida extends JPanel {
         this.setPreferredSize(new Dimension(1180, 680));
         this.setBackground(new Color(255, 255, 255, 200));
         
-        this.nombreUsuario = new JLabel("Jugador:  " + nombre);
-        this.nombreUsuario.setAlignmentX(CENTER_ALIGNMENT);
+        JLabel nombreUsuario = new JLabel("Jugador:  " + nombre);
+        nombreUsuario.setAlignmentX(CENTER_ALIGNMENT);
         
-        this.dificultad = new JLabel("Dificultad:  " + recuperarStringDeDificultad(partida.dificultad));
-        this.dificultad.setAlignmentX(CENTER_ALIGNMENT);
+        JLabel dificultad = new JLabel("Dificultad:  " + recuperarStringDeDificultad(partida.dificultad));
+        dificultad.setAlignmentX(CENTER_ALIGNMENT);
 
         this.vehiculoActual = new JLabel("Vehiculo:  " + partida.getVehiculo().asString());
         this.vehiculoActual.setAlignmentX(CENTER_ALIGNMENT);
@@ -81,8 +75,6 @@ public class PanelPartida extends JPanel {
         
 		this.panelZonaDelJuego = new PanelZonaDeJuego(partida);
         this.inicializarZonaDelJuego();
-		
-        //this.logPartida.setAlignmentX(CENTER_ALIGNMENT);
         
         Logger.instance.addListener(logPartida);
         this.scroll = new JScrollPane(logPartida);
@@ -91,9 +83,9 @@ public class PanelPartida extends JPanel {
         this.scroll.setAlignmentX(CENTER_ALIGNMENT);
         
         panelInfo.add(Box.createVerticalStrut(10));
-        panelInfo.add(this.nombreUsuario);
+        panelInfo.add(nombreUsuario);
         panelInfo.add(Box.createVerticalStrut(10));
-        panelInfo.add(this.dificultad);
+        panelInfo.add(dificultad);
         panelInfo.add(Box.createVerticalStrut(10));
         panelInfo.add(this.vehiculoActual);
         panelInfo.add(Box.createVerticalStrut(10));

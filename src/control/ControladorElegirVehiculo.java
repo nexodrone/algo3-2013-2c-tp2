@@ -23,7 +23,6 @@ public class ControladorElegirVehiculo extends Controlador {
 		this.panelElegirVehiculo.agregarEscuchaAceptar(new EscuchaComenzarPartida());
 		ventana.add(panelElegirVehiculo);
 	}
-
 	
 	public class EscuchaVolver implements ActionListener {
         @Override
@@ -32,7 +31,6 @@ public class ControladorElegirVehiculo extends Controlador {
             ControladorElegirNivel contolador = new ControladorElegirNivel();
         }
     }
-	
 
 	public class EscuchaComenzarPartida implements ActionListener {
 		@Override

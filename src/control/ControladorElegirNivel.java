@@ -42,6 +42,5 @@ public class ControladorElegirNivel extends Controlador {
 			}
 		}
 	}
-
 	
 }
