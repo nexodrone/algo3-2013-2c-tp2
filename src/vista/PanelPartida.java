@@ -10,6 +10,7 @@ import java.awt.event.KeyListener;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.InputMap;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -31,9 +32,11 @@ public class PanelPartida extends JPanel {
     private JLabel movimientosLimitesLabel;
     private JLabel movimientosActualesLabel;
     private JLabel puntajeLabel;
+    private JLabel vehiculoActualImagen = new JLabel();
 
     private PanelZonaDeJuego panelZonaDelJuego;
     private JPanel panelDeControl = new JPanel();
+    private JPanel panelInfo = new JPanel();
     private LogPartida logPartida = new LogPartida();
     private JScrollPane scroll;
 
@@ -64,38 +67,45 @@ public class PanelPartida extends JPanel {
         this.puntajeLabel.setAlignmentX(CENTER_ALIGNMENT);
         this.actualizarMovimientosDelPanel(partida.getVehiculo().getCantidadDeMovimientos(), partida.dificultad);
         
+		ImageIcon iconoVehiculo = new ImageIcon("src/vista/imagenes/Menu" + partida.getVehiculo().asString() + ".jpg");
+		this.vehiculoActualImagen.setIcon(iconoVehiculo);
+		this.vehiculoActualImagen.setPreferredSize(new Dimension(250,200));
+		this.vehiculoActualImagen.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		this.vehiculoActualImagen.setAlignmentX(CENTER_ALIGNMENT);
+        
         this.panelDeControl.setPreferredSize(new Dimension(250,610));
         this.panelDeControl.setLayout(new BoxLayout(panelDeControl, BoxLayout.PAGE_AXIS));
         this.panelDeControl.setBackground(new Color(0,0,0,0));
         
-        JPanel panelInfo = new JPanel();
-        panelInfo.setMaximumSize(new Dimension(250,500));
-        panelInfo.setLayout(new BoxLayout(panelInfo, BoxLayout.PAGE_AXIS));
-        panelInfo.setBackground(Color.WHITE);
+        this.panelInfo.setMaximumSize(new Dimension(250,500));
+        this.panelInfo.setLayout(new BoxLayout(panelInfo, BoxLayout.PAGE_AXIS));
+        this.panelInfo.setBackground(Color.WHITE);
         
 		this.panelZonaDelJuego = new PanelZonaDeJuego(partida);
         this.inicializarZonaDelJuego();
         
         Logger.instance.addListener(logPartida);
         this.scroll = new JScrollPane(logPartida);
-        this.scroll.setPreferredSize(new Dimension(240,200));
+        this.scroll.setPreferredSize(new Dimension(250,100));
         this.scroll.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         this.scroll.setAlignmentX(CENTER_ALIGNMENT);
         
-        panelInfo.add(Box.createVerticalStrut(10));
-        panelInfo.add(nombreUsuario);
-        panelInfo.add(Box.createVerticalStrut(10));
-        panelInfo.add(dificultad);
-        panelInfo.add(Box.createVerticalStrut(10));
-        panelInfo.add(this.vehiculoActual);
-        panelInfo.add(Box.createVerticalStrut(10));
-        panelInfo.add(this.movimientosLimitesLabel);
-        panelInfo.add(Box.createVerticalStrut(10));
-        panelInfo.add(this.movimientosActualesLabel);
-        panelInfo.add(Box.createVerticalStrut(10));
-        panelInfo.add(this.puntajeLabel);
-        panelInfo.add(Box.createVerticalStrut(20));
-        panelInfo.add(scroll);
+        this.panelInfo.add(Box.createVerticalStrut(10));
+        this.panelInfo.add(nombreUsuario);
+        this.panelInfo.add(Box.createVerticalStrut(5));
+        this.panelInfo.add(dificultad);
+        this.panelInfo.add(Box.createVerticalStrut(5));
+        this.panelInfo.add(this.vehiculoActual);
+        this.panelInfo.add(Box.createVerticalStrut(5));
+        this.panelInfo.add(this.movimientosLimitesLabel);
+        this.panelInfo.add(Box.createVerticalStrut(5));
+        this.panelInfo.add(this.movimientosActualesLabel);
+        this.panelInfo.add(Box.createVerticalStrut(5));
+        this.panelInfo.add(this.puntajeLabel);
+        this.panelInfo.add(Box.createVerticalStrut(10));
+        this.panelInfo.add(vehiculoActualImagen);
+        this.panelInfo.add(Box.createVerticalStrut(10));
+        this.panelInfo.add(scroll);
         
         this.panelDeControl.add(panelInfo);
         this.panelDeControl.add(Box.createVerticalStrut(20));
@@ -144,8 +154,11 @@ public class PanelPartida extends JPanel {
     }
     
 	public void actualizarLabelVechiulo(String vehiculoDespuesDeMover) {
-		vehiculoActual.setText("Vehiculo:   " + vehiculoDespuesDeMover);
-		vehiculoActual.validate();
+		this.vehiculoActual.setText("Vehiculo:   " + vehiculoDespuesDeMover);
+		this.vehiculoActual.validate();
+		ImageIcon iconoVehiculo = new ImageIcon("src/vista/imagenes/Menu" + vehiculoDespuesDeMover + ".jpg");
+		this.vehiculoActualImagen.setIcon(iconoVehiculo);
+		this.panelInfo.repaint();
 	}
     
     private String recuperarStringDeDificultad(int dificultad) {
@@ -187,4 +200,5 @@ public class PanelPartida extends JPanel {
         JOptionPane.showMessageDialog(this, "Hay piquete", "Aaaaa", JOptionPane.ERROR_MESSAGE);
 
     }
+
 }
