@@ -18,7 +18,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import modelo.Bocacalle;
 import modelo.Direccion;
 import modelo.Obstaculo;
 import modelo.Partida;
@@ -107,7 +106,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         this.add(zonaDeJuego);
     }
 
-	public void paint(Graphics g) {
+    public void paint(Graphics g) {
         // System.out.println("paint");
         // this.configurarTableroEnZonaDeJuego();
 
@@ -118,24 +117,24 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         }
         super.paint(g);
         Graphics2D grafico2D = (Graphics2D) g;
-        //SE DIBUJA LAS SORPRESAS EN TABLERO
+        // SE DIBUJA LAS SORPRESAS EN TABLERO
         for (int i = 0; i < this.listaDeSorpresas.size(); i++) {
-            	ElementoDeTablero unElementoDeTablero = listaDeSorpresas.get(i);
-            	Image imagen = unElementoDeTablero.getImagen();
-            	Posicion posicionDeElemento = unElementoDeTablero.getPosicion();
-            	String direccion = unElementoDeTablero.getDireccion();
-            	grafico2D.drawImage(imagen, this.calcularPosicionDeElementoEnX(posicionDeElemento,direccion,0), this.calcularPosicionDeELementoEnY(posicionDeElemento, direccion,0), this);
+            ElementoDeTablero unElementoDeTablero = listaDeSorpresas.get(i);
+            Image imagen = unElementoDeTablero.getImagen();
+            Posicion posicionDeElemento = unElementoDeTablero.getPosicion();
+            String direccion = unElementoDeTablero.getDireccion();
+            grafico2D.drawImage(imagen, this.calcularPosicionDeElementoEnX(posicionDeElemento, direccion, 0), this.calcularPosicionDeELementoEnY(posicionDeElemento, direccion, 0), this);
         }
-        //SE DIBUJA LOS OBSTACULOS EN TABLERO
+        // SE DIBUJA LOS OBSTACULOS EN TABLERO
         for (int j = 0; j < this.listaDeObstaculos.size(); j++) {
-        	ElementoDeTablero unElementoDeTablero = listaDeObstaculos.get(j);
-        	Image imagenObstaculo = unElementoDeTablero.getImagen();
-        	Posicion posicionDeObstaculo = unElementoDeTablero.getPosicion();
-        	String direccion = unElementoDeTablero.getDireccion();
-        	grafico2D.drawImage(imagenObstaculo, this.calcularPosicionDeElementoEnX(posicionDeObstaculo,direccion,-10), this.calcularPosicionDeELementoEnY(posicionDeObstaculo, direccion,-10), this);
-    }
-        
-        
+            ElementoDeTablero unElementoDeTablero = listaDeObstaculos.get(j);
+            Image imagenObstaculo = unElementoDeTablero.getImagen();
+            Posicion posicionDeObstaculo = unElementoDeTablero.getPosicion();
+            String direccion = unElementoDeTablero.getDireccion();
+            grafico2D
+                    .drawImage(imagenObstaculo, this.calcularPosicionDeElementoEnX(posicionDeObstaculo, direccion, -10), this.calcularPosicionDeELementoEnY(posicionDeObstaculo, direccion, -10), this);
+        }
+
         grafico2D.drawImage(star, x, y, this);
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
@@ -189,68 +188,68 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         this.zonaDeJuego.add(meta);
     }
 
-    public void  agregarTodasLasSorpresasALista(){
+    public void agregarTodasLasSorpresasALista() {
         Direccion sur = new Direccion(0, -1);
         Direccion oeste = new Direccion(-1, 0);
-    	for(int i=0; i < this.tableroActual.getCantidadDeColumnas();i++){
-    		for(int j=0; j < this.tableroActual.getCantidadDeFilas();j++){
-    			Posicion posicionActual = new Posicion(i,j);  
-    			if (this.tableroActual.getBocacalleEnPosicion(posicionActual).getCalleEnDireccion(sur).getSorpresa() != null) {
-    				 Image imagenSorpresaSur = this.obtenerImagen("sorpresa");
-    				 ElementoDeTablero unElementoDeTablero = new ElementoDeTablero(imagenSorpresaSur,posicionActual,"sur");
-    				 this.listaDeSorpresas.add(unElementoDeTablero);
-                  	}
-    			if (this.tableroActual.getBocacalleEnPosicion(posicionActual).getCalleEnDireccion(oeste).getSorpresa() != null) {
-    				 Image imagenSorpresaOeste = this.obtenerImagen("sorpresa");
-    				 ElementoDeTablero otroElementoDeTablero = new ElementoDeTablero(imagenSorpresaOeste,posicionActual,"oeste");
-    				 this.listaDeSorpresas.add(otroElementoDeTablero);
-                	}    			
-    		}
-    	}
+        for (int i = 0; i < this.tableroActual.getCantidadDeColumnas(); i++) {
+            for (int j = 0; j < this.tableroActual.getCantidadDeFilas(); j++) {
+                Posicion posicionActual = new Posicion(i, j);
+                if (this.tableroActual.getBocacalleEnPosicion(posicionActual).getCalleEnDireccion(sur).getSorpresa() != null) {
+                    Image imagenSorpresaSur = this.obtenerImagen("sorpresa");
+                    ElementoDeTablero unElementoDeTablero = new ElementoDeTablero(imagenSorpresaSur, posicionActual, "sur");
+                    this.listaDeSorpresas.add(unElementoDeTablero);
+                }
+                if (this.tableroActual.getBocacalleEnPosicion(posicionActual).getCalleEnDireccion(oeste).getSorpresa() != null) {
+                    Image imagenSorpresaOeste = this.obtenerImagen("sorpresa");
+                    ElementoDeTablero otroElementoDeTablero = new ElementoDeTablero(imagenSorpresaOeste, posicionActual, "oeste");
+                    this.listaDeSorpresas.add(otroElementoDeTablero);
+                }
+            }
+        }
     }
 
     private void agregarTodosLosObstaculosALista() {
         Direccion sur = new Direccion(0, -1);
         Direccion oeste = new Direccion(-1, 0);
-    	
-        for(int i=0; i < this.tableroActual.getCantidadDeColumnas();i++){
-    		for(int j=0; j < this.tableroActual.getCantidadDeFilas();j++){
-    			Posicion posicionActual = new Posicion(i,j);  
-    	
-    			if (this.tableroActual.getBocacalleEnPosicion(posicionActual).getCalleEnDireccion(sur).getObstaculo() != null) { 
-    					Image imagenSorpresaSur = this.obtenerImagenObtstaculo(tableroActual.getBocacalleEnPosicion(posicionActual).getCalleEnDireccion(sur).getObstaculo());
-    					ElementoDeTablero unElementoDeTablero = new ElementoDeTablero(imagenSorpresaSur,posicionActual,"sur");
-    					this.listaDeObstaculos.add(unElementoDeTablero);
-                  	}
-    			if (this.tableroActual.getBocacalleEnPosicion(posicionActual).getCalleEnDireccion(oeste).getObstaculo() != null) {
-    				 Image imagenSorpresaOeste = this.obtenerImagenObtstaculo(tableroActual.getBocacalleEnPosicion(posicionActual).getCalleEnDireccion(oeste).getObstaculo());
-    				 ElementoDeTablero otroElementoDeTablero = new ElementoDeTablero(imagenSorpresaOeste,posicionActual,"oeste");
-    				 this.listaDeObstaculos.add(otroElementoDeTablero);
-                	}    			
-    		}
-    	}
- 	}
-    
-    public int calcularPosicionDeElementoEnX(Posicion posicion, String direccion, int corrimientoX){
-    	if(direccion == "sur"){
-    		int posicionSorpresaSurX = longitudManzana + posicion.x() * 2 * longitudManzana + this.centrarEnX();
-    		return posicionSorpresaSurX;
-    	}else{
-    		 int posicionSorpresaOesteX = longitudManzana + posicion.x() * 2 * longitudManzana - 10 + this.centrarEnX() + corrimientoX;
-    		 return posicionSorpresaOesteX;
-    	}
+
+        for (int i = 0; i < this.tableroActual.getCantidadDeColumnas(); i++) {
+            for (int j = 0; j < this.tableroActual.getCantidadDeFilas(); j++) {
+                Posicion posicionActual = new Posicion(i, j);
+
+                if (this.tableroActual.getBocacalleEnPosicion(posicionActual).getCalleEnDireccion(sur).getObstaculo() != null) {
+                    Image imagenSorpresaSur = this.obtenerImagenObtstaculo(tableroActual.getBocacalleEnPosicion(posicionActual).getCalleEnDireccion(sur).getObstaculo());
+                    ElementoDeTablero unElementoDeTablero = new ElementoDeTablero(imagenSorpresaSur, posicionActual, "sur");
+                    this.listaDeObstaculos.add(unElementoDeTablero);
+                }
+                if (this.tableroActual.getBocacalleEnPosicion(posicionActual).getCalleEnDireccion(oeste).getObstaculo() != null) {
+                    Image imagenSorpresaOeste = this.obtenerImagenObtstaculo(tableroActual.getBocacalleEnPosicion(posicionActual).getCalleEnDireccion(oeste).getObstaculo());
+                    ElementoDeTablero otroElementoDeTablero = new ElementoDeTablero(imagenSorpresaOeste, posicionActual, "oeste");
+                    this.listaDeObstaculos.add(otroElementoDeTablero);
+                }
+            }
+        }
     }
-    
-    public int calcularPosicionDeELementoEnY(Posicion posicion, String direccion,int corrimientoY){
-    	if(direccion == "sur"){
-    		int posicionSorpresaSurY = this.posicionDeUnObjetoEnY(posicion) + 30 + this.centrarEnY() + corrimientoY;
-    		return posicionSorpresaSurY;
-    	}else{
-    		int posicionSorpresaOesteY = this.posicionDeUnObjetoEnY(posicion) + this.centrarEnY();
-    		return posicionSorpresaOesteY;
-    	}
+
+    public int calcularPosicionDeElementoEnX(Posicion posicion, String direccion, int corrimientoX) {
+        if (direccion == "sur") {
+            int posicionSorpresaSurX = longitudManzana + posicion.x() * 2 * longitudManzana + this.centrarEnX();
+            return posicionSorpresaSurX;
+        } else {
+            int posicionSorpresaOesteX = longitudManzana + posicion.x() * 2 * longitudManzana - 10 + this.centrarEnX() + corrimientoX;
+            return posicionSorpresaOesteX;
+        }
     }
-    
+
+    public int calcularPosicionDeELementoEnY(Posicion posicion, String direccion, int corrimientoY) {
+        if (direccion == "sur") {
+            int posicionSorpresaSurY = this.posicionDeUnObjetoEnY(posicion) + 30 + this.centrarEnY() + corrimientoY;
+            return posicionSorpresaSurY;
+        } else {
+            int posicionSorpresaOesteY = this.posicionDeUnObjetoEnY(posicion) + this.centrarEnY();
+            return posicionSorpresaOesteY;
+        }
+    }
+
     public JLabel crearUnaManzana(int posX, int posY) {
         // System.out.println("crearUnaManzana");
         JLabel manzana = new Manzana(posX, posY);
@@ -286,47 +285,68 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
             ImageIcon imagenVehiculo = new ImageIcon(this.getClass().getResource(direccion));
             star = imagenVehiculo.getImage();
             star = star.getScaledInstance(18, 18, 1);
+            System.out.println("Posicion en el modelo despues de moverse:" + this.posicionDeVehiculo.asString());
+            System.out.println("sentido de giro" + sentido);
+            Posicion unaPosicion = this.posicionDeVehiculo;
+            System.out.println("lo que tiro posicion anterior" + unaPosicion.asString());
+            String unaDireccion = this.pasarSentidoADireccion(sentido);
+            System.out.println("la direccion" + unaDireccion);
+            this.sacarSorpresa(unaPosicion, unaDireccion);
         }
     }
 
-    
-      public void verificarSiHuboCambioDeVehiculo(String vehiculoEnPartida,String sentido){
-      if(vehiculo != vehiculoEnPartida){ 
-    	this.vehiculo= vehiculoEnPartida;
-    	  String direccion = "/vista/imagenes/" + vehiculo +"/" + vehiculo + sentido + ".png";
-    	 ImageIcon imagenVehiculo = new
-    	ImageIcon(this.getClass().getResource(direccion));
-    	 star = imagenVehiculo.getImage(); 
-    	 star =	star.getScaledInstance(18, 18, 1); 
-      }
-      }
-     
+    private Posicion obtenerPosicionAnterior(String sentido) {
+        Posicion unaPosicion = this.posicionDeVehiculo.copy();
+        if (sentido == "Derecha") {
+            unaPosicion.incrementarX(-1);
+        }
+        if (sentido == "Izquierda") {
+            unaPosicion.incrementarX(1);
+        }
+
+        if (sentido == "Arriba") {
+            unaPosicion.incrementarY(-1);
+        }
+
+        unaPosicion.incrementarY(1);
+        return unaPosicion;
+    }
+
+    public void verificarSiHuboCambioDeVehiculo(String vehiculoEnPartida, String sentido) {
+        if (vehiculo != vehiculoEnPartida) {
+            this.vehiculo = vehiculoEnPartida;
+            String direccion = "/vista/imagenes/" + vehiculo + "/" + vehiculo + sentido + ".png";
+            ImageIcon imagenVehiculo = new ImageIcon(this.getClass().getResource(direccion));
+            star = imagenVehiculo.getImage();
+            star = star.getScaledInstance(18, 18, 1);
+        }
+    }
 
     public Image obtenerImagen(String elemento) {
-        String direccion = "/vista/imagenes/"+ elemento +".png";
+        String direccion = "/vista/imagenes/" + elemento + ".png";
         ImageIcon imagenVehiculo = new ImageIcon(this.getClass().getResource(direccion));
         Image prueba = imagenVehiculo.getImage().getScaledInstance(10, 10, 1);
         return prueba;
     }
-    
-    public Image obtenerImagenObtstaculo(Obstaculo obstaculo){
-    	if(obstaculo.asString() == "ObstaculoPiquete"){
-    			Image imagenPiquete = obtenerImagen("obstaculoPiquete");
-    			return imagenPiquete;
-    	}else if(obstaculo.asString() == "ObstaculoControlPolicial"){
-    			Image imagenControlPolicial = obtenerImagen("obstaculoControlPolicial");
-    			return imagenControlPolicial;
-    	}else{
-    			Image imagenObstaculoPozo = obtenerImagen("obstaculoPozo");
-    			return imagenObstaculoPozo;
-    	}
+
+    public Image obtenerImagenObtstaculo(Obstaculo obstaculo) {
+        if (obstaculo.asString() == "ObstaculoPiquete") {
+            Image imagenPiquete = obtenerImagen("obstaculoPiquete");
+            return imagenPiquete;
+        } else if (obstaculo.asString() == "ObstaculoControlPolicial") {
+            Image imagenControlPolicial = obtenerImagen("obstaculoControlPolicial");
+            return imagenControlPolicial;
+        } else {
+            Image imagenObstaculoPozo = obtenerImagen("obstaculoPozo");
+            return imagenObstaculoPozo;
+        }
     }
 
     private boolean seEstaMoviendo() {
-        System.out.println("seEstaMoviendo");
-        System.out.println("cantidad de paso" + cantidadDePasos);
+        // System.out.println("seEstaMoviendo");
+        // System.out.println("cantidad de paso" + cantidadDePasos);
         if (cantidadDePasos < cantidad && cantidadDePasos > 0) {
-            System.out.println("Si se esta moviendo");
+            // System.out.println("Si se esta moviendo");
             return true;
         }
         return false;
@@ -345,7 +365,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
 
     public int centrarEnY() {
         // System.out.println("centrarEnY");
-        System.out.println("Tamaño del tablero:" + tableroActual.getCantidadDeColumnas() + "," + tableroActual.getCantidadDeFilas());
+        // System.out.println("Tamaño del tablero:" + tableroActual.getCantidadDeColumnas() + "," +
+        // tableroActual.getCantidadDeFilas());
         if (((largoDePanel - (tableroActual.getCantidadDeFilas() + 1) * longitudManzana * 2) / 2) < 0) {
             return 0;
         } else {
@@ -416,6 +437,46 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
 
     public boolean vehiculoMoviendose() {
         return this.seEstaMoviendo();
+    }
+
+    private void sacarSorpresaEnPosicionYSentido(Posicion posicion, String sentido) {
+        for (int i = 0; i < this.listaDeSorpresas.size(); i++) {
+            ElementoDeTablero elemento = listaDeSorpresas.get(i);
+            if (elemento.getPosicion().equals(posicion) && elemento.getDireccion() == sentido) {
+                listaDeSorpresas.remove(i);
+            }
+        }
+
+    }
+
+    public void sacarSorpresa(Posicion posicion, String sentido) {
+        Posicion otraPosicion = posicion.copy();
+        if (sentido == "norte") {
+            sentido = "sur";
+            otraPosicion.incrementarY(1);
+        }
+        if (sentido == "este") {
+            sentido = "oeste";
+            otraPosicion.incrementarX(1);
+        }
+        this.sacarSorpresaEnPosicionYSentido(otraPosicion, sentido);
+    }
+
+    public String pasarSentidoADireccion(String sentido) {
+        String direccion = "";
+        if (sentido == "Arriba") {
+            direccion = "norte";
+        }
+        if (sentido == "Abajo") {
+            direccion = "sur";
+        }
+        if (sentido == "Derecha") {
+            direccion = "este";
+        }
+        if (sentido == "Izquierda") {
+            direccion = "oeste";
+        }
+        return direccion;
     }
 
     // CLASE PARA EL CIRCULO CLIP
