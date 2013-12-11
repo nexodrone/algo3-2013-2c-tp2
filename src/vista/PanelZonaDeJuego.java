@@ -249,7 +249,6 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     		int posicionSorpresaOesteY = this.posicionDeUnObjetoEnY(posicion) + this.centrarEnY();
     		return posicionSorpresaOesteY;
     	}
-    	
     }
     
     public JLabel crearUnaManzana(int posX, int posY) {
@@ -290,13 +289,17 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         }
     }
 
-    /*
-     * public void verificarSiHuboCambioDeVehiculo(String vehiculoEnPartida,String sentido){
-     * if(vehiculo != vehiculoEnPartida){ String direccion = "/vista/imagenes/" + vehiculoEnPartida+
-     * "/" + vehiculoEnPartida + sentido + ".png"; ImageIcon imagenVehiculo = new
-     * ImageIcon(this.getClass().getResource(direccion)); star = imagenVehiculo.getImage(); star =
-     * star.getScaledInstance(18, 18, 1); } }
-     */
+    
+      public void verificarSiHuboCambioDeVehiculo(String vehiculoEnPartida,String sentido){
+      if(vehiculo != vehiculoEnPartida){ 
+    	this.vehiculo= vehiculoEnPartida;
+    	  String direccion = "/vista/imagenes/" + vehiculoEnPartida+"/" + vehiculoEnPartida + sentido + ".png";
+    	  ImageIcon imagenVehiculo = new
+    	ImageIcon(this.getClass().getResource(direccion)); star = imagenVehiculo.getImage(); star =
+    	star.getScaledInstance(18, 18, 1); 
+      }
+      }
+     
 
     public Image obtenerImagen(String elemento) {
         String direccion = "/vista/imagenes/"+ elemento +".png";
