@@ -62,7 +62,6 @@ public class Tablero {
     }
 
     public boolean posicionValida(Posicion posicion) {
-        System.out.println("Posicion a Verificar:" + posicion.asString());
         if ((posicion.x() < 0) || (posicion.x() >= cantidadDeColumnas) || (posicion.y() < 0) || (posicion.y() >= cantidadDeFilas))
             return false;
         return true;

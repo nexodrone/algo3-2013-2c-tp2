@@ -64,7 +64,6 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         agregarTodasLasSorpresasALista();
         agregarTodosLosObstaculosALista();
         setDoubleBuffered(true);
-        // setFocusable(true);
         posicionDelTableroX = this.centrarEnX();
         posicionDelTableroY = this.centrarEnY();
         this.calcularPosicionVehiculoVista();
