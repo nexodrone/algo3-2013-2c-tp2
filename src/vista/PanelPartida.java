@@ -75,7 +75,7 @@ public class PanelPartida extends JPanel {
         this.panelDeControl.setBackground(new Color(0,0,0,0));
         
         JPanel panelInfo = new JPanel();
-        panelInfo.setPreferredSize(new Dimension(250,550));
+        panelInfo.setMaximumSize(new Dimension(250,500));
         panelInfo.setLayout(new BoxLayout(panelInfo, BoxLayout.PAGE_AXIS));
         panelInfo.setBackground(Color.WHITE);
         
@@ -86,7 +86,7 @@ public class PanelPartida extends JPanel {
         
         Logger.instance.addListener(logPartida);
         this.scroll = new JScrollPane(logPartida);
-        this.scroll.setMaximumSize(new Dimension(250,200));
+        this.scroll.setPreferredSize(new Dimension(240,200));
         this.scroll.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         this.scroll.setAlignmentX(CENTER_ALIGNMENT);
         
