@@ -174,7 +174,7 @@ public class ControladorPartida extends Controlador {
     private void calcularYGuardarPuntaje() {
         String nombre = juego.getJugadorActual().getNombre();
         int movRestantes = juego.getPartida().getCantidadDeMovimientosDisponibles() - juego.getVehiculo().getCantidadDeMovimientos();
-        Integer puntaje = movRestantes * juego.getPartida().getDificultad();
+        Integer puntaje = movRestantes * juego.getPartida().dificultad;
         try {
             juego.guardarPuntaje(nombre, puntaje);
         } catch (UsuarioInexistenteException | NoHayUsuariosCreadosException e) {

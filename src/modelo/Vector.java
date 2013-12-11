@@ -39,7 +39,7 @@ public class Vector {
         y = y + incremento;
     }
 
-    /* ese metodo era creado para comprobar mas facilmente las posiciones de vehiculos */
+    /* ese metodo era creado para comprobar facilmente las posiciones de vehiculos */
     public String asString() {
         String stringY, stringX;
         stringX = String.valueOf(this.x);

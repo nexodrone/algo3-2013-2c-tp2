@@ -11,8 +11,8 @@ import modelo.excepciones.NoHayUsuariosCreadosException;
 import modelo.excepciones.UsuarioExistenteException;
 import modelo.excepciones.UsuarioInexistenteException;
 
-@Root( name = "ListaDeJugadores")
-public class Jugadores {
+	@Root( name = "ListaDeJugadores")
+	public class Jugadores {
 	@ElementList(name = "jugadores")
 	private ArrayList<Jugador> jugadores;
 	
@@ -40,7 +40,7 @@ public class Jugadores {
 	}
 	
 	public ArrayList<Jugador> getPuntajesOrdenados() {
-		Collections.sort( jugadores, new PorPuntaje() );
+		Collections.sort( jugadores, new ComparadorPorPuntaje() );
 		return jugadores;
 	}
 	
@@ -69,6 +69,7 @@ public class Jugadores {
 		Serializer ser = new Persister();
 		ser.write(this, new File(path));
 	}
+	
 	public static Jugadores recuperar (String path) throws NoHayUsuariosCreadosException {
 		Serializer ser = new Persister();
 		try{
@@ -77,4 +78,13 @@ public class Jugadores {
 			throw new NoHayUsuariosCreadosException();
 		}
 	}
+	
+	private class ComparadorPorPuntaje implements Comparator<Jugador>{
+		
+		public int compare(Jugador e1, Jugador e2) {
+			return e2.getPuntaje() - e1.getPuntaje();
+		}
+	}
+	
+	
 }

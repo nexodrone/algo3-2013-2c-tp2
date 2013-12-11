@@ -1,14 +1,8 @@
 package modeloTests;
 
-import static org.junit.Assert.*;
-
-import java.util.*;
-
-import modelo.Juego;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import modelo.Jugador;
-import modelo.PorPuntaje;
-import modelo.PorPuntaje;
-
 import org.junit.Test;
 
 public class JugadorTest {
