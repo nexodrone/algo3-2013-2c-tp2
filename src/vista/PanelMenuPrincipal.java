@@ -3,8 +3,10 @@ package vista;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
+
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -15,19 +17,25 @@ public class PanelMenuPrincipal extends JPanel {
 	private Boton botonRetomarPartida = new Boton("Retomar partida guardada");
 	private Boton botonVerPuntajes = new Boton("Ver puntajes");
 	private Boton botonSalir = new Boton("Salir");
-	private JLabel nombreUsuario;
 	
 	public PanelMenuPrincipal(String nombre) {
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		this.setPreferredSize(new Dimension(300,400));
 		this.setBackground(new Color(255,255,255,200));
 		
-		this.nombreUsuario = new JLabel("Hola "+nombre); 
-		this.nombreUsuario.setAlignmentX(CENTER_ALIGNMENT);
+		JLabel nombreUsuario = new JLabel("Hola " + nombre); 
+		nombreUsuario.setAlignmentX(CENTER_ALIGNMENT);
+		JLabel logo = new JLabel();
+		logo.setPreferredSize(new Dimension(250,30));
+		logo.setAlignmentX(CENTER_ALIGNMENT);
+        ImageIcon logoIcono = new ImageIcon("src/vista/imagenes/logo.png");
+        logo.setIcon(logoIcono);
 
 		this.add(Box.createVerticalStrut(15));
 		this.add(nombreUsuario);
-		this.add(Box.createVerticalStrut(70));
+		this.add(Box.createVerticalStrut(20));
+		this.add(logo);
+		this.add(Box.createVerticalStrut(20));
 		this.add(botonComenzarPartida);
 		this.add(Box.createVerticalStrut(20));
 		this.add(botonRetomarPartida);

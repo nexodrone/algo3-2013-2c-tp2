@@ -7,17 +7,18 @@ import modelo.Nivel;
 import modelo.Partida;
 import vista.PanelElegirVehiculo;
 
-public class ControladorElegirVehiculo extends Controlador{
+public class ControladorElegirVehiculo extends Controlador {
+	
 	private PanelElegirVehiculo panelElegirVehiculo;
 	
-	public ControladorElegirVehiculo(String nivelSeleccionado){
+	public ControladorElegirVehiculo(String nivelSeleccionado) {
 		 this.agregarPanelLocal(nivelSeleccionado);
 	     ventana.pack();
 	     ventana.repaint();
 	}
 	
 	private void agregarPanelLocal(String nivelSeleccionado) {
-		this.panelElegirVehiculo = new PanelElegirVehiculo(nivelSeleccionado);
+		this.panelElegirVehiculo = new PanelElegirVehiculo(nivelSeleccionado, juego.getJugadorActual().getNombre());
 		this.panelElegirVehiculo.agregarEscuchaVolver(new EscuchaVolver());
 		this.panelElegirVehiculo.agregarEscuchaAceptar(new EscuchaComenzarPartida());
 		ventana.add(panelElegirVehiculo);

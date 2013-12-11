@@ -13,7 +13,6 @@ import javax.swing.JTextField;
 
 public class PanelUsuarioNuevo extends JPanel {
 
-	private JLabel introNom = new JLabel("Por favor introduzca su nombre");
 	private Boton botonVolver = new Boton("Volver");
 	private Boton botonGuardar = new Boton("Guardar");
 	private JTextField nombre = new JTextField();
@@ -23,7 +22,8 @@ public class PanelUsuarioNuevo extends JPanel {
 		this.setPreferredSize(new Dimension(300,400));
 		this.setBackground(new Color(255,255,255,200));
 		
-		this.introNom.setAlignmentX(CENTER_ALIGNMENT);
+		JLabel introNom = new JLabel("Por favor introduzca su nombre");
+		introNom.setAlignmentX(CENTER_ALIGNMENT);
 		this.nombre.setMaximumSize(new Dimension(200,20));
 		this.nombre.setAlignmentX(CENTER_ALIGNMENT);
 

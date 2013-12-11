@@ -18,21 +18,25 @@ public class PanelElegirVehiculo extends JPanel {
 	
 	private Boton botonAceptar = new Boton("Aceptar");
 	private Boton botonVolver = new Boton("Volver");
-	private JLabel etiqueta = new JLabel("Por favor seleccione vehiculo");
 	private PanelImgBtn panelConImagenesYBotones = new PanelImgBtn();
 	private String nivel;
 	
-	public PanelElegirVehiculo(String nivelSeleccionado) {
+	public PanelElegirVehiculo(String nivelSeleccionado, String nombre) {
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-		this.setPreferredSize(new Dimension(1000,600));
+		this.setPreferredSize(new Dimension(1000,650));
 		this.setBackground(new Color(255,255,255,200));
 		this.nivel = nivelSeleccionado;
 		
-		this.etiqueta.setAlignmentX(CENTER_ALIGNMENT);
+		JLabel nombreUsuario = new JLabel(nombre);
+		nombreUsuario.setAlignmentX(CENTER_ALIGNMENT);
+		JLabel seleVeh = new JLabel("Por favor seleccione vehiculo");
+		seleVeh.setAlignmentX(CENTER_ALIGNMENT);
 		this.panelConImagenesYBotones.setAlignmentX(CENTER_ALIGNMENT);
 
 		this.add(Box.createVerticalStrut(15));
-		this.add(etiqueta);
+		this.add(nombreUsuario);
+		this.add(Box.createVerticalStrut(15));
+		this.add(seleVeh);
 		this.add(Box.createVerticalStrut(20));
 		this.add(panelConImagenesYBotones);
 		this.add(Box.createVerticalStrut(20));
@@ -41,11 +45,11 @@ public class PanelElegirVehiculo extends JPanel {
 		this.add(botonVolver);
 	}
 
-	public void agregarEscuchaAceptar(ActionListener escuchaAceptar){
+	public void agregarEscuchaAceptar(ActionListener escuchaAceptar) {
 		this.botonAceptar.addActionListener(escuchaAceptar);
 	}
 
-	public void agregarEscuchaVolver(ActionListener escuchaVolver){
+	public void agregarEscuchaVolver(ActionListener escuchaVolver) {
 		this.botonVolver.addActionListener(escuchaVolver);
 	}
 
@@ -71,7 +75,7 @@ public class PanelElegirVehiculo extends JPanel {
 		return (panelConImagenesYBotones.bgroup.getSelection() == null);
 	}
 
-	public String obtenerNivelSeleccionado(){
+	public String obtenerNivelSeleccionado() {
 		return nivel;
 	}
 	
