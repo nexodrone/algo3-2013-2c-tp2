@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import modelo.Direccion;
+import modelo.Juego;
 import modelo.Obstaculo;
 import modelo.Partida;
 import modelo.Posicion;
@@ -52,6 +53,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         this.tableroActual = partidaActual.getTablero();
         this.posicionDeLlegada = partidaActual.getPosicionGanadora();
         this.posicionDeVehiculo = partidaActual.getVehiculo().getPosicion();
+
         // System.out.println("Posicion del Vehiculo:" + posicionDeVehiculo.asString());
         vehiculo = partidaActual.getVehiculo().asString();
         setBackground(Color.BLACK);
@@ -134,7 +136,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
             grafico2D
                     .drawImage(imagenObstaculo, this.calcularPosicionDeElementoEnX(posicionDeObstaculo, direccion, -10), this.calcularPosicionDeELementoEnY(posicionDeObstaculo, direccion, -10), this);
         }
-
+        System.out.println("x,y" + x + "," + y);
         grafico2D.drawImage(star, x, y, this);
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
@@ -281,13 +283,15 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     public void girarHacia(String sentido) {
         // System.out.println("girarHacia");
         if (!this.seEstaMoviendo()) {
+            System.out.println("-------------------------------");
             String direccion = "/vista/imagenes/" + vehiculo + "/" + vehiculo + sentido + ".png";
             ImageIcon imagenVehiculo = new ImageIcon(this.getClass().getResource(direccion));
             star = imagenVehiculo.getImage();
             star = star.getScaledInstance(18, 18, 1);
-            System.out.println("Posicion en el modelo despues de moverse:" + this.posicionDeVehiculo.asString());
+            Posicion posicion = Juego.getInstance().getVehiculo().getPosicion();
+            System.out.println("Posicion en el modelo:" + posicion.asString());
             System.out.println("sentido de giro" + sentido);
-            Posicion unaPosicion = this.posicionDeVehiculo;
+            Posicion unaPosicion = this.obtenerPosicionAnterior(sentido);
             System.out.println("lo que tiro posicion anterior" + unaPosicion.asString());
             String unaDireccion = this.pasarSentidoADireccion(sentido);
             System.out.println("la direccion" + unaDireccion);
@@ -296,7 +300,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     private Posicion obtenerPosicionAnterior(String sentido) {
-        Posicion unaPosicion = this.posicionDeVehiculo.copy();
+        Posicion unaPosicion = Juego.getInstance().getVehiculo().getPosicion().copy();
         if (sentido == "Derecha") {
             unaPosicion.incrementarX(-1);
         }
@@ -308,7 +312,9 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
             unaPosicion.incrementarY(-1);
         }
 
-        unaPosicion.incrementarY(1);
+        if (sentido == "Abajo") {
+            unaPosicion.incrementarY(1);
+        }
         return unaPosicion;
     }
 
@@ -422,6 +428,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         // int posicionTableroY = posicionDelTableroY;
         // System.out.println("posicionDelTablero X:" + posicionDelTableroX);
         // System.out.println("posicionDelTablero Y:" + posicionDelTableroY);
+        System.out.println("PosicionDeVehiculo" + this.posicionDeVehiculo.asString());
         x = this.posicionInicialDeVehiculoEnX(this.posicionDeVehiculo) + posicionDelTableroX + 1;
         y = largoDePanel - posicionDelTableroY - this.posicionInicialDeVehiculoEnY(this.posicionDeVehiculo) - 18 - longitudManzana - 1;
     }
