@@ -1,7 +1,16 @@
 <ListaDeJugadores>
    <jugadores>
-      <jugador nombre="Player1">
-         <puntaje>58</puntaje>
+      <jugador nombre="Nik">
+         <puntaje>0</puntaje>
+      </jugador>
+      <jugador nombre="Jorge">
+         <puntaje>0</puntaje>
+      </jugador>
+      <jugador nombre="Cristian">
+         <puntaje>0</puntaje>
+      </jugador>
+      <jugador nombre="Manuel">
+         <puntaje>0</puntaje>
       </jugador>
    </jugadores>
 </ListaDeJugadores>

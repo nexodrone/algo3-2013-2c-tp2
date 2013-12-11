@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import modelo.Juego;
+
 public class PanelMenuPrincipal extends JPanel {
 	
 	private Boton botonComenzarPartida= new Boton("Comenzar partida");
@@ -18,12 +20,12 @@ public class PanelMenuPrincipal extends JPanel {
 	private Boton botonVerPuntajes = new Boton("Ver puntajes");
 	private Boton botonSalir = new Boton("Salir");
 	
-	public PanelMenuPrincipal(String nombre) {
+	public PanelMenuPrincipal() {
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		this.setPreferredSize(new Dimension(300,400));
 		this.setBackground(new Color(255,255,255,200));
-		
-		JLabel nombreUsuario = new JLabel("Hola " + nombre); 
+
+		JLabel nombreUsuario = new JLabel("Hola " + Juego.getInstance().getJugadorActual().getNombre()); 
 		nombreUsuario.setAlignmentX(CENTER_ALIGNMENT);
 		JLabel logo = new JLabel();
 		logo.setPreferredSize(new Dimension(250,30));

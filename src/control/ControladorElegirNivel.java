@@ -16,7 +16,7 @@ public class ControladorElegirNivel extends Controlador {
 	}
 		
 	private void agregarPanelLocal() {
-		this.panelElegirNivel = new PanelElegirNivel(juego.getJugadorActual().getNombre());
+		this.panelElegirNivel = new PanelElegirNivel();
 		this.panelElegirNivel.agregarEscuchaVolver(new EscuchaVolver());
 		this.panelElegirNivel.agregarEscuchaAceptar(new EscuchaComenzarPartida());
 		ventana.add(panelElegirNivel);
