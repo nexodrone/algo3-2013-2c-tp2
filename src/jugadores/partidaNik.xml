@@ -1,591 +1,11 @@
-<Partida CantidadDeMovimientosDisponibles="100" Dificultad="3">
-   <Tablero cantidadDeColumnas="21" cantidadDeFilas="14">
+<Partida CantidadDeMovimientosDisponibles="35" Dificultad="1">
+   <Tablero cantidadDeColumnas="5" cantidadDeFilas="10">
       <Bocacalles>
          <columnaDeBocacalles>
             <columna>
                <Bocacalle>
-                  <calleNorte/>
-                  <calleSur>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleSur>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Sopresa class="modelo.SorpresaFavorable"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Sopresa class="modelo.SorpresaCambioDeVehiculo"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-            </columna>
-         </columnaDeBocacalles>
-         <columnaDeBocacalles>
-            <columna>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Sopresa class="modelo.SorpresaDesfavorable"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Sopresa class="modelo.SorpresaCambioDeVehiculo"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Sopresa class="modelo.SorpresaFavorable"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Sopresa class="modelo.SorpresaFavorable"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoPiquete"/>
-                  </calleEste>
-                  <calleOeste>
-                     <Sopresa class="modelo.SorpresaCambioDeVehiculo"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-            </columna>
-         </columnaDeBocacalles>
-         <columnaDeBocacalles>
-            <columna>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoControlPolicial"/>
-                  </calleEste>
-                  <calleOeste>
-                     <Sopresa class="modelo.SorpresaDesfavorable"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Sopresa class="modelo.SorpresaCambioDeVehiculo"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Sopresa class="modelo.SorpresaFavorable"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Sopresa class="modelo.SorpresaDesfavorable"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoPiquete"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleOeste>
-               </Bocacalle>
-            </columna>
-         </columnaDeBocacalles>
-         <columnaDeBocacalles>
-            <columna>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoControlPolicial"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Sopresa class="modelo.SorpresaFavorable"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Sopresa class="modelo.SorpresaDesfavorable"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoPiquete"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Sopresa class="modelo.SorpresaDesfavorable"/>
-                  </calleEste>
-                  <calleOeste>
-                     <Sopresa class="modelo.SorpresaDesfavorable"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoControlPolicial"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-            </columna>
-         </columnaDeBocacalles>
-         <columnaDeBocacalles>
-            <columna>
-               <Bocacalle>
                   <calleNorte>
-                     <Sopresa class="modelo.SorpresaCambioDeVehiculo"/>
-                  </calleNorte>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur>
-                     <Sopresa class="modelo.SorpresaCambioDeVehiculo"/>
-                  </calleSur>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoPiquete"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
                      <Sopresa class="modelo.SorpresaFavorable"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Sopresa class="modelo.SorpresaDesfavorable"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoPiquete"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Sopresa class="modelo.SorpresaDesfavorable"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoControlPolicial"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-            </columna>
-         </columnaDeBocacalles>
-         <columnaDeBocacalles>
-            <columna>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoPiquete"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte>
-                     <Obstaculo class="modelo.ObstaculoPiquete"/>
                   </calleNorte>
                   <calleSur/>
                   <calleEste/>
@@ -594,7 +14,7 @@
                <Bocacalle>
                   <calleNorte/>
                   <calleSur>
-                     <Obstaculo class="modelo.ObstaculoPiquete"/>
+                     <Sopresa class="modelo.SorpresaFavorable"/>
                   </calleSur>
                   <calleEste/>
                   <calleOeste/>
@@ -604,1284 +24,6 @@
                   <calleSur/>
                   <calleEste/>
                   <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleNorte>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleSur>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleOeste>
-               </Bocacalle>
-            </columna>
-         </columnaDeBocacalles>
-         <columnaDeBocacalles>
-            <columna>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte>
-                     <Sopresa class="modelo.SorpresaDesfavorable"/>
-                  </calleNorte>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur>
-                     <Sopresa class="modelo.SorpresaDesfavorable"/>
-                  </calleSur>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-            </columna>
-         </columnaDeBocacalles>
-         <columnaDeBocacalles>
-            <columna>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoControlPolicial"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte>
-                     <Sopresa class="modelo.SorpresaCambioDeVehiculo"/>
-                  </calleNorte>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur>
-                     <Sopresa class="modelo.SorpresaCambioDeVehiculo"/>
-                  </calleSur>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoPiquete"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Sopresa class="modelo.SorpresaCambioDeVehiculo"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoPiquete"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-            </columna>
-         </columnaDeBocacalles>
-         <columnaDeBocacalles>
-            <columna>
-               <Bocacalle>
-                  <calleNorte>
-                     <Sopresa class="modelo.SorpresaCambioDeVehiculo"/>
-                  </calleNorte>
-                  <calleSur/>
-                  <calleEste>
-                     <Sopresa class="modelo.SorpresaFavorable"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur>
-                     <Sopresa class="modelo.SorpresaCambioDeVehiculo"/>
-                  </calleSur>
-                  <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoControlPolicial"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoPiquete"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Sopresa class="modelo.SorpresaCambioDeVehiculo"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoControlPolicial"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoPiquete"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-            </columna>
-         </columnaDeBocacalles>
-         <columnaDeBocacalles>
-            <columna>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Sopresa class="modelo.SorpresaFavorable"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleNorte>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte>
-                     <Obstaculo class="modelo.ObstaculoPiquete"/>
-                  </calleNorte>
-                  <calleSur>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleSur>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur>
-                     <Obstaculo class="modelo.ObstaculoPiquete"/>
-                  </calleSur>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoControlPolicial"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleNorte>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleSur>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-            </columna>
-         </columnaDeBocacalles>
-         <columnaDeBocacalles>
-            <columna>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Sopresa class="modelo.SorpresaFavorable"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Sopresa class="modelo.SorpresaFavorable"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Sopresa class="modelo.SorpresaFavorable"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoControlPolicial"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte>
-                     <Sopresa class="modelo.SorpresaDesfavorable"/>
-                  </calleNorte>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur>
-                     <Sopresa class="modelo.SorpresaDesfavorable"/>
-                  </calleSur>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Sopresa class="modelo.SorpresaFavorable"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-            </columna>
-         </columnaDeBocacalles>
-         <columnaDeBocacalles>
-            <columna>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoPiquete"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Sopresa class="modelo.SorpresaFavorable"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte>
-                     <Obstaculo class="modelo.ObstaculoPiquete"/>
-                  </calleNorte>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur>
-                     <Obstaculo class="modelo.ObstaculoPiquete"/>
-                  </calleSur>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Sopresa class="modelo.SorpresaFavorable"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Sopresa class="modelo.SorpresaFavorable"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoControlPolicial"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoPiquete"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Sopresa class="modelo.SorpresaFavorable"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-            </columna>
-         </columnaDeBocacalles>
-         <columnaDeBocacalles>
-            <columna>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoPiquete"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte>
-                     <Obstaculo class="modelo.ObstaculoPiquete"/>
-                  </calleNorte>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur>
-                     <Obstaculo class="modelo.ObstaculoPiquete"/>
-                  </calleSur>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoPiquete"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-            </columna>
-         </columnaDeBocacalles>
-         <columnaDeBocacalles>
-            <columna>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoControlPolicial"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Sopresa class="modelo.SorpresaFavorable"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoControlPolicial"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Sopresa class="modelo.SorpresaFavorable"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Sopresa class="modelo.SorpresaFavorable"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-            </columna>
-         </columnaDeBocacalles>
-         <columnaDeBocacalles>
-            <columna>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Sopresa class="modelo.SorpresaFavorable"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoControlPolicial"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Sopresa class="modelo.SorpresaFavorable"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoControlPolicial"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoControlPolicial"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Sopresa class="modelo.SorpresaFavorable"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Sopresa class="modelo.SorpresaFavorable"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoPiquete"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Sopresa class="modelo.SorpresaFavorable"/>
-                  </calleOeste>
-               </Bocacalle>
-            </columna>
-         </columnaDeBocacalles>
-         <columnaDeBocacalles>
-            <columna>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Sopresa class="modelo.SorpresaFavorable"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleNorte>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleSur>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Sopresa class="modelo.SorpresaFavorable"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoPiquete"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoControlPolicial"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Sopresa class="modelo.SorpresaDesfavorable"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Sopresa class="modelo.SorpresaFavorable"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoPiquete"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-            </columna>
-         </columnaDeBocacalles>
-         <columnaDeBocacalles>
-            <columna>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Sopresa class="modelo.SorpresaFavorable"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoPiquete"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Sopresa class="modelo.SorpresaDesfavorable"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Sopresa class="modelo.SorpresaFavorable"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-            </columna>
-         </columnaDeBocacalles>
-         <columnaDeBocacalles>
-            <columna>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte>
-                     <Sopresa class="modelo.SorpresaDesfavorable"/>
-                  </calleNorte>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur>
-                     <Sopresa class="modelo.SorpresaDesfavorable"/>
-                  </calleSur>
-                  <calleEste>
-                     <Sopresa class="modelo.SorpresaDesfavorable"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Sopresa class="modelo.SorpresaFavorable"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-            </columna>
-         </columnaDeBocacalles>
-         <columnaDeBocacalles>
-            <columna>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Sopresa class="modelo.SorpresaDesfavorable"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleEste>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleOeste>
                </Bocacalle>
                <Bocacalle>
                   <calleNorte>
@@ -1909,158 +51,12 @@
                   <calleNorte/>
                   <calleSur/>
                   <calleEste/>
-                  <calleOeste>
-                     <Sopresa class="modelo.SorpresaDesfavorable"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
                   <calleOeste/>
                </Bocacalle>
                <Bocacalle>
                   <calleNorte/>
                   <calleSur/>
                   <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte>
-                     <Obstaculo class="modelo.ObstaculoPiquete"/>
-                  </calleNorte>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur>
-                     <Obstaculo class="modelo.ObstaculoPiquete"/>
-                  </calleSur>
-                  <calleEste>
-                     <Sopresa class="modelo.SorpresaDesfavorable"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte>
-                     <Obstaculo class="modelo.ObstaculoControlPolicial"/>
-                  </calleNorte>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur>
-                     <Obstaculo class="modelo.ObstaculoControlPolicial"/>
-                  </calleSur>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-            </columna>
-         </columnaDeBocacalles>
-         <columnaDeBocacalles>
-            <columna>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Sopresa class="modelo.SorpresaDesfavorable"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoPozo"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoControlPolicial"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Sopresa class="modelo.SorpresaCambioDeVehiculo"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoControlPolicial"/>
-                  </calleEste>
-                  <calleOeste/>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste>
-                     <Sopresa class="modelo.SorpresaDesfavorable"/>
-                  </calleOeste>
-               </Bocacalle>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste>
-                     <Obstaculo class="modelo.ObstaculoControlPolicial"/>
-                  </calleEste>
                   <calleOeste/>
                </Bocacalle>
                <Bocacalle>
@@ -2079,12 +75,6 @@
          </columnaDeBocacalles>
          <columnaDeBocacalles>
             <columna>
-               <Bocacalle>
-                  <calleNorte/>
-                  <calleSur/>
-                  <calleEste/>
-                  <calleOeste/>
-               </Bocacalle>
                <Bocacalle>
                   <calleNorte/>
                   <calleSur/>
@@ -2126,28 +116,44 @@
                   <calleOeste/>
                </Bocacalle>
                <Bocacalle>
-                  <calleNorte/>
+                  <calleNorte>
+                     <Obstaculo class="modelo.ObstaculoControlPolicial"/>
+                  </calleNorte>
                   <calleSur/>
                   <calleEste/>
-                  <calleOeste>
+                  <calleOeste/>
+               </Bocacalle>
+               <Bocacalle>
+                  <calleNorte/>
+                  <calleSur>
                      <Obstaculo class="modelo.ObstaculoControlPolicial"/>
-                  </calleOeste>
+                  </calleSur>
+                  <calleEste/>
+                  <calleOeste/>
                </Bocacalle>
                <Bocacalle>
                   <calleNorte/>
                   <calleSur/>
                   <calleEste/>
-                  <calleOeste>
-                     <Sopresa class="modelo.SorpresaCambioDeVehiculo"/>
-                  </calleOeste>
+                  <calleOeste/>
                </Bocacalle>
                <Bocacalle>
                   <calleNorte/>
                   <calleSur/>
                   <calleEste/>
-                  <calleOeste>
-                     <Obstaculo class="modelo.ObstaculoControlPolicial"/>
-                  </calleOeste>
+                  <calleOeste/>
+               </Bocacalle>
+            </columna>
+         </columnaDeBocacalles>
+         <columnaDeBocacalles>
+            <columna>
+               <Bocacalle>
+                  <calleNorte/>
+                  <calleSur>
+                     <Obstaculo class="modelo.ObstaculoPozo"/>
+                  </calleSur>
+                  <calleEste/>
+                  <calleOeste/>
                </Bocacalle>
                <Bocacalle>
                   <calleNorte>
@@ -2161,6 +167,182 @@
                   <calleNorte/>
                   <calleSur>
                      <Obstaculo class="modelo.ObstaculoPozo"/>
+                  </calleSur>
+                  <calleEste/>
+                  <calleOeste/>
+               </Bocacalle>
+               <Bocacalle>
+                  <calleNorte/>
+                  <calleSur/>
+                  <calleEste/>
+                  <calleOeste/>
+               </Bocacalle>
+               <Bocacalle>
+                  <calleNorte>
+                     <Obstaculo class="modelo.ObstaculoPozo"/>
+                  </calleNorte>
+                  <calleSur/>
+                  <calleEste/>
+                  <calleOeste/>
+               </Bocacalle>
+               <Bocacalle>
+                  <calleNorte/>
+                  <calleSur>
+                     <Obstaculo class="modelo.ObstaculoPozo"/>
+                  </calleSur>
+                  <calleEste/>
+                  <calleOeste/>
+               </Bocacalle>
+               <Bocacalle>
+                  <calleNorte/>
+                  <calleSur/>
+                  <calleEste/>
+                  <calleOeste/>
+               </Bocacalle>
+               <Bocacalle>
+                  <calleNorte>
+                     <Obstaculo class="modelo.ObstaculoControlPolicial"/>
+                  </calleNorte>
+                  <calleSur/>
+                  <calleEste/>
+                  <calleOeste/>
+               </Bocacalle>
+               <Bocacalle>
+                  <calleNorte/>
+                  <calleSur>
+                     <Obstaculo class="modelo.ObstaculoControlPolicial"/>
+                  </calleSur>
+                  <calleEste/>
+                  <calleOeste/>
+               </Bocacalle>
+               <Bocacalle>
+                  <calleNorte/>
+                  <calleSur/>
+                  <calleEste/>
+                  <calleOeste/>
+               </Bocacalle>
+            </columna>
+         </columnaDeBocacalles>
+         <columnaDeBocacalles>
+            <columna>
+               <Bocacalle>
+                  <calleNorte>
+                     <Obstaculo class="modelo.ObstaculoPozo"/>
+                  </calleNorte>
+                  <calleSur/>
+                  <calleEste/>
+                  <calleOeste/>
+               </Bocacalle>
+               <Bocacalle>
+                  <calleNorte/>
+                  <calleSur>
+                     <Obstaculo class="modelo.ObstaculoPozo"/>
+                  </calleSur>
+                  <calleEste/>
+                  <calleOeste/>
+               </Bocacalle>
+               <Bocacalle>
+                  <calleNorte/>
+                  <calleSur/>
+                  <calleEste/>
+                  <calleOeste/>
+               </Bocacalle>
+               <Bocacalle>
+                  <calleNorte/>
+                  <calleSur/>
+                  <calleEste/>
+                  <calleOeste/>
+               </Bocacalle>
+               <Bocacalle>
+                  <calleNorte/>
+                  <calleSur/>
+                  <calleEste/>
+                  <calleOeste/>
+               </Bocacalle>
+               <Bocacalle>
+                  <calleNorte/>
+                  <calleSur/>
+                  <calleEste/>
+                  <calleOeste/>
+               </Bocacalle>
+               <Bocacalle>
+                  <calleNorte/>
+                  <calleSur/>
+                  <calleEste/>
+                  <calleOeste/>
+               </Bocacalle>
+               <Bocacalle>
+                  <calleNorte/>
+                  <calleSur/>
+                  <calleEste>
+                     <Obstaculo class="modelo.ObstaculoControlPolicial"/>
+                  </calleEste>
+                  <calleOeste/>
+               </Bocacalle>
+               <Bocacalle>
+                  <calleNorte/>
+                  <calleSur/>
+                  <calleEste/>
+                  <calleOeste/>
+               </Bocacalle>
+               <Bocacalle>
+                  <calleNorte/>
+                  <calleSur/>
+                  <calleEste/>
+                  <calleOeste/>
+               </Bocacalle>
+            </columna>
+         </columnaDeBocacalles>
+         <columnaDeBocacalles>
+            <columna>
+               <Bocacalle>
+                  <calleNorte/>
+                  <calleSur/>
+                  <calleEste/>
+                  <calleOeste/>
+               </Bocacalle>
+               <Bocacalle>
+                  <calleNorte/>
+                  <calleSur/>
+                  <calleEste/>
+                  <calleOeste/>
+               </Bocacalle>
+               <Bocacalle>
+                  <calleNorte/>
+                  <calleSur/>
+                  <calleEste/>
+                  <calleOeste/>
+               </Bocacalle>
+               <Bocacalle>
+                  <calleNorte/>
+                  <calleSur/>
+                  <calleEste/>
+                  <calleOeste/>
+               </Bocacalle>
+               <Bocacalle>
+                  <calleNorte/>
+                  <calleSur/>
+                  <calleEste/>
+                  <calleOeste/>
+               </Bocacalle>
+               <Bocacalle>
+                  <calleNorte/>
+                  <calleSur/>
+                  <calleEste/>
+                  <calleOeste/>
+               </Bocacalle>
+               <Bocacalle>
+                  <calleNorte>
+                     <Obstaculo class="modelo.ObstaculoControlPolicial"/>
+                  </calleNorte>
+                  <calleSur/>
+                  <calleEste/>
+                  <calleOeste/>
+               </Bocacalle>
+               <Bocacalle>
+                  <calleNorte/>
+                  <calleSur>
+                     <Obstaculo class="modelo.ObstaculoControlPolicial"/>
                   </calleSur>
                   <calleEste/>
                   <calleOeste>
@@ -2183,12 +365,12 @@
          </columnaDeBocacalles>
       </Bocacalles>
    </Tablero>
-   <Vehiculo class="modelo.VehiculoAuto" cantidadDeMovimientos="16">
+   <Vehiculo class="modelo.VehiculoAuto" cantidadDeMovimientos="20">
       <posicionActual>
-         <coordenadas X="7" Y="13"/>
+         <coordenadas X="3" Y="7"/>
       </posicionActual>
    </Vehiculo>
    <PosicionGanadora>
-      <coordenadas X="0" Y="2"/>
+      <coordenadas X="3" Y="9"/>
    </PosicionGanadora>
 </Partida>
