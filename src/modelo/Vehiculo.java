@@ -77,12 +77,12 @@ public abstract class Vehiculo {
 
     public Posicion calcularSiguientePosicion(Direccion unaDireccion) {
         Posicion nuevaPosicion = this.posicion.copy();
-        System.out.println("calcularSiguientePosicion");
+       /* System.out.println("calcularSiguientePosicion");
         System.out.println("Posicion actual" + posicion.asString());
-        System.out.println("Direccion" + unaDireccion.x() + "," + unaDireccion.y());
+        System.out.println("Direccion" + unaDireccion.x() + "," + unaDireccion.y());*/
         nuevaPosicion.incrementarY(unaDireccion.y());
         nuevaPosicion.incrementarX(unaDireccion.x());
-        System.out.println("Nueva posicion" + nuevaPosicion.asString());
+        /*System.out.println("Nueva posicion" + nuevaPosicion.asString());*/
         return nuevaPosicion;
     }
 

@@ -48,7 +48,9 @@
                <Bocacalle>
                   <calleNorte/>
                   <calleSur/>
-                  <calleEste/>
+                  <calleEste>
+                     <Sopresa class="modelo.SorpresaCambioDeVehiculo"/>
+                  </calleEste>
                   <calleOeste/>
                </Bocacalle>
                <Bocacalle>
@@ -104,7 +106,9 @@
                <Bocacalle>
                   <calleNorte/>
                   <calleSur/>
-                  <calleEste/>
+                  <calleEste>
+                     <Obstaculo class="modelo.ObstaculoPozo"/>
+                  </calleEste>
                   <calleOeste/>
                </Bocacalle>
                <Bocacalle>
@@ -133,7 +137,9 @@
                   <calleNorte/>
                   <calleSur/>
                   <calleEste/>
-                  <calleOeste/>
+                  <calleOeste>
+                     <Sopresa class="modelo.SorpresaCambioDeVehiculo"/>
+                  </calleOeste>
                </Bocacalle>
                <Bocacalle>
                   <calleNorte/>
@@ -193,7 +199,9 @@
                   <calleNorte/>
                   <calleSur/>
                   <calleEste/>
-                  <calleOeste/>
+                  <calleOeste>
+                     <Obstaculo class="modelo.ObstaculoPozo"/>
+                  </calleOeste>
                </Bocacalle>
                <Bocacalle>
                   <calleNorte/>
@@ -404,7 +412,9 @@
                <Bocacalle>
                   <calleNorte/>
                   <calleSur/>
-                  <calleEste/>
+                  <calleEste>
+                     <Sopresa class="modelo.SorpresaCambioDeVehiculo"/>
+                  </calleEste>
                   <calleOeste/>
                </Bocacalle>
                <Bocacalle>
@@ -418,7 +428,9 @@
                <Bocacalle>
                   <calleNorte/>
                   <calleSur/>
-                  <calleEste/>
+                  <calleEste>
+                     <Sopresa class="modelo.SorpresaCambioDeVehiculo"/>
+                  </calleEste>
                   <calleOeste/>
                </Bocacalle>
                <Bocacalle>
@@ -493,7 +505,9 @@
                   <calleNorte/>
                   <calleSur/>
                   <calleEste/>
-                  <calleOeste/>
+                  <calleOeste>
+                     <Sopresa class="modelo.SorpresaCambioDeVehiculo"/>
+                  </calleOeste>
                </Bocacalle>
                <Bocacalle>
                   <calleNorte/>
@@ -505,7 +519,9 @@
                   <calleNorte/>
                   <calleSur/>
                   <calleEste/>
-                  <calleOeste/>
+                  <calleOeste>
+                     <Sopresa class="modelo.SorpresaCambioDeVehiculo"/>
+                  </calleOeste>
                </Bocacalle>
                <Bocacalle>
                   <calleNorte/>
@@ -602,7 +618,9 @@
                <Bocacalle>
                   <calleNorte/>
                   <calleSur/>
-                  <calleEste/>
+                  <calleEste>
+                     <Obstaculo class="modelo.ObstaculoPozo"/>
+                  </calleEste>
                   <calleOeste/>
                </Bocacalle>
                <Bocacalle>
@@ -695,7 +713,9 @@
                   <calleNorte/>
                   <calleSur/>
                   <calleEste/>
-                  <calleOeste/>
+                  <calleOeste>
+                     <Obstaculo class="modelo.ObstaculoPozo"/>
+                  </calleOeste>
                </Bocacalle>
                <Bocacalle>
                   <calleNorte/>
@@ -812,7 +832,9 @@
                <Bocacalle>
                   <calleNorte/>
                   <calleSur/>
-                  <calleEste/>
+                  <calleEste>
+                     <Obstaculo class="modelo.ObstaculoPozo"/>
+                  </calleEste>
                   <calleOeste/>
                </Bocacalle>
                <Bocacalle>
@@ -860,7 +882,9 @@
                <Bocacalle>
                   <calleNorte/>
                   <calleSur/>
-                  <calleEste/>
+                  <calleEste>
+                     <Obstaculo class="modelo.ObstaculoPozo"/>
+                  </calleEste>
                   <calleOeste/>
                </Bocacalle>
                <Bocacalle>
@@ -893,7 +917,9 @@
                   <calleNorte/>
                   <calleSur/>
                   <calleEste/>
-                  <calleOeste/>
+                  <calleOeste>
+                     <Obstaculo class="modelo.ObstaculoPozo"/>
+                  </calleOeste>
                </Bocacalle>
                <Bocacalle>
                   <calleNorte/>
@@ -945,7 +971,9 @@
                   <calleNorte/>
                   <calleSur/>
                   <calleEste/>
-                  <calleOeste/>
+                  <calleOeste>
+                     <Obstaculo class="modelo.ObstaculoPozo"/>
+                  </calleOeste>
                </Bocacalle>
                <Bocacalle>
                   <calleNorte/>
@@ -1016,7 +1044,9 @@
                <Bocacalle>
                   <calleNorte/>
                   <calleSur/>
-                  <calleEste/>
+                  <calleEste>
+                     <Sopresa class="modelo.SorpresaCambioDeVehiculo"/>
+                  </calleEste>
                   <calleOeste/>
                </Bocacalle>
                <Bocacalle>
@@ -1032,7 +1062,9 @@
                <Bocacalle>
                   <calleNorte/>
                   <calleSur/>
-                  <calleEste/>
+                  <calleEste>
+                     <Obstaculo class="modelo.ObstaculoPozo"/>
+                  </calleEste>
                   <calleOeste/>
                </Bocacalle>
                <Bocacalle>
@@ -1090,14 +1122,18 @@
                <Bocacalle>
                   <calleNorte/>
                   <calleSur/>
-                  <calleEste/>
+                  <calleEste>
+                     <Sopresa class="modelo.SorpresaCambioDeVehiculo"/>
+                  </calleEste>
                   <calleOeste/>
                </Bocacalle>
                <Bocacalle>
                   <calleNorte/>
                   <calleSur/>
                   <calleEste/>
-                  <calleOeste/>
+                  <calleOeste>
+                     <Sopresa class="modelo.SorpresaCambioDeVehiculo"/>
+                  </calleOeste>
                </Bocacalle>
                <Bocacalle>
                   <calleNorte/>
@@ -1113,7 +1149,9 @@
                   <calleNorte/>
                   <calleSur/>
                   <calleEste/>
-                  <calleOeste/>
+                  <calleOeste>
+                     <Obstaculo class="modelo.ObstaculoPozo"/>
+                  </calleOeste>
                </Bocacalle>
                <Bocacalle>
                   <calleNorte>
@@ -1173,7 +1211,9 @@
                   <calleNorte/>
                   <calleSur/>
                   <calleEste/>
-                  <calleOeste/>
+                  <calleOeste>
+                     <Sopresa class="modelo.SorpresaCambioDeVehiculo"/>
+                  </calleOeste>
                </Bocacalle>
                <Bocacalle>
                   <calleNorte/>
