@@ -18,7 +18,7 @@ public class ControladorMenuPrincipal extends Controlador {
     }
 
     private void agregarPanelLocal() {
-        this.panelMenuPrincipal = new PanelMenuPrincipal(juego.getJugadorActual().getNickName());
+        this.panelMenuPrincipal = new PanelMenuPrincipal(juego.getJugadorActual().getNombre());
         this.panelMenuPrincipal.agregarEscuchaComenzarPartida(new EscuchaComenzarPartida());
         this.panelMenuPrincipal.agregarEscuchaSalir(new EscuchaSalir());
         this.panelMenuPrincipal.agregarEscuchaVerPuntajes(new EscuchaPuntajes());
@@ -38,9 +38,9 @@ public class ControladorMenuPrincipal extends Controlador {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			try {
-				Partida partida = Partida.cargarPartida("src/jugadores/partida" + juego.getJugadorActual().getNickName() + ".xml");
+				Partida partida = Partida.cargarPartida("src/jugadores/partida" + juego.getJugadorActual().getNombre() + ".xml");
 				partida.getTablero().unificarCalles();
-	            juego.setJugadorActual(new Jugador(juego.getJugadorActual().getNickName()));
+	            juego.setJugadorActual(new Jugador(juego.getJugadorActual().getNombre()));
 	            juego.setPartida(partida);
 	            ventana.remove(panelMenuPrincipal);
 	            ControladorPartida controlador = new ControladorPartida();

@@ -29,7 +29,7 @@ public class Jugadores {
 	private boolean existe(String nombre) {
 		Iterator<Jugador> it = jugadores.iterator();
 		while ( it.hasNext() ){
-			if( it.next().getNickName().compareTo(nombre) == 0 )
+			if( it.next().getNombre().compareTo(nombre) == 0 )
 				return true;
 		}
 		return false;
@@ -48,7 +48,7 @@ public class Jugadores {
 			throws UsuarioInexistenteException
 	{
 		Jugador jugador = buscar(nombre);
-		if( jugador.getNickName() == null )
+		if( jugador.getNombre() == null )
 			throw new UsuarioInexistenteException();
 		
 		jugador.sumarPuntaje(puntaje);
@@ -59,7 +59,7 @@ public class Jugadores {
 		Jugador jugadorAux = new Jugador();
 		while ( it.hasNext() ){
 			jugadorAux = it.next();
-			if( jugadorAux.getNickName().compareTo(nombre) == 0 )
+			if( jugadorAux.getNombre().compareTo(nombre) == 0 )
 				return jugadorAux;
 		}
 		return jugadorAux;

@@ -3,9 +3,6 @@ package control;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
 import modelo.Juego;
 import modelo.excepciones.ErrorArchivoJugadoresException;
 import modelo.excepciones.NoHayUsuariosCreadosException;
