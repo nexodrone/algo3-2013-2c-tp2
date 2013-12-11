@@ -13,7 +13,6 @@ import javax.swing.JRadioButton;
 
 public class PanelUsuarioRegistrado extends JPanel {
 	
-	private JLabel seleNom = new JLabel("Por favor seleccione usuario");
 	private ButtonGroup checks_grupo = new ButtonGroup();
 	private Boton botonAceptar = new Boton("Aceptar");
 	private Boton botonVolver = new Boton("Volver");
@@ -24,7 +23,8 @@ public class PanelUsuarioRegistrado extends JPanel {
 		this.setPreferredSize(new Dimension(300,600));
 		this.setBackground(new Color(255,255,255,200));
 
-		this.seleNom.setAlignmentX(CENTER_ALIGNMENT);
+		JLabel seleNom = new JLabel("Por favor seleccione usuario");
+		seleNom.setAlignmentX(CENTER_ALIGNMENT);
 
 		this.panelJugadores.setLayout(new BoxLayout(panelJugadores, BoxLayout.PAGE_AXIS));
 		this.panelJugadores.setAlignmentX(CENTER_ALIGNMENT);

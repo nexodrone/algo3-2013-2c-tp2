@@ -2,20 +2,21 @@ package control;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import vista.PanelElegirNivel;
 
-public class ControladorElegirNivel extends Controlador{
+public class ControladorElegirNivel extends Controlador {
 	
 	private PanelElegirNivel panelElegirNivel;
 	
-	public ControladorElegirNivel(){
+	public ControladorElegirNivel() {
 		 this.agregarPanelLocal();
 	     ventana.pack();
 	     ventana.repaint();
 	}
 		
 	private void agregarPanelLocal() {
-		this.panelElegirNivel = new PanelElegirNivel();
+		this.panelElegirNivel = new PanelElegirNivel(juego.getJugadorActual().getNombre());
 		this.panelElegirNivel.agregarEscuchaVolver(new EscuchaVolver());
 		this.panelElegirNivel.agregarEscuchaAceptar(new EscuchaComenzarPartida());
 		ventana.add(panelElegirNivel);
@@ -29,12 +30,12 @@ public class ControladorElegirNivel extends Controlador{
         }
     }
 
-	public class EscuchaComenzarPartida implements ActionListener{
+	public class EscuchaComenzarPartida implements ActionListener {
 		@Override
-		public void actionPerformed(ActionEvent e){
-			if (panelElegirNivel.ningunCampoSeleccionado()){
+		public void actionPerformed(ActionEvent e) {
+			if (panelElegirNivel.ningunCampoSeleccionado()) {
 				panelElegirNivel.mostrarMensajeNadaSeleccionado();
-			}else{
+			} else {
 			String nivelSeleccionado = panelElegirNivel.obtenerNivelSeleccionado();
 			ventana.remove(panelElegirNivel);
 			ControladorElegirVehiculo controlador = new ControladorElegirVehiculo(nivelSeleccionado);
