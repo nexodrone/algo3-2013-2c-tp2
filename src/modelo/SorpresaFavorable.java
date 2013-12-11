@@ -10,17 +10,17 @@ public class SorpresaFavorable extends Sorpresa {
 
     public void interactuarCon(Vehiculo4x4 vehiculo) {
         vehiculo.aplicarPorcentajeAMovimientos(porcentaje);
-        Logger.instance.log("Favorable! Se te sumaran a Movimientos Restantes el %20 de tus Movimientos Realizados, bien ahi!");
+        Logger.instance.log("Favorable! Se te restaron el %20 de tus movimientos realizados, bien ahi!");
     }
 
     public void interactuarCon(VehiculoAuto vehiculo) {
         vehiculo.aplicarPorcentajeAMovimientos(porcentaje);
-        Logger.instance.log("Favorable! Se te sumaran a Movimientos Restantes el %20 de tus Movimientos Realizados, bien ahi!");
+        Logger.instance.log("Favorable! Se te restaron el %20 de tus movimientos realizados, bien ahi!");
     }
 
     public void interactuarCon(VehiculoMoto vehiculo) {
         vehiculo.aplicarPorcentajeAMovimientos(porcentaje);
-        Logger.instance.log("Favorable! Se te sumaran a Movimientos Restantes el %20 de tus Movimientos Realizados, bien ahi!");
+        Logger.instance.log("Favorable! Se te restaron el %20 de tus movimientos realizados, bien ahi!");
     }
 
 }
