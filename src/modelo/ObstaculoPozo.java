@@ -18,7 +18,7 @@ public class ObstaculoPozo extends Obstaculo {
 	}
 
 	public void interactuarCon(Vehiculo4x4 todoterreno) {
-		Logger.instance.log("La 4x4 tiene inmunidad contra pozos! No perdes ningun movimiento...");
+		Logger.instance.log("La 4x4 tiene inmunidad contra pozos! No perdiste ningun movimiento...");
 	}
 
 	public void interactuarCon(VehiculoMoto moto) {

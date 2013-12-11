@@ -41,7 +41,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     private int posicionDelTableroY;// = this.centrarEnY();
     private int cantidadAAA = 0;
     private Tablero tableroActual;
-    private JPanel zonaDeJuego;
+    private TransparentPanel zonaDeJuego;
     private String vehiculo;
     private Posicion posicionDeVehiculo;
     private Posicion posicionDeLlegada;
@@ -50,13 +50,15 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     private ArrayList<ElementoDeTablero> listaDeObstaculos = new ArrayList<ElementoDeTablero>();
 
     public PanelZonaDeJuego(Partida partidaActual) {
+    	setLayout(null);
+    	setBackground(Color.BLACK);
+    	setOpaque(true);
         this.tableroActual = partidaActual.getTablero();
         this.posicionDeLlegada = partidaActual.getPosicionGanadora();
         this.posicionDeVehiculo = partidaActual.getVehiculo().getPosicion();
 
         // System.out.println("Posicion del Vehiculo:" + posicionDeVehiculo.asString());
         vehiculo = partidaActual.getVehiculo().asString();
-        setBackground(Color.BLACK);
         this.girarHacia("Derecha"); // por defecto el vehiculo siempre empieza mirando hacia
                                     // laderecha
 
@@ -73,8 +75,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         int velocidad = 1;
         timer = new Timer(velocidad, this);
 
-        // zonaDeJuego = new TransparentPanel(radioClip);
-        zonaDeJuego = new JPanel();
+        zonaDeJuego = new TransparentPanel(radioClip);
         this.configurarTableroEnZonaDeJuego();
         MouseListener ml = new MouseListener() {
 
@@ -111,7 +112,6 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     public void paint(Graphics g) {
         // System.out.println("paint");
         // this.configurarTableroEnZonaDeJuego();
-
         if (dibujarTablero) {
             this.dibujarTablero();
             actionPerformed(null);
@@ -125,30 +125,42 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
             Image imagen = unElementoDeTablero.getImagen();
             Posicion posicionDeElemento = unElementoDeTablero.getPosicion();
             String direccion = unElementoDeTablero.getDireccion();
-            grafico2D.drawImage(imagen, this.calcularPosicionDeElementoEnX(posicionDeElemento, direccion, 0), this.calcularPosicionDeELementoEnY(posicionDeElemento, direccion, 0), this);
+            if ( dibujarElemento(posicionDeElemento, direccion, 0) )
+            	grafico2D.drawImage(imagen, this.calcularPosicionDeElementoEnX(posicionDeElemento,direccion,0), this.calcularPosicionDeELementoEnY(posicionDeElemento, direccion,0), this);
         }
         // SE DIBUJA LOS OBSTACULOS EN TABLERO
         for (int j = 0; j < this.listaDeObstaculos.size(); j++) {
-            ElementoDeTablero unElementoDeTablero = listaDeObstaculos.get(j);
-            Image imagenObstaculo = unElementoDeTablero.getImagen();
-            Posicion posicionDeObstaculo = unElementoDeTablero.getPosicion();
-            String direccion = unElementoDeTablero.getDireccion();
-            grafico2D
-                    .drawImage(imagenObstaculo, this.calcularPosicionDeElementoEnX(posicionDeObstaculo, direccion, -10), this.calcularPosicionDeELementoEnY(posicionDeObstaculo, direccion, -10), this);
+        	ElementoDeTablero unElementoDeTablero = listaDeObstaculos.get(j);
+        	Image imagenObstaculo = unElementoDeTablero.getImagen();
+        	Posicion posicionDeObstaculo = unElementoDeTablero.getPosicion();
+        	String direccion = unElementoDeTablero.getDireccion();
+        	if ( dibujarElemento(posicionDeObstaculo, direccion, -10) ) 
+        		grafico2D.drawImage(imagenObstaculo, this.calcularPosicionDeElementoEnX(posicionDeObstaculo,direccion,-10), this.calcularPosicionDeELementoEnY(posicionDeObstaculo, direccion,-10), this);
         }
-        System.out.println("x,y" + x + "," + y);
         grafico2D.drawImage(star, x, y, this);
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
     }
 
-    public void actionPerformed(ActionEvent e) {
+    private boolean dibujarElemento(Posicion posicionDeElemento, String direccion, int corrimiento) {
+    	boolean dibujar = true;
+    	int posX = calcularPosicionDeElementoEnX(posicionDeElemento, direccion, corrimiento);
+    	int posY = calcularPosicionDeELementoEnY(posicionDeElemento, direccion, corrimiento);
+    	
+    	double d = Math.sqrt( Math.pow(posX-x, 2) + Math.pow( posY-y, 2) );
+    	
+    	if ( d > radioClip)
+    		dibujar = false;
+    	return dibujar;
+	}
+
+	public void actionPerformed(ActionEvent e) {
         // System.out.println("actionPerformed");
         if (cantidadDePasos < cantidad) {
             x = (x + 2 * enX);
             y = (y + 2 * enY);
             cantidadDePasos = cantidadDePasos + 1;
-            // zonaDeJuego.setClipPos(x - posicionDelTableroX, y - posicionDelTableroY);
+            zonaDeJuego.setClipPos(x - posicionDelTableroX, y - posicionDelTableroY);
             repaint();
             // System.out.print("pintando");
         } else {
@@ -514,5 +526,4 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
             grafico2D.dispose();
         }
     }
-
 }
