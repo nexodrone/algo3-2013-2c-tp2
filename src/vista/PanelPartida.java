@@ -185,7 +185,12 @@ public class PanelPartida extends JPanel {
 
     public void mostrarMensajePartidaGanada() {
         String nombre = Juego.getInstance().getJugadorActual().getNombre();
-        JOptionPane.showMessageDialog(this, "Felicitaciones " + nombre + ", ganaste el nivel!", "Partida ganada", JOptionPane.INFORMATION_MESSAGE);
+        int movimientosRestantes = Juego.getInstance().getPartida().getCantidadDeMovimientosDisponibles() - Juego.getInstance().getVehiculo().getCantidadDeMovimientos();
+        int puntaje = movimientosRestantes * Juego.getInstance().getPartida().dificultad;
+        JOptionPane.showMessageDialog(this, "Felicitaciones " + nombre + ", Ud gano el nivel!\n\n"
+        										+ "Movimientos quedan:  " + String.valueOf(movimientosRestantes) + "\n"
+        											+ "Puntaje obtenido:  " + String.valueOf(puntaje),
+        												"Partida ganada", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public void mostrarMensajePartidaPerdida() {
