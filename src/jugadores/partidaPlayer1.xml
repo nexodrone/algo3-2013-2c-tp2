@@ -1191,12 +1191,12 @@
          </columnaDeBocacalles>
       </Bocacalles>
    </Tablero>
-   <Vehiculo class="modelo.VehiculoAuto" cantidadDeMovimientos="6">
+   <Vehiculo class="modelo.Vehiculo4x4" cantidadDeMovimientos="5">
       <posicionActual>
-         <coordenadas X="2" Y="0"/>
+         <coordenadas X="4" Y="4"/>
       </posicionActual>
    </Vehiculo>
    <PosicionGanadora>
-      <coordenadas X="11" Y="11"/>
+      <coordenadas X="5" Y="4"/>
    </PosicionGanadora>
 </Partida>

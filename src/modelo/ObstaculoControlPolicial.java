@@ -15,27 +15,27 @@ public class ObstaculoControlPolicial extends Obstaculo {
 		double probabilidad = Math.random();
 		if (probabilidad<=0.5) { 
 			auto.sumarMovimientos(penalizacion);
-			Logger.instance.log("Control policial. Penaliza 3 movimientos.");
+			Logger.instance.log("Control policial. Penaliza 3 movimientos.\n");
 		}else
-			Logger.instance.log("No les paro la policia: no penalizacion.");
+			Logger.instance.log("No les paro la policia: no penalizacion.\n");
 	}
 
 	public void interactuarCon(Vehiculo4x4 todoterreno) {
 		double probabilidad = Math.random();
 		if (probabilidad<=0.3) { 
 			todoterreno.sumarMovimientos(penalizacion);
-			Logger.instance.log("Control policial. Penaliza 3 movimientos.");			
+			Logger.instance.log("Control policial. Penaliza 3 movimientos.\n");			
 		}else
-			Logger.instance.log("No les paro la policia: no penalizacion.");
+			Logger.instance.log("No les paro la policia: no penalizacion.\n");
 	}
 
 	public void interactuarCon(VehiculoMoto moto) {
 		double probabilidad = Math.random();
 		if (probabilidad<=0.8) { 
 			moto.sumarMovimientos(penalizacion);
-			Logger.instance.log("Control policial. Penaliza 3 movimientos.");
+			Logger.instance.log("Control policial. Penaliza 3 movimientos.\n");
 		}else
-			Logger.instance.log("No les paro la policia: no penalizacion.");
+			Logger.instance.log("No les paro la policia: no penalizacion.\n");
 	}
 
 	public String asString(){

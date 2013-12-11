@@ -57,8 +57,8 @@ public class PanelElegirVehiculo extends JPanel {
 		JOptionPane.showMessageDialog(this, "Por favor seleccione un vehiculo.", "Vehiculo no seleccionado", JOptionPane.WARNING_MESSAGE);
 	}
 
-	public void mostrarMensajeError() {
-		JOptionPane.showMessageDialog(this, "Error! Se cargara nivel por defecto.", "Error", JOptionPane.ERROR_MESSAGE);
+	public void mostrarMensajeArchivoDaniado() {
+		JOptionPane.showMessageDialog(this, "Archivo con nivel no se encontro o esta roto :(\nSe va a cargar nivel por defecto.", "Archivo roto", JOptionPane.ERROR_MESSAGE);
 	}
 
 	public String obtenerVehiculoSeleccionado() {

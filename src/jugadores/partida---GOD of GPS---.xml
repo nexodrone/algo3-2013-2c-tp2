@@ -470,9 +470,7 @@
                <Bocacalle>
                   <calleNorte/>
                   <calleSur/>
-                  <calleEste>
-                     <Sopresa class="modelo.SorpresaCambioDeVehiculo"/>
-                  </calleEste>
+                  <calleEste/>
                   <calleOeste/>
                </Bocacalle>
                <Bocacalle>
@@ -553,9 +551,7 @@
                   <calleNorte/>
                   <calleSur/>
                   <calleEste/>
-                  <calleOeste>
-                     <Sopresa class="modelo.SorpresaCambioDeVehiculo"/>
-                  </calleOeste>
+                  <calleOeste/>
                </Bocacalle>
                <Bocacalle>
                   <calleNorte/>
@@ -646,9 +642,7 @@
                <Bocacalle>
                   <calleNorte/>
                   <calleSur/>
-                  <calleEste>
-                     <Sopresa class="modelo.SorpresaDesfavorable"/>
-                  </calleEste>
+                  <calleEste/>
                   <calleOeste/>
                </Bocacalle>
                <Bocacalle>
@@ -731,9 +725,7 @@
                   <calleNorte/>
                   <calleSur/>
                   <calleEste/>
-                  <calleOeste>
-                     <Sopresa class="modelo.SorpresaDesfavorable"/>
-                  </calleOeste>
+                  <calleOeste/>
                </Bocacalle>
                <Bocacalle>
                   <calleNorte/>
@@ -1191,9 +1183,9 @@
          </columnaDeBocacalles>
       </Bocacalles>
    </Tablero>
-   <Vehiculo class="modelo.VehiculoAuto" cantidadDeMovimientos="6">
+   <Vehiculo class="modelo.VehiculoAuto" cantidadDeMovimientos="11">
       <posicionActual>
-         <coordenadas X="2" Y="0"/>
+         <coordenadas X="12" Y="8"/>
       </posicionActual>
    </Vehiculo>
    <PosicionGanadora>

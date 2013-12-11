@@ -57,11 +57,11 @@ public class PanelBienvenido extends JPanel {
 	}
 	
 	public void mostrarMensajeErrorArchivoJugadores() {
-		JOptionPane.showMessageDialog(this, "No se encontro el archivo de jugadores, cree un nuevo usuario para poder jugar.", "Error: Archivo de Jugadores", JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(this, "El archivo con jugadores registrados no se encontro o esta roto :(\nCree un nuevo usuario para poder jugar.", "Archivo con jugadores roto", JOptionPane.ERROR_MESSAGE);
 	}
 	
 	public void mostrarMensajeNoHayUsuariosCreados() {
-		JOptionPane.showMessageDialog(this, "No hay usuarios creados, cree un nuevo usuario para poder jugar.", "Lista de usuarios vacia", JOptionPane.WARNING_MESSAGE);
+		JOptionPane.showMessageDialog(this, "No hay usuarios creados.\nCree un nuevo usuario para poder jugar.", "Lista de usuarios vacia", JOptionPane.WARNING_MESSAGE);
 	}
 	
 }

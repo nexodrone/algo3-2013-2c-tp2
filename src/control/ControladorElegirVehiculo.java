@@ -45,7 +45,7 @@ public class ControladorElegirVehiculo extends Controlador {
 					nivel = Nivel.cargarNivel("src/niveles/Nivel" + nivelSeleccionado + ".xml");
 					nivel.tablero.unificarCalles();
 				} catch (Exception e1) {
-					panelElegirVehiculo.mostrarMensajeError();
+					panelElegirVehiculo.mostrarMensajeArchivoDaniado();
 				};
 				Partida partida = construirPartidaSeleccionada(vehiculoSeleccionado, nivel);
 				juego.setPartida(partida);

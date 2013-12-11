@@ -18,7 +18,7 @@ public class SorpresaCambioDeVehiculo extends Sorpresa {
         Vehiculo nuevoVehiculo = VehiculoAuto.nuevoVehiculo(vehiculo);
         this.actualizarMovimiento(nuevoVehiculo, vehiculo);
         observador.cambiarVehiculo(nuevoVehiculo);
-        Logger.instance.log("Cambio de vehiculo! Ahora es un auto...");
+        Logger.instance.log("Cambio de vehiculo! Ahora es un auto.\n");
     }
 
     public void interactuarCon(VehiculoAuto vehiculo) {
@@ -26,7 +26,7 @@ public class SorpresaCambioDeVehiculo extends Sorpresa {
         Vehiculo nuevoVehiculo = Vehiculo4x4.nuevoVehiculo(vehiculo);
         this.actualizarMovimiento(nuevoVehiculo, vehiculo);
         observador.cambiarVehiculo(nuevoVehiculo);
-        Logger.instance.log("Cambio de vehiculo! Ahora es una 4x4...");
+        Logger.instance.log("Cambio de vehiculo! Ahora es una 4x4.\n");
     }
 
     public void interactuarCon(Vehiculo4x4 vehiculo) {
@@ -34,7 +34,7 @@ public class SorpresaCambioDeVehiculo extends Sorpresa {
         Vehiculo nuevoVehiculo = VehiculoMoto.nuevoVehiculo(vehiculo);
         this.actualizarMovimiento(nuevoVehiculo, vehiculo);
         observador.cambiarVehiculo(nuevoVehiculo);
-        Logger.instance.log("Cambio de vehiculo! Ahora es una moto...");
+        Logger.instance.log("Cambio de vehiculo! Ahora es una moto.\n");
     }
 
     private void actualizarMovimiento(Vehiculo nuevoVehiculo, Vehiculo vehiculo) {

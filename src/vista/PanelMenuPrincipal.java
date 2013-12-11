@@ -65,8 +65,9 @@ public class PanelMenuPrincipal extends JPanel {
 		JOptionPane.showMessageDialog(this, "Ud no tiene partida guardada.", "No hay partida", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
+	/* probablemente nunca se va a dar, pues en panelPuntajes entra un usuario registrado */
 	public void mostrarMensajePuntajesInexistentes() {
-		JOptionPane.showMessageDialog(this, "No hay puntajes creados. Juegue para crear puntajes.", "Lista de puntajes vacia", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(this, "No hay puntajes creados.", "Lista de puntajes vacia", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 }
