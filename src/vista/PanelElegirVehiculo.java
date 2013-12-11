@@ -168,7 +168,7 @@ public class PanelElegirVehiculo extends JPanel {
 		private void prepararImagenIlustrativa(JLabel label, String ruta) {
 			ImageIcon icono = new ImageIcon(ruta);
 			label.setIcon(icono);
-			label.setPreferredSize(new Dimension(250,250));
+			label.setPreferredSize(new Dimension(250,200));
 			label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 			label.setAlignmentX(CENTER_ALIGNMENT);
 		}
@@ -186,7 +186,7 @@ public class PanelElegirVehiculo extends JPanel {
 			panel.add(label2);
 			panel.add(label3);
 			panel.add(label4);
-			panel.add(Box.createVerticalStrut(20));
+			panel.add(Box.createVerticalStrut(70));
 			panel.add(boton);
 		}
 	}

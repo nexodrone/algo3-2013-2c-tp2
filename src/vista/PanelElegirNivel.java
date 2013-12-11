@@ -97,12 +97,14 @@ public class PanelElegirNivel extends JPanel {
 			prepararImagenIlustrativa(imagenFacil, "src/vista/imagenes/nivelFacil.png");
 			prepararBoton(botonFacil);
 			
-			JLabel textoDescriptivo1 = new JLabel("Tablero chico.");
-			JLabel textoDescriptivo2 = new JLabel("Abundantes movimientos.");
-			textoDescriptivo1.setAlignmentX(CENTER_ALIGNMENT);
-			textoDescriptivo2.setAlignmentX(CENTER_ALIGNMENT);
+			JLabel texto1 = new JLabel("Tablero chico.");
+			JLabel texto2 = new JLabel("Abundantes movimientos.");
+			JLabel texto3 = new JLabel("1 puntos por movimiento sobrante.");
+			texto1.setAlignmentX(CENTER_ALIGNMENT);
+			texto2.setAlignmentX(CENTER_ALIGNMENT);
+			texto3.setAlignmentX(CENTER_ALIGNMENT);
 			
-			agregarComponentes(panelFacil, imagenFacil, textoDescriptivo1, textoDescriptivo2, botonFacil);
+			agregarComponentes(panelFacil, imagenFacil, texto1, texto2, texto3, botonFacil);
 
 			this.add(panelFacil);
 		}
@@ -112,12 +114,14 @@ public class PanelElegirNivel extends JPanel {
 			prepararImagenIlustrativa(imagenIntermedio, "src/vista/imagenes/nivelIntermedio.png");
 			prepararBoton(botonIntermedio);
 			
-			JLabel textoDescriptivo1 = new JLabel("Tablero intermedio.");
-			JLabel textoDescriptivo2 = new JLabel("Sufucientes movimientos.");
-			textoDescriptivo1.setAlignmentX(CENTER_ALIGNMENT);
-			textoDescriptivo2.setAlignmentX(CENTER_ALIGNMENT);
+			JLabel texto1 = new JLabel("Tablero intermedio.");
+			JLabel texto2 = new JLabel("Sufucientes movimientos.");
+			JLabel texto3 = new JLabel("2 puntos por movimiento sobrante.");
+			texto1.setAlignmentX(CENTER_ALIGNMENT);
+			texto2.setAlignmentX(CENTER_ALIGNMENT);
+			texto3.setAlignmentX(CENTER_ALIGNMENT);
 			
-			agregarComponentes(panelIntermedio, imagenIntermedio, textoDescriptivo1, textoDescriptivo2, botonIntermedio);
+			agregarComponentes(panelIntermedio, imagenIntermedio, texto1, texto2, texto3, botonIntermedio);
 			
 			this.add(panelIntermedio);
 		}
@@ -127,12 +131,14 @@ public class PanelElegirNivel extends JPanel {
 			prepararImagenIlustrativa(imagenDificil, "src/vista/imagenes/nivelDificil.png");
 			prepararBoton(botonDificil);
 			
-			JLabel textoDescriptivo1 = new JLabel("Tablero grande.");
-			JLabel textoDescriptivo2 = new JLabel("Escasos movimientos.");
-			textoDescriptivo1.setAlignmentX(CENTER_ALIGNMENT);
-			textoDescriptivo2.setAlignmentX(CENTER_ALIGNMENT);
+			JLabel texto1 = new JLabel("Tablero grande.");
+			JLabel texto2 = new JLabel("Escasos movimientos.");
+			JLabel texto3 = new JLabel("3 puntos por movimiento sobrante.");
+			texto1.setAlignmentX(CENTER_ALIGNMENT);
+			texto2.setAlignmentX(CENTER_ALIGNMENT);
+			texto3.setAlignmentX(CENTER_ALIGNMENT);
 			
-			agregarComponentes(panelDificil, imagenDificil, textoDescriptivo1, textoDescriptivo2, botonDificil);
+			agregarComponentes(panelDificil, imagenDificil, texto1, texto2, texto3, botonDificil);
 			
 			this.add(panelDificil);
 		}
@@ -157,11 +163,13 @@ public class PanelElegirNivel extends JPanel {
 			this.bgroup.add(boton);
 		}
 		
-		private void agregarComponentes(JPanel panel, JLabel imagen, JLabel label1, JLabel label2, JRadioButton boton) {
+		private void agregarComponentes(JPanel panel, JLabel imagen, JLabel label1, JLabel label2, JLabel label3, JRadioButton boton) {
 			panel.add(imagen);
 			panel.add(Box.createVerticalStrut(20));
 			panel.add(label1);
 			panel.add(label2);
+			panel.add(label3);
+			panel.add(new JLabel(" "));
 			panel.add(Box.createVerticalStrut(20));
 			panel.add(boton);
 		}
