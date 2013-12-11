@@ -45,6 +45,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     private String vehiculo;
     private Posicion posicionDeVehiculo;
     private Posicion posicionDeLlegada;
+    private JLabel metaImagen;
     private Boolean dibujarTablero = true; // PARA QUE EL TABLERO SE DIBUJE SOLO UNA VEZ
     private ArrayList<ElementoDeTablero> listaDeSorpresas = new ArrayList<ElementoDeTablero>();
     private ArrayList<ElementoDeTablero> listaDeObstaculos = new ArrayList<ElementoDeTablero>();
@@ -71,9 +72,10 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
 
         int velocidad = 1;
         timer = new Timer(velocidad, this);
-
+        this.metaImagen = this.obtenerImagen(this.posicionInicialDeVehiculoEnX(this.posicionDeLlegada)+this.centrarEnX(), this.posicionDeUnObjetoEnY(this.posicionDeLlegada)+this.centrarEnY(), "meta", 0, 0);
         zonaDeJuego = new TransparentPanel(radioClip);
         this.configurarTableroEnZonaDeJuego();
+        this.add(metaImagen);
         this.add(zonaDeJuego);
     }
 
@@ -158,8 +160,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
             posicionY = 0;
             constanteFila = 0;
         }
-        JLabel meta = this.obtenerImagen(this.posicionInicialDeVehiculoEnX(this.posicionDeLlegada), this.posicionDeUnObjetoEnY(this.posicionDeLlegada), "meta", 0, 0);
-        this.zonaDeJuego.add(meta);
+      //  JLabel meta = this.obtenerImagen(this.posicionInicialDeVehiculoEnX(this.posicionDeLlegada), this.posicionDeUnObjetoEnY(this.posicionDeLlegada), "meta", 0, 0);
+      //  this.zonaDeJuego.add(meta);
     }
 
     public void agregarTodasLasSorpresasALista() {
@@ -360,7 +362,6 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     }
 
     public void calcularPosicionVehiculoVista() {
-        System.out.println("PosicionDeVehiculo" + this.posicionDeVehiculo.asString());
         x = this.posicionInicialDeVehiculoEnX(this.posicionDeVehiculo) + posicionDelTableroX + 1;
         y = largoDePanel - posicionDelTableroY - this.posicionInicialDeVehiculoEnY(this.posicionDeVehiculo) - 18 - longitudManzana - 1;
     }

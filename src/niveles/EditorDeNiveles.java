@@ -23,7 +23,7 @@ public class EditorDeNiveles {
 		
 		Nivel nivel = new Nivel();
 		nivel.tablero =  new Tablero(5,10);
-		nivel.movimientosDisponibles = 100;
+		nivel.movimientosDisponibles = 15;
 		
 		nivel.tablero.getBocacalleEnPosicion(new Posicion(0,0)).getCalleEnDireccion(norte).setSorpresa(new SorpresaFavorable());
 		nivel.tablero.getBocacalleEnPosicion(new Posicion(2,0)).getCalleEnDireccion(sur).setObstaculo(new ObstaculoPozo());
@@ -55,7 +55,7 @@ public class EditorDeNiveles {
         
         Nivel nivel = new Nivel();
 		nivel.tablero =  new Tablero(14,12);
-		nivel.movimientosDisponibles = 100;
+		nivel.movimientosDisponibles = 20;
 		
 		nivel.tablero.getBocacalleEnPosicion(new Posicion(3,0)).getCalleEnDireccion(oeste).setObstaculo(new ObstaculoPozo());
 		nivel.tablero.getBocacalleEnPosicion(new Posicion(0,1)).getCalleEnDireccion(oeste).setObstaculo(new ObstaculoPozo());
@@ -114,7 +114,7 @@ public class EditorDeNiveles {
         
         Nivel nivel = new Nivel();
 		nivel.tablero =  new Tablero(21,14);
-		nivel.movimientosDisponibles = 100;
+		nivel.movimientosDisponibles = 15;
 		
 		nivel.tablero.getBocacalleEnPosicion(new Posicion(0,0)).getCalleEnDireccion(sur).setObstaculo(new ObstaculoPozo());
 		nivel.tablero.getBocacalleEnPosicion(new Posicion(1,0)).getCalleEnDireccion(este).setSorpresa(new SorpresaDesfavorable());
