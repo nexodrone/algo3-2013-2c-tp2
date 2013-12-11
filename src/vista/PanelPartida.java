@@ -8,6 +8,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.ActionMap;
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.InputMap;
@@ -38,7 +39,7 @@ public class PanelPartida extends JPanel {
     private JLabel puntajeLabel;
 
     private PanelZonaDeJuego panelZonaDelJuego;
-    private JPanel panelInfo = new JPanel();
+    private JPanel panelDeControl = new JPanel();
     private LogPartida logPartida = new LogPartida();
     private JScrollPane scroll;
 
@@ -69,46 +70,55 @@ public class PanelPartida extends JPanel {
         this.puntajeLabel.setAlignmentX(CENTER_ALIGNMENT);
         this.actualizarMovimientosDelPanel(partida.getVehiculo().getCantidadDeMovimientos(), partida.dificultad);
         
-        this.panelInfo.setPreferredSize(new Dimension(250,610));
-        this.panelInfo.setLayout(new BoxLayout(panelInfo, BoxLayout.PAGE_AXIS));
-        this.panelInfo.setBackground(Color.WHITE);
+        this.panelDeControl.setPreferredSize(new Dimension(250,610));
+        this.panelDeControl.setLayout(new BoxLayout(panelDeControl, BoxLayout.PAGE_AXIS));
+        this.panelDeControl.setBackground(new Color(0,0,0,0));
+        
+        JPanel panelInfo = new JPanel();
+        panelInfo.setPreferredSize(new Dimension(250,550));
+        panelInfo.setLayout(new BoxLayout(panelInfo, BoxLayout.PAGE_AXIS));
+        panelInfo.setBackground(Color.WHITE);
         
 		this.panelZonaDelJuego = new PanelZonaDeJuego(partida);
-        this.panelZonaDelJuego.setPreferredSize(new Dimension(anchoZonaDelJuego,largoZonaDelJuego));
-        
-        this.logPartida.setAlignmentX(CENTER_ALIGNMENT);
+        this.inicializarZonaDelJuego();
+		
+        //this.logPartida.setAlignmentX(CENTER_ALIGNMENT);
         
         Logger.instance.addListener(logPartida);
-        scroll = new JScrollPane(logPartida);
+        this.scroll = new JScrollPane(logPartida);
+        this.scroll.setMaximumSize(new Dimension(250,200));
+        this.scroll.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        this.scroll.setAlignmentX(CENTER_ALIGNMENT);
         
-        this.panelInfo.add(Box.createVerticalStrut(10));
-        this.panelInfo.add(this.nombreUsuario);
-        this.panelInfo.add(Box.createVerticalStrut(10));
-        this.panelInfo.add(this.dificultad);
-        this.panelInfo.add(Box.createVerticalStrut(10));
-        this.panelInfo.add(this.vehiculoActual);
-        this.panelInfo.add(Box.createVerticalStrut(10));
-        this.panelInfo.add(this.movimientosLimitesLabel);
-        this.panelInfo.add(Box.createVerticalStrut(10));
-        this.panelInfo.add(this.movimientosActualesLabel);
-        this.panelInfo.add(Box.createVerticalStrut(10));
-        this.panelInfo.add(this.puntajeLabel);
+        panelInfo.add(Box.createVerticalStrut(10));
+        panelInfo.add(this.nombreUsuario);
+        panelInfo.add(Box.createVerticalStrut(10));
+        panelInfo.add(this.dificultad);
+        panelInfo.add(Box.createVerticalStrut(10));
+        panelInfo.add(this.vehiculoActual);
+        panelInfo.add(Box.createVerticalStrut(10));
+        panelInfo.add(this.movimientosLimitesLabel);
+        panelInfo.add(Box.createVerticalStrut(10));
+        panelInfo.add(this.movimientosActualesLabel);
+        panelInfo.add(Box.createVerticalStrut(10));
+        panelInfo.add(this.puntajeLabel);
+        panelInfo.add(Box.createVerticalStrut(20));
+        panelInfo.add(scroll);
         
-        this.panelInfo.add(Box.createVerticalStrut(20));
-        this.panelInfo.add(scroll);
-        this.panelInfo.add(Box.createVerticalStrut(20));
-        this.panelInfo.add(botonGuardar);
-        this.panelInfo.add(Box.createVerticalStrut(20));
-        this.panelInfo.add(botonVolver);
+        this.panelDeControl.add(panelInfo);
+        this.panelDeControl.add(Box.createVerticalStrut(20));
+        this.panelDeControl.add(botonGuardar);
+        this.panelDeControl.add(Box.createVerticalStrut(20));
+        this.panelDeControl.add(botonVolver);
 
-        this.add(panelInfo);
+        this.add(panelDeControl);
         this.add(Box.createHorizontalStrut(20));
         this.add(panelZonaDelJuego);
     }
 
     public void inicializarZonaDelJuego() {
         this.panelZonaDelJuego.setLayout(null);
-        this.panelZonaDelJuego.setBounds(300, 50, anchoZonaDelJuego, largoZonaDelJuego);
+        this.panelZonaDelJuego.setPreferredSize(new Dimension(anchoZonaDelJuego,largoZonaDelJuego));
         this.panelZonaDelJuego.setBackground(Color.black);
     }
 
@@ -126,7 +136,6 @@ public class PanelPartida extends JPanel {
 
     public void agregarEscuchaFlechas(KeyListener escuchaFlechas) {
         InputMap mapaDeEntrada = this.getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW);
-        ActionMap mapaDeAcciones = this.getActionMap();
 
         mapaDeEntrada.put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0), "FlechaArriba");
         mapaDeEntrada.put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0), "FlechaAbajo");

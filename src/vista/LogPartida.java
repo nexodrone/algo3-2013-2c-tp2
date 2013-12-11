@@ -9,7 +9,7 @@ import control.Listener;
 public class LogPartida extends JTextArea implements Listener {
 	
 	public LogPartida() {
-		this.setBackground(new Color(200, 200, 220, 255));
+		this.setBackground(Color.WHITE);
 		this.setFocusable(false);
 		this.setLineWrap(true);
 		this.setWrapStyleWord(true);
