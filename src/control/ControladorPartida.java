@@ -89,8 +89,8 @@ public class ControladorPartida extends Controlador {
         @Override
         public void actionPerformed(ActionEvent e) {
             PanelZonaDeJuego panel = panelPartida.getPanelZonaDeJuego();
-            String vehiculoAntesDeMover = Juego.getInstance().getPartida().getVehiculo().asString();
-            boolean restarMovimientosDelPanel = true;
+            String vehiculoAntesDeMover = juego.getPartida().getVehiculo().asString();
+            boolean renovarMovimientosDelPanel = true;
             try {
                 switch (accion) {
                     case "UpArrow":
@@ -142,30 +142,32 @@ public class ControladorPartida extends Controlador {
                         break;
                 }
             } catch (MovimientoInvalidoExcepcion ex) {
-                restarMovimientosDelPanel = false;
+                renovarMovimientosDelPanel = false;
                 Logger.instance.log("A donde queres ir " + juego.getJugadorActual().getNombre() + " ?");
                 panelPartida.mostrarMensajeMovimientoInvalido();
-            } catch (PartidaGanadaAviso ex) {
+            } catch (PartidaGanadaAviso av) {
                 // System.out.print("EXCEPCION PARTIDA GANADA ATRAPADA.\n");
                 panelPartida.mostrarMensajePartidaGanada();
                 calcularYGuardarPuntaje();
                 ventana.remove(panelPartida);
                 ControladorMenuPrincipal contolador = new ControladorMenuPrincipal();
-            } catch (PartidaPerdidaAviso ex) {
+            } catch (PartidaPerdidaAviso av) {
                 // System.out.print("EXCEPCION PARTIDA PERDIDA ATRAPADA.\n");
                 panelPartida.mostrarMensajePartidaPerdida();
                 ventana.remove(panelPartida);
                 ControladorMenuPrincipal contolador = new ControladorMenuPrincipal();
             } catch (CalleBloqueadaPorPiqueteExcepcion error) {
-                restarMovimientosDelPanel = false;
+                renovarMovimientosDelPanel = false;
                 panelPartida.mostrarMensajeNoPodesMoverte();
                 // panelPartida.escribirEnElLog("Cuidado! Calle bloqueada por Castells...");
             }
-            if (restarMovimientosDelPanel)
+            if (renovarMovimientosDelPanel)
                 panelPartida.actualizarMovimientosDelPanel(juego.getPartida().getVehiculo().getCantidadDeMovimientos(), juego.getPartida().dificultad);
 
             String vehiculoDespuesDeMover = juego.getPartida().getVehiculo().asString();
-            if (vehiculoAntesDeMover.compareTo(vehiculoDespuesDeMover) == 0) {
+            //System.out.println(vehiculoAntesDeMover);
+            //System.out.println(vehiculoDespuesDeMover);
+            if (!vehiculoAntesDeMover.equals(vehiculoDespuesDeMover)) {
                 panelPartida.actualizarLabelVechiulo(vehiculoDespuesDeMover);
             }
         }
