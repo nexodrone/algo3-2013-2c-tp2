@@ -62,7 +62,7 @@ import modelo.excepciones.UsuarioInexistenteException;
 			if( jugadorAux.getNombre().compareTo(nombre) == 0 )
 				return jugadorAux;
 		}
-		return jugadorAux;
+		return new Jugador();
 	}
 	
 	public void guardar(String path) throws Exception {
