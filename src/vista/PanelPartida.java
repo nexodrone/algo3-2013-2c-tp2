@@ -179,10 +179,6 @@ public class PanelPartida extends JPanel {
         JOptionPane.showMessageDialog(this, "Se ocurrio error!", "Error", JOptionPane.ERROR_MESSAGE);
     }
 
-    public void mostrarMensajeMovimientoInvalido() {
-        JOptionPane.showMessageDialog(this, "Imposible escapar de la ciudad.", "A donde van?", JOptionPane.ERROR_MESSAGE);
-    }
-
     public void mostrarMensajePartidaGanada() {
         String nombre = Juego.getInstance().getJugadorActual().getNombre();
         int movimientosRestantes = Juego.getInstance().getPartida().getCantidadDeMovimientosDisponibles() - Juego.getInstance().getVehiculo().getCantidadDeMovimientos();

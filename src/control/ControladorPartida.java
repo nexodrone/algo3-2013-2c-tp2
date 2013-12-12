@@ -136,8 +136,7 @@ public class ControladorPartida extends Controlador {
                 }
             } catch (MovimientoInvalidoExcepcion ex) {
                 renovarMovimientosDelPanel = false;
-                Logger.instance.log("A donde queres ir " + juego.getJugadorActual().getNombre() + " ?");
-                panelPartida.mostrarMensajeMovimientoInvalido();
+                Logger.instance.log("No se puede salir de la ciudad!\n");
             } catch (CalleBloqueadaPorPiqueteExcepcion error) {
                 renovarMovimientosDelPanel = false;
             }
