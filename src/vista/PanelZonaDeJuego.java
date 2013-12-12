@@ -33,7 +33,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     int enX, enY, paso, distancia, cantidad, cantidadDePasos;
 
     private int x, y;
-    private int radioClip = 60;
+    private int radioClip = 50;
     private int largoDePanel = 610; // ideal = 580
     private int anchoDePanel = 870; // ideal = 860
     private int longitudManzana = 20;
