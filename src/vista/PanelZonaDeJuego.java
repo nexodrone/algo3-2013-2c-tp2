@@ -43,6 +43,7 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
     private Tablero tableroActual;
     private TransparentPanel zonaDeJuego;
     private String vehiculo;
+    private JLabel imagenDeLlegada;
     private Posicion posicionDeVehiculo;
     private Posicion posicionDeLlegada;
     private Boolean dibujarTablero = true; // PARA QUE EL TABLERO SE DIBUJE SOLO UNA VEZ
@@ -77,6 +78,8 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
         
 
         zonaDeJuego = new TransparentPanel(radioClip);
+        JLabel imagenDeLlegada = this.obtenerImagen(this.posicionInicialDeVehiculoEnX(this.posicionDeLlegada)+this.centrarEnX(), this.posicionDeUnObjetoEnY(this.posicionDeLlegada)+this.centrarEnY(), "meta", 0, 0);
+        this.add(imagenDeLlegada);
         this.configurarTableroEnZonaDeJuego();
         MouseListener ml = new MouseListener() {
 
@@ -200,8 +203,6 @@ public class PanelZonaDeJuego extends JPanel implements ActionListener {
             posicionY = 0;
             constanteFila = 0;
         }
-        JLabel meta = this.obtenerImagen(this.posicionInicialDeVehiculoEnX(this.posicionDeLlegada), this.posicionDeUnObjetoEnY(this.posicionDeLlegada), "meta", 0, 0);
-        this.zonaDeJuego.add(meta);
     }
 
     public void agregarTodasLasSorpresasALista() {
