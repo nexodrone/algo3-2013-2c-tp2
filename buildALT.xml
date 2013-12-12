@@ -12,13 +12,13 @@
 	<property name="coverage.summaryxml.dir" location="${reports.dir}/cobertura-summary-xml" />
 	<property name="coverage.html.dir" location="${reports.dir}/cobertura-html" />
 
-	<path id="classpath">
+    <path id="classpath">
 		<fileset dir="${libs}">
-			<include name="*.jar" />
+            <include name="*.jar" />
 		</fileset>
-		<pathelement location="${build}" />
-		<pathelement location="${instrumented.dir}" />
-		<pathelement location="${build}/tests" />
+        <pathelement location="${build}" />
+        <pathelement location="${instrumented.dir}" />
+        <pathelement location="${build}/tests" />
 	</path>
 
 	<path id="cobertura.classpath">
@@ -35,14 +35,16 @@
 		<mkdir dir="${build}/tests"/>
 	</target>
 
-	<target name="compilar.aplicacion" depends="setup">
-		<javac srcdir="src" destdir="${build}" includeantruntime="false" debug="yes" target="1.7">
-		<classpath refid="classpath" />
+
+
+	<target name="compilar.aplicacion" depends="setup" >
+		<javac srcdir="src" destdir="${build}"  includeantruntime="false" debug="yes" target="1.6">
+            <classpath refid="classpath" />
 		</javac>
 	</target>
 	
 	<target name="compilar.tests" depends="instrumentar.aplicacion">
-		<javac srcdir="test" destdir="${build}/tests" includeantruntime="false" debug="yes" target="1.7">
+		<javac srcdir="test" destdir="${build}/tests" includeantruntime="false" debug="yes" target="1.6">
 			<classpath refid="classpath" />
 		</javac>
 	</target>
@@ -123,28 +125,26 @@
 	</target>
 
 	<target name="test" depends="ejecutar.tests, coverage-report, alternate-coverage-report" description="Compile, instrument ourself, run the tests and generate JUnit and coverage reports."/>
-	
+
 	<target name="compilar.paquete" depends="test">
 		<javac srcdir="src" destdir="${build}/classes" debug="no"></javac>
 	</target>
 
 	<target name="empaquetar" depends="compilar.paquete">
-		<!--jar destfile="${build}/dist/titiritero.jar" basedir="${build}/classes"/-->
-		<copydir dest="${build}/classes/vista" src="src/vista">
-				<include name="**/*.png"/>
-				<include name="**/*.jpg"/>
-		</copydir>
-		<jar destfile="${build}/dist/gps.jar" basedir="${build}/classes"/>
+        <!-- <<jar destfile="${build}/dist/titiritero.jar" basedir="${build}/classes"/>  -->
+        <copydir src="src/Vista/imagenes"
+                dest="${build}/classes/Vista/imagenes"
+                includes="**/*.png" />
+		<jar destfile="${build}/dist/gpsChallenge.jar" basedir="${build}/classes"/>
 	</target>
 
-	<target name="jugar" depends="empaquetar" >
-		<java classname="modelo.Principal" fork="true">
-			<classpath refid="classpath" />
-			<classpath location="${build}/dist/gps.jar" />
-		</java>
-	</target>
-	
+    <target name="ejecutar.aplicacion" depends="empaquetar">
+        <java classname="Control.gpsChallenge" fork="true">
+            <classpath refid="classpath" />
+            <classpath location="${build}/dist/gps.jar" />
+        </java>
+    </target>
+
 	<target name="integracion-continua" depends="coverage-report" description="Ejecuta todas las tareas de integracion y genera los correspondientes reportes"/>
-
 
 </project>
