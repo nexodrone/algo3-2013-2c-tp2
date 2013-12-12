@@ -24,8 +24,6 @@ import modelo.Vehiculo;
 import modelo.Vehiculo4x4;
 import modelo.VehiculoAuto;
 import modelo.VehiculoMoto;
-import modelo.avisos.PartidaGanadaAviso;
-import modelo.avisos.PartidaPerdidaAviso;
 import modelo.excepciones.CalleBloqueadaPorPiqueteExcepcion;
 import modelo.excepciones.MovimientoInvalidoExcepcion;
 import modelo.excepciones.NoHayUsuariosCreadosException;
@@ -64,9 +62,7 @@ public class JuegoTest {
     }
 
     @Test
-    public void testVehiculoDeberiaMoversePorLimitesDelTablero()
-    		throws MovimientoInvalidoExcepcion, PartidaGanadaAviso, PartidaPerdidaAviso
-    {
+    public void testVehiculoDeberiaMoversePorLimitesDelTablero() throws MovimientoInvalidoExcepcion {
         Tablero tablero = new Tablero(6, 3);
         Vehiculo vehiculo = new VehiculoAuto(new Posicion(4, 0));
         int cantidadDeMovimientos = 10;
@@ -91,9 +87,7 @@ public class JuegoTest {
     }
 
     @Test
-    public void testDeberiaTirarExcepcionAlMoverseFueraDelTablero()
-    		throws MovimientoInvalidoExcepcion, PartidaGanadaAviso, PartidaPerdidaAviso
-    {
+    public void testDeberiaTirarExcepcionAlMoverseFueraDelTablero() throws MovimientoInvalidoExcepcion {
         Tablero tablero = new Tablero(6, 3);
         Vehiculo vehiculo = new VehiculoAuto(new Posicion(4, 0));
         vehiculo.setCantidadDeMovimientos(6);
@@ -113,11 +107,9 @@ public class JuegoTest {
     }
 
     /* Test integrador */
-    @Test (expected = PartidaGanadaAviso.class)
-    public void testIntegradorValoresDePuntajeDeberianSerCoherentesConLosEsperados()
-    		throws MovimientoInvalidoExcepcion, CalleBloqueadaPorPiqueteExcepcion,
-    			   PartidaGanadaAviso, PartidaPerdidaAviso
-    {
+    @Test
+    public void testIntegradorValoresDePuntajeDeberianSerCoherentesConLosEsperados() throws MovimientoInvalidoExcepcion, CalleBloqueadaPorPiqueteExcepcion {
+
         Tablero tablero = new Tablero(3, 3);
         Vehiculo vehiculo = new VehiculoAuto(new Posicion(0, 0));
         vehiculo.setCantidadDeMovimientos(0);
@@ -149,14 +141,13 @@ public class JuegoTest {
         unJuego.realizarJugadaEnDireccion(norte);
         assertEquals(unJuego.getPartida().getVehiculo().getCantidadDeMovimientos(), 4);
         assertEquals(unJuego.getPartida().getVehiculo().getPosicion().asString(), "2,2");
+        assertTrue(unJuego.getPartida().esGanada());
 
     }
 
     /* Test integrador */
-    @Test (expected = PartidaGanadaAviso.class)
-    public void testObstaculosYSorpresasDebenSerAplicadosDeFormaCoherente()
-    		throws MovimientoInvalidoExcepcion, PartidaGanadaAviso, PartidaPerdidaAviso
-    {
+    @Test
+    public void testObstaculosYSorpresasDebenSerAplicadosDeFormaCoherente() throws MovimientoInvalidoExcepcion {
         Tablero tablero = new Tablero(5, 4);
         Vehiculo moto = new VehiculoMoto(new Posicion(1, 1));
         moto.setCantidadDeMovimientos(0);
@@ -194,13 +185,12 @@ public class JuegoTest {
         assertEquals(unJuego.getPartida().getVehiculo().getCantidadDeMovimientos(), 13);
         assertTrue(unJuego.getPartida().getVehiculo().getPosicion().equals(new Posicion(0, 3)));
         assertEquals(unJuego.getPartida().getVehiculo().getClass(), (new VehiculoAuto()).getClass());
+        assertTrue(unJuego.getPartida().esGanada());
     }
 
     /* Test integrador */
-    @Test (expected = PartidaGanadaAviso.class)
-    public void testJegoCompletoGanancia()
-    		throws MovimientoInvalidoExcepcion, PartidaGanadaAviso, PartidaPerdidaAviso
-    {
+    @Test
+    public void testJegoCompletoGanancia() throws MovimientoInvalidoExcepcion {
         Tablero tablero = new Tablero(4, 6);
         Vehiculo vehiculo = new VehiculoAuto(new Posicion(0, 0));
         vehiculo.setCantidadDeMovimientos(0);
@@ -212,7 +202,6 @@ public class JuegoTest {
 
         Juego unJuego = Juego.getInstance();
         unJuego.setPartida(unaPartida);
-        // vehiculo.setJuegoActual(unJuego);
 
         Direccion norte = new Direccion(0, 1);
         Direccion sur = new Direccion(0, -1);
@@ -235,24 +224,20 @@ public class JuegoTest {
         assertTrue(vehiculo.getPosicion().equals(new Posicion(3, 3)));
         assertEquals(vehiculo.getCantidadDeMovimientos(), 6);
         unJuego.realizarJugadaEnDireccion(norte);
-        unJuego.realizarJugadaEnDireccion(oeste);
-        unJuego.realizarJugadaEnDireccion(norte);
-        assertEquals(vehiculo.getCantidadDeMovimientos(), 10);
-        unJuego.realizarJugadaEnDireccion(norte);
-        unJuego.realizarJugadaEnDireccion(oeste);
-        unJuego.realizarJugadaEnDireccion(este);
-        assertEquals(vehiculo.getCantidadDeMovimientos(), 16);
-        assertTrue(vehiculo.getPosicion().equals(new Posicion(2, 4)));
-        unJuego.realizarJugadaEnDireccion(este);
+        assertEquals(vehiculo.getCantidadDeMovimientos(), 7);
         assertTrue(vehiculo.getPosicion().equals(new Posicion(3, 4)));
-        assertEquals(vehiculo.getCantidadDeMovimientos(), 14);
+        unJuego.realizarJugadaEnDireccion(norte);
+        unJuego.realizarJugadaEnDireccion(oeste);
+        unJuego.realizarJugadaEnDireccion(este);
+        assertEquals(vehiculo.getCantidadDeMovimientos(), 7);
+        assertTrue(vehiculo.getPosicion().equals(new Posicion(3, 4)));
+        /* para comprobar que una vez ganada el vehiculo no se mueve */
+        assertTrue(unJuego.getPartida().esGanada());
     }
 
     /* Test integrador */
-    @Test (expected = PartidaPerdidaAviso.class)
-    public void testJegoCompletoPerdida()
-    		throws MovimientoInvalidoExcepcion, PartidaGanadaAviso, PartidaPerdidaAviso
-    {
+    @Test
+    public void testJegoCompletoPerdida() throws MovimientoInvalidoExcepcion {
         Tablero tablero = new Tablero(5, 3);
         Vehiculo4x4 vehiculo = new Vehiculo4x4(new Posicion(4, 2));
         vehiculo.setCantidadDeMovimientos(0);
@@ -265,7 +250,6 @@ public class JuegoTest {
         Juego unJuego = Juego.getInstance();
         unJuego.setPartida(unaPartida);
         // observador.setJuego(unJuego);
-        // vehiculo.setJuegoActual(unJuego);
 
         Direccion norte = new Direccion(0, 1);
         Direccion sur = new Direccion(0, -1);
@@ -295,19 +279,15 @@ public class JuegoTest {
         assertEquals(unJuego.getPartida().getVehiculo().getClass(), (new VehiculoMoto()).getClass());
         assertTrue(unJuego.getPartida().getVehiculo().getPosicion().equals(new Posicion(2, 0)));
 
-        unJuego.realizarJugadaEnDireccion(norte);
-        assertTrue(unJuego.getPartida().getVehiculo().getPosicion().equals(new Posicion(2, 1)));
-        assertEquals(unJuego.getPartida().getVehiculo().getCantidadDeMovimientos(), 10);
-
         unJuego.realizarJugadaEnDireccion(oeste);
         unJuego.realizarJugadaEnDireccion(norte);
-        assertEquals(unJuego.getPartida().getVehiculo().getCantidadDeMovimientos(), 10);
+        assertEquals(unJuego.getPartida().getVehiculo().getCantidadDeMovimientos(), 11);
         assertTrue(unJuego.getPartida().getVehiculo().getPosicion().equals(new Posicion(1, 1)));
-
         unJuego.realizarJugadaEnDireccion(sur);
         unJuego.realizarJugadaEnDireccion(oeste);
-        assertEquals(unJuego.getPartida().getVehiculo().getCantidadDeMovimientos(), 14);
+        assertEquals(unJuego.getPartida().getVehiculo().getCantidadDeMovimientos(), 11);
         assertTrue(unJuego.getPartida().getVehiculo().getPosicion().equals(new Posicion(1, 1)));
+        assertTrue(unJuego.getPartida().esPerdida());
         /* se comprueba que una vez perdida la partida no se mueva el vehiculo */
     }
 
