@@ -10,10 +10,10 @@ import control.Logger;
 public abstract class Vehiculo {
 
     @Element(name = "posicionActual")
-    protected Posicion posicion;
+    private Posicion posicion;
     @Attribute
-    protected int cantidadDeMovimientos;
-    protected Direccion direccion;
+    private int cantidadDeMovimientos;
+    private Direccion direccion;
 
     public Vehiculo(Posicion nuevaPosicion) {
         posicion = nuevaPosicion;

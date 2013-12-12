@@ -55,11 +55,13 @@ public class Partida {
 	}
 
 	public boolean esGanada() {
-		return (posicionGanadora.equals(vehiculo.posicion));
+		int movRest = this.movimientosDisponibles - vehiculo.getCantidadDeMovimientos();
+		return ((movRest >= 0) && (posicionGanadora.equals(vehiculo.getPosicion())));
 	}
 	
 	public boolean esPerdida() {
-		return (movimientosDisponibles-vehiculo.cantidadDeMovimientos < 1);
+		int movRest = this.movimientosDisponibles - vehiculo.getCantidadDeMovimientos();
+		return ( ((movRest == 0) && (!posicionGanadora.equals(vehiculo.getPosicion()))) || (movRest < 0)  );
 	}
 	
 	public void guardarPartida(String path) throws Exception {

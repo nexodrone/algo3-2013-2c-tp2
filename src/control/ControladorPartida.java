@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
 import modelo.Direccion;
-import modelo.Juego;
 import modelo.Posicion;
 import modelo.excepciones.CalleBloqueadaPorPiqueteExcepcion;
 import modelo.excepciones.MovimientoInvalidoExcepcion;
