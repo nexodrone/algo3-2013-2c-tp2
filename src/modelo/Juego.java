@@ -2,8 +2,6 @@ package modelo;
 
 import java.util.ArrayList;
 
-import modelo.avisos.PartidaGanadaAviso;
-import modelo.avisos.PartidaPerdidaAviso;
 import modelo.excepciones.ErrorArchivoJugadoresException;
 import modelo.excepciones.MovimientoInvalidoExcepcion;
 import modelo.excepciones.NoHayUsuariosCreadosException;
@@ -72,35 +70,21 @@ public class Juego {
         return this.partidaActual;
     }
 
-    public void verificarEstadoDelJugador() throws PartidaGanadaAviso, PartidaPerdidaAviso {
-        if (partidaActual.esGanada()) {
-            throw new PartidaGanadaAviso();
-        }
-        if (partidaActual.esPerdida()) {
-            throw new PartidaPerdidaAviso();
-        }
-    }
-
-    public void realizarJugadaEnDireccion(Direccion direccion)
-    		throws MovimientoInvalidoExcepcion, PartidaGanadaAviso, PartidaPerdidaAviso {
-    	
+    public void realizarJugadaEnDireccion(Direccion direccion) throws MovimientoInvalidoExcepcion {
         if (this.partidaActual.esGanada() || this.partidaActual.esPerdida())
             System.out.print("Se termino la partida. \n");
         else
             jugarEnDireccion(direccion);
     }
 
-    private void jugarEnDireccion(Direccion direccion)
-    		throws MovimientoInvalidoExcepcion, PartidaGanadaAviso, PartidaPerdidaAviso {
+    private void jugarEnDireccion(Direccion direccion) throws MovimientoInvalidoExcepcion {
     	
         Posicion nuevaPosicion = partidaActual.getVehiculo().calcularSiguientePosicion(direccion);
         if (partidaActual.getTablero().posicionValida(nuevaPosicion)) {
             Bocacalle bocacalleActual = partidaActual.getTablero().getBocacalleEnPosicion(partidaActual.getVehiculo().getPosicion());
             Calle calleATransitar = bocacalleActual.getCalleEnDireccion(direccion);
             partidaActual.getVehiculo().moverEnDireccion(direccion, calleATransitar);
-            verificarEstadoDelJugador();
-        } else
-            throw new MovimientoInvalidoExcepcion();
+        } else throw new MovimientoInvalidoExcepcion();
     }
 
     public void crearUsuario(String nombre) throws UsuarioExistenteException, NoHayUsuariosCreadosException {

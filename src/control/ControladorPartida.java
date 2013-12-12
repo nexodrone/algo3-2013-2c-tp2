@@ -13,8 +13,6 @@ import javax.swing.KeyStroke;
 import modelo.Direccion;
 import modelo.Juego;
 import modelo.Posicion;
-import modelo.avisos.PartidaGanadaAviso;
-import modelo.avisos.PartidaPerdidaAviso;
 import modelo.excepciones.CalleBloqueadaPorPiqueteExcepcion;
 import modelo.excepciones.MovimientoInvalidoExcepcion;
 import modelo.excepciones.NoHayUsuariosCreadosException;
@@ -140,15 +138,6 @@ public class ControladorPartida extends Controlador {
                 renovarMovimientosDelPanel = false;
                 Logger.instance.log("A donde queres ir " + juego.getJugadorActual().getNombre() + " ?");
                 panelPartida.mostrarMensajeMovimientoInvalido();
-            } catch (PartidaGanadaAviso av) {
-                panelPartida.mostrarMensajePartidaGanada();
-                calcularYGuardarPuntaje();
-                ventana.remove(panelPartida);
-                ControladorMenuPrincipal contolador = new ControladorMenuPrincipal();
-            } catch (PartidaPerdidaAviso av) {
-                panelPartida.mostrarMensajePartidaPerdida();
-                ventana.remove(panelPartida);
-                ControladorMenuPrincipal contolador = new ControladorMenuPrincipal();
             } catch (CalleBloqueadaPorPiqueteExcepcion error) {
                 renovarMovimientosDelPanel = false;
             }
@@ -158,6 +147,21 @@ public class ControladorPartida extends Controlador {
             String vehiculoDespuesDeMover = juego.getPartida().getVehiculo().asString();
             if (!vehiculoAntesDeMover.equals(vehiculoDespuesDeMover)) {
                 panelPartida.actualizarLabelVechiulo(vehiculoDespuesDeMover);
+            }
+            
+            if (juego.getPartida().esGanada()) {
+            	panelPartida.actualizarMovimientosDelPanel(juego.getPartida().getVehiculo().getCantidadDeMovimientos(), juego.getPartida().dificultad);
+            	panelPartida.mostrarMensajePartidaGanada();
+                calcularYGuardarPuntaje();
+                ventana.remove(panelPartida);
+                ControladorMenuPrincipal contolador = new ControladorMenuPrincipal();
+            }
+            
+            if (juego.getPartida().esPerdida()) {
+            	panelPartida.actualizarMovimientosDelPanel(juego.getPartida().getVehiculo().getCantidadDeMovimientos(), juego.getPartida().dificultad);
+                panelPartida.mostrarMensajePartidaPerdida();
+                ventana.remove(panelPartida);
+                ControladorMenuPrincipal contolador = new ControladorMenuPrincipal();
             }
         }
     }
