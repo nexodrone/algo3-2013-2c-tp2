@@ -13,8 +13,8 @@ public class Ventana extends JFrame {
     public Ventana() {
         this.setTitle("GPS Challenge");
         this.setLocationRelativeTo(null);
-        this.setResizable(true);	/* evita que la ventana se maximize ni cambia su tamanio */
-        this.setLocation(100,100);	/* dibuja a 100px de distancia del monitor */
+        this.setResizable(false);	/* evita que la ventana se maximize ni cambia su tamanio */
+        this.setLocation(50,50);	/* dibuja a 50px de distancia del monitor */
       	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(1200, 700);
 		this.setContentPane(new JLabel(new ImageIcon("src/vista/imagenes/bkgrd.jpg")));

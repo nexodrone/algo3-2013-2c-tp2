@@ -1,4 +1,4 @@
-<Nivel movimientosDisponibles="15" dificultad="3">
+<Nivel movimientosDisponibles="25" dificultad="3">
    <tablero cantidadDeColumnas="21" cantidadDeFilas="14">
       <Bocacalles>
          <columnaDeBocacalles>
