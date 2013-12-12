@@ -75,7 +75,7 @@ public class PanelPartida extends JPanel {
 		this.vehiculoActualImagen.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		this.vehiculoActualImagen.setAlignmentX(CENTER_ALIGNMENT);
         
-        this.panelDeControl.setPreferredSize(new Dimension(250,610));
+        this.panelDeControl.setPreferredSize(new Dimension(250,660));
         this.panelDeControl.setLayout(new BoxLayout(panelDeControl, BoxLayout.PAGE_AXIS));
         this.panelDeControl.setBackground(new Color(0,0,0,0));
         
@@ -91,6 +91,9 @@ public class PanelPartida extends JPanel {
         this.scroll.setPreferredSize(new Dimension(250,100));
         this.scroll.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         this.scroll.setAlignmentX(CENTER_ALIGNMENT);
+        
+        JLabel alerta = new JLabel("Avance no guardado se va a perder!");
+        alerta.setAlignmentX(CENTER_ALIGNMENT);
         
         this.panelInfo.add(Box.createVerticalStrut(10));
         this.panelInfo.add(nombreUsuario);
@@ -114,6 +117,8 @@ public class PanelPartida extends JPanel {
         this.panelDeControl.add(botonGuardar);
         this.panelDeControl.add(Box.createVerticalStrut(20));
         this.panelDeControl.add(botonVolver);
+        this.panelDeControl.add(Box.createVerticalStrut(10));
+        this.panelDeControl.add(alerta);
 
         this.add(panelDeControl);
         this.add(Box.createHorizontalStrut(20));
