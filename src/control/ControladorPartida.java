@@ -87,10 +87,10 @@ public class ControladorPartida extends Controlador {
         public void actionPerformed(ActionEvent e) {
             PanelZonaDeJuego panel = panelPartida.getPanelZonaDeJuego();
             String vehiculoAntesDeMover = juego.getPartida().getVehiculo().asString();
+            
             boolean renovarMovimientosDelPanel = true;
             try {
-                switch (accion) {
-                    case "UpArrow":
+                if (accion == "UpArrow") {
                         if (panel.vehiculoMoviendose() == false) {
                             juego.realizarJugadaEnDireccion(norte);
                             panel.girarHacia("Arriba");
@@ -99,9 +99,9 @@ public class ControladorPartida extends Controlador {
                             }
                             panel.nuevaPosicion(0, -1);
                         }
-                        break;
+                }
 
-                    case "DownArrow":
+                if (accion == "DownArrow") {
                         if (panel.vehiculoMoviendose() == false) {
                             juego.realizarJugadaEnDireccion(sur);
                             panel.girarHacia("Abajo");
@@ -110,8 +110,9 @@ public class ControladorPartida extends Controlador {
                             }
                             panel.nuevaPosicion(0, 1);
                         }
-                        break;
-                    case "LeftArrow":
+            	}
+            
+            	if (accion == "LeftArrow") {
                         if (panel.vehiculoMoviendose() == false) {
                             Posicion posicion = juego.getVehiculo().getPosicion();
                             juego.realizarJugadaEnDireccion(oeste);
@@ -121,8 +122,9 @@ public class ControladorPartida extends Controlador {
                             }
                             panel.nuevaPosicion(-1, 0);
                         }
-                        break;
-                    case "RightArrow":
+            	}
+            	
+                if (accion == "RightArrow") {
                         if (panel.vehiculoMoviendose() == false) {
                             juego.realizarJugadaEnDireccion(este);
                             panel.girarHacia("Derecha");
@@ -131,8 +133,8 @@ public class ControladorPartida extends Controlador {
                             }
                             panel.nuevaPosicion(1, 0);
                         }
-                        break;
                 }
+                
             } catch (MovimientoInvalidoExcepcion ex) {
                 renovarMovimientosDelPanel = false;
                 Logger.instance.log("No se puede salir de la ciudad!\n");
@@ -170,7 +172,10 @@ public class ControladorPartida extends Controlador {
         Integer puntaje = movRestantes * juego.getPartida().dificultad;
         try {
             juego.guardarPuntaje(nombre, puntaje);
-        } catch (UsuarioInexistenteException | NoHayUsuariosCreadosException e) {
+        } catch (UsuarioInexistenteException e) {
+            System.out.print("Usuario Inexistente");
+            panelPartida.mostrarMensajeUsuarioInexistente();
+        } catch (NoHayUsuariosCreadosException e) {
             System.out.print("Usuario Inexistente");
             panelPartida.mostrarMensajeUsuarioInexistente();
         }

@@ -66,7 +66,7 @@ public class PanelPuntajes extends JPanel {
 		private List<Jugador> jugadores;
 		
 		public TablaDePuntajes(List<Jugador> jugs) {
-			jugadores = new ArrayList<>(jugs);
+			jugadores = new ArrayList<Jugador>(jugs);
 		}
 		
 		@Override
