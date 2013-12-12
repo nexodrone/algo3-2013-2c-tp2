@@ -35,8 +35,8 @@ public class Juego {
         }
         try {
             crearUsuario(nombre);
-        } catch (NoHayUsuariosCreadosException | UsuarioExistenteException ex) {
-        }
+        } catch (NoHayUsuariosCreadosException ex) {}
+        	catch (UsuarioExistenteException ex) {}
     }
 
     public void setPathJugadores(String path) {

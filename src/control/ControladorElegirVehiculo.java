@@ -56,14 +56,13 @@ public class ControladorElegirVehiculo extends Controlador {
 	}
 
 	public Partida construirPartidaSeleccionada(String vehiculoSeleccionado, Nivel nivel) {
-		switch (vehiculoSeleccionado) {
-		case "Moto":
-			return ConstructorDePartida.construirPartidaConMoto(nivel);
-		case "Auto":
-			return ConstructorDePartida.construirPartidaConAuto(nivel);
-		default:
-			return ConstructorDePartida.construirPartidaCon4x4(nivel);
+		if (vehiculoSeleccionado == "Moto") { 
+			return ConstructorDePartida.construirPartidaConMoto(nivel); }
+		else {	if (vehiculoSeleccionado == "Auto") { 
+						return ConstructorDePartida.construirPartidaConAuto(nivel); }
+				else return ConstructorDePartida.construirPartidaCon4x4(nivel);
 		}
+
 	}
 
 }

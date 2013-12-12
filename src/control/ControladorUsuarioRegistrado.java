@@ -19,7 +19,7 @@ public class ControladorUsuarioRegistrado extends Controlador{
 	private void agregarPanelLocal() {
 		this.panelUsuarioRegistrado = new PanelUsuarioRegistrado();
 		int i = 1;
-		ArrayList<Jugador> lista = new ArrayList<>();
+		ArrayList<Jugador> lista = new ArrayList<Jugador>();
 		try{
 			lista = juego.getPuntajesOrdenados();
 		}catch(Exception ex){}
