@@ -37,7 +37,6 @@ public abstract class Vehiculo {
         direccion = unaDireccion;
         pasarPorCalle(calleAPasar);
         this.setPosicion(this.calcularSiguientePosicion());
-        System.out.println("la nueva Posicion es:" + this.calcularSiguientePosicion().asString());
     }
 
     public Posicion calcularSiguientePosicion() {
@@ -71,7 +70,6 @@ public abstract class Vehiculo {
     }
 
     public void setPosicion(Posicion unaPosicion) {
-        System.out.println("setPosicion");
         posicion = unaPosicion;
     }
 
