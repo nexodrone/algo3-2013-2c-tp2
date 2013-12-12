@@ -151,7 +151,6 @@ public class ControladorPartida extends Controlador {
                 ControladorMenuPrincipal contolador = new ControladorMenuPrincipal();
             } catch (CalleBloqueadaPorPiqueteExcepcion error) {
                 renovarMovimientosDelPanel = false;
-                panelPartida.mostrarMensajeNoPodesMoverte();
             }
             if (renovarMovimientosDelPanel)
                 panelPartida.actualizarMovimientosDelPanel(juego.getPartida().getVehiculo().getCantidadDeMovimientos(), juego.getPartida().dificultad);

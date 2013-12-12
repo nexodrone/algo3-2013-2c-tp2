@@ -195,17 +195,12 @@ public class PanelPartida extends JPanel {
 
     public void mostrarMensajePartidaPerdida() {
         String nombre = Juego.getInstance().getJugadorActual().getNombre();
-        JOptionPane.showMessageDialog(this, nombre + ", te has quedado sin movimientos.", "Partida perdida", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, nombre + ", Ud ha quedado sin movimientos.", "Partida perdida", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public void mostrarMensajeUsuarioInexistente() {
         String nombre = Juego.getInstance().getJugadorActual().getNombre();
         JOptionPane.showMessageDialog(this, "El usuario '" + nombre + "' no existe. No se guardara el puntaje.", "Error", JOptionPane.ERROR_MESSAGE);
-    }
-
-    public void mostrarMensajeNoPodesMoverte() {
-        JOptionPane.showMessageDialog(this, "Hay piquete", "Aaaaa", JOptionPane.ERROR_MESSAGE);
-
     }
 
 }
