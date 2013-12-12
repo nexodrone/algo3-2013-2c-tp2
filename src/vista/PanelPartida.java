@@ -196,7 +196,7 @@ public class PanelPartida extends JPanel {
 
     public void mostrarMensajeUsuarioInexistente() {
         String nombre = Juego.getInstance().getJugadorActual().getNombre();
-        JOptionPane.showMessageDialog(this, "El usuario '" + nombre + "' no existe. No se guardara el puntaje.", "Error", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Debe haber habido un cambio en el archivo de jugadores durante la ejecución del juego. No se guardara el puntaje.", "No se encontró el usuario con nombre '" + nombre + "'", JOptionPane.ERROR_MESSAGE);
     }
 
 }
